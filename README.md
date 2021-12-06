@@ -11,18 +11,12 @@ De Specificatie van de betreffende API is de bekijken in [Swagger UI](https://vn
 
 Bekijk de [release notes](https://vng-realisatie.github.io/IMWOZ-bevragen/releasenotes).
 
-## Direct aan de slag?
+## Meedenken met de ontwikkelingen?
 
 * Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/redoc)
 * Download de [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/blob/master/specificatie/genereervariant/openapi.yaml)
 
-## Ontwikkeling van de IMWOZ bevragen API
-
-Komende periode wordt de API uitgebreid met andere erfpachters. Dat zijn de eigenaren van de appartementsrechten die uit erfpacht zijn ontstaan. Ook worden sluimerende appartementsrechten zichtbaar gemaakt (v1.5). 
-We doen ons uiterste best om de API evolvable door te ontwikkelen en geen breaking changes te introduceren.
-
-* Bekijk de [voortgang van issues en user stories](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/issues?q=is%3Aissue+label%3A%22v1.5%22+label%3A%22User+Story%22)
-* Bekijk de specificaties in ontwikkeling met [Swagger UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/swagger-ui-io) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/redoc-io)
+Bekijk de bestaande [issues](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/issues) en lever een bijdrage aan de discussie. Breng eventeel een nieuw issue in als een onderwerp nog niet geadresseerd is. 
 
 ## Bronnen
 
