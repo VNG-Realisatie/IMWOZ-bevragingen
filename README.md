@@ -28,6 +28,6 @@ Bekijk de bestaande [issues](https://github.com/VNG-Realisatie/IMWOZ-bevragingen
 
 ## Licentie
 
-Copyright &copy; VNG Realisatie 2020
+Copyright &copy; Waarderingskamer 2021
 Licensed under the [EUPL](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/blob/master/LICENCE.md)
 
