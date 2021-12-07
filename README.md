@@ -7,9 +7,9 @@ Een API die naast de nieuwe versie van StUFWoz wordt ontwikkeld om vanuit vak-ap
 **Proef-implementaties (en terugkoppeling van de bevindingen daaruit) zijn uiteraard wel mogelijk, maar de specificatie kan op dag-basis wijzigen.**
 **Als er een eerste stabiel versie is wordt daar een release van aangemaakt en wordt dit op deze plek (en via andere communicatie-lijnen) gedeeld.**
 
-De Specificatie van de betreffende API is de bekijken in [Swagger UI](https://vng-realisatie.github.io/IMWOZ-bevragen/swagger-ui)
+De Specificatie van de betreffende API is de bekijken in [Swagger UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/swagger-ui)
 
-Bekijk de [release notes](https://vng-realisatie.github.io/IMWOZ-bevragen/releasenotes).
+Bekijk de [release notes](https://vng-realisatie.github.io/IMWOZ-bevragingen/releasenotes).
 
 ## Meedenken met de ontwikkelingen?
 
