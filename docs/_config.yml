@@ -1,10 +1,10 @@
- 
+
 baseurl: "/IMWOZ-bevragingen"
 apiname: "IMWOZ-bevragingen"
 url: "http://localhost:4000"
 # nav is t.b.v. generatie side-navigation menu.
 # Een 'title' zonder path of url genereert slechts een kopje.
-# 'path' vormt tezamen met de baseurl de url waarmee de 'href' wordt gevuld. 
+# 'path' vormt tezamen met de baseurl de url waarmee de 'href' wordt gevuld.
 # Indien een 'url' voorradig dan wordt daarmee de 'href' gevuld en dient het path slechts om te bepalen welke link active is.
 # 'target: blank' zorgt er voor dat de link in een nieuw tabblad wordt geöpend.
 nav:
@@ -12,29 +12,29 @@ nav:
     subnav:
       - title: Main
         path: /
-  - title: Specificaties v. 1.0.0 
+  - title: Specificaties v. 1.0.0
     subnav:
 #      - title: Getting started
 #        path: /getting-started
 #      - title: User stories
-#        url: https://vng-realisatie.github.io/Haal-Centraal-BRK-bevragen/user-stories-prod
-#        https://github.com/VNG-Realisatie/Haal-Centraal-BRK-bevragen/issues?q=is%3Aissue+label%3A%22user+story%22+label%3A%22BRK+bevragen+v1.2%22
+#        url: https://vng-realisatie.github.io/IMWOZ-bevragingen/user-stories-prod
+#        https://github.com/VNG-Realisatie/IMWOZ-bevragingen/issues?q=is%3Aissue+label%3A%22user+story%22
 #        path: /user-stories
-      - title: Bevragen API (swagger-ui)
+      - title: Bevragingen API (swagger-ui)
         path: /swagger-ui
-      - title: Bevragen API (redoc)
+      - title: Bevragingen API (redoc)
         path: /redoc
 #  - title: Specificaties v. 1.0.0-rc2 (In Ontwikkeling)
 #    subnav:
 #      - title: Getting started
 #        path: /getting-started
 #      - title: User stories
-#        url: https://vng-realisatie.github.io/Haal-Centraal-BRK-bevragen/user-stories-prod
-#        https://github.com/VNG-Realisatie/Haal-Centraal-BRK-bevragen/issues?q=is%3Aissue+label%3A%22user+story%22+label%3A%22BRK+bevragen+v1.2%22
+#        url: https://vng-realisatie.github.io/IMWOZ-bevragingen/user-stories-prod
+#        https://github.com/VNG-Realisatie/IMWOZ-bevragingen/issues?q=is%3Aissue+label%3A%22user+story%22
 #        path: /user-stories
-#      - title: Bevragen API (swagger-ui)
+#      - title: Bevragingen API (swagger-ui)
 #        path: /swagger-ui-io
-#      - title: Bevragen API (redoc)
+#      - title: Bevragingen API (redoc)
 #        path: /redoc-io
 
 
