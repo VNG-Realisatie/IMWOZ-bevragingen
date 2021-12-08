@@ -3442,7 +3442,7 @@ components:
       - "oppervlakte"
       properties:
         begrenzingperceel:
-          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
         einddatumobject:
           $ref: "#/components/schemas/DatumMogelijkOnvolledig"
         ingangsdatumobject:
@@ -3829,7 +3829,7 @@ components:
           items:
             $ref: "#/components/schemas/InOnderzoekPND"
         pandgeometrie:
-          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
         status:
           $ref: "#/components/schemas/StatusPand"
     ResultatenmarktanalyseHalCollectie:
@@ -4007,7 +4007,7 @@ components:
           statusstandplaats:
             $ref: "#/components/schemas/StatusStandplaats"
           vlakgeometrie:
-            $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
     TaxatieHalCollectie:
       type: "object"
       properties:
@@ -4760,7 +4760,7 @@ components:
             \ (In Terms of Zone A) waarbij de (huur)waarde van de verder naar achtergelegen\
             \ delen wordt afgeleid uit de (huur)waarde van de primaire ruimte.</p></body>"
         geometrie:
-          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
         groepsaanduiding:
           type: "string"
           title: "groepsaanduiding"
@@ -5836,9 +5836,9 @@ components:
       - "vlakgeometrie"
       properties:
         puntgeometrie:
-          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/pointGeoJSON.yaml"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
         vlakgeometrie:
-          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
     Heffingstijdvak:
       type: "object"
       description: ""
