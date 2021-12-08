@@ -7,14 +7,13 @@ Een API die naast de nieuwe versie van StUFWoz wordt ontwikkeld om vanuit vak-ap
 **Proef-implementaties (en terugkoppeling van de bevindingen daaruit) zijn uiteraard wel mogelijk, maar de specificatie kan op dag-basis wijzigen.**
 **Als er een eerste stabiel versie is wordt daar een release van aangemaakt en wordt dit op deze plek (en via andere communicatie-lijnen) gedeeld.**
 
-De Specificatie van de betreffende API is de bekijken in [Swagger UI](./swagger-ui)
-
+De Specificatie van de betreffende API is de bekijken in [Swagger UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/Haal-Centraal-BRK-bevragen/redoc)
 
 Bekijk de [release notes](https://vng-realisatie.github.io/IMWOZ-bevragingen/releasenotes).
 
 ## Meedenken met de ontwikkelingen?
 
-* Bekijk de specificaties met [Swagger UI](./swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/redoc)
+* Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/redoc)
 * Download de [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/blob/master/specificatie/genereervariant/openapi.yaml)
 
 Bekijk de bestaande [issues](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/issues) en lever een bijdrage aan de discussie. Breng eventeel een nieuw issue in als een onderwerp nog niet geadresseerd is. 
