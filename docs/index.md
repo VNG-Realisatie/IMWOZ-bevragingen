@@ -6,7 +6,7 @@ title: Ontwikkelversie IMWOZ-bevragingen
 # IMWOZ-bevragingen
 
 Deze repository ondersteunt de ontwikkeling van de binnengemeentelijk IMWOZ-bevragingen.
-Een API die naast de nieuwe versie van StUFWoz wordt ontwikkeld om vanuit vak-applicaties gegevens op te kunnen vragen bij de WOZ-registratie, de taxatie-registratie of een andere relevante binnengemeentelijke gegevensopslag in het kader van de WOZ. 
+Een API die naast de nieuwe versie van StUFWoz wordt ontwikkeld om vanuit vak-applicaties gegevens op te kunnen vragen bij de WOZ-registratie, de taxatie-registratie of een andere relevante binnengemeentelijke gegevensopslag in het kader van de WOZ.
 
 **Deze API is in ontwikkeling !! Op dit ogenblik is de API nog niet volwassen genoeg om ingebouwd te worden in productie-software.**
 **Proef-implementaties (en terugkoppeling van de bevindingen daaruit) zijn uiteraard wel mogelijk, maar de specificatie kan op dag-basis wijzigen.**
@@ -18,10 +18,10 @@ Bekijk de [release notes](./releasenotes).
 
 ## Meedenken met de ontwikkelingen?
 
-* Bekijk de specificaties met [Swagger UI](./swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/redoc)
-* Download de [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/blob/master/specificatie/openapi.yaml)
+* Bekijk de specificaties met [Swagger UI](./swagger-ui) of [Redoc](.redoc)
+* Download de [technische specificaties](./specificatie/openapi.yaml)
 
-Bekijk de bestaande [issues](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/issues) en lever een bijdrage aan de discussie. Breng eventeel een nieuw issue in als een onderwerp nog niet geadresseerd is. 
+Bekijk de bestaande [issues](./issues) en lever een bijdrage aan de discussie. Breng eventeel een nieuw issue in als een onderwerp nog niet geadresseerd is.
 
 ## Bronnen
 
@@ -35,4 +35,3 @@ Bekijk de bestaande [issues](https://github.com/VNG-Realisatie/IMWOZ-bevragingen
 
 Copyright &copy; Waarderingskamer 2021
 Licensed under the [EUPL](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/blob/master/LICENCE.md)
-
