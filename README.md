@@ -14,7 +14,7 @@ Bekijk de [release notes](https://vng-realisatie.github.io/IMWOZ-bevragingen/rel
 ## Meedenken met de ontwikkelingen?
 
 * Bekijk de specificaties met [Swagger UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/redoc)
-* Download de [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/blob/master/specificatie/genereervariant/openapi.yaml)
+* Download de [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/blob/master/specificatie/openapi.yaml)
 
 Bekijk de bestaande [issues](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/issues) en lever een bijdrage aan de discussie. Breng eventeel een nieuw issue in als een onderwerp nog niet geadresseerd is. 
 
