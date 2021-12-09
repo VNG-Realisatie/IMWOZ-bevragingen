@@ -11,7 +11,7 @@ info:
   x-imvertor-generator-version: "1.65.3"
   x-yamlCompiler-stylesheets-version: "20211206"
   contact:
-    url: www.TobBeDefined.nl
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
   license:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
@@ -2482,6 +2482,528 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags: 
       - Taxaties (TAX)
+  /tdoagrarischeasbesten:
+    get:
+      operationId: Gettdoagrarischeasbesten
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie tdoagrarischeasbesten retourneert.</p></body>"
+      parameters: 
+        - in: query
+          name: aantekening
+          description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 50
+        - in: query
+          name: bedragbtwinwaarde
+          description: "<body><p>Dit bedrag wordt alleen gevuld wanneer de taxatie inclusief BTW moet worden bepaald. Dit kan zich voordoen bij de gecorrigeerde vervangingswaarde of bij nieuwbouw objecten in de tweejaarse periode. De berekening van de gecorrigeerde vervangingswaarde gebeurt exclusief BTW. In de attribuut kan per WOZ-deelobject worden vastgelegd wat de invloed zal zijn van het taxeren inclusief BTW. Deze invloed bestaat per WOZ-deelobject uit `Bepaalde waarde WOZ-deelobject` maal `Percentage BTW`. Het gegeven `Bedrag BTW in waarde` per WOZ-object wordt berekend door de bedragen `Bedrag BTW in waarde` per WOZ-deelobject op te tellen. Of het genoemde Bedrag BTW ook daadwerkelijk meegenomen wordt is afhankelijk van het gegeven `Code omzetbelasting`. Alleen wanneer dit gegeven de waarde `I` (inclusief) heeft, dan wordt het bedrag `Bedrag BTW in waarde` ook bij de vast te stellen waarde opgeteld.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: bepaaldewaardewozdeelobject
+          description: "<body><p>De bepaalde waarde van een WOZ-object is opgebouwd uit verschillende Taxatie Deelobjecten (TDO) en Taxatie Taxatiekenmerken (TTK). De Taxatie Deelobjecten leggen voor de desbetreffende waardepeildatum de waarde voor een WOZ-deelobject vast. Door het hanteren van WOZ-deelobjecten kan de opbouw van een taxatie worden uitgesplitst in een onbeperkt aantal onderdelen. Deze WOZ-deelobjecten betreffen fysieke onderdelen (bijvoorbeeld een dakkapel, of een uitbreiding met een later bouwjaar). Deze fysieke WOZ-deelobjecten zullen vaak een relatie met een BAG-object of een terrein hebben. De afzonderlijke WOZ-deelobjecten kunnen nader worden omschreven, kunnen worden gerelateerd aan objecten en gegevens uit de BAG en de maatvoering kan bijvoorbeeld ook in lengte, breedte en hoogte worden vastgelegd. De waarde-opbouw bestaat dan bijvoorbeeld uit: - woongedeelte; - inpandige garage; - uitbreiding; - etc. De onderdelen woongedeelte, inpandige garage en uitbreiding zullen alle gekoppeld zijn aan hetzelfde verblijfsobject. Het onderdeel `uitbreiding` in dit voorbeeld biedt dan niet alleen de mogelijkheid om de maatvoering van deze uitbreiding afzonderlijk vast te leggen, maar ook een afzonderlijk (van de BAGregistratie afwijkend) bouwjaar.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: bepaaldewaardewozdeelobjectinclusiefbtw
+          description: "<body><p>Bij de berekening van de gecorrigeerde vervangingswaarde kan het nodig zijn om de waarde inclusief BTW vast te stellen. Alle bij de taxatie gebruikte kengetallen zijn exclusief BTW. In dit attribuut kan de waarde van het onderdeel inclusief BTW zichtbaar worden gemaakt. Of deze waarde inclusief BTW ook gebruikt wordt in de vast te stellen WOZ-waarde is afhankelijk van de BTW positie van de eigenaar en komt tot uitdrukking in het gegeven `Code omzetbelasting`.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: codetaxatiemethodiek
+          description: "<body><p>Het belangrijkste gebruik van dit gegeven is de verwijzing naar de correcte rekenmethodiek bij de taxatie met behulp van Ã©Ã©n van de taxatiewijzers voor incourante objecten of agrarische objecten.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/CodeTaxatiemethodiek"
+        - in: query
+          name: documentidentificatie
+          description: "<body><p>Het belangrijkste brondocument in het kader van de Wet WOZ is de WOZ-beschikking (aanslagbiljet gemeentelijke belastingen). Andere formele brondocumenten die ook van belang zijn voor de Basisregistratie WOZ zijn: bezwaarschrift, beroepschrift en uitspraak in bezwaar- of beroepsprocedure. Voor de procesregistratie WOZ worden echter ook een groot aantal niet formele documenten vastgelegd. Hierbij kan gedacht worden aan foto's van verkochte objecten, taxatierapporten in het kader van bezwaarprocedures etc. De verwijzing naar deze documenten geschiedt op overeenkomstige wijze als de verwijzing naar formele brondocumenten.</p></body><body><p>De unieke aanduiding van de vindplaats van een document binnen een organisatie. Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens om documenten binnen een organisatie uniek aan te duiden.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 20
+        - in: query
+          name: gebruiktarchetypetaxatiewijzer
+          description: "<body><p>Met behulp van de verwijzing naar een gebruikt archetype wordt aangegeven welke set met kengetallen gebruikt is bij de waardebepaling van het onderhavige WOZ-deelobject. Er is alleen een verwijzing toegestaan naar een archetype code waarvoor ook binnen de landelijke taxatiewijzers kengetallen zijn gedefinieerd. Er kan ook verwezen worden naar de kengetallen behorend bij een andere archetype dan het archetype waartoe het WOZ-deelobject zelf behoort (`Archetype aanduiding`).</p></body><body><p>[A-Z][0-9]{2}[0-9][A-Z0-9]{2}[0-9][A-Z0-9] De archetype en hun betekenis worden gespecificeerd in de set landelijke taxatiewijzers (zie www.wozinformatie.nl). De code voor de aanduiding van het archetype kent acht posities: â€¢ Positie 1: een codering (letter) voor het type object; â€¢ Positie 2 en 3: de laatste 2 posities van de soort-object-code (getal); â€¢ Positie 4: een codering (cijfer) voor de bouwperiode; â€¢ Positie 5 en 6: een nadere indeling (cijfers of letters) per taxatiewijzer; â€¢ Positie 7: een codering (cijfer) voor materiaal of (bij agrarische archetypen) een nadere indeling (cijfer) per taxatiewijzer; â€¢ Positie 8: een codering (cijfer) voor afwerkingsniveau of een cijfer of letter om de gebruikte materialen aan te geven.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 8
+        - in: query
+          name: gebruikteeenheid
+          description: "<body><p>Hiermee wordt aangeduid welke van de drie eenheden: I (inhoud), O (oppervlakte) respectievelijk A (aantal stuks eenheden) is gebruikt bij de berekening van de waarde van het WOZ deelobject. Met behulp van dit attribuut is duidelijk welk kenmerk van het WDO meegenomen wordt bij de taxatie en daarom ook op het taxatieverslag vermeld moet worden.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: gehanteerdwaarderingsvoorschrift
+          description: "<body><p>Samen met het gegeven `code taxatiemethodiek` geeft dit gegeven exact aan hoe de waarde tot stand is gekomen.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/GehanteerdWaarderingsVoorschrift"
+        - in: query
+          name: percentagegereed
+          description: "<body><p>Voor de meeste WOZ-objecten zal dit gegeven gelijk zijn aan 100 %. Indien dit gegeven niet is ingevuld of een waarde 0 % heeft dan wordt uitgegaan van 100 %. Het percentage gereed kan bij WOZ-deelobjecten op overeenkomstige wijze worden gebruikt. Het gebruik van het percentage gereed bij deelobjecten is alleen verplicht bij objecten in aanbouw die via TIOX worden getaxeerd. Dit betreft objecten waarvoor de gecorrigeerde vervangingswaarde wordt gebruikt als waarderingsmaatstaf, ook wanneer het object volledig is afgebouwd. De Wet WOZ gaat uit van de staat van de onroerende zaak op de waardepeildatum (artikel 18). In geval van bouw, verbouw of bestemmingswijziging wordt op grond van artikel 18, derde lid, van de Wet WOZ de waarde bepaald naar de staat van de onroerende zaak bij het begin van het kalenderjaar volgende op dat waarin een waardeverandering geheel of ten dele zijn beslag heeft gekregen. Dit betekent dat bij een bouwproject of een verbouwingsproject dat op 1 januari aan de gang is de staat van het object en de waarde van het in aanbouw zijnde object op 1 januari ingeschat moet worden. Het registreren van een object in aanbouw met een percentage gereed van 0% is dus niet mogelijk. In dat geval is immers geen sprake van een object in aanbouw, maar van een bouwkavel.</p></body>"
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TdoagrarischeasbestHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags: 
+      - Taxatie agrarisch (TAX agrarisch)
+  /tdoagrarischeasbesten/{identificatie}:
+    get:
+      operationId: gettdoagrarischeasbest
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdoagrarischeasbest retourneert.</p></body>"
+      parameters: 
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/Sleutel"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TdoagrarischeasbestHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags: 
+      - Taxatie agrarisch (TAX agrarisch)
+  /tdoagrarischegebouwen:
+    get:
+      operationId: Gettdoagrarischegebouwen
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie tdoagrarischegebouwen retourneert.</p></body>"
+      parameters: 
+        - in: query
+          name: aantekening
+          description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 50
+        - in: query
+          name: bedragbtwinwaarde
+          description: "<body><p>Dit bedrag wordt alleen gevuld wanneer de taxatie inclusief BTW moet worden bepaald. Dit kan zich voordoen bij de gecorrigeerde vervangingswaarde of bij nieuwbouw objecten in de tweejaarse periode. De berekening van de gecorrigeerde vervangingswaarde gebeurt exclusief BTW. In de attribuut kan per WOZ-deelobject worden vastgelegd wat de invloed zal zijn van het taxeren inclusief BTW. Deze invloed bestaat per WOZ-deelobject uit `Bepaalde waarde WOZ-deelobject` maal `Percentage BTW`. Het gegeven `Bedrag BTW in waarde` per WOZ-object wordt berekend door de bedragen `Bedrag BTW in waarde` per WOZ-deelobject op te tellen. Of het genoemde Bedrag BTW ook daadwerkelijk meegenomen wordt is afhankelijk van het gegeven `Code omzetbelasting`. Alleen wanneer dit gegeven de waarde `I` (inclusief) heeft, dan wordt het bedrag `Bedrag BTW in waarde` ook bij de vast te stellen waarde opgeteld.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: bepaaldewaardewozdeelobject
+          description: "<body><p>De bepaalde waarde van een WOZ-object is opgebouwd uit verschillende Taxatie Deelobjecten (TDO) en Taxatie Taxatiekenmerken (TTK). De Taxatie Deelobjecten leggen voor de desbetreffende waardepeildatum de waarde voor een WOZ-deelobject vast. Door het hanteren van WOZ-deelobjecten kan de opbouw van een taxatie worden uitgesplitst in een onbeperkt aantal onderdelen. Deze WOZ-deelobjecten betreffen fysieke onderdelen (bijvoorbeeld een dakkapel, of een uitbreiding met een later bouwjaar). Deze fysieke WOZ-deelobjecten zullen vaak een relatie met een BAG-object of een terrein hebben. De afzonderlijke WOZ-deelobjecten kunnen nader worden omschreven, kunnen worden gerelateerd aan objecten en gegevens uit de BAG en de maatvoering kan bijvoorbeeld ook in lengte, breedte en hoogte worden vastgelegd. De waarde-opbouw bestaat dan bijvoorbeeld uit: - woongedeelte; - inpandige garage; - uitbreiding; - etc. De onderdelen woongedeelte, inpandige garage en uitbreiding zullen alle gekoppeld zijn aan hetzelfde verblijfsobject. Het onderdeel `uitbreiding` in dit voorbeeld biedt dan niet alleen de mogelijkheid om de maatvoering van deze uitbreiding afzonderlijk vast te leggen, maar ook een afzonderlijk (van de BAGregistratie afwijkend) bouwjaar.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: bepaaldewaardewozdeelobjectinclusiefbtw
+          description: "<body><p>Bij de berekening van de gecorrigeerde vervangingswaarde kan het nodig zijn om de waarde inclusief BTW vast te stellen. Alle bij de taxatie gebruikte kengetallen zijn exclusief BTW. In dit attribuut kan de waarde van het onderdeel inclusief BTW zichtbaar worden gemaakt. Of deze waarde inclusief BTW ook gebruikt wordt in de vast te stellen WOZ-waarde is afhankelijk van de BTW positie van de eigenaar en komt tot uitdrukking in het gegeven `Code omzetbelasting`.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: codetaxatiemethodiek
+          description: "<body><p>Het belangrijkste gebruik van dit gegeven is de verwijzing naar de correcte rekenmethodiek bij de taxatie met behulp van Ã©Ã©n van de taxatiewijzers voor incourante objecten of agrarische objecten.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/CodeTaxatiemethodiek"
+        - in: query
+          name: documentidentificatie
+          description: "<body><p>Het belangrijkste brondocument in het kader van de Wet WOZ is de WOZ-beschikking (aanslagbiljet gemeentelijke belastingen). Andere formele brondocumenten die ook van belang zijn voor de Basisregistratie WOZ zijn: bezwaarschrift, beroepschrift en uitspraak in bezwaar- of beroepsprocedure. Voor de procesregistratie WOZ worden echter ook een groot aantal niet formele documenten vastgelegd. Hierbij kan gedacht worden aan foto's van verkochte objecten, taxatierapporten in het kader van bezwaarprocedures etc. De verwijzing naar deze documenten geschiedt op overeenkomstige wijze als de verwijzing naar formele brondocumenten.</p></body><body><p>De unieke aanduiding van de vindplaats van een document binnen een organisatie. Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens om documenten binnen een organisatie uniek aan te duiden.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 20
+        - in: query
+          name: gebruiktarchetypetaxatiewijzer
+          description: "<body><p>Met behulp van de verwijzing naar een gebruikt archetype wordt aangegeven welke set met kengetallen gebruikt is bij de waardebepaling van het onderhavige WOZ-deelobject. Er is alleen een verwijzing toegestaan naar een archetype code waarvoor ook binnen de landelijke taxatiewijzers kengetallen zijn gedefinieerd. Er kan ook verwezen worden naar de kengetallen behorend bij een andere archetype dan het archetype waartoe het WOZ-deelobject zelf behoort (`Archetype aanduiding`).</p></body><body><p>[A-Z][0-9]{2}[0-9][A-Z0-9]{2}[0-9][A-Z0-9] De archetype en hun betekenis worden gespecificeerd in de set landelijke taxatiewijzers (zie www.wozinformatie.nl). De code voor de aanduiding van het archetype kent acht posities: â€¢ Positie 1: een codering (letter) voor het type object; â€¢ Positie 2 en 3: de laatste 2 posities van de soort-object-code (getal); â€¢ Positie 4: een codering (cijfer) voor de bouwperiode; â€¢ Positie 5 en 6: een nadere indeling (cijfers of letters) per taxatiewijzer; â€¢ Positie 7: een codering (cijfer) voor materiaal of (bij agrarische archetypen) een nadere indeling (cijfer) per taxatiewijzer; â€¢ Positie 8: een codering (cijfer) voor afwerkingsniveau of een cijfer of letter om de gebruikte materialen aan te geven.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 8
+        - in: query
+          name: gebruikteeenheid
+          description: "<body><p>Hiermee wordt aangeduid welke van de drie eenheden: I (inhoud), O (oppervlakte) respectievelijk A (aantal stuks eenheden) is gebruikt bij de berekening van de waarde van het WOZ deelobject. Met behulp van dit attribuut is duidelijk welk kenmerk van het WDO meegenomen wordt bij de taxatie en daarom ook op het taxatieverslag vermeld moet worden.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: gehanteerdwaarderingsvoorschrift
+          description: "<body><p>Samen met het gegeven `code taxatiemethodiek` geeft dit gegeven exact aan hoe de waarde tot stand is gekomen.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/GehanteerdWaarderingsVoorschrift"
+        - in: query
+          name: percentagegereed
+          description: "<body><p>Voor de meeste WOZ-objecten zal dit gegeven gelijk zijn aan 100 %. Indien dit gegeven niet is ingevuld of een waarde 0 % heeft dan wordt uitgegaan van 100 %. Het percentage gereed kan bij WOZ-deelobjecten op overeenkomstige wijze worden gebruikt. Het gebruik van het percentage gereed bij deelobjecten is alleen verplicht bij objecten in aanbouw die via TIOX worden getaxeerd. Dit betreft objecten waarvoor de gecorrigeerde vervangingswaarde wordt gebruikt als waarderingsmaatstaf, ook wanneer het object volledig is afgebouwd. De Wet WOZ gaat uit van de staat van de onroerende zaak op de waardepeildatum (artikel 18). In geval van bouw, verbouw of bestemmingswijziging wordt op grond van artikel 18, derde lid, van de Wet WOZ de waarde bepaald naar de staat van de onroerende zaak bij het begin van het kalenderjaar volgende op dat waarin een waardeverandering geheel of ten dele zijn beslag heeft gekregen. Dit betekent dat bij een bouwproject of een verbouwingsproject dat op 1 januari aan de gang is de staat van het object en de waarde van het in aanbouw zijnde object op 1 januari ingeschat moet worden. Het registreren van een object in aanbouw met een percentage gereed van 0% is dus niet mogelijk. In dat geval is immers geen sprake van een object in aanbouw, maar van een bouwkavel.</p></body>"
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TdoagrarischegebouwenHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags: 
+      - Taxatie agrarisch (TAX agrarisch)
+  /tdoagrarischegebouwen/{identificatie}:
+    get:
+      operationId: gettdoagrarischegebouw
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdoagrarischegebouw retourneert.</p></body>"
+      parameters: 
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/Sleutel"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TdoagrarischegebouwenHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags: 
+      - Taxatie agrarisch (TAX agrarisch)
+  /tdoagrarischegronden:
+    get:
+      operationId: Gettdoagrarischegronden
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie tdoagrarischegronden retourneert.</p></body>"
+      parameters: 
+        - in: query
+          name: aantekening
+          description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 50
+        - in: query
+          name: bedragbtwinwaarde
+          description: "<body><p>Dit bedrag wordt alleen gevuld wanneer de taxatie inclusief BTW moet worden bepaald. Dit kan zich voordoen bij de gecorrigeerde vervangingswaarde of bij nieuwbouw objecten in de tweejaarse periode. De berekening van de gecorrigeerde vervangingswaarde gebeurt exclusief BTW. In de attribuut kan per WOZ-deelobject worden vastgelegd wat de invloed zal zijn van het taxeren inclusief BTW. Deze invloed bestaat per WOZ-deelobject uit `Bepaalde waarde WOZ-deelobject` maal `Percentage BTW`. Het gegeven `Bedrag BTW in waarde` per WOZ-object wordt berekend door de bedragen `Bedrag BTW in waarde` per WOZ-deelobject op te tellen. Of het genoemde Bedrag BTW ook daadwerkelijk meegenomen wordt is afhankelijk van het gegeven `Code omzetbelasting`. Alleen wanneer dit gegeven de waarde `I` (inclusief) heeft, dan wordt het bedrag `Bedrag BTW in waarde` ook bij de vast te stellen waarde opgeteld.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: bepaaldewaardewozdeelobject
+          description: "<body><p>De bepaalde waarde van een WOZ-object is opgebouwd uit verschillende Taxatie Deelobjecten (TDO) en Taxatie Taxatiekenmerken (TTK). De Taxatie Deelobjecten leggen voor de desbetreffende waardepeildatum de waarde voor een WOZ-deelobject vast. Door het hanteren van WOZ-deelobjecten kan de opbouw van een taxatie worden uitgesplitst in een onbeperkt aantal onderdelen. Deze WOZ-deelobjecten betreffen fysieke onderdelen (bijvoorbeeld een dakkapel, of een uitbreiding met een later bouwjaar). Deze fysieke WOZ-deelobjecten zullen vaak een relatie met een BAG-object of een terrein hebben. De afzonderlijke WOZ-deelobjecten kunnen nader worden omschreven, kunnen worden gerelateerd aan objecten en gegevens uit de BAG en de maatvoering kan bijvoorbeeld ook in lengte, breedte en hoogte worden vastgelegd. De waarde-opbouw bestaat dan bijvoorbeeld uit: - woongedeelte; - inpandige garage; - uitbreiding; - etc. De onderdelen woongedeelte, inpandige garage en uitbreiding zullen alle gekoppeld zijn aan hetzelfde verblijfsobject. Het onderdeel `uitbreiding` in dit voorbeeld biedt dan niet alleen de mogelijkheid om de maatvoering van deze uitbreiding afzonderlijk vast te leggen, maar ook een afzonderlijk (van de BAGregistratie afwijkend) bouwjaar.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: bepaaldewaardewozdeelobjectinclusiefbtw
+          description: "<body><p>Bij de berekening van de gecorrigeerde vervangingswaarde kan het nodig zijn om de waarde inclusief BTW vast te stellen. Alle bij de taxatie gebruikte kengetallen zijn exclusief BTW. In dit attribuut kan de waarde van het onderdeel inclusief BTW zichtbaar worden gemaakt. Of deze waarde inclusief BTW ook gebruikt wordt in de vast te stellen WOZ-waarde is afhankelijk van de BTW positie van de eigenaar en komt tot uitdrukking in het gegeven `Code omzetbelasting`.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: codetaxatiemethodiek
+          description: "<body><p>Het belangrijkste gebruik van dit gegeven is de verwijzing naar de correcte rekenmethodiek bij de taxatie met behulp van Ã©Ã©n van de taxatiewijzers voor incourante objecten of agrarische objecten.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/CodeTaxatiemethodiek"
+        - in: query
+          name: documentidentificatie
+          description: "<body><p>Het belangrijkste brondocument in het kader van de Wet WOZ is de WOZ-beschikking (aanslagbiljet gemeentelijke belastingen). Andere formele brondocumenten die ook van belang zijn voor de Basisregistratie WOZ zijn: bezwaarschrift, beroepschrift en uitspraak in bezwaar- of beroepsprocedure. Voor de procesregistratie WOZ worden echter ook een groot aantal niet formele documenten vastgelegd. Hierbij kan gedacht worden aan foto's van verkochte objecten, taxatierapporten in het kader van bezwaarprocedures etc. De verwijzing naar deze documenten geschiedt op overeenkomstige wijze als de verwijzing naar formele brondocumenten.</p></body><body><p>De unieke aanduiding van de vindplaats van een document binnen een organisatie. Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens om documenten binnen een organisatie uniek aan te duiden.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 20
+        - in: query
+          name: gebruiktarchetypetaxatiewijzer
+          description: "<body><p>Met behulp van de verwijzing naar een gebruikt archetype wordt aangegeven welke set met kengetallen gebruikt is bij de waardebepaling van het onderhavige WOZ-deelobject. Er is alleen een verwijzing toegestaan naar een archetype code waarvoor ook binnen de landelijke taxatiewijzers kengetallen zijn gedefinieerd. Er kan ook verwezen worden naar de kengetallen behorend bij een andere archetype dan het archetype waartoe het WOZ-deelobject zelf behoort (`Archetype aanduiding`).</p></body><body><p>[A-Z][0-9]{2}[0-9][A-Z0-9]{2}[0-9][A-Z0-9] De archetype en hun betekenis worden gespecificeerd in de set landelijke taxatiewijzers (zie www.wozinformatie.nl). De code voor de aanduiding van het archetype kent acht posities: â€¢ Positie 1: een codering (letter) voor het type object; â€¢ Positie 2 en 3: de laatste 2 posities van de soort-object-code (getal); â€¢ Positie 4: een codering (cijfer) voor de bouwperiode; â€¢ Positie 5 en 6: een nadere indeling (cijfers of letters) per taxatiewijzer; â€¢ Positie 7: een codering (cijfer) voor materiaal of (bij agrarische archetypen) een nadere indeling (cijfer) per taxatiewijzer; â€¢ Positie 8: een codering (cijfer) voor afwerkingsniveau of een cijfer of letter om de gebruikte materialen aan te geven.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 8
+        - in: query
+          name: gebruikteeenheid
+          description: "<body><p>Hiermee wordt aangeduid welke van de drie eenheden: I (inhoud), O (oppervlakte) respectievelijk A (aantal stuks eenheden) is gebruikt bij de berekening van de waarde van het WOZ deelobject. Met behulp van dit attribuut is duidelijk welk kenmerk van het WDO meegenomen wordt bij de taxatie en daarom ook op het taxatieverslag vermeld moet worden.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: gehanteerdwaarderingsvoorschrift
+          description: "<body><p>Samen met het gegeven `code taxatiemethodiek` geeft dit gegeven exact aan hoe de waarde tot stand is gekomen.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/GehanteerdWaarderingsVoorschrift"
+        - in: query
+          name: percentagegereed
+          description: "<body><p>Voor de meeste WOZ-objecten zal dit gegeven gelijk zijn aan 100 %. Indien dit gegeven niet is ingevuld of een waarde 0 % heeft dan wordt uitgegaan van 100 %. Het percentage gereed kan bij WOZ-deelobjecten op overeenkomstige wijze worden gebruikt. Het gebruik van het percentage gereed bij deelobjecten is alleen verplicht bij objecten in aanbouw die via TIOX worden getaxeerd. Dit betreft objecten waarvoor de gecorrigeerde vervangingswaarde wordt gebruikt als waarderingsmaatstaf, ook wanneer het object volledig is afgebouwd. De Wet WOZ gaat uit van de staat van de onroerende zaak op de waardepeildatum (artikel 18). In geval van bouw, verbouw of bestemmingswijziging wordt op grond van artikel 18, derde lid, van de Wet WOZ de waarde bepaald naar de staat van de onroerende zaak bij het begin van het kalenderjaar volgende op dat waarin een waardeverandering geheel of ten dele zijn beslag heeft gekregen. Dit betekent dat bij een bouwproject of een verbouwingsproject dat op 1 januari aan de gang is de staat van het object en de waarde van het in aanbouw zijnde object op 1 januari ingeschat moet worden. Het registreren van een object in aanbouw met een percentage gereed van 0% is dus niet mogelijk. In dat geval is immers geen sprake van een object in aanbouw, maar van een bouwkavel.</p></body>"
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TdoagrarischegrondHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags: 
+      - Taxatie agrarisch (TAX agrarisch)
+  /tdoagrarischegronden/{identificatie}:
+    get:
+      operationId: gettdoagrarischegrond
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdoagrarischegrond retourneert.</p></body>"
+      parameters: 
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/Sleutel"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TdoagrarischegrondHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags: 
+      - Taxatie agrarisch (TAX agrarisch)
   /verblijfsobjecten:
     get:
       operationId: Getverblijfsobjecten
@@ -2860,6 +3382,12 @@ paths:
             type: string
             maxLength: 30
         - in: query
+          name: nummerwozdeelobject
+          description: "<body><p>Elk WOZ-deelobject krijgt een nummer. Tezamen met de relatie met het WOZobject is daarmee elk WOZ-deelobject uniek geÃ¯dentificeerd.</p></body>"
+          required: true
+          schema:
+            type: integer
+        - in: query
           name: oppervlakte
           description: "<body><p>Voor het meten van de gebruiksoppervlakte van woningen is de meetinstructie gebruiksoppervlakte woningen beschikbaar. Voor andere typen WOZ(deel-)objecten zal ook vaak een andere oppervlakte worden geregistreerd (bruto, verhuurbaar vloeropperlvakte). Of de geregistreerde oppervlakte de bruto, netto, gebruiksoppervlakte of verhuurbaar vloeroppervlakte betreft, is gespecificeerd in het gegeven `Code bruto netto oppervlakte`. Ongeacht de gemaakte keuze wordt bij voorkeur gemeten volgens NEN 2580. De oppervlakte wordt altijd aangeduid in vierkante meter ook wanneer de gebruikte kengetallen bijvoorbeeld betrekking op prijzen per hectare (bijvoorbeeld taxatiewijzer agrarische grond). Na de invoering van de Samenhangende Objectenregistratie (SOR) zal de gebruiksoppervlakte in beginsel vastgelegd zijn in de SOR en kan de gebruiksoppervlakte afgeleid worden uit deze SOR. Het attribuut oppervlakte bij het WOZ-deelobject blijft in ieder geval relevant voor het vastleggen van andere typen oppervlakte.</p></body>"
           required: false
@@ -2933,18 +3461,18 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags: 
       - WOZ Deelobjecten (WDO)
-  /wozdeelobjecten/{nummerwozdeelobject}:
+  /wozdeelobjecten/{identificatie}:
     get:
       operationId: getwozdeelobject
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een wozdeelobject retourneert.</p></body>"
       parameters: 
         - $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/parameters.yaml#/acceptCrs"
         - in: path
-          name: nummerwozdeelobject
-          description: "<body><p>Elk WOZ-deelobject krijgt een nummer. Tezamen met de relatie met het WOZobject is daarmee elk WOZ-deelobject uniek geÃ¯dentificeerd.</p></body>"
+          name: identificatie
+          description: ""
           required: true
           schema:
-            type: integer
+            $ref: "#/components/schemas/Sleutel"
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -3442,7 +3970,7 @@ components:
       - "oppervlakte"
       properties:
         begrenzingperceel:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
+          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
         einddatumobject:
           $ref: "#/components/schemas/DatumMogelijkOnvolledig"
         ingangsdatumobject:
@@ -3502,7 +4030,7 @@ components:
           statusligplaats:
             $ref: "#/components/schemas/StatusLigplaats"
           vlakgeometrie:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
+            $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
     NatuurlijkpersoonHalCollectie:
       type: "object"
       properties:
@@ -3829,7 +4357,7 @@ components:
           items:
             $ref: "#/components/schemas/InOnderzoekPND"
         pandgeometrie:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
+          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
         status:
           $ref: "#/components/schemas/StatusPand"
     ResultatenmarktanalyseHalCollectie:
@@ -4007,7 +4535,7 @@ components:
           statusstandplaats:
             $ref: "#/components/schemas/StatusStandplaats"
           vlakgeometrie:
-            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
+            $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
     TaxatieHalCollectie:
       type: "object"
       properties:
@@ -4417,6 +4945,105 @@ components:
             \ van de gemeente die het object opvoert.</p></body>"
           maxLength: 12
           minLength: 1
+    TdoagrarischeasbestHalCollectie:
+      type: "object"
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks"
+        _embedded:
+          type: "object"
+          properties:
+            tdoagrarischeasbesten:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/TdoagrarischeasbestHal"
+    TdoagrarischeasbestHal:
+      allOf:
+      - $ref: "#/components/schemas/Tdoagrarischeasbest"
+      - type: "object"
+        properties:
+          _links:
+            $ref: "#/components/schemas/Tdoagrarischeasbest_links"
+    Tdoagrarischeasbest:
+      allOf:
+      - $ref: "#/components/schemas/TaxatieDeelobject"
+      - type: "object"
+        description: ""
+        properties:
+          inflatie:
+            $ref: "#/components/schemas/InflatiepercentageVoorBerekeningCorrectieAsbest"
+          levensduur:
+            $ref: "#/components/schemas/LevensduurAsbest"
+          prijspereenheid:
+            $ref: "#/components/schemas/WaardePerEenheid"
+          rente:
+            $ref: "#/components/schemas/RentepercentageVoorBerekeningCorrectieAsbest"
+    TdoagrarischegebouwenHalCollectie:
+      type: "object"
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks"
+        _embedded:
+          type: "object"
+          properties:
+            tdoagrarischegebouwen:
+              type: "array"
+              items:
+                $ref: "#/components/schemas/TdoagrarischegebouwenHal"
+    TdoagrarischegebouwenHal:
+      allOf:
+      - $ref: "#/components/schemas/Tdoagrarischegebouwen"
+      - type: "object"
+        properties:
+          _links:
+            $ref: "#/components/schemas/Tdoagrarischegebouwen_links"
+    Tdoagrarischegebouwen:
+      allOf:
+      - $ref: "#/components/schemas/TaxatieDeelobject"
+      - type: "object"
+        description: ""
+        properties:
+          correctiefactorgrootte:
+            $ref: "#/components/schemas/CorrectiefactorGrootte"
+          gebruikcorrectiegrootte:
+            $ref: "#/components/schemas/GebruikCorrectieGrootte"
+          prijspereenheid:
+            $ref: "#/components/schemas/WaardePerEenheid"
+          prijspereenheidnacorrectie:
+            $ref: "#/components/schemas/WaardePerEenheidNaCorrectieGrootte"
+          standaardgrootte:
+            $ref: "#/components/schemas/StandaardGrootte"
+    TdoagrarischegrondHalCollectie:
+      type: "object"
+      properties:
+        _links:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks"
+        _embedded:
+          type: "object"
+          properties:
+            ?
+            : type: "array"
+              items:
+                $ref: "#/components/schemas/TdoagrarischegrondHal"
+    TdoagrarischegrondHal:
+      allOf:
+      - $ref: "#/components/schemas/Tdoagrarischegrond"
+      - type: "object"
+        properties:
+          _links:
+            $ref: "#/components/schemas/Tdoagrarischegrond_links"
+    Tdoagrarischegrond:
+      allOf:
+      - $ref: "#/components/schemas/TaxatieDeelobject"
+      - type: "object"
+        description: ""
+        properties:
+          prijspereenheid:
+            $ref: "#/components/schemas/WaardePerEenheid"
+          staffel:
+            type: "array"
+            items:
+              $ref: "#/components/schemas/Grondstaffelgrp"
     VerblijfsobjectHalCollectie:
       type: "object"
       properties:
@@ -4611,6 +5238,7 @@ components:
       - "bouwjaarofbouwjaarklasse"
       - "codewozdeelobject"
       - "einddatumobject"
+      - "identificatie"
       - "ingangsdatumobject"
       - "nummerwozdeelobject"
       - "statuswozdeelobject"
@@ -4760,7 +5388,7 @@ components:
             \ (In Terms of Zone A) waarbij de (huur)waarde van de verder naar achtergelegen\
             \ delen wordt afgeleid uit de (huur)waarde van de primaire ruimte.</p></body>"
         geometrie:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
+          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
         groepsaanduiding:
           type: "string"
           title: "groepsaanduiding"
@@ -4781,6 +5409,8 @@ components:
             \ vervalt, omdat de bepaling van de groote van een WOZ-deelobject dan\
             \ afgeleid kan worden uit de in de SOR vastgelegde plattegrond van de\
             \ te meten verdieping.</p></body>"
+        identificatie:
+          $ref: "#/components/schemas/Sleutel"
         ingangsdatumobject:
           type: "string"
           title: "ingangsdatumObject"
@@ -4979,6 +5609,161 @@ components:
             \ voor de (bijhouding van de) geregistreerde gegevens.</p></body>"
           pattern: "^[0-9]{4}$"
           maxLength: 4
+    TaxatieDeelobject:
+      type: "object"
+      description: ""
+      required:
+      - "bepaaldewaardewozdeelobject"
+      - "codetaxatiemethodiek"
+      - "gebruikteeenheid"
+      - "gehanteerdwaarderingsvoorschrift"
+      - "identificatie"
+      - "taxatieIdentificatie"
+      - "wozdeelobjectIdentificatie"
+      properties:
+        aantekening:
+          type: "string"
+          title: "aantekening"
+          description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen\
+            \ alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder\
+            \ kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld\
+            \ voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven\
+            \ kwijt te kunnen.</p></body>"
+          maxLength: 50
+          minLength: 1
+        bedragbtwinwaarde:
+          type: "integer"
+          title: "bedragBTWInWaarde"
+          description: "<body><p>Dit bedrag wordt alleen gevuld wanneer de taxatie\
+            \ inclusief BTW moet worden bepaald. Dit kan zich voordoen bij de gecorrigeerde\
+            \ vervangingswaarde of bij nieuwbouw objecten in de tweejaarse periode.\
+            \ De berekening van de gecorrigeerde vervangingswaarde gebeurt exclusief\
+            \ BTW. In de attribuut kan per WOZ-deelobject worden vastgelegd wat de\
+            \ invloed zal zijn van het taxeren inclusief BTW. Deze invloed bestaat\
+            \ per WOZ-deelobject uit `Bepaalde waarde WOZ-deelobject` maal `Percentage\
+            \ BTW`. Het gegeven `Bedrag BTW in waarde` per WOZ-object wordt berekend\
+            \ door de bedragen `Bedrag BTW in waarde` per WOZ-deelobject op te tellen.\
+            \ Of het genoemde Bedrag BTW ook daadwerkelijk meegenomen wordt is afhankelijk\
+            \ van het gegeven `Code omzetbelasting`. Alleen wanneer dit gegeven de\
+            \ waarde `I` (inclusief) heeft, dan wordt het bedrag `Bedrag BTW in waarde`\
+            \ ook bij de vast te stellen waarde opgeteld.</p></body>"
+        bepaaldewaardewozdeelobject:
+          type: "integer"
+          title: "bepaaldeWaardeWOZDeelObject"
+          description: "<body><p>De bepaalde waarde van een WOZ-object is opgebouwd\
+            \ uit verschillende Taxatie Deelobjecten (TDO) en Taxatie Taxatiekenmerken\
+            \ (TTK). De Taxatie Deelobjecten leggen voor de desbetreffende waardepeildatum\
+            \ de waarde voor een WOZ-deelobject vast. Door het hanteren van WOZ-deelobjecten\
+            \ kan de opbouw van een taxatie worden uitgesplitst in een onbeperkt aantal\
+            \ onderdelen. Deze WOZ-deelobjecten betreffen fysieke onderdelen (bijvoorbeeld\
+            \ een dakkapel, of een uitbreiding met een later bouwjaar). Deze fysieke\
+            \ WOZ-deelobjecten zullen vaak een relatie met een BAG-object of een terrein\
+            \ hebben. De afzonderlijke WOZ-deelobjecten kunnen nader worden omschreven,\
+            \ kunnen worden gerelateerd aan objecten en gegevens uit de BAG en de\
+            \ maatvoering kan bijvoorbeeld ook in lengte, breedte en hoogte worden\
+            \ vastgelegd. De waarde-opbouw bestaat dan bijvoorbeeld uit: - woongedeelte;\
+            \ - inpandige garage; - uitbreiding; - etc. De onderdelen woongedeelte,\
+            \ inpandige garage en uitbreiding zullen alle gekoppeld zijn aan hetzelfde\
+            \ verblijfsobject. Het onderdeel `uitbreiding` in dit voorbeeld biedt\
+            \ dan niet alleen de mogelijkheid om de maatvoering van deze uitbreiding\
+            \ afzonderlijk vast te leggen, maar ook een afzonderlijk (van de BAGregistratie\
+            \ afwijkend) bouwjaar.</p></body>"
+        bepaaldewaardewozdeelobjectinclusiefbtw:
+          type: "integer"
+          title: "bepaaldeWaardeWOZDeelObjectInclusiefBtw"
+          description: "<body><p>Bij de berekening van de gecorrigeerde vervangingswaarde\
+            \ kan het nodig zijn om de waarde inclusief BTW vast te stellen. Alle\
+            \ bij de taxatie gebruikte kengetallen zijn exclusief BTW. In dit attribuut\
+            \ kan de waarde van het onderdeel inclusief BTW zichtbaar worden gemaakt.\
+            \ Of deze waarde inclusief BTW ook gebruikt wordt in de vast te stellen\
+            \ WOZ-waarde is afhankelijk van de BTW positie van de eigenaar en komt\
+            \ tot uitdrukking in het gegeven `Code omzetbelasting`.</p></body>"
+        codetaxatiemethodiek:
+          $ref: "#/components/schemas/CodeTaxatiemethodiek"
+        documentidentificatie:
+          type: "array"
+          title: "documentIdentificatie"
+          description: "<body><p>Het belangrijkste brondocument in het kader van de\
+            \ Wet WOZ is de WOZ-beschikking (aanslagbiljet gemeentelijke belastingen).\
+            \ Andere formele brondocumenten die ook van belang zijn voor de Basisregistratie\
+            \ WOZ zijn: bezwaarschrift, beroepschrift en uitspraak in bezwaar- of\
+            \ beroepsprocedure. Voor de procesregistratie WOZ worden echter ook een\
+            \ groot aantal niet formele documenten vastgelegd. Hierbij kan gedacht\
+            \ worden aan foto's van verkochte objecten, taxatierapporten in het kader\
+            \ van bezwaarprocedures etc. De verwijzing naar deze documenten geschiedt\
+            \ op overeenkomstige wijze als de verwijzing naar formele brondocumenten.</p></body><body><p>De\
+            \ unieke aanduiding van de vindplaats van een document binnen een organisatie.\
+            \ Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters\
+            \ uit het alfabet en bijzondere leestekens als verbindingsstreepjes en\
+            \ scheidingstekens om documenten binnen een organisatie uniek aan te duiden.</p></body>"
+          minItems: 0
+          items:
+            type: "string"
+            maxLength: 20
+            minLength: 1
+        gebruiktarchetypetaxatiewijzer:
+          type: "string"
+          title: "gebruiktArchetypeTaxatiewijzer"
+          description: "<body><p>Met behulp van de verwijzing naar een gebruikt archetype\
+            \ wordt aangegeven welke set met kengetallen gebruikt is bij de waardebepaling\
+            \ van het onderhavige WOZ-deelobject. Er is alleen een verwijzing toegestaan\
+            \ naar een archetype code waarvoor ook binnen de landelijke taxatiewijzers\
+            \ kengetallen zijn gedefinieerd. Er kan ook verwezen worden naar de kengetallen\
+            \ behorend bij een andere archetype dan het archetype waartoe het WOZ-deelobject\
+            \ zelf behoort (`Archetype aanduiding`).</p></body><body><p>[A-Z][0-9]{2}[0-9][A-Z0-9]{2}[0-9][A-Z0-9]\
+            \ De archetype en hun betekenis worden gespecificeerd in de set landelijke\
+            \ taxatiewijzers (zie www.wozinformatie.nl). De code voor de aanduiding\
+            \ van het archetype kent acht posities: â€¢ Positie 1: een codering (letter)\
+            \ voor het type object; â€¢ Positie 2 en 3: de laatste 2 posities van\
+            \ de soort-object-code (getal); â€¢ Positie 4: een codering (cijfer) voor\
+            \ de bouwperiode; â€¢ Positie 5 en 6: een nadere indeling (cijfers of\
+            \ letters) per taxatiewijzer; â€¢ Positie 7: een codering (cijfer) voor\
+            \ materiaal of (bij agrarische archetypen) een nadere indeling (cijfer)\
+            \ per taxatiewijzer; â€¢ Positie 8: een codering (cijfer) voor afwerkingsniveau\
+            \ of een cijfer of letter om de gebruikte materialen aan te geven.</p></body>"
+          maxLength: 8
+          minLength: 1
+        gebruikteeenheid:
+          type: "string"
+          title: "gebruikteEenheid"
+          description: "<body><p>Hiermee wordt aangeduid welke van de drie eenheden:\
+            \ I (inhoud), O (oppervlakte) respectievelijk A (aantal stuks eenheden)\
+            \ is gebruikt bij de berekening van de waarde van het WOZ deelobject.\
+            \ Met behulp van dit attribuut is duidelijk welk kenmerk van het WDO meegenomen\
+            \ wordt bij de taxatie en daarom ook op het taxatieverslag vermeld moet\
+            \ worden.</p></body>"
+          maxLength: 1
+          minLength: 1
+        gehanteerdwaarderingsvoorschrift:
+          $ref: "#/components/schemas/GehanteerdWaarderingsVoorschrift"
+        identificatie:
+          $ref: "#/components/schemas/Sleutel"
+        percentagegereed:
+          type: "integer"
+          title: "percentageGereed"
+          description: "<body><p>Voor de meeste WOZ-objecten zal dit gegeven gelijk\
+            \ zijn aan 100 %. Indien dit gegeven niet is ingevuld of een waarde 0\
+            \ % heeft dan wordt uitgegaan van 100 %. Het percentage gereed kan bij\
+            \ WOZ-deelobjecten op overeenkomstige wijze worden gebruikt. Het gebruik\
+            \ van het percentage gereed bij deelobjecten is alleen verplicht bij objecten\
+            \ in aanbouw die via TIOX worden getaxeerd. Dit betreft objecten waarvoor\
+            \ de gecorrigeerde vervangingswaarde wordt gebruikt als waarderingsmaatstaf,\
+            \ ook wanneer het object volledig is afgebouwd. De Wet WOZ gaat uit van\
+            \ de staat van de onroerende zaak op de waardepeildatum (artikel 18).\
+            \ In geval van bouw, verbouw of bestemmingswijziging wordt op grond van\
+            \ artikel 18, derde lid, van de Wet WOZ de waarde bepaald naar de staat\
+            \ van de onroerende zaak bij het begin van het kalenderjaar volgende op\
+            \ dat waarin een waardeverandering geheel of ten dele zijn beslag heeft\
+            \ gekregen. Dit betekent dat bij een bouwproject of een verbouwingsproject\
+            \ dat op 1 januari aan de gang is de staat van het object en de waarde\
+            \ van het in aanbouw zijnde object op 1 januari ingeschat moet worden.\
+            \ Het registreren van een object in aanbouw met een percentage gereed\
+            \ van 0% is dus niet mogelijk. In dat geval is immers geen sprake van\
+            \ een object in aanbouw, maar van een bouwkavel.</p></body>"
+        taxatieIdentificatie:
+          $ref: "#/components/schemas/Sleutel"
+        wozdeelobjectIdentificatie:
+          $ref: "#/components/schemas/Sleutel"
     Aanslagregel_links:
       type: "object"
       properties:
@@ -5235,6 +6020,21 @@ components:
             type: "object"
             description: ""
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+    Tdoagrarischeasbest_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+    Tdoagrarischegebouwen_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+    Tdoagrarischegrond_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
     Verblijfsobject_links:
       type: "object"
       properties:
@@ -5811,6 +6611,19 @@ components:
           $ref: "#/components/schemas/Tijdvakrelatie"
         waardeIdentificatie:
           $ref: "#/components/schemas/Sleutel"
+    CorrectiefactorGrootte:
+      type: "object"
+      description: ""
+      required:
+      - "correctiefactorgrootte"
+      - "statustaxatieparameter"
+      properties:
+        correctiefactorgrootte:
+          type: "number"
+          title: "correctiefactorGrootte"
+          description: ""
+        statustaxatieparameter:
+          $ref: "#/components/schemas/StatusTaxatieParameter"
     DatumMogelijkOnvolledig:
       type: "object"
       description: ""
@@ -5828,6 +6641,19 @@ components:
           $ref: "#/components/schemas/GYear"
         jaarmaand:
           $ref: "#/components/schemas/GYearMonth"
+    GebruikCorrectieGrootte:
+      type: "object"
+      description: ""
+      required:
+      - "gebruikcorrectiegrootte"
+      - "statustaxatieparameter"
+      properties:
+        gebruikcorrectiegrootte:
+          type: "boolean"
+          title: "gebruikCorrectieGrootte"
+          description: ""
+        statustaxatieparameter:
+          $ref: "#/components/schemas/StatusTaxatieParameter"
     Geometrie:
       type: "object"
       description: ""
@@ -5836,9 +6662,19 @@ components:
       - "vlakgeometrie"
       properties:
         puntgeometrie:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
+          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/pointGeoJSON.yaml"
         vlakgeometrie:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
+          $ref: "http://schemas.opengis.net/ogcapi/features/part1/1.0/openapi/schemas/polygonGeoJSON.yaml"
+    Grondstaffelgrp:
+      type: "object"
+      description: ""
+      required:
+      - "oppervlakteondergrens"
+      properties:
+        oppervlakteondergrens:
+          $ref: "#/components/schemas/OppervlakteOndergrens"
+        prijspereenheid:
+          $ref: "#/components/schemas/WaardePerEenheid"
     Heffingstijdvak:
       type: "object"
       description: ""
@@ -5856,6 +6692,19 @@ components:
           title: "einddatum"
           description: ""
           format: "date"
+    InflatiepercentageVoorBerekeningCorrectieAsbest:
+      type: "object"
+      description: ""
+      required:
+      - "inflatie"
+      - "statustaxatieparameter"
+      properties:
+        inflatie:
+          type: "number"
+          title: "inflatie"
+          description: ""
+        statustaxatieparameter:
+          $ref: "#/components/schemas/StatusTaxatieParameter"
     KadastraleAanduiding:
       type: "object"
       description: ""
@@ -5937,6 +6786,19 @@ components:
           title: "naam"
           description: ""
           minLength: 1
+    LevensduurAsbest:
+      type: "object"
+      description: ""
+      required:
+      - "levensduur"
+      - "statustaxatieparameter"
+      properties:
+        levensduur:
+          type: "integer"
+          title: "levensduur"
+          description: ""
+        statustaxatieparameter:
+          $ref: "#/components/schemas/StatusTaxatieParameter"
     Npsaot:
       type: "object"
       description: ""
@@ -5948,6 +6810,19 @@ components:
           $ref: "#/components/schemas/IdentificatieBAG"
         tijdvakrelatie:
           $ref: "#/components/schemas/Tijdvakrelatie"
+    OppervlakteOndergrens:
+      type: "object"
+      description: ""
+      required:
+      - "oppervlakteondergrens"
+      - "statustaxatieparameter"
+      properties:
+        oppervlakteondergrens:
+          type: "integer"
+          title: "oppervlakteOndergrens"
+          description: ""
+        statustaxatieparameter:
+          $ref: "#/components/schemas/StatusTaxatieParameter"
     Persoonsidentificatie:
       type: "object"
       description: ""
@@ -5959,6 +6834,19 @@ components:
           $ref: "#/components/schemas/BsnOfAnpId"
         nietNatuurlijkPersoon:
           $ref: "#/components/schemas/RsinOfAnnId"
+    RentepercentageVoorBerekeningCorrectieAsbest:
+      type: "object"
+      description: ""
+      required:
+      - "rente"
+      - "statustaxatieparameter"
+      properties:
+        rente:
+          type: "number"
+          title: "rente"
+          description: ""
+        statustaxatieparameter:
+          $ref: "#/components/schemas/StatusTaxatieParameter"
     Rmatax:
       type: "object"
       description: ""
@@ -6000,6 +6888,19 @@ components:
           description: ""
           maxLength: 50
           minLength: 1
+    StandaardGrootte:
+      type: "object"
+      description: ""
+      required:
+      - "standaardgrootte"
+      - "statustaxatieparameter"
+      properties:
+        standaardgrootte:
+          type: "integer"
+          title: "standaardGrootte"
+          description: ""
+        statustaxatieparameter:
+          $ref: "#/components/schemas/StatusTaxatieParameter"
     Taxtrn:
       type: "object"
       description: ""
@@ -6122,6 +7023,32 @@ components:
           $ref: "#/components/schemas/IdentificatieBAG"
         tijdvakrelatie:
           $ref: "#/components/schemas/Tijdvakrelatie"
+    WaardePerEenheid:
+      type: "object"
+      description: ""
+      required:
+      - "prijspereenheid"
+      - "statustaxatieparameter"
+      properties:
+        prijspereenheid:
+          type: "number"
+          title: "prijsPerEenheid"
+          description: ""
+        statustaxatieparameter:
+          $ref: "#/components/schemas/StatusTaxatieParameter"
+    WaardePerEenheidNaCorrectieGrootte:
+      type: "object"
+      description: ""
+      required:
+      - "prijspereenheidnacorrectie"
+      - "statustaxatieparameter"
+      properties:
+        prijspereenheidnacorrectie:
+          type: "number"
+          title: "prijsPerEenheidNaCorrectie"
+          description: ""
+        statustaxatieparameter:
+          $ref: "#/components/schemas/StatusTaxatieParameter"
     Wdoaotand:
       type: "object"
       description: ""
@@ -6628,6 +7555,13 @@ components:
       enum:
       - "Plaats aangewezen"
       - "Plaats ingetrokken"
+    StatusTaxatieParameter:
+      type: "string"
+      description: "<body><ul><li>`` - 0</li><li>`` - 3</li><li>`` - 6</li></ul></body>"
+      enum:
+      - ""
+      - ""
+      - ""
     StatusVerblijfsobject:
       type: "string"
       description: "<body><ul><li>`Niet gerealiseerd verblijfsobject` - Niet gerealiseerd\
