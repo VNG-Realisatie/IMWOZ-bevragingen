@@ -20,7 +20,7 @@ paths:
     get:
       operationId: Getaanslagregels
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie aanslagregels retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: statusbetaling
           description: "<body><p>Met deze code kan worden aangegeven of de aanslag nog betaald moet worden, volledig betaald is of deels betaald is (automatische incasso). Voor uniformering kan nog worden overwogen voor dit attribuut een enumeratie te definiÃ«ren.</p></body>"
@@ -99,13 +99,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Aanslagregels (ASL)
   /aanslagregels/{identificatie}:
     get:
       operationId: getaanslagregel
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een aanslagregel retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -156,13 +156,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Aanslagregels (ASL)
   /bezwaren:
     get:
       operationId: Getbezwaren
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie bezwaren retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: statusbezwaar
           description: ""
@@ -215,13 +215,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Bezwaar (BZW)
   /bezwaren/{identificatie}:
     get:
       operationId: getbezwaar
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een bezwaar retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -272,13 +272,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Bezwaar (BZW)
   /biljetten:
     get:
       operationId: Getbiljetten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie biljetten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: statusbiljet
           description: "<body><p>Een codering van de verschillende waarden die de status van een biljet gemeentelijke belastingen kan aannemen.</p></body>"
@@ -331,13 +331,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Biljetten (BLJ)
   /biljetten/{identificatie}:
     get:
       operationId: getbiljet
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een biljet retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -388,13 +388,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Biljetten (BLJ)
   /controleobjectkenmerken:
     get:
       operationId: Getcontroleobjectkenmerken
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie controleobjectkenmerken retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aantekening
           description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Ook kunnen nadere specificaties worden gegeven over de uitgevoerde controle worden gegeven, bijvoorbeeld `alleen hoofdgebouw gecontroleerd`. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
@@ -485,13 +485,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Controleobjectkenmerken (CTL)
   /controleobjectkenmerken/{identificatie}:
     get:
       operationId: getcontroleObjectkenmerk
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een controleObjectkenmerken retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -542,13 +542,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Controleobjectkenmerken (CTL)
   /dummies:
     get:
       operationId: Getdummies
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie biljetten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: statusbiljet
           description: "<body><p>Een codering van de verschillende waarden die de status van een biljet gemeentelijke belastingen kan aannemen.</p></body>"
@@ -601,13 +601,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Zdummy
   /dummies/{identificatie}:
     get:
       operationId: getdummy
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een biljet retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -658,13 +658,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Zdummy
   /erfpachten:
     get:
       operationId: Geterfpachten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie erfpachten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: adres
           description: "<body><p>Adres vrij in te vullen.</p></body>"
@@ -762,13 +762,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Erfpacht
   /erfpachten/{identificatie}:
     get:
       operationId: geterfpacht
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een erfpacht retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -819,13 +819,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Erfpacht
   /kadstraleonroerendezaken:
     get:
       operationId: Getkadstraleonroerendezaken
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie kadstraleonroerendezaken retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: query
           name: oppervlakte
@@ -881,13 +881,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Kadstraleonroerendezaken (KOZ)
   /kadstraleonroerendezaken/{kadastraleidentificatie}:
     get:
       operationId: getkadstraleonroerendezaak
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een kadstraleonroerendezaak retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: path
           name: kadastraleidentificatie
@@ -941,13 +941,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Kadstraleonroerendezaken (KOZ)
   /ligplaatsen:
     get:
       operationId: Getligplaatsen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie ligplaatsen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: query
           name: statusligplaats
@@ -1003,13 +1003,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /ligplaatsen/{identificatie}:
     get:
       operationId: getligplaats
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een ligplaats retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: path
           name: identificatie
@@ -1063,13 +1063,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /natuurlijkpersonen:
     get:
       operationId: Getnatuurlijkpersonen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie natuurlijkpersonen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aanduidingnaamgebruik
           description: ""
@@ -1174,13 +1174,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Personen (PRS)
   /natuurlijkpersonen/{burgerservicenummer}:
     get:
       operationId: getnatuurlijkpersoon
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een natuurlijkpersoon retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: burgerservicenummer
           description: ""
@@ -1231,13 +1231,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Personen (PRS)
   /nietnatuurlijkpersonen:
     get:
       operationId: Getnietnatuurlijkpersonen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie nietnatuurlijkpersonen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: annid
           description: ""
@@ -1305,13 +1305,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Personen (PRS)
   /nietnatuurlijkpersonen/{rsin}:
     get:
       operationId: getnietnatuurlijkpersoon
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een nietnatuurlijkpersoon retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: rsin
           description: ""
@@ -1362,7 +1362,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Personen (PRS)
   /nswlandgoedtaxen:
     get:
@@ -1414,13 +1414,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie NSW
   /nswlandgoedtaxen/{identificatie}:
     get:
       operationId: getnswlandgoedtax
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een nswlandgoedtax retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -1471,7 +1471,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie NSW
   /nswlandgoedtdoen:
     get:
@@ -1523,13 +1523,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie NSW
   /nswlandgoedtdoen/{identificatie}:
     get:
       operationId: getnswlandgoedtdo
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een nswlandgoedtdo retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -1580,13 +1580,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie NSW
   /nummeraanduidingen:
     get:
       operationId: Getnummeraanduidingen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie nummeraanduidingen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: huisletter
           description: ""
@@ -1674,13 +1674,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /nummeraanduidingen/{identificatie}:
     get:
       operationId: getnummeraanduiding
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een nummeraanduiding retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -1731,13 +1731,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /openbareruimte/{identificatieopr}:
     get:
       operationId: getopenbareruimte
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een openbareruimte retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatieopr
           description: ""
@@ -1788,13 +1788,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /openbareruimten:
     get:
       operationId: Getopenbareruimten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie openbareruimten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: openbareruimtenaam
           description: ""
@@ -1847,13 +1847,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /panden:
     get:
       operationId: Getdpanden
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie panden retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: query
           name: bouwjaar
@@ -1931,13 +1931,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /panden/{identificatie}:
     get:
       operationId: getpand
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een pand retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: path
           name: identificatie
@@ -1991,13 +1991,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /resultatenmarktanalyses:
     get:
       operationId: Getesultatenmarktanalyses
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie esultatenmarktanalyses retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: huurprijsperm2geindexeerd
           description: "<body><p>Het gegeven wordt gebruikt voor het inschatten van het marktniveau op de waardepeildatum. De overeengekomen markthuurprijs op een bepaald moment wordt met een `markt-index` vertaald naar de waardepeildatum. De gehanteerde `markt-index` staat geheel los van de vraag of in het huurcontract een indexatie overeengekomen is en zo ja, hoe hoog de indexfactor is. We gaan na of dit attribuut in de praktijk wordt gebruikt of dat het geschrapt kan worden.</p></body>"
@@ -2106,13 +2106,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Resultatenmarktanalyse (RMA)
   /resultatenmarktanalyses/{identificatie}:
     get:
       operationId: getresultatenmarktanalyse
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een resultatenmarktanalyse retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -2163,13 +2163,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Resultatenmarktanalyse (RMA)
   /sluimerendwozobjecten:
     get:
       operationId: Getsluimerendwozobjecten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie sluimerendwozobjecten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: query
           name: codegebouwdongebouwd
@@ -2270,13 +2270,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /sluimerendwozobjecten/{wozobjectnummer}:
     get:
       operationId: getsluimerendwozobject
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een sluimerendwozobject retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: path
           name: wozobjectnummer
@@ -2329,13 +2329,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /soortobjectcodes:
     get:
       operationId: Getsoortobjectcodes
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie soortobjectcodes retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: omschrijvingsoortobject
           description: ""
@@ -2396,13 +2396,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /soortobjectcodes/{soortobjectcode}:
     get:
       operationId: getsoortobjectcode
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een soortobjectcode retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: soortobjectcode
           description: "<body><p>Veel gemeenten hanteren een codering die gebaseerd is op een viercijferige code. Volgens deze definitie zijn echter ook letters in de code toegestaan. Gebruik De aanduiding soort object is een verplicht gegeven op het taxatieverslag.</p></body>"
@@ -2454,13 +2454,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /standplaatsen:
     get:
       operationId: Getstandplaatsen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie standplaatsen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: query
           name: statusstandplaats
@@ -2516,13 +2516,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /standplaatsen/{identificatie}:
     get:
       operationId: getstandplaats
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een standplaats retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: path
           name: identificatie
@@ -2576,13 +2576,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /taxatiekenmerken:
     get:
       operationId: Gettaxatiekenmerken
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie taxatiekenmerken retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aantalstukseenheden
           description: ""
@@ -2681,13 +2681,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxaties (TAX)
   /taxatiekenmerken/{identificatie}:
     get:
       operationId: gettaxatiekenmerk
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een taxatiekenmerken retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -2738,13 +2738,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxaties (TAX)
   /taxaties:
     get:
       operationId: Gettaxaties
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie taxaties retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aantekening
           description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Ook kunnen nadere specificaties worden gegeven over de uitgevoerde controle worden gegeven, bijvoorbeeld `alleen hoofdgebouw gecontroleerd`. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
@@ -2880,13 +2880,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxaties (TAX)
   /taxaties/{identificatie}:
     get:
       operationId: gettaxatie
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een taxatie retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -2937,13 +2937,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxaties (TAX)
   /taxatietaxatiekenmerken:
     get:
       operationId: Gettaxatietaxatiekenmerken
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie taxatieTaxatiekenmerken retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aantekening
           description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
@@ -3048,13 +3048,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxaties (TAX)
   /taxatietaxatiekenmerken/{identificatie}:
     get:
       operationId: gettaxatieTaxatiekenmerk
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een biljet retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -3105,13 +3105,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxaties (TAX)
   /taxatieverslagnietwoningen:
     get:
       operationId: Gettaxatieverslagnietwoningen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie taxatieverslagnietwoningen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: datumvaststelling
           description: ""
@@ -3193,13 +3193,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatieverslag (TVS)
   /taxatieverslagnietwoningen/{identificatie}:
     get:
       operationId: gettaxatieverslagnietwoning
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een taxatieverslagnietwoning retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -3250,13 +3250,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatieverslag (TVS)
   /taxatieverslagwoningen:
     get:
       operationId: Gettaxatieverslagwoningen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie taxatieverslagwoningen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: datumvaststelling
           description: ""
@@ -3338,13 +3338,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatieverslag (TVS)
   /taxatieverslagwoningen/{identificatie}:
     get:
       operationId: gettaxatieverslagwoning
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een taxatieverslagwoning retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -3395,13 +3395,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatieverslag (TVS)
   /tdoagrarischeasbesten:
     get:
       operationId: Gettdoagrarischeasbesten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie tdoagrarischeasbesten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aantekening
           description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
@@ -3512,13 +3512,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie agrarisch (TAX agrarisch)
   /tdoagrarischeasbesten/{identificatie}:
     get:
       operationId: gettdoagrarischeasbest
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdoagrarischeasbest retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -3569,13 +3569,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie agrarisch (TAX agrarisch)
   /tdoagrarischegebouwen:
     get:
       operationId: Gettdoagrarischegebouwen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie tdoagrarischegebouwen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aantekening
           description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
@@ -3686,13 +3686,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie agrarisch (TAX agrarisch)
   /tdoagrarischegebouwen/{identificatie}:
     get:
       operationId: gettdoagrarischegebouw
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdoagrarischegebouw retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -3743,13 +3743,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie agrarisch (TAX agrarisch)
   /tdoagrarischegronden:
     get:
       operationId: Gettdoagrarischegronden
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie tdoagrarischegronden retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aantekening
           description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
@@ -3860,13 +3860,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie agrarisch (TAX agrarisch)
   /tdoagrarischegronden/{identificatie}:
     get:
       operationId: gettdoagrarischegrond
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdoagrarischegrond retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -3917,13 +3917,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie agrarisch (TAX agrarisch)
   /tdobijzondereomstandigheden:
     get:
       operationId: Gettdobijzondereomstandigheden
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie tdobijzondereomstandigheden retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aantekening
           description: "<body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>"
@@ -4034,13 +4034,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - tdobijzondereomstandigheden (TAX bijzondere omstandigheden)
   /tdobijzondereomstandigheden/{identificatie}:
     get:
       operationId: gettdobijzondereomstandigheid
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdobijzondereomstandigheid retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -4091,7 +4091,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - tdobijzondereomstandigheden (TAX bijzondere omstandigheden)
   /tdogecorrigeerdevervangingswaarden:
     get:
@@ -4143,13 +4143,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie tdogecorrigeerdevervangingswaarde (TAX GVW)
   /tdogecorrigeerdevervangingswaarden/{identificatie}:
     get:
       operationId: gettdogecorrigeerdevervangingswaarde
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdogecorrigeerdevervangingswaarde retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -4200,7 +4200,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie tdogecorrigeerdevervangingswaarde (TAX GVW)
   /tdogronden:
     get:
@@ -4252,13 +4252,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxaties (TAX)
   /tdogronden/{identificatie}:
     get:
       operationId: gettdogrond
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdogrond retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -4309,7 +4309,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxaties (TAX)
   /tdohuurwaardekapitalisaties:
     get:
@@ -4361,13 +4361,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie tdohuurwaardekapitalisatie (TAX HWK)
   /tdohuurwaardekapitalisaties/{identificatie}:
     get:
       operationId: gettdohuurwaardekapitalisatie
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdohuurwaardekapitalisatie retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -4418,13 +4418,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie tdohuurwaardekapitalisatie (TAX HWK)
   /tdomotorbrandstofverkooppunten:
     get:
       operationId: Gettdomotorbrandstofverkooppunten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie tdomotorbrandstofverkooppunten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: codedoorzetbasistaxatie
           description: "<body><p>Zie taxatiewijzer MBVP (Motorbrandstofverkooppunten)</p></body>"
@@ -4477,13 +4477,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie tdomotorbrandstofverkooppunten (TAX MBVP)
   /tdomotorbrandstofverkooppunten/{identificatie}:
     get:
       operationId: gettdomotorbrandstofverkooppunt
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdomotorbrandstofverkooppunt retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -4534,7 +4534,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie tdomotorbrandstofverkooppunten (TAX MBVP)
   /tdostuksprijzen:
     get:
@@ -4586,13 +4586,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie tdostuksprijzen (TAX stukprijzen deelobjecten)
   /tdostuksprijzen/{identificatie}:
     get:
       operationId: gettdostuksprijs
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een tdostuksprijs retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -4643,13 +4643,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Taxatie tdostuksprijzen (TAX stukprijzen objecten)
   /transacties:
     get:
       operationId: Gettransacties
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie transacties retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: aanduidingbruikbaarheid
           description: ""
@@ -4759,13 +4759,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Transacties (TRN)
   /transacties/{identificatie}:
     get:
       operationId: gettransactie
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een transactie retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -4816,13 +4816,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Transacties (TRN)
   /verblijfsobjecten:
     get:
       operationId: Getverblijfsobjecten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie verblijfsobjecten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: gebruiksdoel
           description: ""
@@ -4887,13 +4887,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /verblijfsobjecten/{identificatie}:
     get:
       operationId: getverblijfsobject
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een verblijfsobject retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -4944,13 +4944,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - (BAG)
   /vestigingen:
     get:
       operationId: Getvestigingen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie vestigingen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: datumeindesynchronisatie
           description: "<body><p>De LV WOZ bevat de actuele gegevens van de subjecten die als belanghebbende zijn gekoppeld aan Ã©Ã©n of meer WOZ-objecten. Wanneer een subject niet langer belanghebbend is bij WOZ-objecten in die gemeente, wordt met dit attribuut aangegeven dat de geregistreerde subjectgegevens mogelijk niet meer actueel zijn. Met de datum eindeSynchronisatie geef je aan dat tot deze datum de gegevens gesynchroniseerd blijven. Dus alle mutaties vÃ³Ã³r datum eindeSynchronisatie moeten gewoon aan de LV WOZ worden geleverd. Na de datum eindeSynchronisatie eindigt de aanlevering van SUB-mutaties voor deze belanghebbende. Dit gegeven is van belang om te kunnen beoordelen of de meegeleverde gegevens uit andere bron actueel zijn. Voor personen die een actueel belang hebben bij een WOZ-object, worden de gegevens door de gemeente gesynchroniseerd met de basisregistratie (BRP, Handelsregister). Wanneer een persoon niet langer een actueel belang heeft bij een WOZ-object, eindigt deze synchronisatie door de gemeente. Bij het opvragen van een `historische belanghebbende` zijn de meegeleverde gegevens over de belanghebbende dus niet altijd meer gesynchroniseerd met de bron. Dit gegeven dient in de registratie te worden opgenomen wanneer de `belanghebbende relatie` tussen een subject en een WOZ-object wordt beÃ«indigd en dit subject geen belang (meer) heeft bij een ander WOZ-object in die gemeente. Bij een gemeentelijke herindeling is het van belang dat de `oude gemeente` aan de LV WOZ meldt dat de subjectgegevens niet meer worden gesynchroniseerd (datumEindeSynchronisatie is gelijk aan datum herindeling).</p></body>"
@@ -5018,13 +5018,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Personen (PRS)
   /vestigingen/{vestigingsnummer}:
     get:
       operationId: getvestiging
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een vestiging retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: vestigingsnummer
           description: ""
@@ -5076,13 +5076,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Personen (PRS)
   /waardebepalingen:
     get:
       operationId: Getwaardebepalingen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie waardebepalingen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: datumwaardevaststelling
           description: "<body><p>Met deze datum wordt vastgelegd met welke beschikkingsrun de waarde beschikt wordt. Omdat deze datum met name ook wordt gebruikt voor de procesbeheersing (planning van de kohieren met aanslagen en beschikkingen) is er voor gekozen dit afzonderlijk vast te leggen en hiervoor niet de metagegevens te gebruiken (materiÃ«le historie).</p></body>"
@@ -5162,13 +5162,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Waardebepaling (WBP)
   /waardebepalingen/{identificatie}:
     get:
       operationId: getwaardebepaling
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een waardebepaling retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatie
           description: ""
@@ -5219,13 +5219,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Waardebepaling (WBP)
   /waterschappen:
     get:
       operationId: Getwaterschappen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie waterschappen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: einddatumobject
           description: ""
@@ -5286,13 +5286,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /waterschappen/{codewaterschap}:
     get:
       operationId: getwaterschap
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een waterschap retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: codewaterschap
           description: "<body><p>Met het oog op uniformering is binnen het IMWOZ een waardelijst opgesteld met toegestane waterschapscodes (met aanduiding bij welk waterschap deze hoort), inclusief historie vanaf 1 januari 2009.</p></body>"
@@ -5344,13 +5344,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /woonplaatsen:
     get:
       operationId: Getwoonplaatsen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie woonplaatsen retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: query
           name: woonplaatsnaam
           description: ""
@@ -5403,13 +5403,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /woonplaatsen/{identificatiewoonplaats}:
     get:
       operationId: getwoonplaats
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een woonplaats retourneert.</p></body>"
-      parameters: 
+      parameters:
         - in: path
           name: identificatiewoonplaats
           description: ""
@@ -5460,13 +5460,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
   /wozdeelobjecten:
     get:
       operationId: Getwozdeelobjecten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie woz deelobjecten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: query
           name: aanduidinginaanbouw
@@ -5657,13 +5657,13 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - WOZ Deelobjecten (WDO)
   /wozdeelobjecten/{identificatie}:
     get:
       operationId: getwozdeelobject
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een wozdeelobject retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: path
           name: identificatie
@@ -5717,20 +5717,160 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - WOZ Deelobjecten (WDO)
   /wozobjecten:
     get:
       operationId: Getwozobjecten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie wozobjecten retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: query
-          name: statusbiljet
-          description: "<body><p>Een codering van de verschillende waarden die de status van een biljet gemeentelijke belastingen kan aannemen.</p></body>"
+          name: aanduidingbouwstroom
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 6
+        - in: query
+          name: aanduidinginaanbouw
+          description: ""
           required: true
           schema:
+            type: boolean
+        - in: query
+          name: aanduidingrepeterend
+          description: "<body><p>Dit aanduidingRepeterend helpt om te waarborgen dat direct vergelijkbare objecten consistent geregistreerd blijven. Wanneer kenmerken van een WOZ-object gewijzigd worden die is aangemerkt als repeterend moet beoordeeld worden of dezelfde wijziging ook aan de orde is bij direct vergelijkbare objecten.</p></body>"
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: aanwezigheidlift
+          description: "<body><p>Dit gegeven is met name gericht op de bereikbaarheid van woningen. Voor de aanduiding van de bereikbaarheid van bijvoorbeeld kantoorruimte of winkelruimte is een aanduiding per verdieping noodzakelijk. Daarom wordt voor deze objecten het gegeven `ontsluiting verdieping` gebruikt.</p></body>"
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: codegebouwdongebouwd
+          description: "<body><p>Naast gebouwde objecten en ongebouwde objecten is er ook sprake van objecten die deels gebouwd en deels ongebouwd zijn. Dit zijn de `code B objecten`. Met ingang van 1 januari 2009 kan er alleen sprake zijn van een `code B object`, wanneer een WOZ-object een gebouwd gedeelte heeft en een ongebouwd gedeelte van het WOZ-object bij de waardebepaling buiten aanmerking is gelaten. Deze `code B objecten` komen dan ook nagenoeg uitsluitend voor in de agrarische sector (cultuurgrondvrijstelling), bij natuurschoonwetlandgoederen en bij organisaties die beheer van natuurterreinen ten doel hebben. Met deze code wordt aangegeven of het object in de watersysteemheffing moet worden betrokken naar de heffingsmaatstaf (WOZ-) waarde (gebouwd object) of naar de heffingsmaatstaf oppervlakte (ongebouwd object, inclusief natuurterreinen).</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/CodeGebouwdOngebouwd"
+        - in: query
+          name: codeomzetbelasting
+          description: "<body><p>Bij de berekening van de gecorrigeerde vervangingswaarde en bij de waarde in het economische verkeer van courante niet-woningen is de omzetbelasting steeds vaker onderwerp van discussie. Daarom is het van belang vast te leggen welke van de drie genoemde mogelijkheden van toepassing is op de vastgestelde WOZ-waarde. Ook bij een eventuele wijziging van de wettelijke waarderingsvoorschriften ten aanzien van de omzetbelasting is het van belang te kunnen nagaan hoe de omzetbelasting is verwerkt in de vastgestelde waarde. Gezien dit belang van een zorgvuldige vastlegging van de code omzetbelasting is het verplicht om deze code aan te leveren (bij entiteit WOZ) bij een taxatieverzoek aan TIOX. Voor de meeste objecten zal de waardebepaling plaatsvinden uitgaande van een onbelaste levering (`O`). Met name bij de berekening van de gecorrigeerde vervangingswaarde en bij nieuwbouw nietwoningen kan een waardebepaling die inclusief (`I`) of exclusief (`E`) omzetbelasting is, noodzakelijk zijn.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/CodeOmzetBelastingEnum"
+        - in: query
+          name: codeontbrekennutsvoorzieningen
+          description: "<body><p>Deze aanduiding wordt alleen gegeven als Ã©Ã©n van de genoemde aansluitingen ontbreekt. Dit gegeven wordt in beginsel alleen gebruikt bij woningen. Elke letter mag maar Ã©Ã©n keer voorkomen.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/CodeOntbrekenNutsvoorzieningen"
+        - in: query
+          name: einddatumobject
+          description: "<body><p>Wanneer WOZ-object de status 'ten onrechte opgevoerd' krijgt wordt de einddatumObject geljik aan ingangsdatumObject.</p></body>"
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: functiewozobject
+          description: "<body><p>FunctieWOZobject is verplicht vanaf 1 januari 2022.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/FunctieWOZObject"
+        - in: query
+          name: gebruikscode
+          description: "<body><p>De gebruikscodering is voor de diverse afnemers van belang om te beoordelen of en zo ja, hoe een WOZ-object in de belastingheffing betrokken moet worden. Voor de gemeenten is deze codering maatgevend om te bepalen welk tarief (woning- of niet woningtarief) van toepassing is dan wel of een aanslag aan de gebruiker (alleen niet-woningen) moet worden opgelegd. Parallel hieraan bepaalt het CBS op basis van de codering de belastingcapaciteit woningen, respectievelijk de belastingcapaciteit niet-woningen. Tot de woningen behoren die onroerende zaken die in hoofdzaak (meer dan 70%) worden gebruikt voor woondoeleinden en die onroerende zaken waarvan het gebruik volledig dienstbaar is aan woondoeleinden. Objecten in aanbouw of leegstaande objecten met de bestemming woondoeleinden zijn ook woningen. Tot de woningen behoren de volgende drie klassen (met vermelding van de van toepassing zijnde gebruikscode): Woning dienend tot hoofdverblijf (10): Onder een woning dienend tot hoofdverblijf wordt verstaan: - een onroerende zaak die als Ã©Ã©n geheel gedurende het gehele jaar wordt gebruikt voor woondoeleinden. Deze categorie betreft zelfstandige woningen voor Ã©Ã©n- of meerpersoonshuishoudens waarin geen bedrijfsmatige activiteiten plaatsvinden of in ieder geval geen aan het object zichtbare bedrijfsmatige activiteiten. Woning met praktijkruimte (11): Onder een woning met praktijkruimte wordt verstaan - een onroerende zaak die in hoofdzaak wordt gebruikt voor woondoeleinden - waarin de bewoner tevens in het kader van een zelfstandig beroep of bedrijf activiteiten verricht - welke bedrijfsmatige activiteiten het karakter hebben van praktijk aan huis in de sfeer van de vrije beroepen (arts, fysiotherapeut, notaris, accountant); - waarbij het feit dat een zelfstandig beroep of bedrijf wordt uitgeoefend, blijkt uit een aankondiging die vanaf de openbare weg zichtbaar is; - waarbij het mogelijk is een deel van de onroerende zaak aan te wijzen waar deze activiteiten plaatsvinden. Recreatiewoningen en overige woningen (12): Onder recreatiewoningen en overige woningen worden verstaan: - onroerende zaken die gedurende een deel van het jaar worden gebruikt voor woondoeleinden en waarbij het gebruik gedurende een deel van het jaar is beperkt; - een niet-zelfstandige eenheid (studentenwoningen, bejaardenwoningen); - een complex van onzelfstandige bejaardenwoningen of onzelfstandige studenteneenheden; - een onroerende zaak die volledig dienstbaar is aan woondoeleinden (bijvoorbeeld een garagebox of een ongebouwd terrein, bijvoorbeeld moestuin of hobbywei of bouwkavel). Hiermee wordt bereikt dat het voor de belastingcapaciteit geen verschil maakt of de garagebox tezamen met de woning een samenstel vormt of dat de garagebox een afzonderlijke onroerende zaak is. Alle overige onroerende zaken zijn niet-woningen. De niet-woningen zijn de objecten met de volgende gebruikscodes: 20 = boerderij; Onder een boerderij wordt verstaan een onroerende zaak, waarvan het gebruik (wonen of bedrijfsmatige activiteiten) direct verbonden is met de bedrijfsmatige exploitatie van cultuurgrond. Tot deze categorie behoren ook tuindersbedrijven. Woonboerderijen behoren niet tot de categorie boerderij. Woonboerderijen zijn woningen. Ook voormalige boerderijen waarin nu een ander bedrijf wordt uitgeoefend (bijvoorbeeld kantoor of winkel) zijn geen boerderij, maar bijvoorbeeld niet-woning. 21 = niet-woning deels in gebruik als woning. Onder een niet-woning deels in gebruik als woning wordt verstaan een onroerende zaak die in hoofdzaak wordt gebruikt voor andere dan woondoeleinden en waarvan de aard zodanig is dat gebruik van de gehele onroerende zaak als woning niet voor de hand ligt (bijvoorbeeld een woon-winkelpand dat op grond van de objectafbakeningsregels als Ã©Ã©n onroerende zaak aangemerkt moet worden). Wanneer van een boerderij of een woonwinkelpand het woongedeelte meer dan 70% van de WOZ-waade vormt moet dit WOZ-object worden ingedeeld in de categorie woningen, met de code 11 (woning met praktijkruimte). 30 = niet-woning. Onder een niet-woning wordt verstaan: - een onroerende zaak die geheel wordt gebruikt voor andere dan woondoeleinden; - onroerende zaken waar het wonen is gecombineerd met andere functies (hotels, pensions, verpleeghuizen, gevangenissen). Dit betreft alle objecten voor bedrijfsmatige activiteiten zoals kantoren, winkels en bedrijfsruimten, maar ook bijzondere gebouwen die een niet bedrijfsmatig gebruik hebben (scholen, ziekenhuizen). Een object behoort alleen tot deze categorie, wanneer geen enkel deel van het object voor woondoeleinden wordt gebruikt. Zodra welgewoond wordt in het object, wordt het object ingedeeld in de categorie niet-woningen deels in gebruik als woning. Uitgezonderd gebouwd object (31): Onder een uitgezonderd, gebouwd object wordt verstaan een niet woning waarvan op grond van de uitvoeringsregeling uitgezonderde objecten wet waardering onroerende zaken geen waarde bepaald en vastgesteld behoeft te worden. De uitgezonderde gebouwde objecten (gebruikscode 31) betreffen kerken, waterzuiveringsinstallaties en waterbeheersingswerken. De uitgezonderde gebouwde objecten (gebruikscode 31) moeten wel worden geleverd aan de LV WOZ. Terrein (40): Onder terrein worden verstaan ongebouwde onroerende zaken, zoals bijvoorbeeld niet bedrijfsmatig geÃ«xploiteerde cultuurgrond, sportvelden en bouwgrond (waar nog geen bouwactiviteiten zijn verricht). Het indelen van ongebouwde onroerende zaken in deze categorie is voor de afnemers (en het CBS voor het vaststellen van de belastingcapaciteit) alleen van belang voor de objecten waarvoor een waarde moet worden bepaald (waarvan de waarde dus niet buiten aanmerking blijft). De waarde van bedrijfsmatig geÃ«xploiteerde cultuurgrond blijft bij de waardebepaling buiten aanmerking en daarom kan de gegevenslevering van losse percelen bedrijfsmatig geÃ«xploiteerde cultuurgrond achterwege blijven. Hierbij is indeling in deze categorie dus niet relevant. Voor niet-bedrijfsmatig gebruikte cultuurgrond is deze indeling wel relevant, met name voor het waterschap (omslag gebouwd, respectievelijk ongebouwd). Uitgezonderde ongebouwde objecten (80): Onder uitgezonderde ongebouwde objecten (gebruikscode 80) worden verstaan onroerende zaken die ongebouwd zijn (code gebouwd/ongebouwd = â€œOâ€?) en wanneer op grond van de uitvoeringsregeling wet waardering onroerende zaken geen waarden wordt bepaald en vastgesteld. De objecten met gebruikscode 80 worden niet geleverd aan de LV WOZ, maar deze code is wel van betekenis om binnen de gemeentelijke administratie eenduidig vast te leggen welke ongebouwde WOZ-objecten op grond van een uitzondering niet aan de LV WOZ geleverd behoren te worden. Uitgezonderde ongebouwde objecten behoren op grond van de regelgeving niet geleverd te worden aan de LV WOZ. Tot de categorie woningen behoren de gebruikscode (`10`, `11` en `12`). Tot de categorie niet-woningen behoren de gebruikscodes (`20`, `21`, `30`, `31`, `40` en `80`).</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/Gebruikscode"
+        - in: query
+          name: groepaanduiding
+          description: "<body><p>Deze groepaanduiding kan bijvoorbeeld betrekking hebben op een project van woningen, die bouwkundig en architectonisch gelijksoortig zijn en daarom onderling goed vergelijkbaar zijn voor de waardebepaling. Voor de courante niet-woningen kan een groep bestaan uit objecten waarvoor op grond van de marktgegevens dezelfde kengetallen voor bijvoorbeeld de huurprijzen per vierkante meter gehanteerd kunnen worden.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 8
+        - in: query
+          name: grondoppervlakte
+          description: "<body><p>Dit gegeven is van belang om te controleren of de sommatie van de kadastrale oppervlakten van alle kadastrale percelen en delen van kadastrale percelen die gekoppeld zijn aan dit WOZ-object, overeenstemt met de totale grondoppervlakte die behoort tot het WOZ-object. In verband met het grote belang van het oppervlakte gegeven voor de watersysteemheffing is deze controlemogelijkheid noodzakelijk. Bij (kadastrale) appartementen en andere WOZ-objecten waarvoor niet eenduidig een grondoppervlakte kan worden aangewezen wordt het gegeven grondoppervlakte niet gebruikt. Voor deze WOZ-objecten geldt de voorwaarde dat deze gekoppeld zijn aan een sluimerend WOZ-object via de relatie 'WOZ-object' heeftSluimerendWOZObject 'Sluimerend WOZ-object'. Dit gegeven is verplicht als het WOZ-object niet aan een sluimerend WOZ-object is gekoppeld.</p></body>"
+          required: false
+          schema:
             type: integer
+        - in: query
+          name: indicatieligging
+          description: "<body><p>Er is sprake van een codering voor kantoren (A1, A2, B1, B2, C, D) voor winkels (A1, A2, B1, C, D) en voor bedrijven en opslagruimten (A1, A2, B1, B2, C, D), Ook kan gewerkt worden met een codering 1 tot en met 5 (zeer slecht tot zeer goed) of met rapportcijfers.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/IndicatieLigging"
+        - in: query
+          name: ingangsdatumobject
+          description: "<body><p>De ingangsdatum betreft de datum vanaf welke het object relevant is voor de registratie. Daarbij kan het object in eerste instantie geregistreerd worden met statusObject `gevormd, niet actief`.</p></body>"
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: inonderzoek
+          description: "<body><p>Voor elk gegeven dat in onderzoek is er een inOnderzoek attribuut met als waarde de naam van het in onderzoek zijnde element.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/InOnderzoekWOZ"
+        - in: query
+          name: meegetaxeerdeoppervlaktegebouwd
+          description: "<body><p>Dit gegeven wordt verplicht gevuld voor WOZ-objecten met de `Code gebouwd / ongebouwd` gelijk aan `B`. Overeenkomstig het gegeven `grondoppervlakte` functioneert dit gegeven mede als controle. Voor de WOZ-objecten die zijn aangemerkt als gedeeltelijk gebouwd, gedeeltelijk ongebouwd is het gegeven meegetaxeerdeOppervlakteGebouwd` gelijk aan de sommatie van alle gegevens meegetaxeerdeOppervlakteGebouwd op de relatie WOZObject_Abstract omvat KadastraleOnroerendeZaak. Ook in deze situatie is deze controlemogelijkheid noodzakelijk.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: monumentaanduiding
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/CodeMonumentAanduiding"
+        - in: query
+          name: omschrijving
+          description: "<body><p>Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen. Dit gegeven is geheel vrij in te vullen.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - in: query
+          name: ozbvrijstelling
+          description: "<body><p>Dit gegeven wordt gebruikt om aan te geven of de WOZ-waarde van het onderhavige WOZ-object al dan niet moet worden meegeteld bij het bepalen van de belastingcapaciteit van deze gemeente.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/OZBVrijstelling"
+        - in: query
+          name: soortobjectcode
+          description: "<body><p>In het kader van de uniformering wodt de soortObjectCode vervangen door de uniforme typeWOZObject, met het oog van bewaren van historische gegevens en een soepele transitie bestaan beide attributen naast elkaar in het informatiemodel. De soortObjectCode is verplicht tot 1 januari 2022. De betekenis van de soortObjectCode staat in het afzonderlijke objectype SoortObjectCode. Omdat deze soortObjectCode alleen voor de historie relevant is is geen relatie gedefinieerd tussen WOZ-object en soortObjectCode.</p></body>"
+          required: true
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: statuswozobject
+          description: "<body><p>In de Basisregistratie WOZ kan een WOZ-object al worden vastgelegd, terwijl dit nog niet actief is. Wanneer bijvoorbeeld een bouwvergunning wordt verleend voor een woning, terwijl op die locatie nu nog sprake is van een (vrijgesteld) weiland, kan het zinvol zijn het toekomstige WOZ-object, inclusief de relatie naar het te bouwen verblijfsobject en het inmiddels toegekende huisnummer vast in de WOZ-administratie op te nemen. Een dergelijk `toekomstig` WOZ-object krijgt de status `gevormd, niet actief`. Ook een dergelijk `toekomstig` WOZ-object wordt aan de Landelijke Voorziening WOZ geleverd.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/StatusObject"
+        - in: query
+          name: verantwoordelijkegemeente
+          description: "<body><p>Voor dit attribuut wordt alleen de historie vastgelegd vanaf het moment dat de gemeente is aangesloten op de LV WOZ. Op basis van dit gegeven kan men beoordelen welke gemeente verantwoordelijk is voor de (bijhouding van de) geregistreerde gegevens.</p></body>"
+          required: true
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: waardegebied
+          description: "<body><p>Dit veld wordt gebruikt in sommige typen taxatiemodellen om (met name) de woningen (maar ook courante niet-woningen) in een gemeente in groepen in te delen op basis van soort objectcode en geografische kenmerken.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 8
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -5779,20 +5919,21 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
-  /wozobjecten/{identificatie}:
+  /wozobjecten/{wozobjectnummer}:
     get:
       operationId: getwozobject
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een wozobject retourneert.</p></body>"
-      parameters: 
+      parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: path
-          name: identificatie
-          description: ""
+          name: wozobjectnummer
+          description: "<body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert.</p></body>"
           required: true
           schema:
-            $ref: "#/components/schemas/Sleutel"
+            type: string
+            maxLength: 12
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -5839,7 +5980,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags: 
+      tags:
       - Wozobject (WOZ)
 components:
   schemas:
