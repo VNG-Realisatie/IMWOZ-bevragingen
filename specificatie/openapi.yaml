@@ -9854,6 +9854,23 @@ components:
             type: "object"
             description: ""
           - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+    Beschikking_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+        steltvast:
+          allOf:
+          - title: "steltvast"
+            type: "object"
+            description: ""
+          - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+        isvoor:
+          allOf:
+          - title: "isvoor"
+            type: "object"
+            description: ""
+          - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
     Bezwaar_links:
       type: "object"
       properties:
@@ -10259,6 +10276,43 @@ components:
       properties:
         self:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+    Waarde_links:
+      type: "object"
+      properties:
+        self:
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+        wordtverdeeldnaar:
+          title: "wordtverdeeldnaar"
+          type: "array"
+          description: "<body><p>Voor een gemeente die geheel is gelegen binnen Ã©\
+            Ã©n waterschap is deze entiteit niet relevant. Er worden slechts relaties\
+            \ van dit type geleverd voor die objecten die binnen twee of meer waterschappen\
+            \ vallen. De objecten worden in dat geval daadwerkelijk doorsneden door\
+            \ een waterschapsgrens. Voor objecten die geheel binnen Ã©Ã©n waterschap\
+            \ vallen wordt deze entiteit niet gevuld. De relatie tussen de waarde\
+            \ en het waterschap kan veranderen. Daarom zijn het bijhouden van materiÃ\
+            «le en formele historie van tijdvakRelatie van belang.</p></body>"
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+        isvoor:
+          allOf:
+          - title: "isvoor"
+            type: "object"
+            description: ""
+          - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+        wordtonderbouwdmet:
+          title: "wordtonderbouwdmet"
+          type: "array"
+          description: ""
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
+        isbeschiktvoor:
+          title: "isbeschiktvoor"
+          type: "array"
+          description: "<body><p>Deze relatie wordt alleen gebruikt in de LV WOZ.\
+            \ De relatie wordt afgeleid van BSK welke binnengemeentelijk wordt gebruikt.</p></body>"
+          items:
+            $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
     Waardebepaling_links:
       type: "object"
       properties:
@@ -10891,7 +10945,7 @@ components:
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
         adrestype:
-          $ref: "adresTypeEnum"
+          $ref: "#/components/schemas/AdresTypeEnum"
         persoonsidentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
         identificatiePRStype:
@@ -10985,6 +11039,58 @@ components:
             \ duiden.</p></body>"
           maxLength: 512
           minLength: 1
+    Bskprs:
+      type: "object"
+      description: ""
+      required:
+      - "bskprsves"
+      - "correspondentieadreswoz"
+      - "persoonsIdentificatie"
+      properties:
+        aanduidingafdelingofcomplex:
+          type: "string"
+          title: "aanduidingAfdelingOfComplex"
+          description: "<body><p>Het attribuut 'afdelingOfComplex' maakt het mogelijk\
+            \ om voor belanghebbende met een groot aantal WOZ-objecten een onderverdeling\
+            \ te maken. Hierdoor kunnen bijvoorbeeld WOZ-objecten gekoppeld worden\
+            \ aan de `afdeling Sport` van een gemeente, of kunnen een groep woningen\
+            \ van een woningcooperatie als Ã©Ã©n complex worden aangeduid.</p></body>"
+          maxLength: 50
+          minLength: 1
+        bskprsves:
+          $ref: "#/components/schemas/Bskprsves"
+        correspondentieadreswoz:
+          $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        inonderzoek:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/InOnderzoekBSKPRS"
+        persoonsIdentificatie:
+          $ref: "#/components/schemas/Persoonsidentificatie"
+        terattentievan:
+          type: "string"
+          title: "terAttentieVan"
+          description: ""
+          maxLength: 50
+          minLength: 1
+    Bskprsves:
+      type: "object"
+      description: ""
+      required:
+      - "inonderzoek"
+      - "tijdvakrelatie"
+      - "vestigingsnummer"
+      properties:
+        inonderzoek:
+          $ref: "#/components/schemas/InOnderzoekBSKPRSVES"
+        tijdvakrelatie:
+          $ref: "#/components/schemas/Tijdvakrelatie"
+        vestigingsnummer:
+          type: "string"
+          title: "vestigingsnummer"
+          description: ""
+          pattern: "^[0-9]{12}$"
+          maxLength: 12
     Bzwasl:
       type: "object"
       description: ""
@@ -11020,7 +11126,7 @@ components:
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
         adrestype:
-          $ref: "adresTypeEnum"
+          $ref: "#/components/schemas/AdresTypeEnum"
         persoonIdentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
         identificatiePRStype:
@@ -11070,7 +11176,7 @@ components:
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
         adrestype:
-          $ref: "adresTypeEnum"
+          $ref: "#/components/schemas/AdresTypeEnum"
         persoonsIdentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
         identificatiePRStype:
@@ -12825,7 +12931,7 @@ components:
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
         adrestype:
-          $ref: "adresTypeEnum"
+          $ref: "#/components/schemas/AdresTypeEnum"
         inonderzoek:
           type: "array"
           items:
@@ -12959,6 +13065,100 @@ components:
           type: "array"
           items:
             $ref: "#/components/schemas/InOnderzoekWOZWSP"
+        tijdvakrelatie:
+          $ref: "#/components/schemas/Tijdvakrelatie"
+    Wrdprs:
+      type: "object"
+      description: ""
+      required:
+      - "brondocument"
+      - "correspondentieadreswoz"
+      - "persoonIdentificatie"
+      - "statusbeschikking"
+      - "wrdprsves"
+      properties:
+        aanduidingafdelingofcomplex:
+          type: "string"
+          title: "aanduidingAfdelingOfComplex"
+          description: "<body><p>Het attribuut 'afdelingOfComplex' maakt het mogelijk\
+            \ om voor belanghebbende met een groot aantal WOZ-objecten een onderverdeling\
+            \ te maken. Hierdoor kunnen bijvoorbeeld WOZ-objecten gekoppeld worden\
+            \ aan de `afdeling Sport` van een gemeente, of kunnen een groep woningen\
+            \ van een woningcooperatie als Ã©Ã©n complex worden aangeduid.</p></body>"
+          maxLength: 50
+          minLength: 1
+        brondocument:
+          $ref: "#/components/schemas/Brondocument"
+        correspondentieadreswoz:
+          $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        inonderzoek:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/InOnderzoekWRDPRS"
+        persoonIdentificatie:
+          $ref: "#/components/schemas/Persoonsidentificatie"
+        statusbeschikking:
+          $ref: "#/components/schemas/StatusBeschikking"
+        terattentievan:
+          type: "string"
+          title: "terAttentieVan"
+          description: ""
+          maxLength: 50
+          minLength: 1
+        wrdprsves:
+          $ref: "#/components/schemas/Wrdprsves"
+    Wrdprsves:
+      type: "object"
+      description: ""
+      required:
+      - "tijdvakrelatie"
+      - "vestigingsnummer"
+      properties:
+        inonderzoek:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/InOnderzoekWRDPRSVES"
+        tijdvakrelatie:
+          $ref: "#/components/schemas/Tijdvakrelatie"
+        vestigingsnummer:
+          type: "string"
+          title: "vestigingsnummer"
+          description: ""
+          pattern: "^[0-9]{12}$"
+          maxLength: 12
+    Wrdtvs:
+      type: "object"
+      description: ""
+      required:
+      - "identificatie"
+      - "tijdvakrelatie"
+      properties:
+        identificatie:
+          $ref: "#/components/schemas/Sleutel"
+        tijdvakrelatie:
+          $ref: "#/components/schemas/Tijdvakrelatie"
+    Wrdwsp:
+      type: "object"
+      description: ""
+      required:
+      - "aandeelwaterschap"
+      - "codewaterschap"
+      - "tijdvakrelatie"
+      properties:
+        aandeelwaterschap:
+          type: "integer"
+          title: "aandeelWaterschap"
+          description: "<body><p>Gebruik Dit gegeven is alleen relevant voor WOZ-objecten\
+            \ die doorsneden worden door een waterschapsgrens.</p></body>"
+        codewaterschap:
+          type: "string"
+          title: "codeWaterschap"
+          description: "<body><p>Met het oog op uniformering is binnen het IMWOZ een\
+            \ waardelijst opgesteld met toegestane waterschapscodes (met aanduiding\
+            \ bij welk waterschap deze hoort), inclusief historie vanaf 1 januari\
+            \ 2009.</p></body>"
+          pattern: "^[0-9]{4}$"
+          maxLength: 4
         tijdvakrelatie:
           $ref: "#/components/schemas/Tijdvakrelatie"
     Zakelijkrechteigenaar:
@@ -13267,6 +13467,27 @@ components:
       - "E"
       - "G"
       - "O"
+    InOnderzoekBSK:
+      type: "string"
+      description: ""
+      enum:
+      - "brondocument"
+      - "statusBeschikking"
+    InOnderzoekBSKPRS:
+      type: "string"
+      description: ""
+      enum:
+      - "aanduidingAfdelingOfComplex"
+      - "terAttentieVan"
+      - "correspondentieAdresWOZ"
+      - "BSKPRS"
+    InOnderzoekBSKPRSVES:
+      type: "string"
+      description: ""
+      enum:
+      - "BSKPRSVES"
+      - "beginRelatie"
+      - "eindRelatie"
     InOnderzoekKOZ:
       type: "string"
       description: ""
