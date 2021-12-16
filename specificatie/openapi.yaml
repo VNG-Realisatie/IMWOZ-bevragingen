@@ -158,7 +158,7 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
       - Aanslagregels (ASL)
-  /beschikking/{volgnummer}:
+  /beschikkingen/{volgnummer}:
     get:
       operationId: getbeschikking
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een beschikking retourneert.</p></body>"
