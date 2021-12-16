@@ -9158,6 +9158,8 @@ components:
       properties:
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        adrestype:
+          $ref: "#/components/schemas/AdresTypeEnum"
         datumeindesynchronisatie:
           type: "string"
           title: "datumEindeSynchronisatie"
@@ -10346,6 +10348,8 @@ components:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
         persoonsidentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
+        identificatiePRStype:
+          $ref: "#/components/schemas/PersoonsIdentificatieEnum"
         terattentievan:
           type: "string"
           title: "terAttentieVan"
@@ -10388,16 +10392,9 @@ components:
         statustaxatieparameter:
           $ref: "#/components/schemas/StatusTaxatieParameter"
     BerekeningMetPercentageOfberekeningPerEenheid:
-      type: "object"
-      description: ""
-      required:
-      - "berekeningmetpercentage"
-      - "berekeningpereenheid"
-      properties:
-        berekeningmetpercentage:
-          $ref: "#/components/schemas/Berekeningmetpercentage"
-        berekeningpereenheid:
-          $ref: "#/components/schemas/Berekeningpereenheid"
+      oneOf:
+        - $ref: "#/components/schemas/Berekeningmetpercentage"
+        - $ref: "#/components/schemas/Berekeningpereenheid"
     Berekeningmetpercentage:
       type: "object"
       description: ""
@@ -10456,8 +10453,12 @@ components:
           minLength: 1
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        adrestype:
+          $ref: "adresTypeEnum"
         persoonsidentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
+        identificatiePRStype:
+          $ref: "#/components/schemas/PersoonsIdentificatieEnum"
         terattentievan:
           type: "string"
           title: "terAttentieVan"
@@ -10547,9 +10548,6 @@ components:
             \ duiden.</p></body>"
           maxLength: 512
           minLength: 1
-    BsnOfAnpId:
-      type: "object"
-      description: ""
     Bzwasl:
       type: "object"
       description: ""
@@ -10584,8 +10582,12 @@ components:
           $ref: "#/components/schemas/Bzwprsanvves"
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        adrestype:
+          $ref: "adresTypeEnum"
         persoonIdentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
+        identificatiePRStype:
+          $ref: "#/components/schemas/PersoonsIdentificatieEnum"
         terattentievan:
           type: "string"
           title: "terAttentieVan"
@@ -10630,8 +10632,12 @@ components:
           $ref: "#/components/schemas/Bzwprsgmcves"
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        adrestype:
+          $ref: "adresTypeEnum"
         persoonsIdentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
+        identificatiePRStype:
+          $ref: "#/components/schemas/PersoonsIdentificatieEnum"
         terattentievan:
           type: "string"
           title: "terAttentieVan"
@@ -10771,23 +10777,19 @@ components:
       - "installaties"
       - "ruwbouw"
       properties:
-        inrichting:
-          $ref: "#/components/schemas/Gecorrigeerdevervangingswaardebasis"
-        installaties:
-          $ref: "#/components/schemas/Gecorrigeerdevervangingswaardebasis"
-        ruwbouw:
-          $ref: "#/components/schemas/Gecorrigeerdevervangingswaardebasis"
-    DriedelingOfOngesplitst:
-      type: "object"
-      description: ""
-      required:
-      - "driedeling"
-      - "ongesplitst"
-      properties:
         driedeling:
-          $ref: "#/components/schemas/Driedeling"
-        ongesplitst:
-          $ref: "#/components/schemas/Gecorrigeerdevervangingswaardebasis"
+          type: "object"
+          properties:
+            inrichting:
+              $ref: "#/components/schemas/Gecorrigeerdevervangingswaardebasis"
+            installaties:
+              $ref: "#/components/schemas/Gecorrigeerdevervangingswaardebasis"
+            ruwbouw:
+              $ref: "#/components/schemas/Gecorrigeerdevervangingswaardebasis"
+    DriedelingOfOngesplitst:
+      oneOf:
+        - $ref: "#/components/schemas/Driedeling"
+        - $ref: "#/components/schemas/Gecorrigeerdevervangingswaardebasis"
     FactorFunctioneleVeroudering:
       type: "object"
       description: ""
@@ -10844,46 +10846,50 @@ components:
       type: "object"
       description: ""
       properties:
-        bepaaldewaarde:
-          $ref: "#/components/schemas/BepaaldeWaarde"
-        bouwjaar:
-          $ref: "#/components/schemas/Bouwjaar"
-        bouwkostenactuelebouwwijze:
-          $ref: "#/components/schemas/BouwkostenActueleBouwwijze"
-        factorfunctioneleveroudering:
-          $ref: "#/components/schemas/FactorFunctioneleVeroudering"
-        factortechnischeveroudering:
-          $ref: "#/components/schemas/FactorTechnischeVeroudering"
-        invloeddoelmatigheid:
-          $ref: "#/components/schemas/InvloedDoelmatigheid"
-        invloedeconomischeveroudering:
-          $ref: "#/components/schemas/InvloedEconomischeVeroudering"
-        invloedexcessievegebruikskosten:
-          $ref: "#/components/schemas/InvloedExcessieveGebruikskosten"
-        invloedveranderingbouwwijze:
-          $ref: "#/components/schemas/InvloedVeranderingBouwwijze"
-        ongecorrigeerdevervangingskostenpereenheid:
-          $ref: "#/components/schemas/OngecorrigeerdeVervangingskostenPerEenheid"
-        ongecorrigeerdevervangingswaarde:
-          $ref: "#/components/schemas/OngecorrigeerdeVervangingswaarde"
-        ongecorrigeerdevervangingswaardenatechnischecorrectie:
-          $ref: "#/components/schemas/OngecorrigeerdeVervangingswaardeNaTechnischeCorrectie"
-        oorspronkelijkverwachtelevensduur:
-          $ref: "#/components/schemas/OorspronkelijkVerwachteLevensduur"
-        percentageactuelebouwwijze:
-          $ref: "#/components/schemas/PercentageActueleBouwwijze"
-        percentageonderdeeldriedeling:
-          $ref: "#/components/schemas/PercentageOnderdeelDriedeling"
-        percentagerestwaarde:
-          $ref: "#/components/schemas/PercentageRestwaarde"
-        resterendelevensduur:
-          $ref: "#/components/schemas/ResterendeLevensduur"
-        restwaarde:
-          $ref: "#/components/schemas/Restwaarde"
-        vervangingskostenpereenheid:
-          $ref: "#/components/schemas/VervangingskostenPerEenheid"
-        verwachtelevensduur:
-          $ref: "#/components/schemas/VerwachteLevensduur"
+        gecorrigeerdevervangingswaardebasis:
+          type: "object"
+          description: ""
+          properties:
+            bepaaldewaarde:
+              $ref: "#/components/schemas/BepaaldeWaarde"
+            bouwjaar:
+              $ref: "#/components/schemas/Bouwjaar"
+            bouwkostenactuelebouwwijze:
+              $ref: "#/components/schemas/BouwkostenActueleBouwwijze"
+            factorfunctioneleveroudering:
+              $ref: "#/components/schemas/FactorFunctioneleVeroudering"
+            factortechnischeveroudering:
+              $ref: "#/components/schemas/FactorTechnischeVeroudering"
+            invloeddoelmatigheid:
+              $ref: "#/components/schemas/InvloedDoelmatigheid"
+            invloedeconomischeveroudering:
+              $ref: "#/components/schemas/InvloedEconomischeVeroudering"
+            invloedexcessievegebruikskosten:
+              $ref: "#/components/schemas/InvloedExcessieveGebruikskosten"
+            invloedveranderingbouwwijze:
+              $ref: "#/components/schemas/InvloedVeranderingBouwwijze"
+            ongecorrigeerdevervangingskostenpereenheid:
+              $ref: "#/components/schemas/OngecorrigeerdeVervangingskostenPerEenheid"
+            ongecorrigeerdevervangingswaarde:
+              $ref: "#/components/schemas/OngecorrigeerdeVervangingswaarde"
+            ongecorrigeerdevervangingswaardenatechnischecorrectie:
+              $ref: "#/components/schemas/OngecorrigeerdeVervangingswaardeNaTechnischeCorrectie"
+            oorspronkelijkverwachtelevensduur:
+              $ref: "#/components/schemas/OorspronkelijkVerwachteLevensduur"
+            percentageactuelebouwwijze:
+              $ref: "#/components/schemas/PercentageActueleBouwwijze"
+            percentageonderdeeldriedeling:
+              $ref: "#/components/schemas/PercentageOnderdeelDriedeling"
+            percentagerestwaarde:
+              $ref: "#/components/schemas/PercentageRestwaarde"
+            resterendelevensduur:
+              $ref: "#/components/schemas/ResterendeLevensduur"
+            restwaarde:
+              $ref: "#/components/schemas/Restwaarde"
+            vervangingskostenpereenheid:
+              $ref: "#/components/schemas/VervangingskostenPerEenheid"
+            verwachtelevensduur:
+              $ref: "#/components/schemas/VerwachteLevensduur"
     GemiddeldeDaadwerkelijkeDoorzet:
       type: "object"
       description: ""
@@ -10898,16 +10904,9 @@ components:
         statustaxatieparameter:
           $ref: "#/components/schemas/StatusTaxatieParameter"
     Geometrie:
-      type: "object"
-      description: ""
-      required:
-      - "puntgeometrie"
-      - "vlakgeometrie"
-      properties:
-        puntgeometrie:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Point"
-        vlakgeometrie:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
+      oneOf:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Point"
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon"
     Grondstaffelgrp:
       type: "object"
       description: ""
@@ -11218,19 +11217,12 @@ components:
         statustaxatieparameter:
           $ref: "#/components/schemas/StatusTaxatieParameter"
     KeuzeAdresBinnenBuitenland:
-      type: "object"
-      description: ""
-      required:
-      - "adresaanduiding"
-      - "adresbuitenland"
-      - "adrespostbusantwoordnummer"
-      properties:
-        adresaanduiding:
-          $ref: "#/components/schemas/Adresbagpluslocatieomschrijving"
-        adresbuitenland:
-          $ref: "#/components/schemas/Adresbuitenland"
-        adrespostbusantwoordnummer:
-          $ref: "#/components/schemas/Adrespostbusantwoordnummer"
+      oneOf:
+        - $ref: "#/components/schemas/Adresbagpluslocatieomschrijving"
+        - $ref: "#/components/schemas/Adresbuitenland"
+        - $ref: "#/components/schemas/Adrespostbusantwoordnummer"
+      discriminator:
+        propertyName: "adresType"
     KeuzeTeGebruikenEenheid:
       type: "object"
       description: ""
@@ -11658,16 +11650,11 @@ components:
         statustaxatieparameter:
           $ref: "#/components/schemas/StatusTaxatieParameter"
     Persoonsidentificatie:
-      type: "object"
-      description: ""
-      required:
-      - "natuurlijkPersoon"
-      - "nietNatuurlijkPersoon"
-      properties:
-        natuurlijkPersoon:
-          $ref: "#/components/schemas/BsnOfAnpId"
-        nietNatuurlijkPersoon:
-          $ref: "#/components/schemas/RsinOfAnnId"
+      oneOf:
+        - $ref: "#/components/schemas/IdentificatiePRSAlternatief"
+        - $ref: "#/components/schemas/IdentificatiePRS"
+      discriminator:
+        propertyName: "IdentificatiePRStype"
     RENPunten:
       type: "object"
       description: ""
@@ -11778,17 +11765,6 @@ components:
           $ref: "#/components/schemas/Sleutel"
         tijdvakrelatie:
           $ref: "#/components/schemas/Tijdvakrelatie"
-    RsinOfAnnId:
-      type: "object"
-      description: ""
-      required:
-      - "ann_identificatie"
-      - "rsin"
-      properties:
-        ann_identificatie:
-          $ref: "#/components/schemas/IdentificatiePRSAlternatief"
-        rsin:
-          $ref: "#/components/schemas/IdentificatiePRS"
     Sluiting:
       type: "object"
       description: ""
@@ -12411,12 +12387,16 @@ components:
           $ref: "#/components/schemas/AanduidingEigenaarGebruiker"
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        adrestype:
+          $ref: "adresTypeEnum"
         inonderzoek:
           type: "array"
           items:
             $ref: "#/components/schemas/InOnderzoekWOZPRS"
         persoonsIdentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
+        identificatiePRStype:
+          $ref: "#/components/schemas/PersoonsIdentificatieEnum"
         terattentievan:
           type: "string"
           title: "terAttentieVan"
@@ -12609,6 +12589,13 @@ components:
       - "O"
       - "T"
       - "V"
+    AdresTypeEnum:
+      type: "string"
+      description: "Enumeratie om demoglijke adrestypen in het kader van polyformisme aan te geven. "
+      enum:
+      - "adresaanduiding"
+      - "adresbuitenland"
+      - "adrespostbusantwoordnummer"
     BeoordelingKenmerk:
       type: "string"
       description: "<body><ul><li>`` - 1</li><li>`` - 2</li><li>`` - 3</li><li>``\
@@ -13168,6 +13155,14 @@ components:
       - "L"
       - "R"
       - "T"
+    PersoonsIdentificatieEnum:
+      type: "string"
+      description: "Enumeratie voor het polyformisme van de persoonsidentificatie bij een relatie naar de persoon"
+      enum:
+      - "burgerservicenummer"
+      - "rsin"
+      - "annid"
+      - "anp_identificatie"
     PostadresType:
       type: "string"
       description: ""
