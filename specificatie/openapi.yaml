@@ -9163,7 +9163,7 @@ components:
         datumeindesynchronisatie:
           type: "string"
           title: "datumEindeSynchronisatie"
-          description: "<body><p>De LV WOZ bevat de actuele gegevens van de subjecten\
+          description: "<body><p>De LV WOZ bevat de actuele gegevens van de subjecten  \
             \ die als belanghebbende zijn gekoppeld aan Ã©Ã©n of meer WOZ-objecten.\
             \ Wanneer een subject niet langer belanghebbend is bij WOZ-objecten in\
             \ die gemeente, wordt met dit attribuut aangegeven dat de geregistreerde\
