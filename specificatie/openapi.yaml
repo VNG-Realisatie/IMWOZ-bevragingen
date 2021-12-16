@@ -10454,7 +10454,7 @@ components:
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
         adrestype:
-          $ref: "adresTypeEnum"
+          $ref: "#/components/schemas/AdresTypeEnum"
         persoonsidentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
         identificatiePRStype:
@@ -10583,7 +10583,7 @@ components:
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
         adrestype:
-          $ref: "adresTypeEnum"
+          $ref: "#/components/schemas/AdresTypeEnum"
         persoonIdentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
         identificatiePRStype:
@@ -10633,7 +10633,7 @@ components:
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
         adrestype:
-          $ref: "adresTypeEnum"
+          $ref: "#/components/schemas/AdresTypeEnum"
         persoonsIdentificatie:
           $ref: "#/components/schemas/Persoonsidentificatie"
         identificatiePRStype:
@@ -12388,7 +12388,7 @@ components:
         correspondentieadreswoz:
           $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
         adrestype:
-          $ref: "adresTypeEnum"
+          $ref: "#/components/schemas/AdresTypeEnum"
         inonderzoek:
           type: "array"
           items:
