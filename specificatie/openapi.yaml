@@ -668,122 +668,6 @@ paths:
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
       - Controleobjectkenmerken (CTL)
-  /dummies:
-    get:
-      operationId: Getdummies
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie biljetten retourneert.</p></body>"
-      parameters:
-        - in: query
-          name: statusbiljet
-          description: "<body><p>Een codering van de verschillende waarden die de status van een biljet gemeentelijke belastingen kan aannemen.</p></body>"
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: "Zoekactie geslaagd"
-          headers:
-            api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
-            warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
-            X-Pagination-Page:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
-            X-Pagination-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
-            X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
-            X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
-            X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/DummyHalCollectie'
-        '400':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
-        '401':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
-        '403':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
-        '406':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
-        '409':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
-        '410':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
-        '415':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
-        '429':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
-        '500':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
-        '501':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
-        '503':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
-        'default':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags:
-      - Zdummy
-  /dummies/{identificatie}:
-    get:
-      operationId: getdummy
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een biljet retourneert.</p></body>"
-      parameters:
-        - in: path
-          name: identificatie
-          description: ""
-          required: true
-          schema:
-            $ref: "#/components/schemas/Sleutel"
-      responses:
-        '200':
-          description: "Zoekactie geslaagd"
-          headers:
-            api-version:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
-            warning:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
-            X-Rate-Limit-Limit:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
-            X-Rate-Limit-Remaining:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
-            X-Rate-Limit-Reset:
-              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
-          content:
-            application/hal+json:
-              schema:
-                $ref: '#/components/schemas/DummyHal'
-        '400':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
-        '401':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
-        '403':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
-        '404':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
-        '406':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
-        '409':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
-        '410':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
-        '415':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
-        '429':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
-        '500':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
-        '501':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
-        '503':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
-        'default':
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
-      tags:
-      - Zdummy
   /erfpachten:
     get:
       operationId: Geterfpachten
@@ -4768,7 +4652,7 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
-      - Taxatie tdostuksprijzen (TAX stukprijzen objecten)
+      - Taxatie tdostuksprijzen (TAX stukprijzen deelobjecten)
   /transacties:
     get:
       operationId: Gettransacties
@@ -6604,50 +6488,6 @@ components:
           description: ""
           maxLength: 100
           minLength: 1
-    DummyHalCollectie:
-      type: "object"
-      properties:
-        _links:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks"
-        _embedded:
-          type: "object"
-          properties:
-            dummies:
-              type: "array"
-              items:
-                $ref: "#/components/schemas/DummyHal"
-    DummyHal:
-      allOf:
-      - $ref: "#/components/schemas/Dummy"
-      - type: "object"
-        properties:
-          _links:
-            $ref: "#/components/schemas/Dummy_links"
-    Dummy:
-      type: "object"
-      description: "<body><p>Deze entiteit wordt gebruikt om de gegevens bijeen te\
-        \ brengen die op het aanslagbiljet, waarop ook Ã©Ã©n of meer WOZ-beschikkingen\
-        \ worden afgedrukt, moeten worden weergegeven, zodat deze kunnen worden gecommuniceerd\
-        \ met een print/mail applicatie en een applicatie voor bekendmaking via internet\
-        \ (persoonlijke internetpagina). Gegevens over het aanslagbiljet (biljet gemeentelijke\
-        \ belastingen) zijn van belang voor de Basisregistratie WOZ (LV WOZ), omdat\
-        \ met behulp van dit aanslagbiljet de WOZ-beschikking (beschikkingsregels)\
-        \ bekend gemaakt worden. Daarmee vormt het aanslagbiljet het brondocument\
-        \ voor de WOZ-waarde. Wanneer door het biljet gemeentelijke belastingen Ã©\
-        Ã©n of meer beschikkingen worden vastgesteld dan wordt het gegeven 'identificatie'\
-        \ inclusief bijbehorende metagegevens (datum/dagtekening) gekopieerd naar\
-        \ de overeenkomstige gegevens binnen de relatieklasse WRDPRS.</p></body>"
-      required:
-      - "identificatie"
-      - "statusdummy"
-      properties:
-        identificatie:
-          $ref: "#/components/schemas/Sleutel"
-        statusdummy:
-          type: "integer"
-          title: "statusBiljet"
-          description: "<body><p>Een codering van de verschillende waarden die de\
-            \ status van een biljet gemeentelijke belastingen kan aannemen.</p></body>"
     ErfpachtHalCollectie:
       type: "object"
       properties:
@@ -9944,11 +9784,6 @@ components:
           items:
             $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
     ControleObjectkenmerken_links:
-      type: "object"
-      properties:
-        self:
-          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink"
-    Dummy_links:
       type: "object"
       properties:
         self:
