@@ -20,7 +20,7 @@ Bekijk de bestaande [issues](https://github.com/VNG-Realisatie/IMWOZ-bevragingen
 
 ## Bronnen
 
-* [Informatiemodel IMWOZ](https://rkathman.home.xs4all.nl/modellen/IMWOZ/IMWOZ.html)
+* [Informatiemodel IMWOZ](https://rkathman.home.xs4all.nl/IMWOZ/IMWOZ.html)
 * [REST API Design Rules](https://docs.geostandaarden.nl/api/API-Designrules/)
 * [Landelijke API strategie voor de overheid](https://geonovum.github.io/KP-APIs/)
 * [Stelselcatalogus](https://www.stelselcatalogus.nl/registraties/registratie?id=http://opendata.stelselcatalogus.nl/id/registratie/WOZ)
