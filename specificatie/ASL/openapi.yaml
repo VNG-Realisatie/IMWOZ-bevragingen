@@ -1,1 +1,660 @@
-In ontwikkeling
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_aanslagregels/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_aanslagregels/v1
+info:
+  title: BG IMWOZ Aanslagregels
+  description: ""
+  version: "1.0.0"
+  x-imvertor-generator-version: "1.65.4"
+  x-yamlCompiler-stylesheets-version: "20220110"
+  contact:
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /aanslagregels:
+    get:
+      operationId: getaanslagregels
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een aanslagregel retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: belastingsoort
+          description: "<body><p>Met deze code wordt aangegeven op welke soort belasting deze aanslag betrekking heeft. Voorbeelden van soorten belasting zijn: Onroerende-zaakbelasting (eigenaar), afvalstoffenheffing, rioolheffing, precariobelasting etc.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 30
+        - in: query
+          name: begindatumHeffingstijdvak
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: einddatumHeffingstijdvak
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: identificatieBeschikking
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
+          name: identificatiePersoon
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: identificatiePersoonType
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/IdentificatiePersoonType"
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: statusAanslag
+          description: "<body><p>Met deze code kan bijvoorbeeld worden aangegeven of de aanslag is opgelegd, onder bezwaar is, of is vernietigd. Voor uniformering kan nog worden overwogen voor dit attribuut een enumeratie te definiëren.</p></body>"
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: statusBetaling
+          description: "<body><p>Met deze code kan worden aangegeven of de aanslag nog betaald moet worden, volledig betaald is of deels betaald is (automatische incasso). Voor uniformering kan nog worden overwogen voor dit attribuut een enumeratie te definiëren.</p></body>"
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AanslagregelHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Aanslagregels (ASL)
+  /aanslagregels/{identificatie}:
+    get:
+      operationId: getaanslagregel
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een aanslagregel retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: identificatie
+          description: "<body><p>Dit domein maakt het mogelijk om gebruik te maken van systemen voor toekennen van unieke identificaties zoals UUID's.</p></body>"
+          required: true
+          schema:
+            $ref: "#/components/schemas/Sleutel"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/AanslagregelHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Aanslagregels (ASL)
+components:
+  schemas:
+    AanslagregelHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            Aanslagregels:
+              type: array
+              items:
+                $ref: '#/components/schemas/AanslagregelHal'
+    AanslagregelHal:
+      allOf:
+      - $ref: '#/components/schemas/Aanslagregel'
+      - type: object
+        properties:
+          _links:
+            $ref: '#/components/schemas/Aanslagregel_links'
+    Aanslagregel:
+      type: object
+      description: <body><p>Deze entiteit wordt gebruikt om de gegevens voor het aanslagbiljet
+        te communiceren met de applicatie voor het massaal printen van aanslagbiljetten
+        of voor het weergeven van het aanslagbiljet op de persoonlijke internetpagina
+        van de belanghebbende. De gegevens over de aanslagregel zijn van belang voor
+        dit IMWOZ, omdat deze aanslagregels gelijktijdig worden gecommuniceerd met
+        de beschikkingsregels. Op basis van dit IMWOZ moet ook helder zijn hoe de
+        gegevens over de bekendmaking van de WOZ-beschikking op het aanslagbiljet
+        gemeentelijke belastingen gecommuniceerd kunnen worden ten behoeve van de
+        print/mailvoorzieningen en ten behoeve van de presentatie op internet (persoonlijke
+        internetpagina). Gemodelleerd zijn alleen de algemene gegevens voor de aanslagregel
+        en de relaties die nodig zijn voor de OZB aanslagen welke gebaseerd zijn op
+        een WOZ beschikking. Voor andere belastingsoorten, bijvoorbeeld afvalstoffenheffing,
+        kan het nodig zijn in de modellering nog relaties aan te brengen naar bijvoorbeeld
+        een verblijfsobject. Er is een switch die bepaald of enerzijds de attributen
+        'Heffingsmaatstaf' en 'Tariefpercentage' gebruikt worden of anderzijds de
+        attributen 'Aantal eenheden' en 'Tarief per eenheid'.</p></body>
+      required:
+      - aslprs
+      - bedragAanslag
+      - belastingsoort
+      - berekeningMetPercentageOfberekeningPerEenheid
+      - identificatie
+      - statusAanslag
+      - statusBetaling
+      - tariefsoort
+      properties:
+        aslbsk:
+          $ref: '#/components/schemas/Aslbsk'
+        aslprs:
+          $ref: '#/components/schemas/Aslprs'
+        bedragAanslag:
+          type: number
+          title: bedragAanslag
+          description: <body><p>De gegevens over de aanslagregel zijn van belang voor
+            dit IMWOZ, omdat deze aanslagregels gelijktijdig worden gecommuniceerd
+            met de beschikkingsregels. Op basis van deze catalogus moet ook helder
+            zijn hoe de gegevens over de bekendmaking van de WOZ-beschikking op het
+            aanslagbiljet gemeentelijke belastingen gecommuniceerd kunnen worden ten
+            behoeve van de print/mailvoorzieningen en ten behoeve van de presentatie
+            op internet (persoonlijke internetpagina).</p></body>
+        belastingsoort:
+          type: string
+          title: belastingsoort
+          description: '<body><p>Met deze code wordt aangegeven op welke soort belasting
+            deze aanslag betrekking heeft. Voorbeelden van soorten belasting zijn:
+            Onroerende-zaakbelasting (eigenaar), afvalstoffenheffing, rioolheffing,
+            precariobelasting etc.</p></body>'
+          maxLength: 30
+          minLength: 1
+        berekeningMetPercentageOfberekeningPerEenheid:
+          $ref: '#/components/schemas/BerekeningMetPercentageOfberekeningPerEenheid'
+        heffingsTijdvak:
+          $ref: '#/components/schemas/HeffingsTijdvak'
+        identificatie:
+          $ref: '#/components/schemas/Sleutel'
+        statusAanslag:
+          type: integer
+          title: statusAanslag
+          description: <body><p>Met deze code kan bijvoorbeeld worden aangegeven of
+            de aanslag is opgelegd, onder bezwaar is, of is vernietigd. Voor uniformering
+            kan nog worden overwogen voor dit attribuut een enumeratie te definiëren.</p></body>
+        statusBetaling:
+          type: integer
+          title: statusBetaling
+          description: <body><p>Met deze code kan worden aangegeven of de aanslag
+            nog betaald moet worden, volledig betaald is of deels betaald is (automatische
+            incasso). Voor uniformering kan nog worden overwogen voor dit attribuut
+            een enumeratie te definiëren.</p></body>
+        tariefsoort:
+          type: string
+          title: tariefsoort
+          description: '<body><p>Met deze code wordt aangegeven welke tarief van toepassing
+            is binnen de betreffende belastingsoort. Voorbeelden van diverse tariefsoort
+            binnen één belasting zijn: verschillend tarief voor woningen en nietwoningen
+            bij OZB-eigenaren, verschillend tarief voor eerste en volgende hond bij
+            hondenbelasting etc. Voor uniformering kan nog worden overwogen voor dit
+            attribuut een enumeratie te definierëren.</p></body>'
+          maxLength: 4
+          minLength: 1
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ""
+          format: date-time
+    Aanslagregel_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        isGebaseerdOp:
+          allOf:
+          - title: isGebaseerdOp
+            type: object
+            description: <body><p>Relatie tussen aanslagregel en bijbehorende beschikking.</p></body>
+          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    AdresBagPlusLocatieOmschrijving:
+      type: object
+      description: ""
+      required:
+      - huisletter
+      - huisnummer
+      - huisnummertoevoeging
+      - locatieomschrijving
+      - openbareRuimteNaam
+      - postcode
+      - woonplaatsnaam
+      properties:
+        huisletter:
+          type: string
+          title: huisletter
+          description: ""
+          pattern: ^[a-zA-Z]$
+          maxLength: 1
+        huisnummer:
+          type: integer
+          title: huisnummer
+          description: ""
+        huisnummertoevoeging:
+          type: string
+          title: huisnummertoevoeging
+          description: ""
+          pattern: ^[a-zA-Z0-9]{1,4}$
+          maxLength: 4
+        identificatieNummeraanduiding:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        locatieomschrijving:
+          type: string
+          title: locatieomschrijving
+          description: <body><p>Indien aan een WOZ-object geen unieke aanduiding kan
+            worden gegeven door gebruik te maken van het hoofdadres van een in het
+            WOZ-object betrokken verblijfsobject, standplaats of ligplaats, wordt
+            een unieke aanduiding verkregen door een `authentiek` adres dan wel woonplaatsnaam
+            en straatnaam te combineren met een locatieomschrijving. De verschillende
+            vormen die de unieke aanduiding van een WOZ-object, zoals vermeld wordt
+            op de WOZ-beschikking, kan aannemen en de eventuele rol van de locatieomschrijving
+            daarbij, staat in de toelichting op de Gegevensgroep aanduidingWOZobject.
+            In het adres van een persoon kan hier de locatieomschrijving uit de BRP
+            worden opgenomen of overeenkomstig de werkwijze van de BRP dit veld worden
+            gevuld voor personen die niet uit de BRP kunnen worden overgenomen. Voor
+            adressen van niet-natuurlijke personen kan hier, eventueel in afgekorte
+            vorm, het gegeven toevoegingAdres uit het Handelsregister worden overgenomen.</p></body>
+          maxLength: 40
+          minLength: 1
+        openbareRuimteNaam:
+          type: string
+          title: openbareRuimteNaam
+          description: ""
+          maxLength: 80
+          minLength: 1
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        straatnaam:
+          type: string
+          title: straatnaam
+          description: <body><p>Als de lengte van de openbareRuimteNaam kleiner of
+            gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk.
+            Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen
+            het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook
+            als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>
+          maxLength: 24
+          minLength: 1
+        woonplaatsnaam:
+          type: string
+          title: woonplaatsnaam
+          description: ""
+          maxLength: 80
+          minLength: 1
+    AdresBuitenland:
+      type: object
+      description: ""
+      required:
+      - adresBuitenland1
+      - adresBuitenland2
+      - land
+      properties:
+        adresBuitenland1:
+          type: string
+          title: adresBuitenland1
+          description: ""
+          maxLength: 35
+          minLength: 1
+        adresBuitenland2:
+          type: string
+          title: adresBuitenland2
+          description: ""
+          maxLength: 35
+          minLength: 1
+        adresBuitenland3:
+          type: string
+          title: adresBuitenland3
+          description: ""
+          maxLength: 35
+          minLength: 1
+        land:
+          allOf:
+          - $ref: '#/components/schemas/Land'
+          - title: land
+            description: ""
+    AdresPostbusAntwoordnummer:
+      type: object
+      description: ""
+      required:
+      - postbusOfAntwoordnummer
+      - postcode
+      - type
+      - woonplaatsnaam
+      properties:
+        postbusOfAntwoordnummer:
+          type: integer
+          title: postbusOfAntwoordnummer
+          description: ""
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        type:
+          $ref: '#/components/schemas/PostadresType'
+        woonplaatsnaam:
+          type: string
+          title: woonplaatsnaam
+          description: ""
+          maxLength: 80
+          minLength: 1
+    Aslbsk:
+      type: object
+      description: ""
+      required:
+      - identificatieBeschikking
+      - tijdvakRelatie
+      properties:
+        identificatieBeschikking:
+          $ref: '#/components/schemas/Sleutel'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Aslprs:
+      type: object
+      description: ""
+      required:
+      - correspondentieAdresWOZ
+      - identificatiePersoon
+      - identificatieVestiging
+      properties:
+        aanduidingAfdelingOfComplex:
+          type: string
+          title: aanduidingAfdelingOfComplex
+          description: <body><p>Het attribuut 'aanduiding afdelingOfComplex' maakt
+            het mogelijk om voor belanghebbende met een groot aantal WOZ-objecten
+            een onderverdeling te maken. Hierdoor kunnen bijvoorbeeld WOZ-objecten
+            gekoppeld worden aan de `afdeling Sport` van een gemeente, of kunnen een
+            groep woningen van een woningcooperatie als één complex worden aangeduid.</p></body>
+          maxLength: 50
+          minLength: 1
+        correspondentieAdresWOZ:
+          $ref: '#/components/schemas/KeuzeAdresBinnenBuitenland'
+        identificatiePersoon:
+          oneOf:
+            - $ref: '#/components/schemas/IdentificatiePRS'
+            - $ref: '#/components/schemas/IdentificatiePRSAlternatief'
+        identificatieVestiging:
+          $ref: '#/components/schemas/Sleutel'
+        terAttentieVan:
+          type: string
+          title: terAttentieVan
+          description: ""
+          maxLength: 50
+          minLength: 1
+    BerekeningMetPercentage:
+      type: object
+      description: ""
+      required:
+      - heffingsmaatstaf
+      - tariefPercentage
+      properties:
+        heffingsmaatstaf:
+          type: number
+          title: heffingsmaatstaf
+          description: <body><p>Voor diverse belastingen wordt de te betalen belasting
+            afgeleid van een bedrag. De te betalen OZB wordt afgeleid van de (WOZ-)
+            waarde, de te betalen bouwleges, vaak van de stichtingskosten etc. Dit
+            gegeven is niet voor alle gemeentelijke belastingen van betekenis.</p></body>
+        tariefPercentage:
+          type: number
+          title: tariefPercentage
+          description: <body><p>Met dit percentage wordt het bedrag van de aanslag
+            berekend. Vanaf 2009 wordt het tarief voor de OZB berekend als een percentage
+            van de heffingsmaatstaf. Dat geldt ook voor andere gemeentelijke belastingen
+            en heffingen.</p></body>
+    BerekeningMetPercentageOfberekeningPerEenheid:
+      oneOf:
+        - $ref: '#/components/schemas/BerekeningMetPercentage'
+        - $ref: '#/components/schemas/BerekeningPerEenheid'
+    BerekeningPerEenheid:
+      type: object
+      description: ""
+      required:
+      - aantalEenheden
+      - tariefPerEenheid
+      properties:
+        aantalEenheden:
+          type: integer
+          title: aantalEenheden
+          description: <body><p>Door het aantal eenheden te vermenigvuldigen met het
+            tarief per eenheid (vast bedrag) wordt het bedrag van de aanslag berekend.</p></body>
+        tariefPerEenheid:
+          type: number
+          title: tariefPerEenheid
+          description: ""
+    HeffingsTijdvak:
+      type: object
+      description: ""
+      required:
+      - begindatum
+      - einddatum
+      properties:
+        begindatum:
+          type: string
+          title: begindatum
+          description: ""
+          format: date
+        einddatum:
+          type: string
+          title: einddatum
+          description: ""
+          format: date
+    IdentificatiePersoon:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          burgerservicenummer: '#/components/schemas/IdentificatiePRS'
+          anpId: '#/components/schemas/IdentificatiePRSAlternatief'
+          rsin: '#/components/schemas/IdentificatiePRS'
+          annId: '#/components/schemas/IdentificatiePRSAlternatief'
+    IdentificatiePRS:
+      allOf:
+        - $ref: "#/components/schemas/IdentificatiePersoon"
+        - type: object
+          properties:
+            identificatiePRS:
+              type: string
+              description: <body><p>Unieke aanduiding van een persoon die is overgenomen uit de BRP of het Handelsregister. Zowel burgerservicenummer als RSIN hebben verplichte vaste lengte van 9 posities eventueel met voorloopnullen en voldoen aan de 11-proef.</p></body>
+              pattern: ^[0-9]{9}$
+    IdentificatiePRSAlternatief:
+      allOf:
+        - $ref: "#/components/schemas/IdentificatiePersoon"
+        - type: object
+          properties:
+            identificatiePRSAlternatief:
+              type: string
+              description: <body><p>Unieke aanduiding van een persoon die niet is ingeschreven in de BRP of het Handelsregister. Zowel anp.Identificatie en ann.Identificatie hebben een verplichte vaste lengte van 17 posities eventueel met voorloopnullen. De eerste vier posities zijn de gemeentecode van de gemeente die verantwoordelijk is van de registratie van deze persoon als WOZ-belanghebbende.</p></body>
+              pattern: ^[0-9]{17}$
+    KeuzeAdresBinnenBuitenland:
+      type: object
+      description: ""
+      required:
+      - adresAanduiding
+      - adresBuitenland
+      - adresPostbusAntwoordnummer
+      properties:
+        adresAanduiding:
+          $ref: '#/components/schemas/AdresBagPlusLocatieOmschrijving'
+        adresBuitenland:
+          $ref: '#/components/schemas/AdresBuitenland'
+        adresPostbusAntwoordnummer:
+          $ref: '#/components/schemas/AdresPostbusAntwoordnummer'
+    Land:
+      type: object
+      description: ""
+      required:
+      - code
+      - ingangsdatum
+      - naam
+      properties:
+        code:
+          type: string
+          title: code
+          description: ""
+          minLength: 1
+        einddatum:
+          type: string
+          title: einddatum
+          description: ""
+          format: date
+        ingangsdatum:
+          type: string
+          title: ingangsdatum
+          description: ""
+          format: date
+        naam:
+          type: string
+          title: naam
+          description: ""
+          minLength: 1
+    TijdvakRelatie:
+      type: object
+      description: ""
+      required:
+      - beginRelatie
+      - eindRelatie
+      properties:
+        beginRelatie:
+          type: string
+          title: beginRelatie
+          description: ""
+          format: date
+        eindRelatie:
+          type: string
+          title: eindRelatie
+          description: ""
+          format: date
+    IdentificatiePersoonType:
+      type: string
+      description: ""
+      enum:
+      - anpId
+      - burgerservicenummer
+      - rsin
+      - annId
+    PostadresType:
+      type: string
+      description: ""
+      enum:
+      - A
+      - P
+    IdentificatieBAG:
+      type: string
+      description: '<body><p>Combinatie van (viercijferig) subdomein `gemeentecodering`
+        (volgens GBA tabel 33), het (tweecijferig) subdomein `objecttypecode` en een
+        voor het betreffende objecttype binnen een gemeente uniek (tiencijferig) subdomein
+        `objectvolgnummer`. Objecttypecode: een code waarmee het objecttype van een
+        object wordt aangegeven. Deze codering maakt onderdeel uit van de unieke objectaanduiding.
+        Het is met name bedoeld om objecten van verschillende adresseerbare objecttypen
+        uniek van elkaar te kunnen onderscheiden. Waardeverzameling domein: 01: verblijfsobject;
+        02: ligplaats; 03: standplaats; 10: pand en 20: nummeraanduiding. Objectvolgnummer:
+        een uniek volgnummer waarmee een object van een bepaald type binnen een gemeente
+        kan worden aangeduid. Indien een `objectvolgnummer` uit minder dan tien posities
+        bestaat, dan dient deze ten behoeve van de uitwisseling te worden aangevuld
+        met voorloopnullen. De van de objectnummering onderdeel uitmakende gemeentecode
+        kan niet worden gebruikt om te bepalen binnen welke gemeente een object is
+        gelegen. Waardeverzameling domein: Alle natuurlijke getallen tussen 0 en 9.999.999.999.</p></body>'
+      pattern: ^[0-9]{16}$
+    Postcode:
+      type: string
+      description: ""
+      pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+    Sleutel:
+      type: string
+      description: ""
+      maxLength: 40
+      minLength: 1
