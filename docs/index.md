@@ -12,7 +12,8 @@ Een API die naast de nieuwe versie van StUFWoz wordt ontwikkeld om vanuit vak-ap
 **Proef-implementaties (en terugkoppeling van de bevindingen daaruit) zijn uiteraard wel mogelijk, maar de specificatie kan op dag-basis wijzigen.**
 **Als er een eerste stabiel versie is wordt daar een release van aangemaakt en wordt dit op deze plek (en via andere communicatie-lijnen) gedeeld.**
 
-De Specificatie van de betreffende API is de bekijken in [Swagger UI](./swagger-ui) of [Redoc](.redoc)
+De Specificatie van de betreffende API's zijn op de volgende locaties te bekijken :
+ - Aanslagregels-API in [Swagger-UI](./ASL-swagger-ui) of [Redoc](./ASL-redoc)
 
 Bekijk de [release notes](./releasenotes).
 
