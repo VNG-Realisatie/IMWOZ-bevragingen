@@ -10,6 +10,8 @@ Een set API's die naast de nieuwe versie van StUFWoz worden ontwikkeld om vanuit
 De Specificatie van de betreffende API's zijn op de volgende locaties te bekijken :
  - Aanslagregels-API in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/ASL-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/ASL-redoc) --- [technische specificaties](specificatie/ASL/openapi.yaml)
  - Biljetten-API in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/BLJ-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/BLJ-redoc) --- [technische specificaties](specificatie/BLJ/openapi.yaml)
+ - BAG-objecten in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/BAG-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/BAG-redoc) --- [technische specificaties](specificatie/BAG/openapi.yaml)
+
 
 Bekijk de [release notes](./releasenotes).
 
