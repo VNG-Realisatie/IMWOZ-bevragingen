@@ -22,19 +22,19 @@ paths:
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een aanslagregel retourneert.</p></body>"
       parameters:
         - in: query
-          name: belastingsoort
-          description: "<body><p>Met deze code wordt aangegeven op welke soort belasting deze aanslag betrekking heeft. Voorbeelden van soorten belasting zijn: Onroerende-zaakbelasting (eigenaar), afvalstoffenheffing, rioolheffing, precariobelasting etc.</p></body>"
-          required: false
-          schema:
-            type: string
-            maxLength: 30
-        - in: query
           name: begindatumHeffingstijdvak
           description: ""
           required: false
           schema:
             type: string
             format: date
+        - in: query
+          name: belastingsoort
+          description: "<body><p>Met deze code wordt aangegeven op welke soort belasting deze aanslag betrekking heeft. Voorbeelden van soorten belasting zijn: Onroerende-zaakbelasting (eigenaar), afvalstoffenheffing, rioolheffing, precariobelasting etc.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 30
         - in: query
           name: einddatumHeffingstijdvak
           description: ""
@@ -52,7 +52,7 @@ paths:
             minLength: 1
         - in: query
           name: identificatiePersoon
-          description: ""
+          description: "<body><p>Als de identificatiePersoon parameter gevuld wordt dan MOET de identificatiePersoonType parameter ook geveuld worden.</p></body>"
           required: false
           schema:
             type: string
@@ -294,11 +294,23 @@ components:
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        isGebaseerdOp:
+        beschikkingen:
           allOf:
           - title: isGebaseerdOp
             type: object
             description: <body><p>Relatie tussen aanslagregel en bijbehorende beschikking.</p></body>
+          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        personen:
+          allOf:
+          - title: isVoor
+            type: object
+            description: ""
+          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        vestigingen:
+          allOf:
+          - title: communiceertvia
+            type: object
+            description: ""
           - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     AdresBagPlusLocatieOmschrijving:
       type: object
