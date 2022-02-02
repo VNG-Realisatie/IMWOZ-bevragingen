@@ -6,21 +6,22 @@ title: Ontwikkelversie IMWOZ-bevragingen
 # IMWOZ-bevragingen
 
 Deze repository ondersteunt de ontwikkeling van de binnengemeentelijk IMWOZ-bevragingen.
-Een API die naast de nieuwe versie van StUFWoz wordt ontwikkeld om vanuit vak-applicaties gegevens op te kunnen vragen bij de WOZ-registratie, de taxatie-registratie of een andere relevante binnengemeentelijke gegevensopslag in het kader van de WOZ.
+Een set API's die naast de nieuwe versie van StUFWoz worden ontwikkeld om vanuit vak-applicaties gegevens op te kunnen vragen bij de WOZ-registratie, de taxatie-registratie of een andere relevante binnengemeentelijke gegevensopslag in het kader van de WOZ.
 
-**Deze API is in ontwikkeling !! Op dit ogenblik is de API nog niet volwassen genoeg om ingebouwd te worden in productie-software.**
+**Deze API's zijn in ontwikkeling !! Op dit ogenblik zijn de API's nog niet volwassen genoeg om ingebouwd te worden in productie-software.**
 **Proef-implementaties (en terugkoppeling van de bevindingen daaruit) zijn uiteraard wel mogelijk, maar de specificatie kan op dag-basis wijzigen.**
 **Als er een eerste stabiel versie is wordt daar een release van aangemaakt en wordt dit op deze plek (en via andere communicatie-lijnen) gedeeld.**
 
 De Specificatie van de betreffende API's zijn op de volgende locaties te bekijken :
- - Aanslagregels-API in [Swagger-UI](./ASL-swagger-ui) of [Redoc](./ASL-redoc)
+ - Aanslagregels-API in [Swagger-UI](./ASL-swagger-ui) of [Redoc](./ASL-redoc) --- [technische specificaties](./specificatie/ASL/openapi.yaml)
+ - Biljetten-API in [Swagger-UI](./BLJ-swagger-ui) of [Redoc](./BLJ-redoc) --- [technische specificaties](./specificatie/BLJ/openapi.yaml)
 
 Bekijk de [release notes](./releasenotes).
 
 ## Meedenken met de ontwikkelingen?
 
-* Bekijk de specificaties met [Swagger UI](./swagger-ui) of [Redoc](.redoc)
-* Download de [technische specificaties](./specificatie/openapi.yaml)
+* Bekijk de specificaties
+* Download de technische specificaties. 
 
 Bekijk de bestaande [issues](./issues) en lever een bijdrage aan de discussie. Breng eventeel een nieuw issue in als een onderwerp nog niet geadresseerd is.
 
