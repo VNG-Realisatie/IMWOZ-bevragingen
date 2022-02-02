@@ -1,0 +1,1341 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_bag/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_bag/v1
+info:
+  title: BG IMWOZ BAG
+  description: ""
+  version: "1.0.0"
+  x-imvertor-generator-version: "1.65.4"
+  x-yamlCompiler-stylesheets-version: "20220110"
+  contact:
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /ligplaatsen:
+    get:
+      operationId: Getligplaatsen
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie ligplaatsen retourneert.</p></body>"
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
+        - in: query
+          name: huisletter
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: huisnummer
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: huisnummertoevoeging
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: identificatieNummeraanduiding
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: openbareRuimteNaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+        - in: query
+          name: postcode
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+        - in: query
+          name: statusLigplaats
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/StatusLigplaats"
+        - in: query
+          name: straatnaam
+          description: "<body><p>Als de lengte van de openbareRuimteNaam kleiner of gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk. Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 24
+        - in: query
+          name: woonplaatsnaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/LigplaatsHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '412':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/412"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - (BAG)
+  /ligplaatsen/{identificatie}:
+    get:
+      operationId: getligplaats
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een ligplaats retourneert.</p></body>"
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/IdentificatieBAG"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/LigplaatsHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '412':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/412"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - (BAG)
+  /nummeraanduidingen:
+    get:
+      operationId: Getnummeraanduidingen
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie nummeraanduidingen retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: huisletter
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: huisnummer
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: openbareRuimteNaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+        - in: query
+          name: postcode
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+        - in: query
+          name: straatnaam
+          description: "<body><p>Als de lengte van de openbareRuimteNaam kleiner of gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk. Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 24
+        - in: query
+          name: tijdstipRegistratie
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: woonplaatsnaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/NummeraanduidingHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - (BAG)
+  /nummeraanduidingen/{identificatie}:
+    get:
+      operationId: getnummeraanduiding
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een nummeraanduiding retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/IdentificatieBAG"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/NummeraanduidingHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - (BAG)
+  /panden/{identificatie}:
+    get:
+      operationId: getpand
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een pand retourneert.</p></body>"
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/IdentificatieBAG"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/PandHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '412':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/412"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - (BAG)
+  /standplaatsen:
+    get:
+      operationId: Getstandplaatsen
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie standplaatsen retourneert.</p></body>"
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
+        - in: query
+          name: huisletter
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: huisnummer
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: huisnummertoevoeging
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: identificatieNummeraanduiding
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: openbareRuimteNaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+        - in: query
+          name: postcode
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+        - in: query
+          name: statusStandplaats
+          description: "<body><p>De fase van de levenscyclus van een standplaats. De basisregistratie gebouwen bevat niet uitsluitend gegevens over daadwerkelijk aanwezige ligplaatsen, standplaatsen en verblijfsobjecten (adresseerbare objecten), maar ook gegevens over ingetrokken adresseerbare objecten, nog tot stand te brengen adresseerbare objecten en verdwenen adresseerbare objecten. Om het onderscheid tussen de stadia in de levenscyclus van het object te kunnen maken, wordt gebruik gemaakt van dit statusgegeven. Een statusaanduiding kent een limitatief karakter en kan uitsluitend een van de genoemde waarden aannemen</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/StatusStandplaats"
+        - in: query
+          name: straatnaam
+          description: "<body><p>Als de lengte van de openbareRuimteNaam kleiner of gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk. Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 24
+        - in: query
+          name: woonplaatsnaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/StandplaatsHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '412':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/412"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - (BAG)
+  /standplaatsen/{identificatie}:
+    get:
+      operationId: getstandplaats
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een standplaats retourneert.</p></body>"
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/IdentificatieBAG"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/StandplaatsHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '412':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/412"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - (BAG)
+  /verblijfsobjecten:
+    get:
+      operationId: Getverblijfsobjecten
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie verblijfsobjecten retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: gebruiksdoel
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/Gebruiksdoeleinden"
+        - in: query
+          name: huisletter
+          description: ""
+          required: true
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: huisnummer
+          description: ""
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: huisnummertoevoeging
+          description: ""
+          required: true
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: identificatieNummeraanduiding
+          description: ""
+          required: true
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: identificatiePand
+          description: ""
+          required: true
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: openbareRuimteNaam
+          description: ""
+          required: true
+          schema:
+            type: string
+            maxLength: 80
+        - in: query
+          name: postcode
+          description: ""
+          required: true
+          schema:
+            type: string
+            pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+        - in: query
+          name: statusVerblijfsobject
+          description: "<body><p>De fase van de levenscyclus van een verblijfsobject. De basisregistratie gebouwen bevat niet uitsluitend gegevens over daadwerkelijk aanwezige ligplaatsen, standplaatsen en verblijfsobjecten (adresseerbare objecten), maar ook gegevens over ingetrokken adresseerbare objecten, nog tot stand te brengen adresseerbare objecten en verdwenen adresseerbare objecten. Om het onderscheid tussen de stadia in de levenscyclus van het object te kunnen maken, wordt gebruik gemaakt van dit statusgegeven. Een statusaanduiding kent een limitatief karakter en kan uitsluitend een van de genoemde waarden aannemen</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/StatusVerblijfsobject"
+        - in: query
+          name: straatnaam
+          description: "<body><p>Als de lengte van de openbareRuimteNaam kleiner of gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk. Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>"
+          required: true
+          schema:
+            type: string
+            maxLength: 24
+        - in: query
+          name: woonplaatsnaam
+          description: ""
+          required: true
+          schema:
+            type: string
+            maxLength: 80
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/VerblijfsobjectHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - (BAG)
+  /verblijfsobjecten/{identificatie}:
+    get:
+      operationId: getverblijfsobject
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een verblijfsobject retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/IdentificatieBAG"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/VerblijfsobjectHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - (BAG)
+components:
+  schemas:
+    LigplaatsHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            ?
+            : type: array
+              items:
+                $ref: '#/components/schemas/LigplaatsHal'
+    LigplaatsHal:
+      allOf:
+      - $ref: '#/components/schemas/Ligplaats'
+      - type: object
+        properties:
+          _links:
+            $ref: '#/components/schemas/Ligplaats_links'
+    Ligplaats:
+      allOf:
+      - $ref: '#/components/schemas/AdresseerbaarObject'
+      - type: object
+        description: <body><p>LIG is een subtype van AOT (Adresseerbaar object). De
+          attributen en relaties die LIG gemeenschappelijk heeft met STA (Standplaats)
+          en VBO (Verblijfsobject), zijn gespecificeerd bij AOT (Adresseerbaar object).</p></body>
+        required:
+        - statusLigplaats
+        - vlakGeometrie
+        properties:
+          inOnderzoek:
+            type: array
+            items:
+              $ref: '#/components/schemas/InOnderzoekLIG'
+          statusLigplaats:
+            $ref: '#/components/schemas/StatusLigplaats'
+          vlakGeometrie:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon
+    NummeraanduidingHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            ?
+            : type: array
+              items:
+                $ref: '#/components/schemas/NummeraanduidingHal'
+    NummeraanduidingHal:
+      allOf:
+      - $ref: '#/components/schemas/Nummeraanduiding'
+      - type: object
+        properties:
+          _links:
+            $ref: '#/components/schemas/Nummeraanduiding_links'
+    Nummeraanduiding:
+      type: object
+      description: ""
+      required:
+      - huisletter
+      - huisnummer
+      - huisnummertoevoeging
+      - identificatie
+      - openbareRuimteNaam
+      - postcode
+      - straatnaam
+      - tijdstipRegistratie
+      - woonplaatsnaam
+      properties:
+        huisletter:
+          type: string
+          title: huisletter
+          description: ""
+          pattern: ^[a-zA-Z]$
+          maxLength: 1
+        huisnummer:
+          type: integer
+          title: huisnummer
+          description: ""
+        huisnummertoevoeging:
+          type: string
+          title: huisnummertoevoeging
+          description: ""
+          pattern: ^[a-zA-Z0-9]{1,4}$
+          maxLength: 4
+        identificatie:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        inOnderzoek:
+          type: array
+          items:
+            $ref: '#/components/schemas/InOnderzoekNUM'
+        openbareRuimteNaam:
+          type: string
+          title: openbareRuimteNaam
+          description: ""
+          maxLength: 80
+          minLength: 1
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        straatnaam:
+          type: string
+          title: straatnaam
+          description: <body><p>Als de lengte van de openbareRuimteNaam kleiner of
+            gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk.
+            Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen
+            het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook
+            als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>
+          maxLength: 24
+          minLength: 1
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ""
+          format: date-time
+        woonplaatsnaam:
+          type: string
+          title: woonplaatsnaam
+          description: ""
+          maxLength: 80
+          minLength: 1
+    PandHal:
+      allOf:
+      - $ref: '#/components/schemas/Pand'
+      - type: object
+        properties:
+          _links:
+            $ref: '#/components/schemas/Pand_links'
+    Pand:
+      type: object
+      description: ""
+      required:
+      - bouwjaar
+      - einddatumObject
+      - identificatie
+      - ingangsdatumObject
+      - pandGeometrie
+      - status
+      - tijdstipRegistratie
+      properties:
+        bouwjaar:
+          type: integer
+          title: bouwjaar
+          description: ""
+          format: date_fullyear
+          pattern: ^[1-2]{1}[0-9]{3}$
+        einddatumObject:
+          type: string
+          title: einddatumObject
+          description: ""
+          format: date
+        identificatie:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        inOnderzoek:
+          type: array
+          items:
+            $ref: '#/components/schemas/InOnderzoekPND'
+        ingangsdatumObject:
+          type: string
+          title: ingangsdatumObject
+          description: ""
+          format: date
+        pandGeometrie:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon
+        status:
+          $ref: '#/components/schemas/StatusPand'
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ""
+          format: date-time
+    StandplaatsHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            ?
+            : type: array
+              items:
+                $ref: '#/components/schemas/StandplaatsHal'
+    StandplaatsHal:
+      allOf:
+      - $ref: '#/components/schemas/Standplaats'
+      - type: object
+        properties:
+          _links:
+            $ref: '#/components/schemas/Standplaats_links'
+    Standplaats:
+      allOf:
+      - $ref: '#/components/schemas/AdresseerbaarObject'
+      - type: object
+        description: <body><p>STA is een subtype van AOT (Adresseerbaar object). De
+          attributen en relaties die STA gemeenschappelijk heeft met LIG (Ligplaats)
+          en VBO (Verblijfsobject) zijn gespecificeerd bij AOT (Adresseerbaar object).</p></body>
+        required:
+        - statusStandplaats
+        - vlakGeometrie
+        properties:
+          inOnderzoek:
+            type: array
+            items:
+              $ref: '#/components/schemas/InOnderzoekSTA'
+          statusStandplaats:
+            $ref: '#/components/schemas/StatusStandplaats'
+          vlakGeometrie:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon
+    VerblijfsobjectHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            ?
+            : type: array
+              items:
+                $ref: '#/components/schemas/VerblijfsobjectHal'
+    VerblijfsobjectHal:
+      allOf:
+      - $ref: '#/components/schemas/Verblijfsobject'
+      - type: object
+        properties:
+          _links:
+            $ref: '#/components/schemas/Verblijfsobject_links'
+    Verblijfsobject:
+      allOf:
+      - $ref: '#/components/schemas/AdresseerbaarObject'
+      - type: object
+        description: <body><p>VBO is een subtype van AOT (Adresseerbaar object). De
+          attributen en relaties die VBO gemeenschappelijk heeft met LIG (Ligplaats)
+          en STA (Standplaats) zijn gespecificeerd bij AOT (Adresseerbaar object).</p></body>
+        required:
+        - gebruiksdoel
+        - oppervlakte
+        - statusVerblijfsobject
+        - vBOGeometrie
+        - vbopnd
+        properties:
+          gebruiksdoel:
+            type: array
+            items:
+              $ref: '#/components/schemas/Gebruiksdoeleinden'
+          inOnderzoek:
+            type: array
+            items:
+              $ref: '#/components/schemas/InOnderzoekVBO'
+          oppervlakte:
+            type: integer
+            title: oppervlakte
+            description: ""
+          statusVerblijfsobject:
+            $ref: '#/components/schemas/StatusVerblijfsobject'
+          vBOGeometrie:
+            $ref: '#/components/schemas/Geometrie'
+          vbopnd:
+            type: array
+            items:
+              $ref: '#/components/schemas/Vbopnd'
+    AdresseerbaarObject:
+      type: object
+      description: <body><p>Er is bewust voor gekozen om naast de identificatieNummeraanduiding
+        ook de adresgegevens op te nemen bij een AdresseerbaarObject, omdat het adres
+        vaak in plaats van de identificatieNummeraanduiding wordt gebruikt om een
+        AdresseerbaarObject te identificeren of te vinden.</p></body>
+      required:
+      - adres
+      - einddatumObject
+      - identificatie
+      - ingangsdatumObject
+      properties:
+        adres:
+          $ref: '#/components/schemas/AdresAanduiding'
+        einddatumObject:
+          type: string
+          title: einddatumObject
+          description: ""
+          format: date
+        identificatie:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        ingangsdatumObject:
+          type: string
+          title: ingangsdatumObject
+          description: ""
+          format: date
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ""
+          format: date-time
+    Ligplaats_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    Nummeraanduiding_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    Pand_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    Standplaats_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    Verblijfsobject_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        maaktdeeluitvan:
+          title: maaktdeeluitvan
+          type: array
+          description: ""
+          minItems: 1
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    AdresAanduiding:
+      type: object
+      description: ""
+      required:
+      - huisletter
+      - huisnummer
+      - huisnummertoevoeging
+      - identificatieNummeraanduiding
+      - openbareRuimteNaam
+      - postcode
+      - straatnaam
+      - woonplaatsnaam
+      properties:
+        huisletter:
+          type: string
+          title: huisletter
+          description: ""
+          pattern: ^[a-zA-Z]$
+          maxLength: 1
+        huisnummer:
+          type: integer
+          title: huisnummer
+          description: ""
+        huisnummertoevoeging:
+          type: string
+          title: huisnummertoevoeging
+          description: ""
+          pattern: ^[a-zA-Z0-9]{1,4}$
+          maxLength: 4
+        identificatieNummeraanduiding:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        openbareRuimteNaam:
+          type: string
+          title: openbareRuimteNaam
+          description: ""
+          maxLength: 80
+          minLength: 1
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        straatnaam:
+          type: string
+          title: straatnaam
+          description: <body><p>Als de lengte van de openbareRuimteNaam kleiner of
+            gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk.
+            Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen
+            het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook
+            als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>
+          maxLength: 24
+          minLength: 1
+        woonplaatsnaam:
+          type: string
+          title: woonplaatsnaam
+          description: ""
+          maxLength: 80
+          minLength: 1
+    Geometrie:
+      type: object
+      description: ""
+      required:
+      - puntGeometrie
+      - vlakGeometrie
+      properties:
+        puntGeometrie:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Point
+        vlakGeometrie:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon
+    TijdvakRelatie:
+      type: object
+      description: ""
+      required:
+      - beginRelatie
+      - eindRelatie
+      properties:
+        beginRelatie:
+          type: string
+          title: beginRelatie
+          description: ""
+          format: date
+        eindRelatie:
+          type: string
+          title: eindRelatie
+          description: ""
+          format: date
+    Vbopnd:
+      type: object
+      description: ""
+      required:
+      - identificatiePand
+      - tijdvakRelatie
+      properties:
+        identificatiePand:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        inOnderzoek:
+          type: array
+          items:
+            $ref: '#/components/schemas/InOnderzoekVBOPND'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Gebruiksdoeleinden:
+      type: string
+      description: <body><ul><li>`bijeenkomstfunctie` - bijeenkomstfunctie </li><li>`celfunctie`
+        - celfunctie </li><li>`gezondheidszorgfunctie` - gezondheidszorgfunctie </li><li>`industriefunctie`
+        - industriefunctie </li><li>`kantoorfunctie` - kantoorfunctie </li><li>`logiesfunctie`
+        - logiesfunctie </li><li>`onderwijsfunctie` - onderwijsfunctie </li><li>`overige_gebruiksfunctie`
+        - overige gebruiksfunctie </li><li>`sportfunctie` - sportfunctie </li><li>`winkelfunctie`
+        - winkelfunctie </li><li>`woonfunctie` - woonfunctie </li></ul></body>
+      enum:
+      - bijeenkomstfunctie
+      - celfunctie
+      - gezondheidszorgfunctie
+      - industriefunctie
+      - kantoorfunctie
+      - logiesfunctie
+      - onderwijsfunctie
+      - overige_gebruiksfunctie
+      - sportfunctie
+      - winkelfunctie
+      - woonfunctie
+    InOnderzoekLIG:
+      type: string
+      description: ""
+      enum:
+      - statusLigplaats
+      - vlakGeometrie
+      - adres
+    InOnderzoekNUM:
+      type: string
+      description: ""
+      enum:
+      - woonplaatsnaam
+      - postcode
+      - openbareRuimteNaam
+      - straatnaam
+      - huisnummer
+      - huisletter
+      - huisnummertoevoeging
+    InOnderzoekPND:
+      type: string
+      description: ""
+      enum:
+      - status
+      - bouwjaar
+      - pandGeometrie
+    InOnderzoekSTA:
+      type: string
+      description: ""
+      enum:
+      - statusStandplaats
+      - vlakGeometrie
+      - adres
+    InOnderzoekVBO:
+      type: string
+      description: ""
+      enum:
+      - statusVerblijfsobject
+      - gebruiksdoel
+      - oppervlakte
+      - geometrie
+      - adres
+    InOnderzoekVBOPND:
+      type: string
+      description: ""
+      enum:
+      - VBOPND
+      - beginRelatie
+      - eindRelatie
+    StatusLigplaats:
+      type: string
+      description: <body><ul><li>`Plaats_aangewezen` - Plaats aangewezen </li><li>`Plaats_ingetrokken`
+        - Plaats ingetrokken </li></ul></body>
+      enum:
+      - Plaats_aangewezen
+      - Plaats_ingetrokken
+    StatusPand:
+      type: string
+      description: <body><ul><li>`Bouw_gestart` - Bouw gestart </li><li>`Bouwvergunning_verleend`
+        - Bouwvergunning verleend </li><li>`Niet_gerealiseerd_pand` - Niet gerealiseerd
+        pand </li><li>`Pand_buiten_gebruik` - Pand buiten gebruik </li><li>`Pand_gesloopt`
+        - Pand gesloopt </li><li>`Pand_in_gebruik` - Pand in gebruik </li><li>`Pand_in_gebruik__niet_ingemeten_`
+        - Pand in gebruik (niet ingemeten) </li><li>`Sloopvergunning_verleend` - Sloopvergunning
+        verleend </li><li>`Verbouwing_pand` - Verbouwing pand </li><li>`Pand_ten_onrechte_opgevoerd`
+        - Pand ten onrechte opgevoerd </li></ul></body>
+      enum:
+      - Bouw_gestart
+      - Bouwvergunning_verleend
+      - Niet_gerealiseerd_pand
+      - Pand_buiten_gebruik
+      - Pand_gesloopt
+      - Pand_in_gebruik
+      - Pand_in_gebruik__niet_ingemeten_
+      - Sloopvergunning_verleend
+      - Verbouwing_pand
+      - Pand_ten_onrechte_opgevoerd
+    StatusStandplaats:
+      type: string
+      description: <body><ul><li>`Plaats_aangewezen` - Plaats aangewezen </li><li>`Plaats_ingetrokken`
+        - Plaats ingetrokken </li></ul></body>
+      enum:
+      - Plaats_aangewezen
+      - Plaats_ingetrokken
+    StatusVerblijfsobject:
+      type: string
+      description: <body><ul><li>`Niet_gerealiseerd_verblijfsobject` - Niet gerealiseerd
+        verblijfsobject </li><li>`Verblijfsobject_buiten_gebruik` - Verblijfsobject
+        buiten gebruik </li><li>`Verblijfsobject_gevormd` - Verblijfsobject gevormd
+        </li><li>`Verblijfsobject_in_gebruik` - Verblijfsobject in gebruik </li><li>`Verblijfsobject_in_gebruik__niet_ingemeten_`
+        - Verblijfsobject in gebruik (niet ingemeten) </li><li>`Verblijfsobject_ingetrokken`
+        - Verblijfsobject ingetrokken </li><li>`Verblijfsobject_ten_onrechte_opgevoerd`
+        - Verblijfsobject ten onrechte opgevoerd </li><li>`Verbouwing_verblijfsobject`
+        - Verbouwing verblijfsobject </li></ul></body>
+      enum:
+      - Niet_gerealiseerd_verblijfsobject
+      - Verblijfsobject_buiten_gebruik
+      - Verblijfsobject_gevormd
+      - Verblijfsobject_in_gebruik
+      - Verblijfsobject_in_gebruik__niet_ingemeten_
+      - Verblijfsobject_ingetrokken
+      - Verblijfsobject_ten_onrechte_opgevoerd
+      - Verbouwing_verblijfsobject
+    IdentificatieBAG:
+      type: string
+      description: '<body><p>Combinatie van (viercijferig) subdomein `gemeentecodering`
+        (volgens GBA tabel 33), het (tweecijferig) subdomein `objecttypecode` en een
+        voor het betreffende objecttype binnen een gemeente uniek (tiencijferig) subdomein
+        `objectvolgnummer`. Objecttypecode: een code waarmee het objecttype van een
+        object wordt aangegeven. Deze codering maakt onderdeel uit van de unieke objectaanduiding.
+        Het is met name bedoeld om objecten van verschillende adresseerbare objecttypen
+        uniek van elkaar te kunnen onderscheiden. Waardeverzameling domein: 01: verblijfsobject;
+        02: ligplaats; 03: standplaats; 10: pand en 20: nummeraanduiding. Objectvolgnummer:
+        een uniek volgnummer waarmee een object van een bepaald type binnen een gemeente
+        kan worden aangeduid. Indien een `objectvolgnummer` uit minder dan tien posities
+        bestaat, dan dient deze ten behoeve van de uitwisseling te worden aangevuld
+        met voorloopnullen. De van de objectnummering onderdeel uitmakende gemeentecode
+        kan niet worden gebruikt om te bepalen binnen welke gemeente een object is
+        gelegen. Waardeverzameling domein: Alle natuurlijke getallen tussen 0 en 9.999.999.999.</p></body>'
+      pattern: ^[0-9]{16}$
+    Postcode:
+      type: string
+      description: ""
+      pattern: ^[1-9][0-9]{3}[A-Z]{2}$
