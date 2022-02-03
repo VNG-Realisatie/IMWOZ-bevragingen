@@ -77,6 +77,13 @@ paths:
           required: false
           schema:
             type: integer
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
