@@ -5,7 +5,7 @@ Een set API's die naast de nieuwe versie van StUFWoz worden ontwikkeld om vanuit
 
 **Deze API's zijn in ontwikkeling !! Op dit ogenblik zijn de API's nog niet volwassen genoeg om ingebouwd te worden in productie-software.**
 **Proef-implementaties (en terugkoppeling van de bevindingen daaruit) zijn uiteraard wel mogelijk, maar de specificatie kan op dag-basis wijzigen.**
-**Als er een eerste stabiel versie is wordt daar een release van aangemaakt en wordt dit op deze plek (en via andere communicatie-lijnen) gedeeld.**
+**Als er een eerste stabiele versie is wordt daar een release van aangemaakt en wordt dit op deze plek (en via andere communicatie-lijnen) gedeeld.**
 
 De Specificatie van de betreffende API's zijn op de volgende locaties te bekijken :
  - Aanslagregels-API in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/ASL-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/ASL-redoc) --- [technische specificaties](specificatie/ASL/openapi.yaml)
