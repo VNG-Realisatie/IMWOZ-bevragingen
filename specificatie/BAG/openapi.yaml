@@ -83,6 +83,13 @@ paths:
           schema:
             type: string
             maxLength: 80
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -245,6 +252,13 @@ paths:
           schema:
             type: string
             maxLength: 80
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -477,6 +491,13 @@ paths:
           schema:
             type: string
             maxLength: 80
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
       responses:
         '200':
           description: "Zoekactie geslaagd"
