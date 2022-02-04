@@ -32,6 +32,10 @@ nav:
         path: /BAG-swagger-ui
       - title: BAG-objecten API (redoc)
         path: /BAG-redoc
+      - title: BZW-objecten API (swagger-ui)
+        path: /BZW-swagger-ui
+      - title: BZW-objecten API (redoc)
+        path: /BZW-redoc
 #  - title: Specificaties v. 1.0.0-rc2 (In Ontwikkeling)
 #    subnav:
 #      - title: Getting started
