@@ -322,131 +322,137 @@ components:
               medebelanghebbende) is voor deze relatie niet van belang.</p></body>
           - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     AdresBagPlusLocatieOmschrijving:
-      type: object
-      description: ""
-      required:
-      - huisletter
-      - huisnummer
-      - huisnummertoevoeging
-      - locatieomschrijving
-      - openbareRuimteNaam
-      - postcode
-      - woonplaatsnaam
-      properties:
-        huisletter:
-          type: string
-          title: huisletter
+      allOf:
+        - $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        - type: object
           description: ""
-          pattern: ^[a-zA-Z]$
-          maxLength: 1
-        huisnummer:
-          type: integer
-          title: huisnummer
-          description: ""
-        huisnummertoevoeging:
-          type: string
-          title: huisnummertoevoeging
-          description: ""
-          pattern: ^[a-zA-Z0-9]{1,4}$
-          maxLength: 4
-        identificatieNummeraanduiding:
-          $ref: '#/components/schemas/IdentificatieBAG'
-        locatieomschrijving:
-          type: string
-          title: locatieomschrijving
-          description: <body><p>Indien aan een WOZ-object geen unieke aanduiding kan
-            worden gegeven door gebruik te maken van het hoofdadres van een in het
-            WOZ-object betrokken verblijfsobject, standplaats of ligplaats, wordt
-            een unieke aanduiding verkregen door een `authentiek` adres dan wel woonplaatsnaam
-            en straatnaam te combineren met een locatieomschrijving. De verschillende
-            vormen die de unieke aanduiding van een WOZ-object, zoals vermeld wordt
-            op de WOZ-beschikking, kan aannemen en de eventuele rol van de locatieomschrijving
-            daarbij, staat in de toelichting op de Gegevensgroep aanduidingWOZobject.
-            In het adres van een persoon kan hier de locatieomschrijving uit de BRP
-            worden opgenomen of overeenkomstig de werkwijze van de BRP dit veld worden
-            gevuld voor personen die niet uit de BRP kunnen worden overgenomen. Voor
-            adressen van niet-natuurlijke personen kan hier, eventueel in afgekorte
-            vorm, het gegeven toevoegingAdres uit het Handelsregister worden overgenomen.</p></body>
-          maxLength: 40
-          minLength: 1
-        openbareRuimteNaam:
-          type: string
-          title: openbareRuimteNaam
-          description: ""
-          maxLength: 80
-          minLength: 1
-        postcode:
-          $ref: '#/components/schemas/Postcode'
-        straatnaam:
-          type: string
-          title: straatnaam
-          description: <body><p>Als de lengte van de openbareRuimteNaam kleiner of
-            gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk.
-            Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen
-            het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook
-            als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>
-          maxLength: 24
-          minLength: 1
-        woonplaatsnaam:
-          type: string
-          title: woonplaatsnaam
-          description: ""
-          maxLength: 80
-          minLength: 1
+          required:
+          - huisletter
+          - huisnummer
+          - huisnummertoevoeging
+          - locatieomschrijving
+          - openbareRuimteNaam
+          - postcode
+          - woonplaatsnaam
+          properties:
+            huisletter:
+              type: string
+              title: huisletter
+              description: ""
+              pattern: ^[a-zA-Z]$
+              maxLength: 1
+            huisnummer:
+              type: integer
+              title: huisnummer
+              description: ""
+            huisnummertoevoeging:
+              type: string
+              title: huisnummertoevoeging
+              description: ""
+              pattern: ^[a-zA-Z0-9]{1,4}$
+              maxLength: 4
+            identificatieNummeraanduiding:
+              $ref: '#/components/schemas/IdentificatieBAG'
+            locatieomschrijving:
+              type: string
+              title: locatieomschrijving
+              description: <body><p>Indien aan een WOZ-object geen unieke aanduiding kan
+                worden gegeven door gebruik te maken van het hoofdadres van een in het
+                WOZ-object betrokken verblijfsobject, standplaats of ligplaats, wordt
+                een unieke aanduiding verkregen door een `authentiek` adres dan wel woonplaatsnaam
+                en straatnaam te combineren met een locatieomschrijving. De verschillende
+                vormen die de unieke aanduiding van een WOZ-object, zoals vermeld wordt
+                op de WOZ-beschikking, kan aannemen en de eventuele rol van de locatieomschrijving
+                daarbij, staat in de toelichting op de Gegevensgroep aanduidingWOZobject.
+                In het adres van een persoon kan hier de locatieomschrijving uit de BRP
+                worden opgenomen of overeenkomstig de werkwijze van de BRP dit veld worden
+                gevuld voor personen die niet uit de BRP kunnen worden overgenomen. Voor
+                adressen van niet-natuurlijke personen kan hier, eventueel in afgekorte
+                vorm, het gegeven toevoegingAdres uit het Handelsregister worden overgenomen.</p></body>
+              maxLength: 40
+              minLength: 1
+            openbareRuimteNaam:
+              type: string
+              title: openbareRuimteNaam
+              description: ""
+              maxLength: 80
+              minLength: 1
+            postcode:
+              $ref: '#/components/schemas/Postcode'
+            straatnaam:
+              type: string
+              title: straatnaam
+              description: <body><p>Als de lengte van de openbareRuimteNaam kleiner of
+                gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk.
+                Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen
+                het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook
+                als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>
+              maxLength: 24
+              minLength: 1
+            woonplaatsnaam:
+              type: string
+              title: woonplaatsnaam
+              description: ""
+              maxLength: 80
+              minLength: 1
     AdresBuitenland:
-      type: object
-      description: ""
-      required:
-      - adresBuitenland1
-      - adresBuitenland2
-      - land
-      properties:
-        adresBuitenland1:
-          type: string
-          title: adresBuitenland1
+      allOf:
+        - $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        - type: object
           description: ""
-          maxLength: 35
-          minLength: 1
-        adresBuitenland2:
-          type: string
-          title: adresBuitenland2
-          description: ""
-          maxLength: 35
-          minLength: 1
-        adresBuitenland3:
-          type: string
-          title: adresBuitenland3
-          description: ""
-          maxLength: 35
-          minLength: 1
-        land:
-          allOf:
-          - $ref: '#/components/schemas/Land'
-          - title: land
-            description: ""
+          required:
+          - adresBuitenland1
+          - adresBuitenland2
+          - land
+          properties:
+            adresBuitenland1:
+              type: string
+              title: adresBuitenland1
+              description: ""
+              maxLength: 35
+              minLength: 1
+            adresBuitenland2:
+              type: string
+              title: adresBuitenland2
+              description: ""
+              maxLength: 35
+              minLength: 1
+            adresBuitenland3:
+              type: string
+              title: adresBuitenland3
+              description: ""
+              maxLength: 35
+              minLength: 1
+            land:
+              allOf:
+              - $ref: '#/components/schemas/Land'
+              - title: land
+                description: ""
     AdresPostbusAntwoordnummer:
-      type: object
-      description: ""
-      required:
-      - postbusOfAntwoordnummer
-      - postcode
-      - type
-      - woonplaatsnaam
-      properties:
-        postbusOfAntwoordnummer:
-          type: integer
-          title: postbusOfAntwoordnummer
+      allOf:
+        - $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
+        - type: object
           description: ""
-        postcode:
-          $ref: '#/components/schemas/Postcode'
-        type:
-          $ref: '#/components/schemas/PostadresType'
-        woonplaatsnaam:
-          type: string
-          title: woonplaatsnaam
-          description: ""
-          maxLength: 80
-          minLength: 1
+          required:
+          - postbusOfAntwoordnummer
+          - postcode
+          - type
+          - woonplaatsnaam
+          properties:
+            postbusOfAntwoordnummer:
+              type: integer
+              title: postbusOfAntwoordnummer
+              description: ""
+            postcode:
+              $ref: '#/components/schemas/Postcode'
+            type:
+              $ref: '#/components/schemas/PostadresType'
+            woonplaatsnaam:
+              type: string
+              title: woonplaatsnaam
+              description: ""
+              maxLength: 80
+              minLength: 1
     Brondocument:
       type: object
       description: ""
