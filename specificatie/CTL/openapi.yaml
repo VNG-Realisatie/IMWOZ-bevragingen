@@ -1,0 +1,358 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_ctl/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_ctl/v1
+info:
+  title: BG IMWOZ CTL
+  description: ""
+  version: "1.0.0"
+  x-imvertor-generator-version: "1.65.4"
+  x-yamlCompiler-stylesheets-version: "20220110"
+  contact:
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /controleobjectkenmerken:
+    get:
+      operationId: getcontroleobjectkenmerken
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie controleobjectkenmerken retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: gecontroleerdeObjectKenmerken
+          description: "<body><p>Indien wordt aangegeven dat alle objectkenmerken zijn gecontroleerd, dan heeft dit betrekking op de volgende kenmerken: - zijn alle bestaande WOZ-deelobjecten geregistreerd (bijvoorbeeld is de aanwezige garage als WOZ-DeelObject vastgelegd); - bestaan alle geregistreerde WOZ-deelobjecten (bijvoorbeeld is de geregistreerde berging inderdaad (nog) aanwezig); - soort object aanduiding; - aanduiding soort deelobject voor alle WOZ-deelobjecten; - grootte van de WOZ-deelobjecten (oppervlakte of andere voor dat object relevante maten en aantallen); - bouwjaren van de WOZ-deelobjecten; - grondoppervlakte (WOZ-deelobject grond in relatie met grondoppervlakte in entiteit `WOZ-object`).</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/GecontroleerdeObjectkenmerken"
+        - in: query
+          name: gecontroleerdeWOZDeelObjecten
+          description: "<body><p>Er is sprake van `4` overige WOZ-deelobjecten/bijgebouwen als alle WOZ-deelobjecten met uitzondering van het `hoofd-WOZ-deelobject` en het grondperceel zijn gecontroleerd. In de praktijk betekent dit meestal controle van de eventueel aanwezige bijgebouwen.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/GecontroleerdeWOZDeelObjecten"
+        - in: query
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
+          name: identificatieUitvoerder
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/IdentificatieUitvoerder"
+        - in: query
+          name: methodiekControle
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/MethodiekControle"
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: redenControle
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/RedenControle"
+        - in: query
+          name: taxateur
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 100
+        - in: query
+          name: wozObjectnummer
+          description: "<body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 12
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ControleObjectkenmerkenHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Controleobjectkenmerken (CTL)
+  /controleobjectkenmerken/{identificatie}:
+    get:
+      operationId: getcontroleobjectkenmerk
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een controleObjectkenmerken retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/Sleutel"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ControleObjectkenmerkenHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Controleobjectkenmerken (CTL)
+components:
+  schemas:
+    ControleObjectkenmerkenHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            '':
+              type: array
+              items:
+                $ref: '#/components/schemas/ControleObjectkenmerkenHal'
+    ControleObjectkenmerkenHal:
+      allOf:
+        - $ref: '#/components/schemas/ControleObjectkenmerken'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/ControleObjectkenmerken_links'
+    ControleObjectkenmerken:
+      type: object
+      description: <body><p>Wanneer geconstateerd is dat de gegevens nog correct zijn, wordt dit vastgelegd. Wanneer geconstateerd wordt dat de gegevens niet (meer) correct zijn, worden de actuele toestand in de registratie verwerkt en wordt eveneens vastgelegd dat de controle heeft plaatsgevonden. Bij eventueel later raadplegen van objectkenmerken met betrekking tot dit WOZ-object, is dan zichtbaar wanneer deze kenmerken voor het laatst zijn gecontroleerd en op welke wijze deze zijn gecontroleerd. Dit maakt het mogelijk dat bijvoorbeeld bij een taxatie, de behandeling van een bezwaarschrift, de analyse van een verkoopcijfer of een opname ter plaatse beoordeeld kan worden hoe actueel de gegevens zijn en of een verdere controle wel of niet zinvol is. Vastgelegd wordt de datum waarop objectkenmerken daadwerkelijk zijn gecontroleerd en eventueel inhoudelijk zijn gewijzigd. Een verandering van een geregistreerd gegeven bijvoorbeeld als gevolg van een conversie kan niet worden aangemerkt als een `inhoudelijke` controle.</p></body>
+      required:
+        - datumControle
+        - gecontroleerdeObjectKenmerken
+        - gecontroleerdeWOZDeelObjecten
+        - identificatie
+        - identificatieUitvoerder
+        - methodiekControle
+        - redenControle
+      properties:
+        aantekening:
+          type: string
+          title: aantekening
+          description: <body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Ook kunnen nadere specificaties worden gegeven over de uitgevoerde controle worden gegeven, bijvoorbeeld `alleen hoofdgebouw gecontroleerd`. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>
+          maxLength: 50
+          minLength: 1
+        datumControle:
+          $ref: '#/components/schemas/DatumMogelijkOnvolledig'
+        gecontroleerdeObjectKenmerken:
+          $ref: '#/components/schemas/GecontroleerdeObjectkenmerken'
+        gecontroleerdeWOZDeelObjecten:
+          $ref: '#/components/schemas/GecontroleerdeWOZDeelObjecten'
+        identificatie:
+          $ref: '#/components/schemas/Sleutel'
+        identificatieUitvoerder:
+          $ref: '#/components/schemas/IdentificatieUitvoerder'
+        methodiekControle:
+          $ref: '#/components/schemas/MethodiekControle'
+        redenControle:
+          $ref: '#/components/schemas/RedenControle'
+        taxateur:
+          type: string
+          title: taxateur
+          description: ''
+          maxLength: 100
+          minLength: 1
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ''
+          format: date-time
+        wozObjectnummer:
+          type: array
+          title: wozObjectnummer
+          description: <body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>
+          minItems: 0
+          items:
+            type: string
+            pattern: ^[0-9]{12}$
+            maxLength: 12
+    ControleObjectkenmerken_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZObjecten:
+          title: isvoor
+          type: array
+          description: ''
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    DatumMogelijkOnvolledig:
+      type: object
+      description: ''
+      required:
+        - date
+        - jaar
+        - jaarMaand
+      properties:
+        date:
+          type: string
+          title: Date
+          description: ''
+          format: date
+        jaar:
+          $ref: '#/components/schemas/GYear'
+        jaarMaand:
+          $ref: '#/components/schemas/GYearMonth'
+    GecontroleerdeObjectkenmerken:
+      type: string
+      description: ''
+      enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+        - '5'
+        - '6'
+        - '9'
+    GecontroleerdeWOZDeelObjecten:
+      type: string
+      description: ''
+      enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+        - '9'
+    IdentificatieUitvoerder:
+      type: string
+      description: ''
+      enum:
+        - E
+        - G
+        - O
+    MethodiekControle:
+      type: string
+      description: ''
+      enum:
+        - '01'
+        - '02'
+        - '03'
+        - '04'
+        - '05'
+        - '06'
+        - '07'
+        - '08'
+        - '09'
+        - '10'
+        - '99'
+    RedenControle:
+      type: string
+      description: ''
+      enum:
+        - '01'
+        - '02'
+        - '03'
+        - '04'
+        - '05'
+        - '06'
+        - '07'
+        - '08'
+        - '09'
+        - '10'
+        - '11'
+        - '15'
+        - '99'
+    GYear:
+      type: integer
+      description: ''
+      format: date_fullyear
+      pattern: ^[1-2]{1}[0-9]{3}$
+    GYearMonth:
+      type: integer
+      description: ''
+      format: date_fullyear
+      pattern: ^[1-2]{1}[0-9]{3}$
+    Sleutel:
+      type: string
+      description: ''
+      maxLength: 40
+      minLength: 1
