@@ -8,9 +8,11 @@ Een set API's die naast de nieuwe versie van StUFWoz worden ontwikkeld om vanuit
 **Als er een eerste stabiele versie is wordt daar een release van aangemaakt en wordt dit op deze plek (en via andere communicatie-lijnen) gedeeld.**
 
 De Specificatie van de betreffende API's zijn op de volgende locaties te bekijken :
- - Aanslagregels-API in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/ASL-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/ASL-redoc) --- [technische specificaties](specificatie/ASL/openapi.yaml)
- - Biljetten-API in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/BLJ-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/BLJ-redoc) --- [technische specificaties](specificatie/BLJ/openapi.yaml)
+ - Aanslagregel in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/ASL-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/ASL-redoc) --- [technische specificaties](specificatie/ASL/openapi.yaml)
+ - Biljetten in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/BLJ-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/BLJ-redoc) --- [technische specificaties](specificatie/BLJ/openapi.yaml)
  - BAG-objecten in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/BAG-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/BAG-redoc) --- [technische specificaties](specificatie/BAG/openapi.yaml)
+ - Controleobjectkenmerken in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/CTL-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/CTL-redoc) --- [technische specificaties](specificatie/CTL/openapi.yaml)
+ - Erfpacht in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/Erfpacht-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/Erfpacht-redoc) --- [technische specificaties](specificatie/Erfpacht/openapi.yaml)
 
 
 Bekijk de [release notes](./releasenotes).

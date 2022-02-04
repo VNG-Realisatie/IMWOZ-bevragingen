@@ -216,8 +216,8 @@ components:
         _embedded:
           type: object
           properties:
-            ?
-            : type: array
+            bezwaren:
+              type: array
               items:
                 $ref: '#/components/schemas/BezwaarHal'
     BezwaarHal:
