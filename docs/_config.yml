@@ -20,22 +20,26 @@ nav:
 #        url: https://vng-realisatie.github.io/IMWOZ-bevragingen/user-stories-prod
 #        https://github.com/VNG-Realisatie/IMWOZ-bevragingen/issues?q=is%3Aissue+label%3A%22user+story%22
 #        path: /user-stories
-      - title: Aanslagregels API (swagger-ui)
+      - title: Aanslagregels (swagger-ui)
         path: /ASL-swagger-ui
-      - title: Aanslagregels API (redoc)
+      - title: Aanslagregels (redoc)
         path: /ASL-redoc
-      - title: Biljetten API (swagger-ui)
+      - title: Biljetten (swagger-ui)
         path: /BLJ-swagger-ui
-      - title: Biljetten API (redoc)
+      - title: Biljetten (redoc)
         path: /BLJ-redoc
-      - title: BAG-objecten API (swagger-ui)
+      - title: BAG-objecten (swagger-ui)
         path: /BAG-swagger-ui
-      - title: BAG-objecten API (redoc)
+      - title: BAG-objecten (redoc)
         path: /BAG-redoc
-      - title: BZW-objecten API (swagger-ui)
+      - title: Bezwaren (swagger-ui)
         path: /BZW-swagger-ui
-      - title: BZW-objecten API (redoc)
+      - title: Bezwaren (redoc)
         path: /BZW-redoc
+      - title: Controleobjectkenmerken (swagger-ui)
+        path: /CTL-swagger-ui
+      - title: Controleobjectkenmerken (redoc)
+        path: /CTL-redoc
 #  - title: Specificaties v. 1.0.0-rc2 (In Ontwikkeling)
 #    subnav:
 #      - title: Getting started
