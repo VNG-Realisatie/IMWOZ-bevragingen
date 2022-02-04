@@ -1,11 +1,11 @@
 openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
-    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_biljetten/v1
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_bzw/v1
   - description: "Referentie-implementatie"
-    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_biljetten/v1
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_bzw/v1
 info:
-  title: BG IMWOZ Biljetten
+  title: BG IMWOZ BZW
   description: ""
   version: "1.0.0"
   x-imvertor-generator-version: "1.65.4"
@@ -16,10 +16,10 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 paths:
-  /biljetten:
+  /bezwaren:
     get:
-      operationId: Getbiljetten
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie biljetten retourneert.</p></body>"
+      operationId: Getbezwaren
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie bezwaren retourneert.</p></body>"
       parameters:
         - in: query
           name: datumBrondocument
@@ -37,6 +37,14 @@ paths:
             maxLength: 40
             minLength: 1
         - in: query
+          name: identificatieBiljet
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
           name: identificatieBrondocument
           description: "<body><p>Het belangrijkste brondocument in het kader van de Wet WOZ is de WOZ-beschikking (aanslagbiljet gemeentelijke belastingen). Andere formele brondocumenten die ook van belang zijn voor de Basisregistratie WOZ zijn: bezwaarschrift, beroepschrift en uitspraak in bezwaar- of beroepsprocedure. Bij voorkeur wordt voor de identificatie een URI gebruikt die verwijst naar een document management systeem. De identificatie is in ieder geval een unieke aanduiding van de vindplaats van een document binnen een organisatie. Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens om documenten binnen een organisatie uniek aan te duiden.</p></body>"
           required: false
@@ -44,7 +52,7 @@ paths:
             type: string
             maxLength: 512
         - in: query
-          name: identificatiePersoon
+          name: identificatieIngediendDoorPersoon
           description: ""
           required: false
           schema:
@@ -72,11 +80,11 @@ paths:
             maxLength: 40
             minLength: 1
         - in: query
-          name: statusBiljet
-          description: "<body><p>Een codering van de verschillende waarden die de status van een biljet gemeentelijke belastingen kan aannemen.</p></body>"
+          name: identificatieWordtBehandeldDoorPersoon
+          description: ""
           required: false
           schema:
-            type: integer
+            type: string
         - in: query
           name: peiltijdstipMaterieel
           description: ""
@@ -84,6 +92,19 @@ paths:
           schema:
             type: string
             format: date
+        - in: query
+          name: identificatie
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: statusBezwaar
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/StatusBezwaar"
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -105,7 +126,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/BiljetHalCollectie'
+                $ref: '#/components/schemas/BezwaarHalCollectie'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
         '401':
@@ -129,11 +150,11 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
-      - Biljetten (BLJ)
-  /biljetten/{identificatie}:
+      - Bezwaar (BZW)
+  /bezwaren/{identificatie}:
     get:
-      operationId: getbiljet
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een biljet retourneert.</p></body>"
+      operationId: getbezwaar
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een bezwaar retourneert.</p></body>"
       parameters:
         - in: path
           name: identificatie
@@ -158,7 +179,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/BiljetHal'
+                $ref: '#/components/schemas/BezwaarHal'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
         '401':
@@ -184,10 +205,10 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
-      - Biljetten (BLJ)
+      - Bezwaar (BZW)
 components:
   schemas:
-    BiljetHalCollectie:
+    BezwaarHalCollectie:
       type: object
       properties:
         _links:
@@ -195,89 +216,110 @@ components:
         _embedded:
           type: object
           properties:
-            biljetten:
-              type: array
+            ?
+            : type: array
               items:
-                $ref: '#/components/schemas/BiljetHal'
-    BiljetHal:
+                $ref: '#/components/schemas/BezwaarHal'
+    BezwaarHal:
       allOf:
-      - $ref: '#/components/schemas/Biljet'
+      - $ref: '#/components/schemas/Bezwaar'
       - type: object
         properties:
           _links:
-            $ref: '#/components/schemas/Biljet_links'
-    Biljet:
+            $ref: '#/components/schemas/Bezwaar_links'
+    Bezwaar:
       type: object
-      description: <body><p>Deze entiteit wordt gebruikt om de gegevens bijeen te
-        brengen die op het aanslagbiljet, waarop ook één of meer WOZ-beschikkingen
-        worden afgedrukt, moeten worden weergegeven, zodat deze kunnen worden gecommuniceerd
-        met een print/mail applicatie en een applicatie voor bekendmaking via internet
-        (persoonlijke internetpagina). Gegevens over het aanslagbiljet (biljet gemeentelijke
-        belastingen) zijn van belang voor de Basisregistratie WOZ (LV WOZ), omdat
-        met behulp van dit aanslagbiljet de WOZ-beschikking (beschikkingsregels) bekend
-        gemaakt worden. Daarmee vormt het aanslagbiljet het brondocument voor de WOZ-waarde.
-        Wanneer door het biljet gemeentelijke belastingen één of meer beschikkingen
-        worden vastgesteld dan wordt het gegeven 'identificatie' inclusief bijbehorende
-        metagegevens (datum/dagtekening) gekopieerd naar de overeenkomstige gegevens
-        binnen de relatieklasse WRDPRS.</p></body>
+      description: <body><p>Binnen de gemeente wordt dit objecttype gebruikt voor
+        de registratie van alle bezwaren tegen één of meer aanslagregels en/of één
+        of meer WOZ-beschikkingen. Bezwaren tegen beschikkingsregels worden ook vastgelegd
+        in de Basisregistratie WOZ (LV WOZ) door middel van de statusBeschikking,
+        zijnde een attribuut van de relatieklasse WRDPRS. Indien in een bezwaarschrift
+        bezwaar wordt gemaakt tegen verschillende objecten, dan wordt dit bezwaarschrift
+        geregistreerd als meerdere bezwaren. Eén bezwaar kan daarmee wel betrekking
+        hebben op de WOZ-waarde, de aanslag OZB-eigenaren en OZB-gebruikers van hetzelfde
+        object, maar niet op de WOZ-waarden van twee verschillende objecten of tegen
+        de aanslag OZB-eigenaren en de aanslag hondenbelasting. Er is sprake van een
+        kardinaliteit 0-1 op de relatie BZWBLJ omdat het formeel mogelijk is dat iemand
+        bezwaar maakt tegen het niet hebben ontvangen van een beschikking. Dit is
+        een afwijking van de hoofdregel dat een bezwaar betrekking heeft op één
+        (of meerdere) biljet(ten).</p></body>
       required:
-      - bljprs
-      - brondocument
+      - bzwprsanv
       - identificatie
-      - identificatieAanslagregel
-      - identificatieWaarde
-      - statusBiljet
+      - identificatieBiljet
+      - statusBezwaar
       properties:
-        bljprs:
-          $ref: '#/components/schemas/Bljprs'
         brondocument:
           $ref: '#/components/schemas/Brondocument'
+        bzwasl:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bzwasl'
+        bzwbsk:
+          $ref: '#/components/schemas/Bzwbsk'
+        bzwprsanv:
+          $ref: '#/components/schemas/Bzwprsanv'
+        bzwprsgmc:
+          type: array
+          items:
+            $ref: '#/components/schemas/Bzwprsgmc'
         identificatie:
           $ref: '#/components/schemas/Sleutel'
-        identificatieAanslagregel:
+        identificatieBiljet:
           $ref: '#/components/schemas/Sleutel'
-        identificatieWaarde:
-          $ref: '#/components/schemas/Sleutel'
-        statusBiljet:
-          type: integer
-          title: statusBiljet
-          description: <body><p>Een codering van de verschillende waarden die de status
-            van een biljet gemeentelijke belastingen kan aannemen.</p></body>
+        statusBezwaar:
+          $ref: '#/components/schemas/StatusBezwaar'
         tijdstipRegistratie:
           type: string
           title: tijdstipRegistratie
           description: ""
           format: date-time
-    Biljet_links:
+    Bezwaar_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        waardes:
-          title: heeftbeschikkingsregel
+        istegenaanslagregel:
+          title: istegenaanslagregel
           type: array
-          description: <body><p>Het is mogelijk dat een biljet geen enkele beschikkingsregel
-            bevat. Het biljet zal dan wel één of meer aanslagregels bevatten.</p></body>
+          description: ""
           items:
             $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        vestigingen:
+        isIngediendDoor:
+          allOf:
+          - title: isIngediendDoor
+            type: object
+            description: <body><p>Geeft aan welke belanghebbende het bezwaar is ingediend.</p></body><body><p>ANV
+              staat voor `aanvrager` (indiener bezwaarschrift).</p></body>
+          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        wordtbehandelddoorgemachtigde:
+          title: wordtbehandelddoorgemachtigde
+          type: array
+          description: <body><p>GMC staat voor `gemachtigde`. Omdat tijdens de behandeling
+            van een bezwaar een andere persoon als gemachtigde kan gaan optreden,
+            is het van belang in welke periode welke persoon als gemachtigde aangewezen
+            was. Daarom wordt voor deze relatie een tijdvakRelatie vastgelegd.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        communiceertvia:
           allOf:
           - title: communiceertvia
             type: object
             description: ""
           - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        aanslagregels:
-          title: heeftaanslagregel
-          type: array
-          description: <body><p>Het is mogelijk dat een biljet geen enkele aanslagregel
-            bevat. Het biljet zal dan wel één of meer beschikkingsregels bevatten.</p></body>
-          items:
-            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        personen:
+        istegenbiljet:
           allOf:
-          - title: IsVoor
+          - title: istegenbiljet
             type: object
             description: ""
+          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        istegenbeschikking:
+          allOf:
+          - title: istegenbeschikking
+            type: object
+            description: <body><p>De relatie ligt naar de waarde en niet naar de beschikking
+              (BSK). De hoedanigheid van de belanghebbende (eigenaar, gebruiker, beide,
+              medebelanghebbende) is voor deze relatie niet van belang.</p></body>
           - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     AdresBagPlusLocatieOmschrijving:
       type: object
@@ -405,37 +447,6 @@ components:
           description: ""
           maxLength: 80
           minLength: 1
-    Bljprs:
-      type: object
-      description: ""
-      required:
-      - correspondentieAdresWOZ
-      - identificatiePersoon
-      properties:
-        aanduidingAfdelingOfComplex:
-          type: string
-          title: aanduidingAfdelingOfComplex
-          description: <body><p>Het attribuut 'aanduiding afdelingOfComplex' maakt
-            het mogelijk om voor belanghebbende met een groot aantal WOZ-objecten
-            een onderverdeling te maken. Hierdoor kunnen bijvoorbeeld WOZ-objecten
-            gekoppeld worden aan de `afdeling Sport` van een gemeente, of kunnen een
-            groep woningen van een woningcooperatie als één complex worden aangeduid.</p></body>
-          maxLength: 50
-          minLength: 1
-        correspondentieAdresWOZ:
-          $ref: '#/components/schemas/KeuzeAdresBinnenBuitenland'
-        identificatiePersoon:
-          oneOf:
-            - $ref: '#/components/schemas/IdentificatiePRS'
-            - $ref: '#/components/schemas/IdentificatiePRSAlternatief'
-        identificatieVestiging:
-          $ref: '#/components/schemas/Sleutel'
-        terAttentieVan:
-          type: string
-          title: terAttentieVan
-          description: ""
-          maxLength: 50
-          minLength: 1
     Brondocument:
       type: object
       description: ""
@@ -468,6 +479,118 @@ components:
             om documenten binnen een organisatie uniek aan te duiden.</p></body>'
           maxLength: 512
           minLength: 1
+    Bzwasl:
+      type: object
+      description: ""
+      required:
+      - identificatieAanslagregel
+      - tijdvakRelatie
+      properties:
+        identificatieAanslagregel:
+          $ref: '#/components/schemas/Sleutel'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Bzwbsk:
+      type: object
+      description: ""
+      required:
+      - identificatieWaarde
+      - soortGrief
+      - tijdvakRelatie
+      properties:
+        identificatieWaarde:
+          $ref: '#/components/schemas/Sleutel'
+        soortGrief:
+          type: array
+          items:
+            $ref: '#/components/schemas/SoortGrief'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Bzwprsanv:
+      type: object
+      description: ""
+      required:
+      - bzwprsanvves
+      - correspondentieAdresWOZ
+      - identificatiePersoon
+      properties:
+        aanduidingAfdelingOfComplex:
+          type: string
+          title: aanduidingAfdelingOfComplex
+          description: <body><p>Het attribuut 'aanduiding afdelingOfComplex' maakt
+            het mogelijk om voor belanghebbende met een groot aantal WOZ-objecten
+            een onderverdeling te maken. Hierdoor kunnen bijvoorbeeld WOZ-objecten
+            gekoppeld worden aan de `afdeling Sport` van een gemeente, of kunnen een
+            groep woningen van een woningcooperatie als één complex worden aangeduid.</p></body>
+          maxLength: 50
+          minLength: 1
+        bzwprsanvves:
+          $ref: '#/components/schemas/Bzwprsanvves'
+        correspondentieAdresWOZ:
+          $ref: '#/components/schemas/KeuzeAdresBinnenBuitenland'
+        identificatiePersoon:
+          $ref: '#/components/schemas/IdentificatiePersoon'
+        terAttentieVan:
+          type: string
+          title: terAttentieVan
+          description: ""
+          maxLength: 50
+          minLength: 1
+    Bzwprsanvves:
+      type: object
+      description: ""
+      required:
+      - identificatieVestiging
+      - tijdvakRelatie
+      properties:
+        identificatieVestiging:
+          $ref: '#/components/schemas/Sleutel'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Bzwprsgmc:
+      type: object
+      description: ""
+      required:
+      - bzwprsgmcves
+      - correspondentieAdresWOZ
+      - identificatiePersoon
+      - tijdvakRelatie
+      properties:
+        aanduidingAfdelingOfComplex:
+          type: string
+          title: aanduidingAfdelingOfComplex
+          description: <body><p>Het attribuut 'aanduiding afdelingOfComplex' maakt
+            het mogelijk om voor belanghebbende met een groot aantal WOZ-objecten
+            een onderverdeling te maken. Hierdoor kunnen bijvoorbeeld WOZ-objecten
+            gekoppeld worden aan de `afdeling Sport` van een gemeente, of kunnen een
+            groep woningen van een woningcooperatie als één complex worden aangeduid.</p></body>
+          maxLength: 50
+          minLength: 1
+        bzwprsgmcves:
+          $ref: '#/components/schemas/Bzwprsgmcves'
+        correspondentieAdresWOZ:
+          $ref: '#/components/schemas/KeuzeAdresBinnenBuitenland'
+        identificatiePersoon:
+          $ref: '#/components/schemas/IdentificatiePersoon'
+        terAttentieVan:
+          type: string
+          title: terAttentieVan
+          description: ""
+          maxLength: 50
+          minLength: 1
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Bzwprsgmcves:
+      type: object
+      description: ""
+      required:
+      - identificatieVestiging
+      - tijdvakRelatie
+      properties:
+        identificatieVestiging:
+          $ref: '#/components/schemas/Sleutel'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
     IdentificatiePersoon:
       type: object
       required:
@@ -542,6 +665,23 @@ components:
           title: naam
           description: ""
           minLength: 1
+    TijdvakRelatie:
+      type: object
+      description: ""
+      required:
+      - beginRelatie
+      - eindRelatie
+      properties:
+        beginRelatie:
+          type: string
+          title: beginRelatie
+          description: ""
+          format: date
+        eindRelatie:
+          type: string
+          title: eindRelatie
+          description: ""
+          format: date
     IdentificatiePersoonType:
       type: string
       description: ""
@@ -556,6 +696,38 @@ components:
       enum:
       - A
       - P
+    SoortGrief:
+      type: string
+      description: ""
+      enum:
+      - "01"
+      - "02"
+      - "11"
+      - "12"
+      - "21"
+      - "31"
+      - "41"
+      - "51"
+      - "61"
+      - "71"
+      - "81"
+      - "98"
+      - "99"
+    StatusBezwaar:
+      type: string
+      description: ""
+      enum:
+      - "01"
+      - "02"
+      - "10"
+      - "20"
+      - "21"
+      - "22"
+      - "25"
+      - "30"
+      - "40"
+      - "50"
+      - "51"
     IdentificatieBAG:
       type: string
       description: '<body><p>Combinatie van (viercijferig) subdomein `gemeentecodering`

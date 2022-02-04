@@ -1,11 +1,11 @@
 openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
-    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_aanslagregels/v1
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_biljetten/v1
   - description: "Referentie-implementatie"
-    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_aanslagregels/v1
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_biljetten/v1
 info:
-  title: BG IMWOZ Aanslagregels
+  title: BG IMWOZ Biljetten
   description: ""
   version: "1.0.0"
   x-imvertor-generator-version: "1.65.4"
@@ -16,43 +16,36 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 paths:
-  /aanslagregels:
+  /biljetten:
     get:
-      operationId: getaanslagregels
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een aanslagregel retourneert.</p></body>"
+      operationId: Getbiljetten
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie biljetten retourneert.</p></body>"
       parameters:
         - in: query
-          name: begindatumHeffingstijdvak
-          description: ""
+          name: datumBrondocument
+          description: "<body><p>Het belangrijkste brondocument in het kader van de Wet WOZ is de WOZ-beschikking (aanslagbiljet gemeentelijke belastingen). Andere formele brondocumenten die ook van belang zijn voor de Basisregistratie WOZ zijn: bezwaarschrift, beroepschrift en uitspraak in bezwaar- of beroepsprocedure. De hier geregistreerde datum betreft de formele dagtekening van een formeel document.</p></body>"
           required: false
           schema:
             type: string
             format: date
         - in: query
-          name: belastingsoort
-          description: "<body><p>Met deze code wordt aangegeven op welke soort belasting deze aanslag betrekking heeft. Voorbeelden van soorten belasting zijn: Onroerende-zaakbelasting (eigenaar), afvalstoffenheffing, rioolheffing, precariobelasting etc.</p></body>"
-          required: false
-          schema:
-            type: string
-            maxLength: 30
-        - in: query
-          name: einddatumHeffingstijdvak
-          description: ""
-          required: false
-          schema:
-            type: string
-            format: date
-        - in: query
-          name: identificatieBeschikking
-          description: ""
+          name: identificatieAanslagregel
+          description: "<body><p>Dit domein maakt het mogelijk om gebruik te maken van systemen voor toekennen van unieke identificaties zoals UUID's.</p></body>"
           required: false
           schema:
             type: string
             maxLength: 40
             minLength: 1
         - in: query
+          name: identificatieBrondocument
+          description: "<body><p>Het belangrijkste brondocument in het kader van de Wet WOZ is de WOZ-beschikking (aanslagbiljet gemeentelijke belastingen). Andere formele brondocumenten die ook van belang zijn voor de Basisregistratie WOZ zijn: bezwaarschrift, beroepschrift en uitspraak in bezwaar- of beroepsprocedure. Bij voorkeur wordt voor de identificatie een URI gebruikt die verwijst naar een document management systeem. De identificatie is in ieder geval een unieke aanduiding van de vindplaats van een document binnen een organisatie. Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens om documenten binnen een organisatie uniek aan te duiden.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 512
+        - in: query
           name: identificatiePersoon
-          description: "<body><p>Als de identificatiePersoon parameter gevuld wordt dan MOET de identificatiePersoonType parameter ook geveuld worden.</p></body>"
+          description: ""
           required: false
           schema:
             type: string
@@ -62,6 +55,28 @@ paths:
           required: false
           schema:
             $ref: "#/components/schemas/IdentificatiePersoonType"
+        - in: query
+          name: identificatieVestiging
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
+          name: identificatieWaarde
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
+          name: statusBiljet
+          description: "<body><p>Een codering van de verschillende waarden die de status van een biljet gemeentelijke belastingen kan aannemen.</p></body>"
+          required: false
+          schema:
+            type: integer
         - in: query
           name: peiltijdstipMaterieel
           description: ""
@@ -75,18 +90,6 @@ paths:
           required: false
           schema:
             type: string
-        - in: query
-          name: statusAanslag
-          description: "<body><p>Met deze code kan bijvoorbeeld worden aangegeven of de aanslag is opgelegd, onder bezwaar is, of is vernietigd. Voor uniformering kan nog worden overwogen voor dit attribuut een enumeratie te definiëren.</p></body>"
-          required: false
-          schema:
-            type: integer
-        - in: query
-          name: statusBetaling
-          description: "<body><p>Met deze code kan worden aangegeven of de aanslag nog betaald moet worden, volledig betaald is of deels betaald is (automatische incasso). Voor uniformering kan nog worden overwogen voor dit attribuut een enumeratie te definiëren.</p></body>"
-          required: false
-          schema:
-            type: integer
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -108,7 +111,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/AanslagregelHalCollectie'
+                $ref: '#/components/schemas/BiljetHalCollectie'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
         '401':
@@ -132,15 +135,15 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
-      - Aanslagregels (ASL)
-  /aanslagregels/{identificatie}:
+      - Biljetten (BLJ)
+  /biljetten/{identificatie}:
     get:
-      operationId: getaanslagregel
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een aanslagregel retourneert.</p></body>"
+      operationId: getbiljet
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een biljet retourneert.</p></body>"
       parameters:
         - in: path
           name: identificatie
-          description: "<body><p>Dit domein maakt het mogelijk om gebruik te maken van systemen voor toekennen van unieke identificaties zoals UUID's.</p></body>"
+          description: ""
           required: true
           schema:
             $ref: "#/components/schemas/Sleutel"
@@ -161,7 +164,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/AanslagregelHal'
+                $ref: '#/components/schemas/BiljetHal'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
         '401':
@@ -187,10 +190,10 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
-      - Aanslagregels (ASL)
+      - Biljetten (BLJ)
 components:
   schemas:
-    AanslagregelHalCollectie:
+    BiljetHalCollectie:
       type: object
       properties:
         _links:
@@ -198,123 +201,87 @@ components:
         _embedded:
           type: object
           properties:
-            Aanslagregels:
+            biljetten:
               type: array
               items:
-                $ref: '#/components/schemas/AanslagregelHal'
-    AanslagregelHal:
+                $ref: '#/components/schemas/BiljetHal'
+    BiljetHal:
       allOf:
-      - $ref: '#/components/schemas/Aanslagregel'
+      - $ref: '#/components/schemas/Biljet'
       - type: object
         properties:
           _links:
-            $ref: '#/components/schemas/Aanslagregel_links'
-    Aanslagregel:
+            $ref: '#/components/schemas/Biljet_links'
+    Biljet:
       type: object
-      description: <body><p>Deze entiteit wordt gebruikt om de gegevens voor het aanslagbiljet
-        te communiceren met de applicatie voor het massaal printen van aanslagbiljetten
-        of voor het weergeven van het aanslagbiljet op de persoonlijke internetpagina
-        van de belanghebbende. De gegevens over de aanslagregel zijn van belang voor
-        dit IMWOZ, omdat deze aanslagregels gelijktijdig worden gecommuniceerd met
-        de beschikkingsregels. Op basis van dit IMWOZ moet ook helder zijn hoe de
-        gegevens over de bekendmaking van de WOZ-beschikking op het aanslagbiljet
-        gemeentelijke belastingen gecommuniceerd kunnen worden ten behoeve van de
-        print/mailvoorzieningen en ten behoeve van de presentatie op internet (persoonlijke
-        internetpagina). Gemodelleerd zijn alleen de algemene gegevens voor de aanslagregel
-        en de relaties die nodig zijn voor de OZB aanslagen welke gebaseerd zijn op
-        een WOZ beschikking. Voor andere belastingsoorten, bijvoorbeeld afvalstoffenheffing,
-        kan het nodig zijn in de modellering nog relaties aan te brengen naar bijvoorbeeld
-        een verblijfsobject. Er is een switch die bepaald of enerzijds de attributen
-        'Heffingsmaatstaf' en 'Tariefpercentage' gebruikt worden of anderzijds de
-        attributen 'Aantal eenheden' en 'Tarief per eenheid'.</p></body>
+      description: <body><p>Deze entiteit wordt gebruikt om de gegevens bijeen te
+        brengen die op het aanslagbiljet, waarop ook één of meer WOZ-beschikkingen
+        worden afgedrukt, moeten worden weergegeven, zodat deze kunnen worden gecommuniceerd
+        met een print/mail applicatie en een applicatie voor bekendmaking via internet
+        (persoonlijke internetpagina). Gegevens over het aanslagbiljet (biljet gemeentelijke
+        belastingen) zijn van belang voor de Basisregistratie WOZ (LV WOZ), omdat
+        met behulp van dit aanslagbiljet de WOZ-beschikking (beschikkingsregels) bekend
+        gemaakt worden. Daarmee vormt het aanslagbiljet het brondocument voor de WOZ-waarde.
+        Wanneer door het biljet gemeentelijke belastingen één of meer beschikkingen
+        worden vastgesteld dan wordt het gegeven 'identificatie' inclusief bijbehorende
+        metagegevens (datum/dagtekening) gekopieerd naar de overeenkomstige gegevens
+        binnen de relatieklasse WRDPRS.</p></body>
       required:
-      - aslprs
-      - bedragAanslag
-      - belastingsoort
-      - berekeningMetPercentageOfberekeningPerEenheid
+      - bljprs
+      - brondocument
       - identificatie
-      - statusAanslag
-      - statusBetaling
-      - tariefsoort
+      - identificatieAanslagregel
+      - identificatieWaarde
+      - statusBiljet
       properties:
-        aslbsk:
-          $ref: '#/components/schemas/Aslbsk'
-        aslprs:
-          $ref: '#/components/schemas/Aslprs'
-        bedragAanslag:
-          type: number
-          title: bedragAanslag
-          description: <body><p>De gegevens over de aanslagregel zijn van belang voor
-            dit IMWOZ, omdat deze aanslagregels gelijktijdig worden gecommuniceerd
-            met de beschikkingsregels. Op basis van deze catalogus moet ook helder
-            zijn hoe de gegevens over de bekendmaking van de WOZ-beschikking op het
-            aanslagbiljet gemeentelijke belastingen gecommuniceerd kunnen worden ten
-            behoeve van de print/mailvoorzieningen en ten behoeve van de presentatie
-            op internet (persoonlijke internetpagina).</p></body>
-        belastingsoort:
-          type: string
-          title: belastingsoort
-          description: '<body><p>Met deze code wordt aangegeven op welke soort belasting
-            deze aanslag betrekking heeft. Voorbeelden van soorten belasting zijn:
-            Onroerende-zaakbelasting (eigenaar), afvalstoffenheffing, rioolheffing,
-            precariobelasting etc.</p></body>'
-          maxLength: 30
-          minLength: 1
-        berekeningMetPercentageOfberekeningPerEenheid:
-          $ref: '#/components/schemas/BerekeningMetPercentageOfberekeningPerEenheid'
-        heffingsTijdvak:
-          $ref: '#/components/schemas/HeffingsTijdvak'
+        bljprs:
+          $ref: '#/components/schemas/Bljprs'
+        brondocument:
+          $ref: '#/components/schemas/Brondocument'
         identificatie:
           $ref: '#/components/schemas/Sleutel'
-        statusAanslag:
+        identificatieAanslagregel:
+          $ref: '#/components/schemas/Sleutel'
+        identificatieWaarde:
+          $ref: '#/components/schemas/Sleutel'
+        statusBiljet:
           type: integer
-          title: statusAanslag
-          description: <body><p>Met deze code kan bijvoorbeeld worden aangegeven of
-            de aanslag is opgelegd, onder bezwaar is, of is vernietigd. Voor uniformering
-            kan nog worden overwogen voor dit attribuut een enumeratie te definiëren.</p></body>
-        statusBetaling:
-          type: integer
-          title: statusBetaling
-          description: <body><p>Met deze code kan worden aangegeven of de aanslag
-            nog betaald moet worden, volledig betaald is of deels betaald is (automatische
-            incasso). Voor uniformering kan nog worden overwogen voor dit attribuut
-            een enumeratie te definiëren.</p></body>
-        tariefsoort:
-          type: string
-          title: tariefsoort
-          description: '<body><p>Met deze code wordt aangegeven welke tarief van toepassing
-            is binnen de betreffende belastingsoort. Voorbeelden van diverse tariefsoort
-            binnen één belasting zijn: verschillend tarief voor woningen en nietwoningen
-            bij OZB-eigenaren, verschillend tarief voor eerste en volgende hond bij
-            hondenbelasting etc. Voor uniformering kan nog worden overwogen voor dit
-            attribuut een enumeratie te definierëren.</p></body>'
-          maxLength: 4
-          minLength: 1
+          title: statusBiljet
+          description: <body><p>Een codering van de verschillende waarden die de status
+            van een biljet gemeentelijke belastingen kan aannemen.</p></body>
         tijdstipRegistratie:
           type: string
           title: tijdstipRegistratie
           description: ""
           format: date-time
-    Aanslagregel_links:
+    Biljet_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        beschikkingen:
-          allOf:
-          - title: isGebaseerdOp
-            type: object
-            description: <body><p>Relatie tussen aanslagregel en bijbehorende beschikking.</p></body>
-          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        personen:
-          allOf:
-          - title: isVoor
-            type: object
-            description: ""
-          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        waardes:
+          title: heeftbeschikkingsregel
+          type: array
+          description: <body><p>Het is mogelijk dat een biljet geen enkele beschikkingsregel
+            bevat. Het biljet zal dan wel één of meer aanslagregels bevatten.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
         vestigingen:
           allOf:
           - title: communiceertvia
+            type: object
+            description: ""
+          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        aanslagregels:
+          title: heeftaanslagregel
+          type: array
+          description: <body><p>Het is mogelijk dat een biljet geen enkele aanslagregel
+            bevat. Het biljet zal dan wel één of meer beschikkingsregels bevatten.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        personen:
+          allOf:
+          - title: IsVoor
             type: object
             description: ""
           - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
@@ -444,24 +411,12 @@ components:
           description: ""
           maxLength: 80
           minLength: 1
-    Aslbsk:
-      type: object
-      description: ""
-      required:
-      - identificatieBeschikking
-      - tijdvakRelatie
-      properties:
-        identificatieBeschikking:
-          $ref: '#/components/schemas/Sleutel'
-        tijdvakRelatie:
-          $ref: '#/components/schemas/TijdvakRelatie'
-    Aslprs:
+    Bljprs:
       type: object
       description: ""
       required:
       - correspondentieAdresWOZ
       - identificatiePersoon
-      - identificatieVestiging
       properties:
         aanduidingAfdelingOfComplex:
           type: string
@@ -485,64 +440,38 @@ components:
           description: ""
           maxLength: 50
           minLength: 1
-    BerekeningMetPercentage:
+    Brondocument:
       type: object
       description: ""
       required:
-      - heffingsmaatstaf
-      - tariefPercentage
+      - datum
+      - identificatie
       properties:
-        heffingsmaatstaf:
-          type: number
-          title: heffingsmaatstaf
-          description: <body><p>Voor diverse belastingen wordt de te betalen belasting
-            afgeleid van een bedrag. De te betalen OZB wordt afgeleid van de (WOZ-)
-            waarde, de te betalen bouwleges, vaak van de stichtingskosten etc. Dit
-            gegeven is niet voor alle gemeentelijke belastingen van betekenis.</p></body>
-        tariefPercentage:
-          type: number
-          title: tariefPercentage
-          description: <body><p>Met dit percentage wordt het bedrag van de aanslag
-            berekend. Vanaf 2009 wordt het tarief voor de OZB berekend als een percentage
-            van de heffingsmaatstaf. Dat geldt ook voor andere gemeentelijke belastingen
-            en heffingen.</p></body>
-    BerekeningMetPercentageOfberekeningPerEenheid:
-      oneOf:
-        - $ref: '#/components/schemas/BerekeningMetPercentage'
-        - $ref: '#/components/schemas/BerekeningPerEenheid'
-    BerekeningPerEenheid:
-      type: object
-      description: ""
-      required:
-      - aantalEenheden
-      - tariefPerEenheid
-      properties:
-        aantalEenheden:
-          type: integer
-          title: aantalEenheden
-          description: <body><p>Door het aantal eenheden te vermenigvuldigen met het
-            tarief per eenheid (vast bedrag) wordt het bedrag van de aanslag berekend.</p></body>
-        tariefPerEenheid:
-          type: number
-          title: tariefPerEenheid
-          description: ""
-    HeffingsTijdvak:
-      type: object
-      description: ""
-      required:
-      - begindatum
-      - einddatum
-      properties:
-        begindatum:
+        datum:
           type: string
-          title: begindatum
-          description: ""
+          title: datum
+          description: '<body><p>Het belangrijkste brondocument in het kader van de
+            Wet WOZ is de WOZ-beschikking (aanslagbiljet gemeentelijke belastingen).
+            Andere formele brondocumenten die ook van belang zijn voor de Basisregistratie
+            WOZ zijn: bezwaarschrift, beroepschrift en uitspraak in bezwaar- of beroepsprocedure.
+            De hier geregistreerde datum betreft de formele dagtekening van een formeel
+            document.</p></body>'
           format: date
-        einddatum:
+        identificatie:
           type: string
-          title: einddatum
-          description: ""
-          format: date
+          title: identificatie
+          description: '<body><p>Het belangrijkste brondocument in het kader van de
+            Wet WOZ is de WOZ-beschikking (aanslagbiljet gemeentelijke belastingen).
+            Andere formele brondocumenten die ook van belang zijn voor de Basisregistratie
+            WOZ zijn: bezwaarschrift, beroepschrift en uitspraak in bezwaar- of beroepsprocedure.
+            Bij voorkeur wordt voor de identificatie een URI gebruikt die verwijst
+            naar een document management systeem. De identificatie is in ieder geval
+            een unieke aanduiding van de vindplaats van een document binnen een organisatie.
+            Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters
+            uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens
+            om documenten binnen een organisatie uniek aan te duiden.</p></body>'
+          maxLength: 512
+          minLength: 1
     IdentificatiePersoon:
       type: object
       required:
@@ -617,23 +546,6 @@ components:
           title: naam
           description: ""
           minLength: 1
-    TijdvakRelatie:
-      type: object
-      description: ""
-      required:
-      - beginRelatie
-      - eindRelatie
-      properties:
-        beginRelatie:
-          type: string
-          title: beginRelatie
-          description: ""
-          format: date
-        eindRelatie:
-          type: string
-          title: eindRelatie
-          description: ""
-          format: date
     IdentificatiePersoonType:
       type: string
       description: ""
