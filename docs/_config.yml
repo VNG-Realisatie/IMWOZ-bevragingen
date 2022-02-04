@@ -40,6 +40,14 @@ nav:
         path: /CTL-swagger-ui
       - title: Controleobjectkenmerken (redoc)
         path: /CTL-redoc
+      - title: Erfpacht (swagger-ui)
+        path: /Erfpacht-swagger-ui
+      - title: Erfpacht (redoc)
+        path: /Erfpacht-redoc
+      - title: Kadastraal Onroerende Zaken (swagger-ui)
+        path: /KOZ-swagger-ui
+      - title: Kadastraal Onroerende Zaken (redoc)
+        path: /KOZ-redoc
 #  - title: Specificaties v. 1.0.0-rc2 (In Ontwikkeling)
 #    subnav:
 #      - title: Getting started

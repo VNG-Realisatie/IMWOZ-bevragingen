@@ -13,6 +13,7 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
  - BAG-objecten in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/BAG-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/BAG-redoc) --- [technische specificaties](specificatie/BAG/openapi.yaml)
  - Controleobjectkenmerken in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/CTL-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/CTL-redoc) --- [technische specificaties](specificatie/CTL/openapi.yaml)
  - Erfpacht in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/Erfpacht-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/Erfpacht-redoc) --- [technische specificaties](specificatie/Erfpacht/openapi.yaml)
+ - Kadastraal Onroerende Zaken in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/KOZ-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/KOZ-redoc) --- [technische specificaties](specificatie/KOZ/openapi.yaml)
 
 
 Bekijk de [release notes](./releasenotes).

@@ -5,7 +5,7 @@ servers:
   - description: "Referentie-implementatie"
     url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_koz/v1
 info:
-  title: BG IMWOZ Erfpacht
+  title: BG IMWOZ KOZ
   description: ""
   version: "1.0.0"
   x-imvertor-generator-version: "1.65.4"
@@ -16,37 +16,18 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 paths:
-  /erfpachten:
+  /kadastraleonroerendezaken:
     get:
-      operationId: geterfpachten
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie erfpachten retourneert.</p></body>"
+      operationId: getkadastraleonroerendezaken
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie kadstraleonroerendezaken retourneert.</p></body>"
       parameters:
-        - in: query
-          name: adres
-          description: "<body><p>Adres vrij in te vullen.</p></body>"
-          required: true
-          schema:
-            type: string
-            maxLength: 80
-        - in: query
-          name: eigendomnummer
-          description: ""
-          required: true
-          schema:
-            type: integer
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: query
           name: kadastraleIdentificatie
           description: ""
           required: true
           schema:
             type: string
-            pattern: NL\.IMKAD\.KadastraalObject\.[1-9][0-9]{0,14}(\.[0-9]+)?
-        - in: query
-          name: overeenkomstnummer
-          description: ""
-          required: true
-          schema:
-            type: integer
         - in: query
           name: peiltijdstipMaterieel
           description: ""
@@ -75,17 +56,21 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ErfpachtHalCollectie'
+                $ref: '#/components/schemas/KadastraleOnroerendeZaakHalCollectie'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
         '401':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
         '403':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
         '409':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
         '410':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '412':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/412"
         '415':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
         '429':
@@ -99,18 +84,19 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
-      - Erfpacht
-  /erfpachten/{overeenkomstnummer}:
+      - Kadastraleonroerendezaken (KOZ)
+  /kadastraleonroerendezaken/{kadastraleidentificatie}:
     get:
-      operationId: geterfpacht
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een erfpacht retourneert.</p></body>"
+      operationId: getkadastraleonroerendezaak
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een kadstraleonroerendezaak retourneert.</p></body>"
       parameters:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
         - in: path
-          name: overeenkomstnummer
+          name: kadastraleidentificatie
           description: ""
           required: true
           schema:
-            type: integer
+            type: string
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -128,17 +114,23 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ErfpachtHal'
+                $ref: '#/components/schemas/KadastraleOnroerendeZaakHal'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
         '401':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
         '403':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
         '409':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
         '410':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '412':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/412"
         '415':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
         '429':
@@ -152,10 +144,10 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
-      - Erfpacht
+      - Kadastraleonroerendezaken (KOZ)
 components:
   schemas:
-    ErfpachtHalCollectie:
+    KadastraleOnroerendeZaakHalCollectie:
       type: object
       properties:
         _links:
@@ -163,104 +155,135 @@ components:
         _embedded:
           type: object
           properties:
-            '':
+            kadastraleOnroerendeZaken:
               type: array
               items:
-                $ref: '#/components/schemas/ErfpachtHal'
-    ErfpachtHal:
+                $ref: '#/components/schemas/KadastraleOnroerendeZaakHal'
+    KadastraleOnroerendeZaakHal:
       allOf:
-        - $ref: '#/components/schemas/Erfpacht'
+        - $ref: '#/components/schemas/KadastraleOnroerendeZaak'
         - type: object
           properties:
             _links:
-              $ref: '#/components/schemas/Erfpacht_links'
-    Erfpacht:
+              $ref: '#/components/schemas/KadastraleOnroerendeZaak_links'
+    KadastraleOnroerendeZaak:
       type: object
-      description: <body><p>Optionele uitbreiding voor erfpacht.</p></body>
+      description: <body><p>Kadastrale onroerende zaak komt in de actualiteit in twee gedaanten voor, namelijk als kadastraal perceel of als kadastraal appartement. De attributen begrenzingPerceel en oppervlakte komen alleen voor bij kadastraal perceel. In de historische gegevens van de Basisregistratie WOZ (beëindigde bevatKadastraleObjecten relaties) komen daarnaast ook nog kadastrale deelpercelen voor. De kadastraleIdentificatie moet ook een unieke identificatie geven voor historische kadastrale onroerende zaken. In de Basisregistratie WOZ liggen ook relaties vast naar historische kadastrale onroerende zaken die na 1 januari 2009 zijn beëindigd. Dit informatiemodel gaat ervan uit dat ook voor deze historische kadastrale zaken een kadastraleIdentificatie beschikbaar is. Dit is nog niet door het Kadaster bevestigd.</p></body>
       required:
-        - adres
-        - begindatumContract
-        - eigendomnummer
-        - einddatumContract
+        - einddatumObject
+        - ingangsdatumObject
+        - kadastraleAanduiding
         - kadastraleIdentificatie
-        - overeenkomstnummer
-        - soortOvereenkomst
+        - oppervlakte
       properties:
-        adres:
-          type: string
-          title: adres
-          description: <body><p>Adres vrij in te vullen.</p></body>
-          maxLength: 80
-          minLength: 1
-        afkoopsom:
-          type: integer
-          title: afkoopsom
-          description: ''
-        begindatumContract:
-          type: string
-          title: begindatumContract
-          description: ''
-          format: date
-        canon:
-          type: integer
-          title: canon
-          description: ''
-        eigendomnummer:
-          type: integer
-          title: eigendomnummer
-          description: ''
-        einddatumContract:
-          type: string
-          title: einddatumContract
-          description: ''
-          format: date
-        grondwaarde:
-          type: integer
-          title: grondwaarde
-          description: ''
-        kadastraleIdentificatie:
+        begrenzingPerceel:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon
+        einddatumObject:
+          $ref: '#/components/schemas/DatumMogelijkOnvolledig'
+        inOnderzoek:
           type: array
+          items:
+            $ref: '#/components/schemas/InOnderzoekKOZ'
+        ingangsdatumObject:
+          $ref: '#/components/schemas/DatumMogelijkOnvolledig'
+        kadastraleAanduiding:
+          $ref: '#/components/schemas/KadastraleAanduiding'
+        kadastraleIdentificatie:
+          type: string
           title: kadastraleIdentificatie
           description: ''
-          pattern: NL\.IMKAD\.KadastraalObject\.[1-9][0-9]{0,14}(\.[0-9]+)?
-          minItems: 1
-          items:
-            type: string
-            minLength: 1
-        overeenkomstnummer:
-          type: integer
-          title: overeenkomstnummer
-          description: ''
-        soortOvereenkomst:
-          $ref: '#/components/schemas/SoortOvereenkomst'
+          minLength: 1
+        koopsom:
+          $ref: '#/components/schemas/Koopsom'
+        oppervlakte:
+          type: number
+          title: oppervlakte
+          description: <body><p>Deze attribuutsoort heeft alleen een waarde als het appartementsrechtVolgnummer geen waarde heeft.</p></body>
         tijdstipRegistratie:
           type: string
           title: tijdstipRegistratie
           description: ''
           format: date-time
-    Erfpacht_links:
+    KadastraleOnroerendeZaak_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        kadastraleonroerendezaken:
-          title: betreft
-          type: array
-          description: <body><p><memo></p></body>
-          minItems: 1
-          items:
-            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-    SoortErfpachtOvereenkomst:
+    Bedrag:
       type: object
       description: ''
       required:
-        - codeSoortOvereenkomst
-        - ingangsdatum
-        - omschrijvingSoortOvereenkomst
+        - bedrag
+        - valuta
       properties:
-        codeSoortOvereenkomst:
+        bedrag:
+          type: number
+          title: bedrag
+          description: ''
+        valuta:
+          allOf:
+            - $ref: '#/components/schemas/Valuta'
+            - title: valuta
+              description: ''
+    DatumMogelijkOnvolledig:
+      type: object
+      description: ''
+      required:
+        - date
+        - jaar
+        - jaarMaand
+      properties:
+        date:
           type: string
-          title: codeSoortOvereenkomst
+          title: Date
+          description: ''
+          format: date
+        jaar:
+          $ref: '#/components/schemas/GYear'
+        jaarMaand:
+          $ref: '#/components/schemas/GYearMonth'
+    KadastraleAanduiding:
+      type: object
+      description: ''
+      required:
+        - kadastraleGemeente
+        - perceelnummer
+        - sectie
+      properties:
+        appartementsrechtVolgnummer:
+          type: integer
+          title: appartementsrechtVolgnummer
+          description: ''
+        deelperceelNummer:
+          type: integer
+          title: deelperceelNummer
+          description: ''
+        kadastraleGemeente:
+          allOf:
+            - $ref: '#/components/schemas/KadastraleGemeente'
+            - title: kadastraleGemeente
+              description: ''
+        perceelnummer:
+          type: integer
+          title: perceelnummer
+          description: ''
+        sectie:
+          type: string
+          title: sectie
+          description: ''
+          pattern: ^[A-Z]{1,2}$
+          maxLength: 2
+    KadastraleGemeente:
+      type: object
+      description: ''
+      required:
+        - code
+        - ingangsdatum
+        - kadastraleGemeente
+      properties:
+        code:
+          type: string
+          title: code
           description: ''
           minLength: 1
         einddatum:
@@ -273,25 +296,72 @@ components:
           title: ingangsdatum
           description: ''
           format: date
-        omschrijvingSoortOvereenkomst:
+        kadastraleGemeente:
           type: string
-          title: omschrijvingSoortOvereenkomst
+          title: kadastraleGemeente
           description: ''
           minLength: 1
-    SoortOvereenkomst:
+    Koopsom:
       type: object
       description: ''
       required:
-        - codeSoortOvereenkomst
-        - omschrijvingSoortOvereenkomst
+        - bedrag
+        - indicatieMeerObjecten
+        - transactiedatum
       properties:
-        codeSoortOvereenkomst:
-          allOf:
-            - $ref: '#/components/schemas/SoortErfpachtOvereenkomst'
-            - title: codeSoortOvereenkomst
-              description: ''
-        omschrijvingSoortOvereenkomst:
-          allOf:
-            - $ref: '#/components/schemas/SoortErfpachtOvereenkomst'
-            - title: omschrijvingSoortOvereenkomst
-              description: ''
+        bedrag:
+          $ref: '#/components/schemas/Bedrag'
+        indicatieMeerObjecten:
+          type: boolean
+          title: indicatieMeerObjecten
+          description: ''
+        transactiedatum:
+          type: string
+          title: transactiedatum
+          description: ''
+          format: date
+    Valuta:
+      type: object
+      description: ''
+      required:
+        - code
+        - ingangsdatum
+        - waarde
+      properties:
+        code:
+          type: string
+          title: code
+          description: ''
+          minLength: 1
+        einddatum:
+          type: string
+          title: einddatum
+          description: ''
+          format: date
+        ingangsdatum:
+          type: string
+          title: ingangsdatum
+          description: ''
+          format: date
+        waarde:
+          type: string
+          title: waarde
+          description: ''
+          minLength: 1
+    InOnderzoekKOZ:
+      type: string
+      description: ''
+      enum:
+        - oppervlakte
+        - kadastraleAanduiding
+        - begrenzingPerceel
+    GYear:
+      type: integer
+      description: ''
+      format: date_fullyear
+      pattern: ^[1-2]{1}[0-9]{3}$
+    GYearMonth:
+      type: integer
+      description: ''
+      format: date_fullyear
+      pattern: ^[1-2]{1}[0-9]{3}$
