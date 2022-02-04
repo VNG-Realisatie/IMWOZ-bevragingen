@@ -1,0 +1,295 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_koz/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_koz/v1
+info:
+  title: BG IMWOZ Erfpacht
+  description: ""
+  version: "1.0.0"
+  x-imvertor-generator-version: "1.65.4"
+  x-yamlCompiler-stylesheets-version: "20220110"
+  contact:
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /erfpachten:
+    get:
+      operationId: geterfpachten
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie erfpachten retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: adres
+          description: "<body><p>Adres vrij in te vullen.</p></body>"
+          required: true
+          schema:
+            type: string
+            maxLength: 80
+        - in: query
+          name: eigendomnummer
+          description: ""
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: kadastraleIdentificatie
+          description: ""
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: overeenkomstnummer
+          description: ""
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ErfpachtHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Erfpacht
+  /erfpachten/{overeenkomstnummer}:
+    get:
+      operationId: geterfpacht
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een erfpacht retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: overeenkomstnummer
+          description: ""
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ErfpachtHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Erfpacht
+components:
+  schemas:
+    ErfpachtHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            '':
+              type: array
+              items:
+                $ref: '#/components/schemas/ErfpachtHal'
+    ErfpachtHal:
+      allOf:
+        - $ref: '#/components/schemas/Erfpacht'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/Erfpacht_links'
+    Erfpacht:
+      type: object
+      description: <body><p>Optionele uitbreiding voor erfpacht.</p></body>
+      required:
+        - adres
+        - begindatumContract
+        - eigendomnummer
+        - einddatumContract
+        - kadastraleIdentificatie
+        - overeenkomstnummer
+        - soortOvereenkomst
+      properties:
+        adres:
+          type: string
+          title: adres
+          description: <body><p>Adres vrij in te vullen.</p></body>
+          maxLength: 80
+          minLength: 1
+        afkoopsom:
+          type: integer
+          title: afkoopsom
+          description: ''
+        begindatumContract:
+          type: string
+          title: begindatumContract
+          description: ''
+          format: date
+        canon:
+          type: integer
+          title: canon
+          description: ''
+        eigendomnummer:
+          type: integer
+          title: eigendomnummer
+          description: ''
+        einddatumContract:
+          type: string
+          title: einddatumContract
+          description: ''
+          format: date
+        grondwaarde:
+          type: integer
+          title: grondwaarde
+          description: ''
+        kadastraleIdentificatie:
+          type: array
+          title: kadastraleIdentificatie
+          description: ''
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+        overeenkomstnummer:
+          type: integer
+          title: overeenkomstnummer
+          description: ''
+        soortOvereenkomst:
+          $ref: '#/components/schemas/SoortOvereenkomst'
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ''
+          format: date-time
+    Erfpacht_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        kadastraleonroerendezaken:
+          title: betreft
+          type: array
+          description: <body><p><memo></p></body>
+          minItems: 1
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    SoortErfpachtOvereenkomst:
+      type: object
+      description: ''
+      required:
+        - codeSoortOvereenkomst
+        - ingangsdatum
+        - omschrijvingSoortOvereenkomst
+      properties:
+        codeSoortOvereenkomst:
+          type: string
+          title: codeSoortOvereenkomst
+          description: ''
+          minLength: 1
+        einddatum:
+          type: string
+          title: einddatum
+          description: ''
+          format: date
+        ingangsdatum:
+          type: string
+          title: ingangsdatum
+          description: ''
+          format: date
+        omschrijvingSoortOvereenkomst:
+          type: string
+          title: omschrijvingSoortOvereenkomst
+          description: ''
+          minLength: 1
+    SoortOvereenkomst:
+      type: object
+      description: ''
+      required:
+        - codeSoortOvereenkomst
+        - omschrijvingSoortOvereenkomst
+      properties:
+        codeSoortOvereenkomst:
+          allOf:
+            - $ref: '#/components/schemas/SoortErfpachtOvereenkomst'
+            - title: codeSoortOvereenkomst
+              description: ''
+        omschrijvingSoortOvereenkomst:
+          allOf:
+            - $ref: '#/components/schemas/SoortErfpachtOvereenkomst'
+            - title: omschrijvingSoortOvereenkomst
+              description: ''

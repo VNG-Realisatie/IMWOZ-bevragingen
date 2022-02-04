@@ -506,18 +506,17 @@ components:
               pattern: ^[0-9]{17}$
     KeuzeAdresBinnenBuitenland:
       type: object
-      description: ""
       required:
-      - adresAanduiding
-      - adresBuitenland
-      - adresPostbusAntwoordnummer
+        - type
       properties:
-        adresAanduiding:
-          $ref: '#/components/schemas/AdresBagPlusLocatieOmschrijving'
-        adresBuitenland:
-          $ref: '#/components/schemas/AdresBuitenland'
-        adresPostbusAntwoordnummer:
-          $ref: '#/components/schemas/AdresPostbusAntwoordnummer'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          adresAanduiding: '#/components/schemas/AdresBagPlusLocatieOmschrijving'
+          adresBuitenland: '#/components/schemas/AdresBuitenland'
+          adresPostbusAntwoordnummer: '#/components/schemas/AdresPostbusAntwoordnummer'
     Land:
       type: object
       description: ""
