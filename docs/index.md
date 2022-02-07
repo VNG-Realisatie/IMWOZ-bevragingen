@@ -13,15 +13,15 @@ Een set API's die naast de nieuwe versie van StUFWoz worden ontwikkeld om vanuit
 **Als er een eerste stabiel versie is wordt daar een release van aangemaakt en wordt dit op deze plek (en via andere communicatie-lijnen) gedeeld.**
 
 De Specificatie van de betreffende API's zijn op de volgende locaties te bekijken :
- - Aanslagregels in [Swagger-UI](./ASL-swagger-ui) of [Redoc](./ASL-redoc) --- [technische specificaties](../specificatie/ASL/openapi.yaml)
- - Biljetten in [Swagger-UI](./BLJ-swagger-ui) of [Redoc](./BLJ-redoc) --- [technische specificaties](../specificatie/BLJ/openapi.yaml)
- - BAG-objecten in [Swagger-UI](./BAG-swagger-ui) of [Redoc](./BAG-redoc) --- [technische specificaties](../specificatie/BAG/openapi.yaml)
- - Bezwaren in [Swagger-UI](./BZW-swagger-ui) of [Redoc](./ZWG-redoc) --- [technische specificaties](../specificatie/BZW/openapi.yaml)
- - Controleobjectkenmerken in [Swagger-UI](./CTL-swagger-ui) of [Redoc](./CTL-redoc) --- [technische specificaties](../specificatie/CTL/openapi.yaml)
- - Erfpacht in [Swagger-UI](./Erfpacht-swagger-ui) of [Redoc](./Erfpacht-redoc) --- [technische specificaties](../specificatie/Erfpacht/openapi.yaml)
- - Kadastraal Onroerende Zaken in [Swagger-UI](./KOZ-swagger-ui) of [Redoc](./KOZ-redoc) --- [technische specificaties](./specificatie/KOZ/openapi.yaml)
- - Personen in [Swagger-UI](../PRS-swagger-ui) of [Redoc](./PRS-redoc) --- [technische specificaties](./specificatie/PRS/openapi.yaml)
- - ResultatenMarktanalyse in [Swagger-UI](./RMA-swagger-ui) of [Redoc](./RMA-redoc) --- [technische specificaties](../specificatie/RMA/openapi.yaml)
+ - Aanslagregels in [Swagger-UI](./ASL-swagger-ui) of [Redoc](./ASL-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/ASL/openapi.yaml)
+ - Biljetten in [Swagger-UI](./BLJ-swagger-ui) of [Redoc](./BLJ-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/BLJ/openapi.yaml)
+ - BAG-objecten in [Swagger-UI](./BAG-swagger-ui) of [Redoc](./BAG-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/BAG/openapi.yaml)
+ - Bezwaren in [Swagger-UI](./BZW-swagger-ui) of [Redoc](./ZWG-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/BZW/openapi.yaml)
+ - Controleobjectkenmerken in [Swagger-UI](./CTL-swagger-ui) of [Redoc](./CTL-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/CTL/openapi.yaml)
+ - Erfpacht in [Swagger-UI](./Erfpacht-swagger-ui) of [Redoc](./Erfpacht-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/Erfpacht/openapi.yaml)
+ - Kadastraal Onroerende Zaken in [Swagger-UI](./KOZ-swagger-ui) of [Redoc](./KOZ-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/KOZ/openapi.yaml)
+ - Personen in [Swagger-UI](./PRS-swagger-ui) of [Redoc](./PRS-redoc) --- [technische specificaties](./specificatie/PRS/openapi.yaml)
+ - ResultatenMarktanalyse in [Swagger-UI](./RMA-swagger-ui) of [Redoc](./RMA-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/RMA/openapi.yaml)
 
 Bekijk de [release notes](./releasenotes).
 
