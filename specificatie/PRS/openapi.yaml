@@ -287,7 +287,7 @@ paths:
       - Personen (PRS)
   /nietnatuurlijkpersonen:
     get:
-      operationId: Getnietnatuurlijkpersonen
+      operationId: getnietnatuurlijkpersonen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie nietnatuurlijkpersonen retourneert.</p></body>"
       parameters:
         - in: query
@@ -509,7 +509,7 @@ paths:
       - Personen (PRS)
   /vestigingen:
     get:
-      operationId: Getvestigingen
+      operationId: getvestigingen
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie vestigingen retourneert.</p></body>"
       parameters:
         - in: query
