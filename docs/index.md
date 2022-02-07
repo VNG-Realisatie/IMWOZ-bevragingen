@@ -21,6 +21,7 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
  - Erfpacht in [Swagger-UI](./Erfpacht-swagger-ui) of [Redoc](./Erfpacht-redoc) --- [technische specificaties](./specificatie/Erfpacht/openapi.yaml)
  - Kadastraal Onroerende Zaken in [Swagger-UI](./KOZ-swagger-ui) of [Redoc](./KOZ-redoc) --- [technische specificaties](./specificatie/KOZ/openapi.yaml)
  - Personen in [Swagger-UI](./PRS-swagger-ui) of [Redoc](./PRS-redoc) --- [technische specificaties](./specificatie/PRS/openapi.yaml)
+ - ResultatenMarktanalyse in [Swagger-UI](./RMA-swagger-ui) of [Redoc](./RMA-redoc) --- [technische specificaties](./specificatie/RMA/openapi.yaml)
 
 Bekijk de [release notes](./releasenotes).
 

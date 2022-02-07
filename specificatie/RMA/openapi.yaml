@@ -1,0 +1,343 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_rma/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_rma/v1
+info:
+  title: BG IMWOZ RMA
+  description: ""
+  version: "1.0.0"
+  x-imvertor-generator-version: "1.65.4"
+  x-yamlCompiler-stylesheets-version: "20220110"
+  contact:
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /resultatenmarktanalyses:
+    get:
+      operationId: getesultatenmarktanalyses
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie esultatenmarktanalyses retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: identificatieTaxatie
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
+          name: identificatieTransactie
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: toestandspeildatum
+          description: "<body><p>Dit gegeven wordt gebruikt om aan te geven of de toestand van de onroerende zaak op de waardepeildatum maatgevend is geweest voor de waardebepaling, of dat sprake is geweest van een afwijkende toestandspeildatum. In de meeste gevallen zal de `toestandspeildatum` gelijk zijn aan de `waardepeildatum`. Echter wanneer sprake is van een wijziging van de objectafbakening of van de fysieke toestand, de bestemming of een andere bijzondere omstandigheid, kan op grond van artikel 18, derde lid, van de Wet WOZ een afwijkende toestandspeildatum gelden. De toestandspeildatum is dan 1 januari van het jaar waarvoor de waarde geldt.</p></body>"
+          required: false
+          schema:
+            type: string
+            pattern: ^[12][0-9]{3}0101$
+            maxLength: 8
+        - in: query
+          name: volgnummerMarktgegeven
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: waardepeildatum
+          description: "<body><p>De waardepeildatum wordt altijd gesteld op 1 januari van een bepaald jaar. De waardepeildatum ligt één jaar voor het kalenderjaar waarvoor de waarde wordt vastgesteld.</p></body>"
+          required: false
+          schema:
+            type: string
+            pattern: ^[12][0-9]{3}0101$
+            maxLength: 8
+        - in: query
+          name: wozObjectnummer
+          description: "<body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 12
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ResultaatMarktanalyseHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Resultatenmarktanalyse (RMA)
+  /resultatenmarktanalyses/{volgnummermarktgegeven}:
+    get:
+      operationId: getresultatenmarktanalyse
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een resultatenmarktanalyse retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: volgnummermarktgegeven
+          description: ""
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/ResultaatMarktanalyseHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Resultatenmarktanalyse (RMA)
+components:
+  schemas:
+    ResultaatMarktanalyseHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            resultaatMarktanalyses:
+              type: array
+              items:
+                $ref: '#/components/schemas/ResultaatMarktanalyseHal'
+    ResultaatMarktanalyseHal:
+      allOf:
+        - $ref: '#/components/schemas/ResultaatMarktanalyse'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/ResultaatMarktanalyse_links'
+    ResultaatMarktanalyse:
+      type: object
+      description: <body><p>Voor de marktgegevens die betrekking hebben op de verkoop van woningen (transactieprijzen, vraagprijzen), worden de resultaten van de marktanalyse conform de Waarderingsinstructie in deze entiteit vastgelegd. Dit kan eventueel ook gedaan worden voor verkoopprijzen van niet-woningen, waarbij een directe vergelijking tussen betaalde prijs en vastgesteld waarde betekenisvol is (vegelijkingsmethode) In deze entiteit wordt de essentie van de resultaten van de uitgevoerde marktanalyse voor woningen vastgelegd op het niveau van de individuele verkoop. Overeenkomstig de uitgangspunten van de Waarderingsinstructie wordt deze entiteit gevuld voor alle verkopen die betrekking hebben op woningen. De analyse gebaseerd op de vergelijking van de WOZ-waarde en het marktgegeven kan voor enkele opeenvolgende waardepeildata afzonderlijk worden vastgelegd. Het karakter van deze analyse verandert daarbij van `marktanalyse` naar `kwaliteitsbeoordeling taxatie`. Naast de directe vergelijking tussen verkoopprijzen en getaxeerde waarde kunnen gericht op huuwaardekapitalisatie ook huurtransacties van niet-woningen huurpijzen per vierkante meter woden vastgeled met de indexering naar diverse waardepeildata.</p></body>
+      required:
+        - identificatieTransactie
+        - redenAfwijking
+        - toestandspeildatum
+        - volgnummerMarktgegeven
+        - waardeWaarmeeVergeleken
+        - waardepeildatum
+        - wozObjectnummer
+      properties:
+        huurprijsPerM2Geindexeerd:
+          type: integer
+          title: huurprijsPerM2Geindexeerd
+          description: <body><p>Het gegeven wordt gebruikt voor het inschatten van het marktniveau op de waardepeildatum. De overeengekomen markthuurprijs op een bepaald moment wordt met een `markt-index` vertaald naar de waardepeildatum. De gehanteerde `markt-index` staat geheel los van de vraag of in het huurcontract een indexatie overeengekomen is en zo ja, hoe hoog de indexfactor is. We gaan na of dit attribuut in de praktijk wordt gebruikt of dat het geschrapt kan worden.</p></body>
+        identificatieTransactie:
+          $ref: '#/components/schemas/Sleutel'
+        kwantificeringFoutOudeWaarde:
+          type: integer
+          title: kwantificeringFoutOudeWaarde
+          description: <body><p>Een positieve waarde betekent dat de vastgestelde waarde te laag is vastgesteld en dat deze waarde met het genoemde bedrag opgehoogd moet worden om een reële vergelijking met het gerealiseerde marktcijfer mogelijk te maken. De fout in de vastgestelde waarde kan ook andersom uitpakken. De vastgesteld waarde is dan te hoog en er dient een aftrek plaats te vinden om een reële vergelijking met het gerealiseerde marktcijfer mogelijk te maken. Dit wordt gerealiseerd door in dit gegeven een `kwantificering fout oude waarde` negatieve waarde te gebruiken.</p></body>
+        kwantificeringGevolgObjectWijziging:
+          type: integer
+          title: kwantificeringGevolgObjectWijziging
+          description: <body><p>Dit gegeven wordt alleen gevuld in combinatie met `reden afwijking` gelijk aan de waarde `81`. Een positieve waarde betekent dat door de wijziging van het WOZ-object de waarde met het genoemde bedrag hoger is geworden. De wijziging van het object kan ook andersom uitpakken.</p></body>
+        redenAfwijking:
+          $ref: '#/components/schemas/RedenAfwijking'
+        relevantieRedenAfwijking:
+          $ref: '#/components/schemas/RelevantieRedenAfwijking'
+        rmatax:
+          type: array
+          items:
+            $ref: '#/components/schemas/Rmatax'
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ''
+          format: date-time
+        toestandspeildatum:
+          $ref: '#/components/schemas/Peildatum'
+        transactieprijsGeindexeerd:
+          type: integer
+          title: transactieprijsGeindexeerd
+          description: <body><p>Bij de marktanalyse wordt primair de relatie gelegd tussen de waarde naar de desbetreffende waardepeildatum en de daadwerkelijk betaalde prijs. Het gegeven transactieprijs geïndexeerd naar waardepeildatum is voor de marktanalyse daarom strikt genomen niet noodzakelijk. Met name bij een sterke stijging of daling van de markt kan het zichtbaar maken van de geïndexeerde transactieprijs behulpzaam zijn bij het vergelijken van de transactieprijs met de vastgestelde of vast te stellen waarde naar een waardepeildatum.</p></body>
+        verwachteWijzigingWaarde:
+          type: number
+          title: verwachteWijzigingWaarde
+          description: <body><p>De hier vastgelegde verwachte wijziging kan voorkomen uit een actuele waardeschatting van het desbetreffende object afkomstig uit een model, uit een analyse van de transactieprijzen in een marktsegment. Het gegeven wordt vastgelegd als percentage.</p></body>
+        volgnummerMarktgegeven:
+          type: integer
+          title: volgnummerMarktgegeven
+          description: ''
+        waardeWaarmeeVergeleken:
+          type: integer
+          title: waardeWaarmeeVergeleken
+          description: <body><p>Omdat bij de marktanalyse wordt vastgelegd de resultaten van de vergelijking met een WOZ-waarde en omdat bijvoorbeeld door wijzigingen aan het object de vastgestelde waarde later kan veranderen, is het van belang om de WOZ-waarde die gebruikt is bij de analyse vast te houden. De vergelijking kan ook gemaakt worden, voordat de waarde formeel is vastgesteld. Dan is dit dus de op dat moment bekende getaxeerde waarde.</p></body>
+        waardepeildatum:
+          $ref: '#/components/schemas/Peildatum'
+        wozObjectnummer:
+          type: string
+          title: wozObjectnummer
+          description: <body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>
+          pattern: ^[0-9]{12}$
+          maxLength: 12
+    ResultaatMarktanalyse_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        wordtvergelekenmet:
+          title: wordtvergelekenmet
+          type: array
+          description: <body><p>Per waardepeildatum wordt een afzonderlijke entiteit met resultaten marktanalyse vastgelegd. Bij de marktanalyse die gericht is op één waardepeildatum kan ook vergeleken worden met meerdere taxaties. Omdat sommige vergelijkingen wellicht eerder gemaakte vergelijkingen vervangen, is het bijhouden van de tijdvakRelatie van belang.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        heeftbetrekkingop:
+          allOf:
+            - title: heeftbetrekkingop
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        analyseert:
+          allOf:
+            - title: analyseert
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    Rmatax:
+      type: object
+      description: ''
+      required:
+        - identificatieTaxatie
+        - tijdvakRelatie
+      properties:
+        identificatieTaxatie:
+          $ref: '#/components/schemas/Sleutel'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    TijdvakRelatie:
+      type: object
+      description: ''
+      required:
+        - beginRelatie
+        - eindRelatie
+      properties:
+        beginRelatie:
+          type: string
+          title: beginRelatie
+          description: ''
+          format: date
+        eindRelatie:
+          type: string
+          title: eindRelatie
+          description: ''
+          format: date
+    RedenAfwijking:
+      type: string
+      description: ''
+      enum:
+        - '00'
+        - '01'
+        - '71'
+        - '72'
+        - '73'
+        - '76'
+        - '77'
+        - '78'
+        - '81'
+        - '99'
+    RelevantieRedenAfwijking:
+      type: string
+      description: ''
+      enum:
+        - '0'
+        - '1'
+        - '2'
+        - '9'
+    Peildatum:
+      type: string
+      description: ''
+      pattern: ^[12][0-9]{3}0101$
+      maxLength: 8
+    Sleutel:
+      type: string
+      description: ''
+      maxLength: 40
+      minLength: 1

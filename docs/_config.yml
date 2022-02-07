@@ -48,6 +48,14 @@ nav:
         path: /KOZ-swagger-ui
       - title: Kadastraal Onroerende Zaken (redoc)
         path: /KOZ-redoc
+      - title: Personen (swagger-ui)
+        path: /PRS-swagger-ui
+      - title: Personen (redoc)
+        path: /PRS-redoc
+      - title: Resultaten Marktanalyse (swagger-ui)
+        path: /RMA-swagger-ui
+      - title: Resultaten Marktanalyse (redoc)
+        path: /RMA-redoc
 #  - title: Specificaties v. 1.0.0-rc2 (In Ontwikkeling)
 #    subnav:
 #      - title: Getting started
