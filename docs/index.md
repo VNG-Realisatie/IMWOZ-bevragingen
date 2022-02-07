@@ -20,6 +20,7 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
  - Controleobjectkenmerken in [Swagger-UI](./CTL-swagger-ui) of [Redoc](./CTL-redoc) --- [technische specificaties](./specificatie/CTL/openapi.yaml)
  - Erfpacht in [Swagger-UI](./Erfpacht-swagger-ui) of [Redoc](./Erfpacht-redoc) --- [technische specificaties](./specificatie/Erfpacht/openapi.yaml)
  - Kadastraal Onroerende Zaken in [Swagger-UI](./KOZ-swagger-ui) of [Redoc](./KOZ-redoc) --- [technische specificaties](./specificatie/KOZ/openapi.yaml)
+ - Personen in [Swagger-UI](./PRS-swagger-ui) of [Redoc](./PRS-redoc) --- [technische specificaties](./specificatie/PRS/openapi.yaml)
 
 Bekijk de [release notes](./releasenotes).
 

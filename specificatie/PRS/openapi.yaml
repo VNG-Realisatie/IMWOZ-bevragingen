@@ -1,0 +1,1390 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_prs/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_prs/v1
+info:
+  title: BG IMWOZ PRS
+  description: ""
+  version: "1.0.0"
+  x-imvertor-generator-version: "1.65.4"
+  x-yamlCompiler-stylesheets-version: "20220110"
+  contact:
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /natuurlijkpersonen:
+    get:
+      operationId: getnatuurlijkpersonen
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie natuurlijkpersonen retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: aanduidingNaamgebruik
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/AanduidingNaamgebruik"
+        - in: query
+          name: aanhefAanschrijving
+          description: "<body><p>Indien de burger terzake geen opgave gedaan heeft dan, afhankelijk van de Geslachtsaanduiding `De heer`, `Mevrouw` of `Mevrouw/De heer`. Indien deze persoon is overleden wordt de aanhef aangepast naar bijvoorbeeld: 'de erven van'.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 50
+        - in: query
+          name: adresBuitenland1
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 35
+        - in: query
+          name: adresBuitenland2
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 35
+        - in: query
+          name: adresBuitenland3
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 35
+        - in: query
+          name: burgerservicenummer
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{9}$
+        - in: query
+          name: geslachtsaanduiding
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/Geslachtsaanduiding"
+        - in: query
+          name: geslachtsnaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 200
+        - in: query
+          name: huisletter
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: huisnummer
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: huisnummertoevoeging
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: identificatieAdresseerbaarObject
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: identificatieBRK
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: identificatieNummeraanduiding
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: kvkNummer
+          description: "<body><p>Een eenmanszaak is in het Handelsregister ingeschreven met een kvkNummer maar formeel is deze eenmanszaak een natuurlijk persoon daarom bestaat de mogelijkheid voor natuurlijke personen die een eenmanszaak hebben het kvkNummer te registreren,</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 8
+        - in: query
+          name: naamAanschrijving
+          description: "<body><p>Afleidbaar gegeven uit de BRP door combinatie geslachtsnaam en voorvoegsels van de persoon en de geslachtsnaam en voorvoegsels van de partner.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 200
+        - in: query
+          name: openbareRuimteNaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: postbusOfAntwoordnummer
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: postcode
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+        - in: query
+          name: straatnaam
+          description: "<body><p>Als de lengte van de openbareRuimteNaam kleiner of gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk. Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 24
+        - in: query
+          name: voorvoegselGeslachtsnaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: voorvoegselNaamAanschrijving
+          description: "<body><p>Dit gegeven is van belang, wanneer een persoon aangeschreven wil worden met een tenaamstelling die anders is dan de eigen geslachtsnaam.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: woonplaatsnaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/NatuurlijkPersoonHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Personen (PRS)
+  /natuurlijkpersonen/{burgerservicenummer}:
+    get:
+      operationId: getnatuurlijkpersoon
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een natuurlijkpersoon retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: burgerservicenummer
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/IdentificatiePRS"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/NatuurlijkPersoonHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Personen (PRS)
+  /nietnatuurlijkpersonen:
+    get:
+      operationId: Getnietnatuurlijkpersonen
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie nietnatuurlijkpersonen retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: adresBuitenland1
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 35
+        - in: query
+          name: adresBuitenland2
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 35
+        - in: query
+          name: adresBuitenland3
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 35
+        - in: query
+          name: huisletter
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: huisnummer
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: huisnummertoevoeging
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: identificatieBRK
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: identificatieNummeraanduiding
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: kvkNummer
+          description: "<body><p>De mulitipliciteit van het kvkNummer is [0..1], omdat niet elke in het Handelsregister ingeschreven rechtspersoon een maatschappelijke activiteit heeft en omdat buitenlandse rechtspersonen geen kvkNummer hebben. Voor Nederlandse rechtspersonen met een maatschappelijke activiteit is het kvkNummer verplicht.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 8
+        - in: query
+          name: openbareRuimteNaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: postbusOfAntwoordnummer
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: postcode
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+        - in: query
+          name: rsin
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{9}$
+        - in: query
+          name: statutaireNaam
+          description: "<body><p>In dit attribuut wordt ook de tenaamstelling vastgelegd van een niet-natuurlijk persoon die niet is geregistreerd in het Handelsregister (onder andere buitenlandse niet-natuurlijke personen).</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 500
+        - in: query
+          name: straatnaam
+          description: "<body><p>Als de lengte van de openbareRuimteNaam kleiner of gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk. Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 24
+        - in: query
+          name: woonplaatsnaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/NietNatuurlijkPersoonHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Personen (PRS)
+  /nietnatuurlijkpersonen/{rsin}:
+    get:
+      operationId: getnietnatuurlijkpersoon
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een nietnatuurlijkpersoon retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: rsin
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/IdentificatiePRS"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/NietNatuurlijkPersoonHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Personen (PRS)
+  /vestigingen:
+    get:
+      operationId: Getvestigingen
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie vestigingen retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: adresBuitenland1
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 35
+        - in: query
+          name: adresBuitenland2
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 35
+        - in: query
+          name: adresBuitenland3
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 35
+        - in: query
+          name: eersteHandelsnaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 200
+        - in: query
+          name: huisletter
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 1
+        - in: query
+          name: huisnummer
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: huisnummertoevoeging
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: identificatieBRK
+          description: ""
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: identificatieNummeraanduiding
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: kvkNummer
+          description: "<body><p>De mulitipliciteit van het kvkNummer is [0..1], omdat niet elke in het Handelsregister ingeschreven rechtspersoon een maatschappelijke activiteit heeft en omdat buitenlandse rechtspersonen geen kvkNummer hebben. Voor Nederlandse rechtspersonen met een maatschappelijke activiteit is het kvkNummer verplicht.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 8
+        - in: query
+          name: openbareRuimteNaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: postbusOfAntwoordnummer
+          description: ""
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: postcode
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+        - in: query
+          name: straatnaam
+          description: "<body><p>Als de lengte van de openbareRuimteNaam kleiner of gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk. Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 24
+        - in: query
+          name: vestigingsnummer
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 12
+        - in: query
+          name: woonplaatsnaam
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 80
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/VestigingHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Personen (PRS)
+  /vestigingen/{vestigingsnummer}:
+    get:
+      operationId: getvestiging
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een vestiging retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: vestigingsnummer
+          description: ""
+          required: true
+          schema:
+            type: string
+            maxLength: 12
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/VestigingHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Personen (PRS)
+components:
+  schemas:
+    NatuurlijkPersoonHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            '':
+              type: array
+              items:
+                $ref: '#/components/schemas/NatuurlijkPersoonHal'
+    NatuurlijkPersoonHal:
+      allOf:
+        - $ref: '#/components/schemas/NatuurlijkPersoon'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/NatuurlijkPersoon_links'
+    NatuurlijkPersoon:
+      allOf:
+        - $ref: '#/components/schemas/Persoon'
+        - type: object
+          description: <body><p>Voor natuurlijke personen ingeschreven in de BRP (`ingezetene` van de gemeente of niet ingezetene) geldt verplicht gebruik van BRP gegevens. Naast de gegevens voor de tenaamstelling (geslachtsaanduiding, aanduiding naamgebruik, geslachtsnaam, voorvoegsel geslachtsnaam), worden overgenomen de relatie naar adresseerbaar object (`verblijft in`) en de relatie naar nummeraanduiding (`correspondentieadres`). Uit de BRP worden afgeleid de voorletters en de tenaamstelling (aanhefAanschrijving, voorvoegselNaamAanschrijving en naamAanschrijving). De relatie naar nummeraanduiding wordt gedefinieerd bij het supertype PRS. Voor natuurlijke personen die niet overgenomen kunnen worden uit de BRP moet in ieder geval een begrijpelijke tenaamstelling beschikbaar zijn. Hiervoor kan, indien de formele geslachtsnaam etc. niet bekend zijn, het gegeven `naamAanschrijving` worden gebruikt. Voor deze natuurlijke personen is de relaties `verblijft in` optioneel en moet ten minste één (correspondentie) adres beschikbaar zijn. Dit kan in de vorm van een adres buitenland (adres buitenland) of een postadres (postadrestype, postbus of antwoordnummer, postadres postcode). De definitie van dit correspondentieadres is gegeven onder het supertype PRS.</p></body>
+          required:
+            - aanduidingNaamgebruik
+            - aanhefAanschrijving
+            - bsnOfAnpId
+            - datumOverlijden
+            - geboortedatum
+            - geslachtsaanduiding
+            - geslachtsnaam
+            - indicatieGeheim
+            - indicatieOverleden
+            - voorletters
+            - voorvoegselGeslachtsnaam
+            - voorvoegselNaamAanschrijving
+          properties:
+            aanduidingNaamgebruik:
+              $ref: '#/components/schemas/AanduidingNaamgebruik'
+            aanhefAanschrijving:
+              type: string
+              title: aanhefAanschrijving
+              description: '<body><p>Indien de burger terzake geen opgave gedaan heeft dan, afhankelijk van de Geslachtsaanduiding `De heer`, `Mevrouw` of `Mevrouw/De heer`. Indien deze persoon is overleden wordt de aanhef aangepast naar bijvoorbeeld: ''de erven van''.</p></body>'
+              maxLength: 50
+              minLength: 1
+            bsnOfAnpId:
+              $ref: '#/components/schemas/BsnOfAnpId'
+            datumOverlijden:
+              $ref: '#/components/schemas/DatumMogelijkOnvolledig'
+            geboortedatum:
+              $ref: '#/components/schemas/DatumMogelijkOnvolledig'
+            geslachtsaanduiding:
+              $ref: '#/components/schemas/Geslachtsaanduiding'
+            geslachtsnaam:
+              type: string
+              title: geslachtsnaam
+              description: ''
+              maxLength: 200
+              minLength: 1
+            inOnderzoek:
+              type: array
+              items:
+                $ref: '#/components/schemas/InOnderzoekNPS'
+            indicatieGeheim:
+              $ref: '#/components/schemas/IndicatieGeheim'
+            indicatieOverleden:
+              type: boolean
+              title: indicatieOverleden
+              description: ''
+            kvkNummer:
+              type: string
+              title: kvkNummer
+              description: <body><p>Een eenmanszaak is in het Handelsregister ingeschreven met een kvkNummer maar formeel is deze eenmanszaak een natuurlijk persoon daarom bestaat de mogelijkheid voor natuurlijke personen die een eenmanszaak hebben het kvkNummer te registreren,</p></body>
+              pattern: ^[0-9]{8}$
+              maxLength: 8
+            naamAanschrijving:
+              type: string
+              title: naamAanschrijving
+              description: <body><p>Afleidbaar gegeven uit de BRP door combinatie geslachtsnaam en voorvoegsels van de persoon en de geslachtsnaam en voorvoegsels van de partner.</p></body>
+              maxLength: 200
+              minLength: 1
+            npsaot:
+              $ref: '#/components/schemas/Npsaot'
+            voorletters:
+              type: string
+              title: voorletters
+              description: <body><p>Het attribuut biedt de mogelijkheid de natuurlijk persoon zelf te laten bepalen hoe hij aangeschreven wil worden, indien in de aanschrijving gebruik gemaakt wordt van voorletters. Bijvoorbeeld “A.C.’’ maar ook “Ch.IJ.”. Indien geen opgave is gedaan bevat het attribuut de eerste letters van de voornamen van de persoon gescheiden door punten.</p></body>
+              maxLength: 20
+              minLength: 1
+            voorvoegselGeslachtsnaam:
+              type: string
+              title: code
+              description: ''
+              pattern: ^[0-9]{4}$
+              maxLength: 4
+            voorvoegselNaamAanschrijving:
+              type: string
+              title: code
+              description: <body><p>Dit gegeven is van belang, wanneer een persoon aangeschreven wil worden met een tenaamstelling die anders is dan de eigen geslachtsnaam.</p></body>
+              pattern: ^[0-9]{4}$
+              maxLength: 4
+    NietNatuurlijkPersoonHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            '':
+              type: array
+              items:
+                $ref: '#/components/schemas/NietNatuurlijkPersoonHal'
+    NietNatuurlijkPersoonHal:
+      allOf:
+        - $ref: '#/components/schemas/NietNatuurlijkPersoon'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/NietNatuurlijkPersoon_links'
+    NietNatuurlijkPersoon:
+      allOf:
+        - $ref: '#/components/schemas/Persoon'
+        - type: object
+          description: <body><p>Voor niet-natuurlijke personen ingeschreven in het Handelsregister geldt verplicht gebruik van Handelsregister gegevens. Naast de gegevens voor de tenaamstelling (statutaire naam) wordt overgenomen de gegevens voor het correspondentie-adres. Voor niet-natuurlijke personen die niet overgenomen kunnen worden uit het Handelsregister moet in ieder geval een begrijpelijke tenaamstelling beschikbaar zijn. Hiervoor wordt, ook indien niet de formele statutaire naam bekend is, het attribuut `statutaire naam` gebruikt. Voor de niet-natuurlijke personen moet ten minste één (correspondentie) adres beschikbaar zijn. De definitie van dit correspondentieadres is gegeven onder het supertype PRS.</p></body>
+          required:
+            - rsinOfAnnId
+            - statutaireNaam
+          properties:
+            inOnderzoek:
+              type: array
+              items:
+                $ref: '#/components/schemas/InOnderzoekNNP'
+            kvkNummer:
+              type: string
+              title: kvkNummer
+              description: <body><p>De mulitipliciteit van het kvkNummer is [0..1], omdat niet elke in het Handelsregister ingeschreven rechtspersoon een maatschappelijke activiteit heeft en omdat buitenlandse rechtspersonen geen kvkNummer hebben. Voor Nederlandse rechtspersonen met een maatschappelijke activiteit is het kvkNummer verplicht.</p></body>
+              pattern: ^[0-9]{8}$
+              maxLength: 8
+            rsinOfAnnId:
+              $ref: '#/components/schemas/RsinOfAnnId'
+            statutaireNaam:
+              type: string
+              title: statutaireNaam
+              description: <body><p>In dit attribuut wordt ook de tenaamstelling vastgelegd van een niet-natuurlijk persoon die niet is geregistreerd in het Handelsregister (onder andere buitenlandse niet-natuurlijke personen).</p></body>
+              maxLength: 500
+              minLength: 1
+    VestigingHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            '':
+              type: array
+              items:
+                $ref: '#/components/schemas/VestigingHal'
+    VestigingHal:
+      allOf:
+        - $ref: '#/components/schemas/Vestiging'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/Vestiging_links'
+    Vestiging:
+      type: object
+      description: ''
+      required:
+        - correspondentieAdresWOZ
+        - datumEindeSynchronisatie
+        - eersteHandelsnaam
+        - identificatie
+        - kvkNummer
+        - tijdstipRegistratie
+        - verantwoordelijkeGemeente
+        - vestigingsnummer
+      properties:
+        correspondentieAdresWOZ:
+          $ref: '#/components/schemas/KeuzeAdresBinnenBuitenland'
+        datumEindeSynchronisatie:
+          type: string
+          title: datumEindeSynchronisatie
+          description: <body><p>De LV WOZ bevat de actuele gegevens van de subjecten die als belanghebbende zijn gekoppeld aan één of meer WOZ-objecten. Wanneer een subject niet langer belanghebbend is bij WOZ-objecten in die gemeente, wordt met dit attribuut aangegeven dat de geregistreerde subjectgegevens mogelijk niet meer actueel zijn. Met de datum eindeSynchronisatie geef je aan dat tot deze datum de gegevens gesynchroniseerd blijven. Dus alle mutaties vóór datum eindeSynchronisatie moeten gewoon aan de LV WOZ worden geleverd. Na de datum eindeSynchronisatie eindigt de aanlevering van SUB-mutaties voor deze belanghebbende. Dit gegeven is van belang om te kunnen beoordelen of de meegeleverde gegevens uit andere bron actueel zijn. Voor personen die een actueel belang hebben bij een WOZ-object, worden de gegevens door de gemeente gesynchroniseerd met de basisregistratie (BRP, Handelsregister). Wanneer een persoon niet langer een actueel belang heeft bij een WOZ-object, eindigt deze synchronisatie door de gemeente. Bij het opvragen van een `historische belanghebbende` zijn de meegeleverde gegevens over de belanghebbende dus niet altijd meer gesynchroniseerd met de bron. Dit gegeven dient in de registratie te worden opgenomen wanneer de `belanghebbende relatie` tussen een subject en een WOZ-object wordt beëindigd en dit subject geen belang (meer) heeft bij een ander WOZ-object in die gemeente. Bij een gemeentelijke herindeling is het van belang dat de `oude gemeente` aan de LV WOZ meldt dat de subjectgegevens niet meer worden gesynchroniseerd (datumEindeSynchronisatie is gelijk aan datum herindeling).</p></body>
+          format: date
+        eersteHandelsnaam:
+          type: string
+          title: eersteHandelsnaam
+          description: ''
+          maxLength: 200
+          minLength: 1
+        identificatie:
+          $ref: '#/components/schemas/Sleutel'
+        inOnderzoek:
+          type: array
+          items:
+            $ref: '#/components/schemas/InOnderzoekVES'
+        kvkNummer:
+          type: string
+          title: kvkNummer
+          description: <body><p>De mulitipliciteit van het kvkNummer is [0..1], omdat niet elke in het Handelsregister ingeschreven rechtspersoon een maatschappelijke activiteit heeft en omdat buitenlandse rechtspersonen geen kvkNummer hebben. Voor Nederlandse rechtspersonen met een maatschappelijke activiteit is het kvkNummer verplicht.</p></body>
+          pattern: ^[0-9]{8}$
+          maxLength: 8
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ''
+          format: date-time
+        verantwoordelijkeGemeente:
+          allOf:
+            - $ref: '#/components/schemas/Gemeente'
+            - title: verantwoordelijkeGemeente
+              description: <body><p>Voor dit attribuut wordt alleen de historie vastgelegd vanaf het moment dat de gemeente is aangesloten op de LV WOZ. Op basis van dit gegeven kan men beoordelen welke gemeente verantwoordelijk is voor de (bijhouding van de) geregistreerde gegevens.</p></body>
+        vestigingsnummer:
+          type: string
+          title: vestigingsnummer
+          description: ''
+          pattern: ^[0-9]{12}$
+          maxLength: 12
+    Persoon:
+      type: object
+      description: ''
+      required:
+        - correspondentieAdresWOZ
+        - datumEindeSynchronisatie
+        - verantwoordelijkeGemeente
+      properties:
+        correspondentieAdresWOZ:
+          $ref: '#/components/schemas/KeuzeAdresBinnenBuitenland'
+        datumEindeSynchronisatie:
+          type: string
+          title: datumEindeSynchronisatie
+          description: <body><p>De LV WOZ bevat de actuele gegevens van de subjecten die als belanghebbende zijn gekoppeld aan één of meer WOZ-objecten. Wanneer een subject niet langer belanghebbend is bij WOZ-objecten in die gemeente, wordt met dit attribuut aangegeven dat de geregistreerde subjectgegevens mogelijk niet meer actueel zijn. Met de datum eindeSynchronisatie geef je aan dat tot deze datum de gegevens gesynchroniseerd blijven. Dus alle mutaties vóór datum eindeSynchronisatie moeten gewoon aan de LV WOZ worden geleverd. Na de datum eindeSynchronisatie eindigt de aanlevering van SUB-mutaties voor deze belanghebbende. Dit gegeven is van belang om te kunnen beoordelen of de meegeleverde gegevens uit andere bron actueel zijn. Voor personen die een actueel belang hebben bij een WOZ-object, worden de gegevens door de gemeente gesynchroniseerd met de basisregistratie (BRP, Handelsregister). Wanneer een persoon niet langer een actueel belang heeft bij een WOZ-object, eindigt deze synchronisatie door de gemeente. Bij het opvragen van een `historische belanghebbende` zijn de meegeleverde gegevens over de belanghebbende dus niet altijd meer gesynchroniseerd met de bron. Dit gegeven dient in de registratie te worden opgenomen wanneer de `belanghebbende relatie` tussen een subject en een WOZ-object wordt beëindigd en dit subject geen belang (meer) heeft bij een ander WOZ-object in die gemeente. Bij een gemeentelijke herindeling is het van belang dat de `oude gemeente` aan de LV WOZ meldt dat de subjectgegevens niet meer worden gesynchroniseerd (datumEindeSynchronisatie is gelijk aan datum herindeling).</p></body>
+          format: date
+        identificatieBRK:
+          type: array
+          title: identificatieBRK
+          description: ''
+          minItems: 0
+          items:
+            type: string
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ''
+          format: date-time
+        verantwoordelijkeGemeente:
+          allOf:
+            - $ref: '#/components/schemas/Gemeente'
+            - title: verantwoordelijkeGemeente
+              description: <body><p>Voor dit attribuut wordt alleen de historie vastgelegd vanaf het moment dat de gemeente is aangesloten op de LV WOZ. Op basis van dit gegeven kan men beoordelen welke gemeente verantwoordelijk is voor de (bijhouding van de) geregistreerde gegevens.</p></body>
+    NatuurlijkPersoon_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        verblijftin:
+          allOf:
+            - title: verblijftin
+              type: object
+              description: <body><p>Deze relatie legt vast in welk adresseerbaar object een natuurlijk persoon woont.</p></body>
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    NietNatuurlijkPersoon_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    Vestiging_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    AdresBagPlusLocatieOmschrijving:
+      type: object
+      description: ''
+      required:
+        - huisletter
+        - huisnummer
+        - huisnummertoevoeging
+        - locatieomschrijving
+        - openbareRuimteNaam
+        - postcode
+        - woonplaatsnaam
+      properties:
+        huisletter:
+          type: string
+          title: huisletter
+          description: ''
+          pattern: ^[a-zA-Z]$
+          maxLength: 1
+        huisnummer:
+          type: integer
+          title: huisnummer
+          description: ''
+        huisnummertoevoeging:
+          type: string
+          title: huisnummertoevoeging
+          description: ''
+          pattern: ^[a-zA-Z0-9]{1,4}$
+          maxLength: 4
+        identificatieNummeraanduiding:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        locatieomschrijving:
+          type: string
+          title: locatieomschrijving
+          description: <body><p>Indien aan een WOZ-object geen unieke aanduiding kan worden gegeven door gebruik te maken van het hoofdadres van een in het WOZ-object betrokken verblijfsobject, standplaats of ligplaats, wordt een unieke aanduiding verkregen door een `authentiek` adres dan wel woonplaatsnaam en straatnaam te combineren met een locatieomschrijving. De verschillende vormen die de unieke aanduiding van een WOZ-object, zoals vermeld wordt op de WOZ-beschikking, kan aannemen en de eventuele rol van de locatieomschrijving daarbij, staat in de toelichting op de Gegevensgroep aanduidingWOZobject. In het adres van een persoon kan hier de locatieomschrijving uit de BRP worden opgenomen of overeenkomstig de werkwijze van de BRP dit veld worden gevuld voor personen die niet uit de BRP kunnen worden overgenomen. Voor adressen van niet-natuurlijke personen kan hier, eventueel in afgekorte vorm, het gegeven toevoegingAdres uit het Handelsregister worden overgenomen.</p></body>
+          maxLength: 40
+          minLength: 1
+        openbareRuimteNaam:
+          type: string
+          title: openbareRuimteNaam
+          description: ''
+          maxLength: 80
+          minLength: 1
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        straatnaam:
+          type: string
+          title: straatnaam
+          description: <body><p>Als de lengte van de openbareRuimteNaam kleiner of gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk. Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>
+          maxLength: 24
+          minLength: 1
+        woonplaatsnaam:
+          type: string
+          title: woonplaatsnaam
+          description: ''
+          maxLength: 80
+          minLength: 1
+    AdresBuitenland:
+      type: object
+      description: ''
+      required:
+        - adresBuitenland1
+        - adresBuitenland2
+        - land
+      properties:
+        adresBuitenland1:
+          type: string
+          title: adresBuitenland1
+          description: ''
+          maxLength: 35
+          minLength: 1
+        adresBuitenland2:
+          type: string
+          title: adresBuitenland2
+          description: ''
+          maxLength: 35
+          minLength: 1
+        adresBuitenland3:
+          type: string
+          title: adresBuitenland3
+          description: ''
+          maxLength: 35
+          minLength: 1
+        land:
+          allOf:
+            - $ref: '#/components/schemas/Land'
+            - title: land
+              description: ''
+    AdresPostbusAntwoordnummer:
+      type: object
+      description: ''
+      required:
+        - postbusOfAntwoordnummer
+        - postcode
+        - type
+        - woonplaatsnaam
+      properties:
+        postbusOfAntwoordnummer:
+          type: integer
+          title: postbusOfAntwoordnummer
+          description: ''
+        postcode:
+          $ref: '#/components/schemas/Postcode'
+        type:
+          $ref: '#/components/schemas/PostadresType'
+        woonplaatsnaam:
+          type: string
+          title: woonplaatsnaam
+          description: ''
+          maxLength: 80
+          minLength: 1
+    BsnOfAnpId:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          burgerservicenummer: '#/components/schemas/Bsn'
+          anpId: '#/components/schemas/AnpId'
+    Bsn:
+      allOf:
+        - $ref: "#/components/schemas/BsnOfAnpId"
+        - type: object
+          properties:
+            burgerservicenummer:
+              type: string
+              description: <body><p>Unieke aanduiding van een persoon die is overgenomen uit de BRP of het Handelsregister. Zowel burgerservicenummer als RSIN hebben verplichte vaste lengte van 9 posities eventueel met voorloopnullen en voldoen aan de 11-proef.</p></body>
+              pattern: ^[0-9]{9}$
+    AnpId:
+      allOf:
+        - $ref: "#/components/schemas/AnpId"
+        - type: object
+          properties:
+            anpId:
+              type: string
+              description: <body><p>Unieke aanduiding van een persoon die niet is ingeschreven in de BRP of het Handelsregister. Zowel anp.Identificatie en ann.Identificatie hebben een verplichte vaste lengte van 17 posities eventueel met voorloopnullen. De eerste vier posities zijn de gemeentecode van de gemeente die verantwoordelijk is van de registratie van deze persoon als WOZ-belanghebbende.</p></body>
+              pattern: ^[0-9]{17}$
+    DatumMogelijkOnvolledig:
+      type: object
+      description: ''
+      required:
+        - date
+        - jaar
+        - jaarMaand
+      properties:
+        date:
+          type: string
+          title: Date
+          description: ''
+          format: date
+        jaar:
+          $ref: '#/components/schemas/GYear'
+        jaarMaand:
+          $ref: '#/components/schemas/GYearMonth'
+    Gemeente:
+      type: object
+      description: <body><p>In de WOZ wordt alleen de gemeentecode opgenomen in de registratie. De naam kan worden afgeleid vanuit deze referentielijst.</p></body>
+      required:
+        - code
+        - ingangsdatum
+      properties:
+        code:
+          type: string
+          title: code
+          description: ''
+          pattern: ^[0-9]{4}$
+          maxLength: 4
+        einddatum:
+          type: string
+          title: einddatum
+          description: ''
+          format: date
+        ingangsdatum:
+          type: string
+          title: ingangsdatum
+          description: ''
+          format: date
+    KeuzeAdresBinnenBuitenland:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          adresAanduiding: '#/components/schemas/AdresBagPlusLocatieOmschrijving'
+          adresBuitenland: '#/components/schemas/AdresBuitenland'
+          adresPostbusAntwoordnummer: '#/components/schemas/AdresPostbusAntwoordnummer'
+    Land:
+      type: object
+      description: ''
+      required:
+        - code
+        - ingangsdatum
+        - naam
+      properties:
+        code:
+          type: string
+          title: code
+          description: ''
+          minLength: 1
+        einddatum:
+          type: string
+          title: einddatum
+          description: ''
+          format: date
+        ingangsdatum:
+          type: string
+          title: ingangsdatum
+          description: ''
+          format: date
+        naam:
+          type: string
+          title: naam
+          description: ''
+          minLength: 1
+    Npsaot:
+      type: object
+      description: ''
+      required:
+        - identificatieAdresseerbaarObject
+        - tijdvakRelatie
+      properties:
+        identificatieAdresseerbaarObject:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    TijdvakRelatie:
+      type: object
+      description: ''
+      required:
+        - beginRelatie
+        - eindRelatie
+      properties:
+        beginRelatie:
+          type: string
+          title: beginRelatie
+          description: ''
+          format: date
+        eindRelatie:
+          type: string
+          title: eindRelatie
+          description: ''
+          format: date
+    RsinOfAnnId:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          rsin: '#/components/schemas/Rsin'
+          annId: '#/components/schemas/AnnId'
+    Rsin:
+      allOf:
+        - $ref: "#/components/schemas/RsinOfAnnId"
+        - type: object
+          properties:
+            rsin:
+              type: string
+              description: <body><p>Unieke aanduiding van een persoon die is overgenomen uit de BRP of het Handelsregister. Zowel burgerservicenummer als RSIN hebben verplichte vaste lengte van 9 posities eventueel met voorloopnullen en voldoen aan de 11-proef.</p></body>
+              pattern: ^[0-9]{9}$
+    AnnId:
+      allOf:
+        - $ref: "#/components/schemas/RsinOfAnnId"
+        - type: object
+          properties:
+            rsin:
+              type: string
+              description: <body><p>Unieke aanduiding van een persoon die niet is ingeschreven in de BRP of het Handelsregister. Zowel anp.Identificatie en ann.Identificatie hebben een verplichte vaste lengte van 17 posities eventueel met voorloopnullen. De eerste vier posities zijn de gemeentecode van de gemeente die verantwoordelijk is van de registratie van deze persoon als WOZ-belanghebbende.</p></body>
+              pattern: ^[0-9]{17}$
+    AanduidingNaamgebruik:
+      type: string
+      description: ''
+      enum:
+        - E
+        - P
+        - V
+        - 'N'
+    Geslachtsaanduiding:
+      type: string
+      description: ''
+      enum:
+        - M
+        - V
+        - O
+        - X
+    InOnderzoekNNP:
+      type: string
+      description: <body><ul><li>`rsin` - rsin </li><li>`ann_identificatie` - ann.identificatie </li><li>`statutaireNaam` - statutaireNaam </li><li>`kvkNummer` - kvkNummer </li><li>`datumEindeSynchronisatie` - datumEindeSynchronisatie </li><li>`correspondentieAdresWOZ` - correspondentieAdresWOZ </li></ul></body>
+      enum:
+        - rsin
+        - ann_identificatie
+        - statutaireNaam
+        - kvkNummer
+        - datumEindeSynchronisatie
+        - correspondentieAdresWOZ
+    InOnderzoekNPS:
+      type: string
+      description: <body><ul><li>`anp_identificatie` - anp.identificatie </li><li>`bsn` - bsn </li><li>`voorletters` - voorletters </li><li>`aanhefAanschrijving` - aanhefAanschrijving </li><li>`voorvoegselGeslachtsnaam` - voorvoegselGeslachtsnaam </li><li>`geslachtsnaam` - geslachtsnaam </li><li>`naamAanschrijving` - naamAanschrijving </li><li>`geboortedatum` - geboortedatum </li><li>`aanduidingNaamgebruik` - aanduidingNaamgebruik </li><li>`voorvoegselNaamAanschrijving` - voorvoegselNaamAanschrijving </li><li>`geslachtsaanduiding` - geslachtsaanduiding </li><li>`indicatieGeheim` - indicatieGeheim </li><li>`datumOverlijden` - datumOverlijden </li><li>`indicatieOverleden` - indicatieOverleden </li><li>`datumEindeSynchronisatie` - datumEindeSynchronisatie </li><li>`correspondentieAdresWOZ` - correspondentieAdresWOZ </li></ul></body>
+      enum:
+        - anp_identificatie
+        - bsn
+        - voorletters
+        - aanhefAanschrijving
+        - voorvoegselGeslachtsnaam
+        - geslachtsnaam
+        - naamAanschrijving
+        - geboortedatum
+        - aanduidingNaamgebruik
+        - voorvoegselNaamAanschrijving
+        - geslachtsaanduiding
+        - indicatieGeheim
+        - datumOverlijden
+        - indicatieOverleden
+        - datumEindeSynchronisatie
+        - correspondentieAdresWOZ
+    InOnderzoekVES:
+      type: string
+      description: ''
+      enum:
+        - eersteHandelsnaam
+        - kvkNummer
+        - datumEindeSynchronisatie
+        - correspondentieAdresWOZ
+    IndicatieGeheim:
+      type: string
+      description: ''
+      enum:
+        - '0'
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+        - '5'
+        - '6'
+        - '7'
+    PostadresType:
+      type: string
+      description: ''
+      enum:
+        - A
+        - P
+    GYear:
+      type: integer
+      description: ''
+      format: date_fullyear
+      pattern: ^[1-2]{1}[0-9]{3}$
+    GYearMonth:
+      type: integer
+      description: ''
+      format: date_fullyear
+      pattern: ^[1-2]{1}[0-9]{3}$
+    IdentificatieBAG:
+      type: string
+      description: '<body><p>Combinatie van (viercijferig) subdomein `gemeentecodering` (volgens GBA tabel 33), het (tweecijferig) subdomein `objecttypecode` en een voor het betreffende objecttype binnen een gemeente uniek (tiencijferig) subdomein `objectvolgnummer`. Objecttypecode: een code waarmee het objecttype van een object wordt aangegeven. Deze codering maakt onderdeel uit van de unieke objectaanduiding. Het is met name bedoeld om objecten van verschillende adresseerbare objecttypen uniek van elkaar te kunnen onderscheiden. Waardeverzameling domein: 01: verblijfsobject; 02: ligplaats; 03: standplaats; 10: pand en 20: nummeraanduiding. Objectvolgnummer: een uniek volgnummer waarmee een object van een bepaald type binnen een gemeente kan worden aangeduid. Indien een `objectvolgnummer` uit minder dan tien posities bestaat, dan dient deze ten behoeve van de uitwisseling te worden aangevuld met voorloopnullen. De van de objectnummering onderdeel uitmakende gemeentecode kan niet worden gebruikt om te bepalen binnen welke gemeente een object is gelegen. Waardeverzameling domein: Alle natuurlijke getallen tussen 0 en 9.999.999.999.</p></body>'
+      pattern: ^[0-9]{16}$
+    IdentificatiePRS:
+      type: string
+      description: ''
+      pattern: ^[0-9]{9}$
+    IdentificatiePRSAlternatief:
+      type: string
+      description: ''
+      pattern: ^[0-9]{17}$
+    Postcode:
+      type: string
+      description: ''
+      pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+    Sleutel:
+      type: string
+      description: ''
+      maxLength: 40
+      minLength: 1
