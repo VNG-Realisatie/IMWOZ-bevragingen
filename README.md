@@ -17,6 +17,7 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
  - Personen in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/PRS-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/PRS-redoc) --- [technische specificaties](specificatie/PRS/openapi.yaml)
  - Resultaten Marktanalyse in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/RMA-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/RMA-redoc) --- [technische specificaties](specificatie/RMA/openapi.yaml)
 
+
 Bekijk de [release notes](./releasenotes).
 
 ## Meedenken met de ontwikkelingen?
