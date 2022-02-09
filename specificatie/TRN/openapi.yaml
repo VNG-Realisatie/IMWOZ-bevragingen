@@ -1,0 +1,527 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_trn/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_trn/v1
+info:
+  title: BG IMWOZ TRN
+  description: ""
+  version: "1.0.0"
+  x-imvertor-generator-version: "1.65.4"
+  x-yamlCompiler-stylesheets-version: "20220110"
+  contact:
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /transacties:
+    get:
+      operationId: gettransacties
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie transacties retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: aanduidingBruikbaarheid
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/AanduidingBruikbaarheid"
+        - in: query
+          name: aardMarktinformatie
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/AardMarktinformatie"
+        - in: query
+          name: datumTransactie
+          description: ""
+          required: true
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: documentIdentificatie
+          description: "<body><p>Er zijn diverse typen niet formele documenten die kunnen worden vastgelegd. Hierbij kan ook gedacht worden aan foto's etc. De verwijzing naar deze documenten geschiedt op overeenkomstige wijze als de verwijzing naar formele brondocumenten. De unieke aanduiding van de vindplaats van een document binnen een organisatie zal ook vaak besaan uit een uri voor een digitaal archief. Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens om documenten binnen een organisatie vindbaar te maken.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 512
+        - in: query
+          name: kadastraleIdentificatie
+          description: ""
+          required: true
+          schema:
+            type: string
+            pattern: NL\.IMKAD\.KadastraalObject\.[1-9][0-9]{0,14}(\.[0-9]+)?
+        - in: query
+          name: omstandighedenTransactie
+          description: "<body><p>Dit attribuut geeft aan op welk aspect de onderhave transactie afwijkt van de waarderingsvoorschriften van de wet WOZ.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/OmstandighedenTransactie"
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: soortTransactie
+          description: "<body><p>In deze entiteit worden allerlei soorten transacties geregistreerd. Door dit gegeven kunnen verschillende soorten transacties van elkaar worden onderscheiden.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/SoortTransactie"
+        - in: query
+          name: volgnummerMarktgegeven
+          description: ""
+          required: true
+          schema:
+            type: integer
+        - in: query
+          name: wozObjectnummer
+          description: "<body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>"
+          required: true
+          schema:
+            type: string
+            maxLength: 12
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TransactieHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Transacties (TRN)
+  /transacties/{identificatie}:
+    get:
+      operationId: gettransactie
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een transactie retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            $ref: "#/components/schemas/Sleutel"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/TransactieHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '404':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/404"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Transacties (TRN)
+components:
+  schemas:
+    TransactieHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            transacties:
+              type: array
+              items:
+                $ref: '#/components/schemas/TransactieHal'
+    TransactieHal:
+      allOf:
+        - $ref: '#/components/schemas/Transactie'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/Transactie_links'
+    Transactie:
+      type: object
+      description: <body><p>Deze entiteit wordt meestal gebruikt om marktgegevens over één transactie weer te geven. In incidentele gevallen zal een transactie worden uitgesplitst in verschillende voorkomens van deze entiteit (met eigen volgnummer). Dit kan bijvoorbeeld van belang zijn, wanneer in één huurcontract zowel kantoorruimte als een showroom wordt verhuurd en van de afzonderlijke WOZ-deelobjecten de huurprijs bekend is. Een vergelijkbare situatie doet zich voor bij het uitsplitsen van de stichtingskosten naar verschillende delen van een onroerende zaak.</p></body>
+      required:
+        - aanduidingBruikbaarheid
+        - aardMarktinformatie
+        - datumTransactie
+        - identificatie
+        - kadastraleIdentificatie
+        - keuzeKoopOfHuurtOfGronduitgifteOfStichtingskosten
+        - omstandighedenTransactie
+        - soortTransactie
+        - tijdstipRegistratie
+        - transactieprijs
+      properties:
+        aanduidingBruikbaarheid:
+          $ref: '#/components/schemas/AanduidingBruikbaarheid'
+        aardMarktinformatie:
+          $ref: '#/components/schemas/AardMarktinformatie'
+        datumTransactie:
+          type: string
+          title: datumTransactie
+          description: ''
+          format: date
+        documentIdentificatie:
+          type: array
+          title: documentIdentificatie
+          description: <body><p>Er zijn diverse typen niet formele documenten die kunnen worden vastgelegd. Hierbij kan ook gedacht worden aan foto's etc. De verwijzing naar deze documenten geschiedt op overeenkomstige wijze als de verwijzing naar formele brondocumenten. De unieke aanduiding van de vindplaats van een document binnen een organisatie zal ook vaak besaan uit een uri voor een digitaal archief. Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens om documenten binnen een organisatie vindbaar te maken.</p></body>
+          minItems: 0
+          items:
+            type: string
+            maxLength: 512
+            minLength: 1
+        identificatie:
+          $ref: '#/components/schemas/Sleutel'
+        kadastraleIdentificatie:
+          type: array
+          title: kadastraleIdentificatie
+          description: ''
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+            pattern: NL\.IMKAD\.KadastraalObject\.[1-9][0-9]{0,14}(\.[0-9]+)?
+        keuzeKoopOfHuurtOfGronduitgifteOfStichtingskosten:
+          $ref: '#/components/schemas/KoopOfHuurOfGronduitgifteOfStichtingskosten'
+        kwantificeringVerschilTransactieprijs:
+          type: integer
+          title: kwantificeringVerschilTransactieprijs
+          description: <body><p>Een positieve waarde betekent dat de gerealiseerde transactieprijs opgehoogd moet worden met het genoemde bedrag om een reële inschatting van de marktwaarde te krijgen. Bijvoorbeeld wanneer er een verkoopprijs inclusief een omvangrijke reserve bij de VVE is (bijvoorbeeld 25.000 euro) dan wordt dit geregistreerd als minus 25.000. Op overeenkomstige wijze kan een correctie ivm incentives op een huurprijs worden weergegeven. Een eventuele huurvrije periode kan dan vertaald worden in een bedrag als correct op de huurprijs en geregistreerd worden als minus 10.000.</p></body>
+        omschrijvingTransactie:
+          type: string
+          title: omschrijvingTransactie
+          description: <body><p>In dit gegeven kan vrij commentaar over de transactie worden opgenomen.</p></body>
+          maxLength: 50
+          minLength: 1
+        omstandighedenTransactie:
+          $ref: '#/components/schemas/OmstandighedenTransactie'
+        soortTransactie:
+          $ref: '#/components/schemas/SoortTransactie'
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ''
+          format: date-time
+        transactieprijs:
+          type: integer
+          title: transactieprijs
+          description: ''
+        trnwoz:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trnwoz'
+        volgnummerMarktgegeven:
+          type: array
+          title: volgnummerMarktgegeven
+          description: ''
+          minItems: 0
+          items:
+            type: integer
+    Transactie_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        kadastraleOnroerendeZaken:
+          title: isbetrokkenin
+          type: array
+          description: ''
+          minItems: 1
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        resultaatMarktanalyses:
+          title: wordtgeanalyseerdin
+          type: array
+          description: ''
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    GronduitgifteGrp:
+      type: object
+      description: ''
+      properties:
+        grondUitgiftePrijsPerM2:
+          type: integer
+          title: grondUitgiftePrijsPerM2
+          description: ''
+        indicatieOmzetbelastingGrondprijs:
+          $ref: '#/components/schemas/CodeOmzetBelasting'
+        oppervlakteGrond:
+          type: integer
+          title: oppervlakteGrond
+          description: ''
+    HuurtransactieGrp:
+      type: object
+      description: ''
+      properties:
+        gebruiksoppervlakte:
+          type: integer
+          title: gebruiksoppervlakte
+          description: <body><p>Dit gegeven is met name van belang wanneer het verhuurde object niet gelijk is aan het WOZ-object. Dit kan bijvoorbeeld het geval zijn als meerdere verhuurde objecten in het kader van de Wet WOZ worden samengevoegd tot een samenstel of wanneer een verhuurd gedeelte niet als afzonderlijk WOZ-object kan worden afgebakend.</p></body>
+        huurprijsPerM2:
+          type: integer
+          title: huurprijsPerM2
+          description: ''
+        indexatieHuurprijs:
+          type: boolean
+          title: indexatieHuurprijs
+          description: ''
+        indicatieOmzetbelastingHuurprijs:
+          $ref: '#/components/schemas/CodeOmzetBelasting'
+        looptijdHuurcontract:
+          type: integer
+          title: looptijdHuurcontract
+          description: ''
+        servicekosten:
+          type: integer
+          title: servicekosten
+          description: ''
+        verhuurbareVloeroppervlakte:
+          type: integer
+          title: verhuurbareVloeroppervlakte
+          description: <body><p>In huurcontracten wordt vaak het verhuurbaar vloeroppervlakte vastgelegd, omdat ook de huurprijs vaak is afgeleid van een huurprijs per verhuurbare vierkante meter per jaar.</p></body>
+    KoopOfHuurOfGronduitgifteOfStichtingskosten:
+      type: object
+      description: ''
+      required:
+        - gronduitgifte
+        - huurtransactie
+        - kooptransactie
+        - stichtingskosten
+      properties:
+        gronduitgifte:
+          $ref: '#/components/schemas/GronduitgifteGrp'
+        huurtransactie:
+          $ref: '#/components/schemas/HuurtransactieGrp'
+        kooptransactie:
+          $ref: '#/components/schemas/KooptransactieGrp'
+        stichtingskosten:
+          $ref: '#/components/schemas/StichtingskostenGrp'
+    KooptransactieGrp:
+      type: object
+      description: ''
+      properties:
+        koopdatum:
+          type: string
+          title: koopdatum
+          description: <body><p>Alleen noodzakelijk wanneer door een lange periode tussen koopdatum en transportdatum de transactieprijs geen goede weergave is van de marktwaarde op het moment van transport. Dit gegeven zal voor de meeste transacties gelet op gebruik niet gevuld behoeven te worden.</p></body>
+          format: date
+        servicekosten:
+          type: integer
+          title: servicekosten
+          description: ''
+    StichtingskostenGrp:
+      type: object
+      description: ''
+      properties:
+        brutoInhoud:
+          type: integer
+          title: brutoInhoud
+          description: ''
+        gebruiksoppervlakte:
+          type: integer
+          title: gebruiksoppervlakte
+          description: <body><p>Dit gegeven is met name van belang wanneer het nieuw gebouwde object niet gelijk is aan het WOZ-object. Dit kan bijvoorbeeld het geval zijn als een gebouw een deel is van een WOZ-object, bijvoorbeeld een uitbreiding van een bestaand gebouw of wanneer een nieuw gebouwd object gesplitst wordt in afzonderlijke WOZ-objecten bij ingebruikname.</p></body>
+        grondkosten:
+          type: integer
+          title: grondkosten
+          description: ''
+        indicatieOmzetbelastingGrondprijs:
+          $ref: '#/components/schemas/CodeOmzetBelasting'
+        kostenAfbouwInrichting:
+          type: integer
+          title: kostenAfbouwInrichting
+          description: <body><p>Afbouw en inrichting heeft betrekking op scheidingswanden, etc.</p></body>
+        kostenInfrastructuur:
+          type: integer
+          title: kostenInfrastructuur
+          description: ''
+        kostenInstallaties:
+          type: integer
+          title: kostenInstallaties
+          description: <body><p>De installaties hebben betrekking op verwarming, airconditioning, etc.</p></body>
+        kostenOverig:
+          type: integer
+          title: kostenOverig
+          description: ''
+        kostenRuwbouw:
+          type: integer
+          title: kostenRuwbouw
+          description: ''
+        kostenWerktuigen:
+          type: integer
+          title: kostenWerktuigen
+          description: ''
+    TijdvakRelatie:
+      type: object
+      description: ''
+      required:
+        - beginRelatie
+        - eindRelatie
+      properties:
+        beginRelatie:
+          type: string
+          title: beginRelatie
+          description: ''
+          format: date
+        eindRelatie:
+          type: string
+          title: eindRelatie
+          description: ''
+          format: date
+    Trnwoz:
+      type: object
+      description: ''
+      required:
+        - tijdvakRelatie
+        - wozObjectnummer
+      properties:
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+        wozObjectnummer:
+          type: string
+          title: wozObjectnummer
+          description: <body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>
+          pattern: ^[0-9]{12}$
+          maxLength: 12
+    AanduidingBruikbaarheid:
+      type: string
+      description: ''
+      enum:
+        - '00'
+        - '62'
+        - '64'
+        - '99'
+    AardMarktinformatie:
+      type: string
+      description: ''
+      enum:
+        - O
+        - T
+        - V
+    CodeOmzetBelasting:
+      type: string
+      description: ''
+      enum:
+        - E
+        - I
+        - O
+    OmstandighedenTransactie:
+      type: string
+      description: ''
+      enum:
+        - '11'
+        - '12'
+        - '13'
+        - '14'
+        - '15'
+        - '16'
+        - '21'
+        - '22'
+        - '23'
+        - '24'
+        - '31'
+        - '32'
+        - '33'
+        - '34'
+        - '35'
+        - '41'
+        - '42'
+        - '51'
+        - '52'
+        - '53'
+        - '54'
+        - '60'
+        - '61'
+        - '62'
+        - '63'
+        - '64'
+        - '65'
+        - '66'
+        - '67'
+        - '71'
+        - '72'
+    SoortTransactie:
+      type: string
+      description: ''
+      enum:
+        - H
+        - K
+        - O
+        - S
+        - U
+    Sleutel:
+      type: string
+      description: ''
+      maxLength: 40
+      minLength: 1
