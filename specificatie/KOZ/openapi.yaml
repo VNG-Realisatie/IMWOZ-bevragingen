@@ -28,6 +28,7 @@ paths:
           required: true
           schema:
             type: string
+            pattern: NL\.IMKAD\.KadastraalObject\.[1-9][0-9]{0,14}(\.[0-9]+)?
         - in: query
           name: peiltijdstipMaterieel
           description: ""
@@ -190,6 +191,7 @@ components:
           $ref: '#/components/schemas/KadastraleAanduiding'
         kadastraleIdentificatie:
           type: string
+          pattern: NL\.IMKAD\.KadastraalObject\.[1-9][0-9]{0,14}(\.[0-9]+)?
           title: kadastraleIdentificatie
           description: ''
           minLength: 1

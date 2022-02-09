@@ -108,6 +108,7 @@ paths:
           required: false
           schema:
             type: string
+            pattern: (NL\.IMKAD\.[A-Za-z]+\.[1-9][0-9]{0,14}(\.[0-9]+)?)|(NL\.IMKAD\.[A-Za-z]+(\.[A-Z0-9]{3,4})?\.[1-9][0-9]{0,14})
         - in: query
           name: identificatieNummeraanduiding
           description: ""
@@ -337,6 +338,7 @@ paths:
           required: false
           schema:
             type: string
+            pattern: (NL\.IMKAD\.[A-Za-z]+\.[1-9][0-9]{0,14}(\.[0-9]+)?)|(NL\.IMKAD\.[A-Za-z]+(\.[A-Z0-9]{3,4})?\.[1-9][0-9]{0,14})
         - in: query
           name: identificatieNummeraanduiding
           description: ""
@@ -566,6 +568,7 @@ paths:
           required: false
           schema:
             type: string
+            pattern: (NL\.IMKAD\.[A-Za-z]+\.[1-9][0-9]{0,14}(\.[0-9]+)?)|(NL\.IMKAD\.[A-Za-z]+(\.[A-Z0-9]{3,4})?\.[1-9][0-9]{0,14})
         - in: query
           name: identificatieNummeraanduiding
           description: ""
@@ -975,6 +978,7 @@ components:
           minItems: 0
           items:
             type: string
+            pattern: (NL\.IMKAD\.[A-Za-z]+\.[1-9][0-9]{0,14}(\.[0-9]+)?)|(NL\.IMKAD\.[A-Za-z]+(\.[A-Z0-9]{3,4})?\.[1-9][0-9]{0,14})
         tijdstipRegistratie:
           type: string
           title: tijdstipRegistratie
