@@ -56,6 +56,18 @@ nav:
         path: /RMA-swagger-ui
       - title: Resultaten Marktanalyse (redoc)
         path: /RMA-redoc
+      - title: Taxatie (swagger-ui)
+        path: /TAX-swagger-ui
+      - title: Taxatie (redoc)
+        path: /TAX-redoc
+      - title: Taxaties (swagger-ui)
+        path: /TAX-swagger-ui
+      - title: Taxaties (redoc)
+        path: /TAX-redoc
+      - title: Transacties (swagger-ui)
+        path: /TRN-swagger-ui
+      - title: Transacties (redoc)
+        path: /TRN-redoc
 #  - title: Specificaties v. 1.0.0-rc2 (In Ontwikkeling)
 #    subnav:
 #      - title: Getting started

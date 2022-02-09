@@ -22,7 +22,8 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
  - Kadastraal Onroerende Zaken in [Swagger-UI](./KOZ-swagger-ui) of [Redoc](./KOZ-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/KOZ/openapi.yaml)
  - Personen in [Swagger-UI](./PRS-swagger-ui) of [Redoc](./PRS-redoc) --- [technische specificaties](./specificatie/PRS/openapi.yaml)
  - ResultatenMarktanalyse in [Swagger-UI](./RMA-swagger-ui) of [Redoc](./RMA-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/RMA/openapi.yaml)
- - Taxatie in [Swagger-UI](./TAX-swagger-ui) of [Redoc](./TAX-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/TAX/openapi.yaml)
+ - Taxaties in [Swagger-UI](./TAX-swagger-ui) of [Redoc](./TAX-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/TAX/openapi.yaml)
+ - Transacties in [Swagger-UI](./TRN-swagger-ui) of [Redoc](./TRN-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/TRN/openapi.yaml)
 
 Bekijk de [release notes](./releasenotes).
 
