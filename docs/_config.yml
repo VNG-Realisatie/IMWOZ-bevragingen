@@ -72,7 +72,10 @@ nav:
         path: /TVS-swagger-ui
       - title: Transactieverslagen (redoc)
         path: /TVS-redoc
-
+      - title: Waardebepalingen (redoc)
+        path: /WBP-redoc
+      - title: Waardebepalingen (swagger-ui)
+        path: /WBP-swagger-ui
 plugins:
   - jekyll-redirect-from
   - jekyll-remote-theme

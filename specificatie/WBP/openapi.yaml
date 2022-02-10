@@ -1,0 +1,365 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_wbp/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_wbp/v1
+info:
+  title: BG IMWOZ WBP
+  description: ""
+  version: "1.0.0"
+  x-imvertor-generator-version: "1.65.4"
+  x-yamlCompiler-stylesheets-version: "20220110"
+  contact:
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /waardebepalingen:
+    get:
+      operationId: Getwaardebepalingen
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie waardebepalingen retourneert.</p></body>"
+      parameters:
+        - in: query
+          name: datumWaardevaststelling
+          description: "<body><p>Met deze datum wordt vastgelegd met welke beschikkingsrun de waarde beschikt wordt. Omdat deze datum met name ook wordt gebruikt voor de procesbeheersing (planning van de kohieren met aanslagen en beschikkingen) is er voor gekozen dit afzonderlijk vast te leggen en hiervoor niet de metagegevens te gebruiken (materiële historie).</p></body>"
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: identificatieBeschikking
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
+          name: identificatieTaxatie
+          description: ""
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
+          name: identificatieTaxatieverslag
+          description: "<body><p>Omdat voor één WOZ-object, naar dezelfde waardepeildatum meerdere taxatieverslagen opgesteld kunnen zijn, is ervoor gekozen elk taxatieverslag uniek te identificeren. Zowel voorafgaand aan het beschikken van de waarde (taxaties die bij de kwaliteitsbeoordeling zijn `afgekeurd`) als na verzending van de beschikkingen (nieuwe taxatieverslagen bij uitspraak op bezwaar) kan sprake zijn van meerdere taxatieverslagen. Elk taxatieverslag zal gekoppeld zijn aan de relevante taxatie (TAX), dan wel aan de relevante WRD en/of WBP.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: statusTaxatie
+          description: "<body><p>Dit attribuut is van belang voor de workflow van het taxatie- (en controle-) proces.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/StatusTaxatie"
+        - in: query
+          name: statusWaardevaststelling
+          description: "<body><p>Dit attribuut is van belang voor de workflow van het waardevaststellingsproces.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/StatusWaardevaststelling"
+        - in: query
+          name: toestandspeildatum
+          description: "<body><p>Dit gegeven wordt gebruikt om aan te geven of de toestand van de onroerende zaak op de waardepeildatum maatgevend is geweest voor de waardebepaling, of dat sprake is geweest van een afwijkende toestandspeildatum. In de meeste gevallen zal de `toestandspeildatum` gelijk zijn aan de `waardepeildatum`. De hoofdregel in het kader van de Wet WOZ (artikel 18) is dat de waardepeildatum gelijk is aan de toestandspeildatum. Meestal zal dit gegeven `toestandspeildatum` dan ook gelijk zijn aan de `waardepeildatum`. Echter wanneer sprake is van een wijziging van de objectafbakening of van de fysieke toestand, de bestemming of een andere bijzondere omstandigheid, kan op grond van artikel 18, derde lid, van de Wet WOZ een afwijkende toestandspeildatum gelden. Deze afwijkende toestandspeildatum moet ook op de WOZ-beschikking en het taxatieverslag vermeld worden. Alleen indien de `toestandspeildatum` afwijkt van de `waardepeildatum` wordt de toestandspeildatum afzonderlijk vermeld op de WOZ-beschikking (beschikkingsregel op het aanslagbiljet) en op het taxatieverslag. Daarom hoeft de toestandspeildatum ook niet te worden vastgelegd binnen Waardebepaling, wanneer deze gelijk is aan de waardepeildatum.</p></body>"
+          required: false
+          schema:
+            type: string
+            pattern: ^[12][0-9]{3}0101$
+            maxLength: 8
+        - in: query
+          name: waardepeildatum
+          description: "<body><p>De waardepeildatum wordt altijd gesteld op 1 januari van een bepaald jaar. De waardepeildatum ligt één jaar voor het kalenderjaar waarvoor de waarde wordt vastgesteld.</p></body>"
+          required: false
+          schema:
+            type: string
+            pattern: ^[12][0-9]{3}0101$
+            maxLength: 8
+        - in: query
+          name: wozObjectnummer
+          description: "<body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 12
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/WaardebepalingHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Waardebepaling (WBP)
+  /waardebepalingen/{identificatie}:
+    get:
+      operationId: getwaardebepaling
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een waardebepaling retourneert.</p></body>"
+      parameters:
+        - in: path
+          name: identificatie
+          description: ""
+          required: true
+          schema:
+            type: string
+            maxLength: 40
+            minLength: 1
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/WaardebepalingHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - Waardebepaling (WBP)
+components:
+  schemas:
+    WaardebepalingHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            waardebepalingen:
+              type: array
+              items:
+                $ref: '#/components/schemas/WaardebepalingHal'
+    WaardebepalingHal:
+      allOf:
+        - $ref: '#/components/schemas/Waardebepaling'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/Waardebepaling_links'
+    Waardebepaling:
+      type: object
+      description: <body><p>Met de attributen `Status taxatie` en 'Status waardevaststelling` kan precies vastgelegd worden wat de laatst verrichte activiteit is dan wel wat de eerst volgende activiteit moet zijn. Deze entiteit is conform hoofdstuk III (de waardebepaling) van de Wet waardering onroerende zaken.</p></body>
+      required:
+        - datumWaardevaststelling
+        - identificatie
+        - statusTaxatie
+        - statusWaardevaststelling
+        - tijdstipRegistratie
+        - toestandspeildatum
+        - waardepeildatum
+        - wbptvs
+        - wozObjectnummer
+      properties:
+        datumWaardevaststelling:
+          type: string
+          title: datumWaardevaststelling
+          description: <body><p>Met deze datum wordt vastgelegd met welke beschikkingsrun de waarde beschikt wordt. Omdat deze datum met name ook wordt gebruikt voor de procesbeheersing (planning van de kohieren met aanslagen en beschikkingen) is er voor gekozen dit afzonderlijk vast te leggen en hiervoor niet de metagegevens te gebruiken (materiële historie).</p></body>
+          format: date
+        identificatie:
+          $ref: '#/components/schemas/Sleutel'
+        identificatieBeschikking:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sleutel'
+        identificatieTaxatie:
+          type: array
+          items:
+            $ref: '#/components/schemas/Sleutel'
+        statusTaxatie:
+          $ref: '#/components/schemas/StatusTaxatie'
+        statusWaardevaststelling:
+          $ref: '#/components/schemas/StatusWaardevaststelling'
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ''
+          format: date-time
+        toestandspeildatum:
+          $ref: '#/components/schemas/Peildatum'
+        waardepeildatum:
+          $ref: '#/components/schemas/Peildatum'
+        wbptvs:
+          $ref: '#/components/schemas/Wbptvs'
+        wozObjectnummer:
+          type: string
+          title: wozObjectnummer
+          description: <body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>
+          pattern: ^[0-9]{12}$
+          maxLength: 12
+    Waardebepaling_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        beschikkingen:
+          title: leidttot
+          type: array
+          description: ''
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxatieverslagnietwoningen:
+          allOf:
+            - title: wordtonderbouwdmet
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZObjecten:
+          allOf:
+            - title: isvoor
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxaties:
+          allOf:
+            - title: heeft
+              type: object
+              description: <body><p>WBP is gericht op de beheersing van het proces van waardebepaling. In TAX (Taxatie) liggen de inhoudelijke gegevens vast.</p></body>
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxatieverslagenwoningen:
+          allOf:
+            - title: wordtonderbouwdmet
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    TijdvakRelatie:
+      type: object
+      description: ''
+      required:
+        - beginRelatie
+        - eindRelatie
+      properties:
+        beginRelatie:
+          type: string
+          title: beginRelatie
+          description: ''
+          format: date
+        eindRelatie:
+          type: string
+          title: eindRelatie
+          description: ''
+          format: date
+    Wbptvs:
+      type: object
+      description: ''
+      required:
+        - identificatieTaxatieverslag
+        - tijdvakRelatie
+      properties:
+        identificatieTaxatieverslag:
+          $ref: '#/components/schemas/Sleutel'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    StatusTaxatie:
+      type: string
+      description: ''
+      enum:
+        - '0'
+        - '10'
+        - '12'
+        - '14'
+        - '16'
+        - '18'
+        - '20'
+        - '22'
+        - '24'
+        - '26'
+        - '28'
+        - '30'
+    StatusWaardevaststelling:
+      type: string
+      description: ''
+      enum:
+        - '0'
+        - '3'
+        - '6'
+        - '9'
+    Peildatum:
+      type: string
+      description: ''
+      pattern: ^[12][0-9]{3}0101$
+      maxLength: 8
+    Sleutel:
+      type: string
+      description: ''
+      maxLength: 40
+      minLength: 1

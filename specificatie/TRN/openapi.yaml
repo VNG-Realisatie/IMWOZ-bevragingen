@@ -36,7 +36,7 @@ paths:
         - in: query
           name: datumTransactie
           description: ""
-          required: true
+          required: false
           schema:
             type: string
             format: date
@@ -50,7 +50,7 @@ paths:
         - in: query
           name: kadastraleIdentificatie
           description: ""
-          required: true
+          required: false
           schema:
             type: string
             pattern: NL\.IMKAD\.KadastraalObject\.[1-9][0-9]{0,14}(\.[0-9]+)?
@@ -76,13 +76,13 @@ paths:
         - in: query
           name: volgnummerMarktgegeven
           description: ""
-          required: true
+          required: false
           schema:
             type: integer
         - in: query
           name: wozObjectnummer
           description: "<body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>"
-          required: true
+          required: false
           schema:
             type: string
             maxLength: 12
