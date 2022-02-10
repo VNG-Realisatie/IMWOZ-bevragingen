@@ -1,0 +1,739 @@
+openapi: 3.0.0
+servers:
+  - description: "SwaggerHub API Auto Mocking"
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_wdo/v1
+  - description: "Referentie-implementatie"
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_wdo/v1
+info:
+  title: BG IMWOZ WDO
+  description: ""
+  version: "1.0.0"
+  x-imvertor-generator-version: "1.65.4"
+  x-yamlCompiler-stylesheets-version: "20220110"
+  contact:
+    url: https://github.com/VNG-Realisatie/IMWOZ-bevragingen
+  license:
+    name: European Union Public License, version 1.2 (EUPL-1.2)
+    url: https://eupl.eu/1.2/nl/
+paths:
+  /wozdeelobjecten:
+    get:
+      operationId: Getwozdeelobjecten
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie woz deelobjecten retourneert.</p></body>"
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
+        - in: query
+          name: aanduidingInAanbouw
+          description: ""
+          required: false
+          schema:
+            type: boolean
+        - in: query
+          name: codeWOZDeelobject
+          description: "<body><p>Er is een uniforme coderingslijst beschikbaar (www.waarderingskamer.nl). Op dit moment hebben uitvoeringsorganisaties nog de mogelijkheid andere codes te gebruiken of een andere betekenis toe te kennen aan een code. In de toekomst zal de uniformiteit van het gebruik van WOZ-deelobjectcodes worden afgedwongen door deze codes te definiëren als een referentielijst (waardelijst).</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 4
+        - in: query
+          name: identificatieAdresseerbaarObjectAanduiding
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: identificatieAdresseerbaarObjectBestaatUit
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: identificatiePand
+          description: ""
+          required: false
+          schema:
+            type: string
+            pattern: ^[0-9]{16}$
+        - in: query
+          name: peiltijdstipMaterieel
+          description: ""
+          required: false
+          schema:
+            type: string
+            format: date
+        - in: query
+          name: statusWOZDeelobject
+          description: "<body><p>Een WOZ-deelobject kan al administratief worden vastgelegd, terwijl het in werkelijkheid nog niet bestaat. Dit gebeurt bijvoorbeeld op het moment dat een bouwvergunning wordt verleend voor een nieuwbouwobject. De bouwvergunning leidt tot het administratief vastleggen van een verblijfsobject. Door dit verblijfsobject reeds te koppelen aan een WOZ-deelobject (gevormd, niet actief), kan op doelmatige wijze een WOZ-administratie die volledig is afgestemd op de Basisregistraties adressen en gebouwen in de gemeente worden gewaarborgd.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/StatusObject"
+        - in: query
+          name: wozDeelobjectnummer
+          description: "<body><p>Elk WOZDeelobject wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met op de vijfde positie het cijfer 1 en daarna een voor de registrerende gemeente uniek volgnummer.</p></body><body><p>[0-9]{16}</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 16
+        - in: query
+          name: wozObjectnummer
+          description: "<body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>"
+          required: false
+          schema:
+            type: string
+            maxLength: 12
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Pagination-Page:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Page"
+            X-Pagination-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Pagination_Limit"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/WOZDeelobjectHalCollectie'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '412':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/412"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - WOZ Deelobjecten (WDO)
+  /wozdeelobjecten/wozdeelobjectnummer}:
+    get:
+      operationId: getwozdeelobject
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een wozdeelobject retourneert.</p></body>"
+      parameters:
+        - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"
+      responses:
+        '200':
+          description: "Zoekactie geslaagd"
+          headers:
+            api-version:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/api_version"
+            warning:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/warning"
+            X-Rate-Limit-Limit:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Limit"
+            X-Rate-Limit-Remaining:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Remaining"
+            X-Rate-Limit-Reset:
+              $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/headers/X_Rate_Limit_Reset"
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/WOZDeelobjectHal'
+        '400':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
+        '401':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/401"
+        '403':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/403"
+        '406':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/406"
+        '409':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/409"
+        '410':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/410"
+        '412':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/412"
+        '415':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/415"
+        '429':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/429"
+        '500':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/500"
+        '501':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/501"
+        '503':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/503"
+        'default':
+          $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
+      tags:
+      - WOZ Deelobjecten (WDO)
+components:
+  schemas:
+    WOZDeelobjectHalCollectie:
+      type: object
+      properties:
+        _links:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalPaginationLinks
+        _embedded:
+          type: object
+          properties:
+            WOZDeelobjecten:
+              type: array
+              items:
+                $ref: '#/components/schemas/WOZDeelobjectHal'
+    WOZDeelobjectHal:
+      allOf:
+        - $ref: '#/components/schemas/WOZDeelobject'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/WOZDeelobject_links'
+    WOZDeelobject:
+      type: object
+      description: <body><p>Op het niveau van het WOZ-deelobject liggen de kenmerken vast die worden gebruikt bij de taxatie (objectkenmerken). Op het niveau van de WOZ-deelobjecten wordt ook de relatie gelegd naar verblijfsobjecten, ligplaatsen en standplaatsen (Adresseerbare objecten , AOT) in de Basisregistratie Adressen en Gebouwen (BAG). Relaties naar panden in de BAG worden alleen gelegd, wanneer sprake is van een pand zonder verblijfsobjecten, of een gedeelte van een pand waarin zich geen verblijfsobjecten bevinden. Een WOZ-deelobject heeft maximaal met één object uit de BAG een relatie. Er is sprake van twee typen relaties WDOAOT. De ene relatie geeft aan welk AOT (Adresseerbaar Object, dus in de huidige BAG verblijfsobject, ligplaats of standplaats) geheel of gedeeltelijk onderdeel uit maakt van het WOZ-deelobject (WDOAOTOND, OND verwijst naar Onderdeel). De andere relatie is van belang om te komen tot een aanduiding van het WOZ-(deel)object (WDOAOTAND, AND verwijst naar Aanduiding). Bij de invoering van de Samenhangende Objectenregistratie (SOR) zal het WOZDeelobject de relaties vastleggen naar de objecttypen in de SOR. Doordat de SOR kenmerken van fysieke objecten gedetailleerder gaat vastleggen, kunnen wellicht op dat moment enkele attributen van het WOZDeelobject vervallen, omdat deze overgenomen worden van het gekoppelde object uit de SOR. Bij de invoering van de SOR zal het objecttype WOZDeelobject beperkt worden tot de fysieke delen van een WOZ-object. De overige taxatiekenmerken zullen dan worden vastgelegd in een nieuw te definiëren afzonderlijk objecttype.</p></body>
+      required:
+        - aanduidingInAanbouw
+        - bepaaltAanduiding
+        - bepaaltGegevensTaxatieverslag
+        - bouwjaarOfbouwjaarKlasse
+        - codeWOZDeelobject
+        - einddatumObject
+        - ingangsdatumObject
+        - statusWOZDeelobject
+        - tijdstipRegistratie
+        - typeWOZDeelobject
+        - wdoaotand
+        - wdonum
+        - wdowoz
+        - wozDeelobjectnummer
+      properties:
+        aanduidingInAanbouw:
+          type: boolean
+          title: aanduidingInAanbouw
+          description: ''
+        aantalKamers:
+          type: integer
+          title: aantalKamers
+          description: <body><p>Dit gegeven kan primair van belang zijn bij de taxatie van woningen. Een tot twee kamers verbouwde (van oorsprong) vier-kamerappartement wordt met vier kamers vermeld.</p></body>
+        aantalStuksEenheden:
+          type: integer
+          title: aantalStuksEenheden
+          description: <body><p>Bij sommige objecten wordt de waarde niet afgeleid uit de maten (inhoud of oppervlakte) maar uit andere karakteristieken die maatgevend zijn voor de grootte van het object. Bij agrarische objecten kan een waarde bijvoorbeeld bepaald worden aan de hand van het aantal ligboxen en een waarde per eenheid. Voor ziekenhuizen zou dit kunnen door het aantal bedden en de gemiddelde waarde per bed. Als er sprake is van parkeerplaatsen bij een kantoorpand staat het aantal werkelijke plaatsen vermeld. Indien gebruik wordt gemaakt van onderbouwing van de woning met afzonderlijke WOZ-deelobjecten dan wordt dit aantal stuks/eenheden bijvoorbeeld ook gebruikt om het aantal dakkapellen/kantelramen aan te geven.</p></body>
+        aantekening:
+          type: string
+          title: aantekening
+          description: <body><p>Dit gegeven is geheel vrij in te vullen. Hier kunnen alle nadere aanduidingen worden gegeven die bijvoorbeeld als `bijzonder kenmerk` op het taxatieverslag vermeld worden. Dit gegeven is bedoeld voor opmerkingen van de taxateur en niet om systematisch een nieuw gegeven kwijt te kunnen.</p></body>
+          maxLength: 50
+          minLength: 1
+        archetypeAanduiding:
+          allOf:
+            - $ref: '#/components/schemas/ArchetypeAanduiding'
+            - title: archetypeAanduiding
+              description: '<body><p>De mogelijke archetypen worden in de taxatiewijzers limitatief opgesomd. Het gegeven `Archetype aanduiding` betreft de aanduiding tot welk archetype dit WOZ-deelobject behoort. Het is mogelijk dat bij de taxatie gebruik gemaakt is van de kengetallen behorend bij een ander archetype. Dit wordt dan aangeduid met `Gebruikt archetype taxatiewijzer`.</p></body><body><p>De archetype en hun betekenis worden gespecificeerd in de set landelijke taxatiewijzers (zie www.wozinformatie.nl). De code voor de aanduiding van het archetype kent acht posities: • Positie 1: een codering (letter) voor het type object; • Positie 2 en 3: de laatste 2 posities van de soort-object-code (getal); • Positie 4: een codering (cijfer) voor de bouwperiode; • Positie 5 en 6: een nadere indeling (cijfers of letters) per taxatiewijzer; • Positie 7: een codering (cijfer) voor materiaal of (bij agrarische archetypen) een nadere indeling (cijfer) per taxatiewijzer; • Positie 8: een codering (cijfer) voor afwerkingsniveau of een cijfer of letter om de gebruikte materialen aan te geven.</p></body>'
+        beng1:
+          type: integer
+          title: beng1
+          description: <body><p>De beng1 indicator is onderdeel van de nieuwe energielabel per 1 januari 2021 en geeft de totale energiebehoefte van een gebouw weer in kWh/m2.</p></body>
+        beng2:
+          type: integer
+          title: beng2
+          description: <body><p>De beng2 indicator is onderdeel van de nieuwe energielabel per 1 januari 2021 en geeft de totale primaire fossiele energieverbruik van een gebouw weer in kWh/m2.</p></body>
+        bepaaltAanduiding:
+          type: boolean
+          title: bepaaltAanduiding
+          description: ''
+        bepaaltGegevensTaxatieverslag:
+          type: boolean
+          title: bepaaltGegevensTaxatieverslag
+          description: ''
+        bouwjaarOfbouwjaarKlasse:
+          $ref: '#/components/schemas/BouwjaarOfBouwjaarKlasse'
+        bouwkundigeKwaliteit:
+          $ref: '#/components/schemas/BeoordelingKenmerk'
+        bouwlaag:
+          type: integer
+          title: bouwlaag
+          description: <body><p>Dit gegeven wordt vooral gebruikt voor WOZ-objecten waarvoor de bouwlaag relevant is voor de waardebepaling. Dit geldt met name voor portiekwoningen, winkels of kantoorpanden zonder lift etc. De bouwlaag geeft van een object aan op welke bouwlaag van een pand het WOZ-object zich bevindt of waarop het belangrijkste deel van het WOZ-object zich bevindt. Het geeft dus niet aan uit hoeveel bouwlagen het object bestaat. De bouwlaag op straatpeil heeft de waarde 0. Het gegeven bouwlaag kan daarom een negatieve waarde hebben. Na de invoering van de Samenhangende Objectenregistratie (SOR) kan dit attribuut naar verwachting ontleend worden aan deze SOR en hoeft dan niet langer vastgelegd te worden als kenmerk van het WOZ-deelobject.</p></body>
+        breedte:
+          type: number
+          title: breedte
+          description: <body><p>Mogelijk dat na de invoering van de Samenhangende Objectenregistratie (SOR) de noodzaak voor vastlegging van dit attribuut vervalt, omdat de bepaling van de oppervlakte dan afgeleid kan worden uit de in de SOR vastgelegde plattegrond van de te meten verdieping.</p></body>
+        codeBrutoNettoInhoud:
+          $ref: '#/components/schemas/BrutoNetto'
+        codeBrutoNettoOppervlakte:
+          $ref: '#/components/schemas/BrutoNetto'
+        codeOmzetBelasting:
+          $ref: '#/components/schemas/CodeOmzetBelasting'
+        codeVrijstelling:
+          type: array
+          items:
+            $ref: '#/components/schemas/CodeVrijstelling'
+        codeWOZDeelobject:
+          type: string
+          title: codeWOZDeelobject
+          description: <body><p>Er is een uniforme coderingslijst beschikbaar (www.waarderingskamer.nl). Op dit moment hebben uitvoeringsorganisaties nog de mogelijkheid andere codes te gebruiken of een andere betekenis toe te kennen aan een code. In de toekomst zal de uniformiteit van het gebruik van WOZ-deelobjectcodes worden afgedwongen door deze codes te definiëren als een referentielijst (waardelijst).</p></body>
+          maxLength: 4
+          minLength: 1
+        doelmatigheid:
+          $ref: '#/components/schemas/BeoordelingKenmerk'
+        einddatumObject:
+          type: string
+          title: einddatumObject
+          description: <body><p>Wanneer WOZ-deelobject de status 'ten onrechte opgevoerd' krijgt wordt de einddatumObject geljik aan ingangsdatumObject.</p></body>
+          format: date
+        energielabel:
+          $ref: '#/components/schemas/Energielabel'
+        frontBreedte:
+          type: number
+          title: frontBreedte
+          description: <body><p>Dit gegeven is primair van belang voor verkoopruimte op de begane grond. Dit gegeven speelt een belangrijke rol bij de waardering van winkelruimte, omdat de verhouding tussen oppervlakte en frontbreedte van groot belang is. De verkoopruimte direct grenzend aan het winkelfront heeft een hogere waarde dan verder naar achter gelegen ruimte. In de taxatie wordt dit vaak tot uitdrukking gebracht in de zogenaamde ITZA-methodiek (In Terms of Zone A) waarbij de (huur)waarde van de verder naar achtergelegen delen wordt afgeleid uit de (huur)waarde van de primaire ruimte.</p></body>
+        geometrie:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/geojson.yaml#/Polygon
+        groepaanduiding:
+          type: string
+          title: groepaanduiding
+          description: <body><p>Deze groepsaanduiding kan bijvoorbeeld betrekking hebben op een project van woningen, die bouwkundig en architectonisch gelijksoortig zijn en daarom onderling goed vergelijkbaar zijn voor de waardebepaling. Voor de courante niet-woningen worden de marktgegevens geanalyseerd en daaruit vloeien kenggetallen voort zoals bandbreedten voor bijvoorbeeld de huurprijzen van diverse soorten objecten in een bepaalde soort (branche) met prijzen per vierkante meter.</p></body>
+          maxLength: 8
+          minLength: 1
+        hoogte:
+          type: number
+          title: hoogte
+          description: <body><p>Mogelijk dat na de invoering van de Samenhangende Objectenregistratie (SOR) de noodzaak voor vastlegging van dit attribuut vervalt, omdat de bepaling van de groote van een WOZ-deelobject dan afgeleid kan worden uit de in de SOR vastgelegde plattegrond van de te meten verdieping.</p></body>
+        ingangsdatumObject:
+          type: string
+          title: ingangsdatumObject
+          description: <body><p>De ingangsdatum betreft de datum vanaf welke het object relevant is voor de registratie. Daarbij kan het object in eerste instantie geregistreerd worden met statusObject `gevormd, niet actief`.</p></body>
+          format: date
+        inhoud:
+          type: integer
+          title: inhoud
+          description: <body><p>Doordat vanaf 2022 alle woningen in het kader van de Wet WOZ getaxeerd worden door gebruik te maken van de gebruiksoppervlakte, zal de inhoud van een WOZ-deelobject nog slechts voor een beperkt aantal typen objecten relevant zijn, zoals bijvoorbeeld tanks, mestopslag, waterberging etc.</p></body>
+        kwaliteitLuxe:
+          $ref: '#/components/schemas/BeoordelingKenmerk'
+        kwaliteitVoorzieningen:
+          $ref: '#/components/schemas/BeoordelingKenmerk'
+        lengte:
+          type: number
+          title: lengte
+          description: <body><p>Mogelijk dat na de invoering van de Samenhangende Objectenregistratie (SOR) de noodzaak voor vastlegging van dit attribuut vervalt, omdat de bepaling van de oppervlakte dan afgeleid kan worden uit de in de SOR vastgelegde plattegrond van de te meten verdieping.</p></body>
+        materiaalCode:
+          allOf:
+            - $ref: '#/components/schemas/Materiaalcode'
+            - title: materiaalCode
+              description: ''
+        nummerWOZDeelobject:
+          type: integer
+          title: nummerWOZDeelobject
+          description: <body><p>In de conversie van 03.12 naar 03.20 krijgt elk WOZDeelobject een unieke identificatie (WOZDeelobjectnummer). Het nummerWOZDeelobject wordt met het oog op een beheersbare conversie binnen 03.20 nog wel bewaard. Het nummer WOZDeelobject wordt later geschrapt.</p></body>
+        onderhoudBinnen:
+          $ref: '#/components/schemas/BeoordelingKenmerk'
+        onderhoudBuiten:
+          $ref: '#/components/schemas/BeoordelingKenmerk'
+        onderhoudstoestand:
+          $ref: '#/components/schemas/BeoordelingKenmerk'
+        ontsluitingVerdieping:
+          type: array
+          items:
+            $ref: '#/components/schemas/OntsluitingVerdieping'
+        oppervlakte:
+          type: integer
+          title: oppervlakte
+          description: <body><p>Voor het meten van de gebruiksoppervlakte van woningen is de meetinstructie gebruiksoppervlakte woningen beschikbaar. Voor andere typen WOZ(deel-)objecten zal ook vaak een andere oppervlakte worden geregistreerd (bruto, verhuurbaar vloeropperlvakte). Of de geregistreerde oppervlakte de bruto, netto, gebruiksoppervlakte of verhuurbaar vloeroppervlakte betreft, is gespecificeerd in het gegeven `Code bruto netto oppervlakte`. Ongeacht de gemaakte keuze wordt bij voorkeur gemeten volgens NEN 2580. De oppervlakte wordt altijd aangeduid in vierkante meter ook wanneer de gebruikte kengetallen bijvoorbeeld betrekking op prijzen per hectare (bijvoorbeeld taxatiewijzer agrarische grond). Na de invoering van de Samenhangende Objectenregistratie (SOR) zal de gebruiksoppervlakte in beginsel vastgelegd zijn in de SOR en kan de gebruiksoppervlakte afgeleid worden uit deze SOR. Het attribuut oppervlakte bij het WOZ-deelobject blijft in ieder geval relevant voor het vastleggen van andere typen oppervlakte.</p></body>
+        renovatiejaar:
+          type: integer
+          title: renovatiejaar
+          description: <body><p>Van een renovatie is alleen sprake wanneer daardoor de functionaliteit van het gebouw verbeterd en/of de levensduur van het object verlengd wordt.</p></body>
+          format: date_fullyear
+          pattern: ^[1-2]{1}[0-9]{3}$
+        renovatiepercentage:
+          type: integer
+          title: renovatiepercentage
+          description: '<body><p>Voorbeelden: 10% = inwendige aanpassing van de meest elementaire voorzieningen (elektriciteit, granieten aanrecht); 20% = voornoemde aanpassingen plus uitwendig aanpassen van elementaire zaken (vensterkozijnen, deuren, vergane dak bedekking etc.); 30% = voornoemde aanpassingen plus beperkte aanpassing aan modern comfort en beperkte aan- en uitbouwen (dakkapel); 40% = voornoemde aanpassingen plus complete aanpassing aan modern comfort (dakverhoging, extra sanitaire voorzieningen); 50% = totale vernieuwing.</p></body>'
+        statusEnergielabel:
+          $ref: '#/components/schemas/StatusEnergielabel'
+        statusWOZDeelobject:
+          $ref: '#/components/schemas/StatusObject'
+        tijdstipRegistratie:
+          type: string
+          title: tijdstipRegistratie
+          description: ''
+          format: date-time
+        typeWOZDeelobject:
+          allOf:
+            - $ref: '#/components/schemas/TypeWOZDeelobject'
+            - title: typeWOZDeelobject
+              description: <body><p>Voor het type WOZ-deeloject wordt gebruik gemaakt van een uniforme landelijke lijst. Het type WOZ-deelobject wordt vermeld op het WOZ-taxatieverslag. Type WOZ-deelobject is verplicht vanaf 1 januari 2022. De historische typering blijft vastgelegd in de codeWOZDeelobject.</p></body>
+        typeWOZDeelobjectOptioneel:
+          allOf:
+            - $ref: '#/components/schemas/TypeWOZDeelobjectOptioneel'
+            - title: typeWOZDeelobjectOptioneel
+              description: <body><p>Ook voor optionele binnengemeentelijke uitbreiding van het type WOZ-deeloject wordt gebruik gemaakt van een uniforme landelijke lijst. Als de organisatie kiest voor het registeren van de optionele uitbreiding van type WOZ-deelobject, wordt deze niet eerder geregistreerd dan vanaf 1 januari 2022. De historische typering blijft vastgelegd in de codeWOZDeelobject.</p></body>
+        uitstraling:
+          $ref: '#/components/schemas/BeoordelingKenmerk'
+        voorzieningen:
+          $ref: '#/components/schemas/BeoordelingKenmerk'
+        wdoaotand:
+          $ref: '#/components/schemas/Wdoaotand'
+        wdoaotond:
+          $ref: '#/components/schemas/Wdoaotond'
+        wdonum:
+          $ref: '#/components/schemas/Wdonum'
+        wdopnd:
+          $ref: '#/components/schemas/Wdopnd'
+        wdowoz:
+          $ref: '#/components/schemas/Wdowoz'
+        wozDeelobjectnummer:
+          type: string
+          title: wozDeelobjectnummer
+          description: <body><p>Elk WOZDeelobject wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met op de vijfde positie het cijfer 1 en daarna een voor de registrerende gemeente uniek volgnummer.</p></body><body><p>[0-9]{16}</p></body>
+          maxLength: 16
+          minLength: 1
+    WOZDeelobject_links:
+      type: object
+      properties:
+        self:
+          $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        panden:
+          allOf:
+            - title: bestaatuitpand
+              type: object
+              description: <body><p>Deze relatie wordt alleen gelegd indien sprake is van een pand zonder verblijfsobjecten of een afzonderlijk gedeelte van een pand zonder verblijfsobjecten. In de overige gevallen blijkt de relatie uit de relatie tussen het WOZ-deelobject en het verblijfsobject (WOZ) en de relatie tussen verblijfsobject en pand (BAG). Omdat de relatie tussen een WOZ-deelobject en een pand in de tijd kan veranderen is het bijhouden van de tijdvakRelatie van belang.</p></body>
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        aanduidingAdresseerbaarObjecten:
+          allOf:
+            - title: geeftaanduidingvoor
+              type: object
+              description: <body><p>Wanneer een WOZ-deelobject bestaat uit een (deel van een) verblijfsobject, een ligplaats of een standplaats wordt met deze relatie vastgelegd dat het desbetreffende WOZ-deelobject ook het bijbehorende adres uit de Basisregistratie Adressen en Gebouwen (BAG) als aanduiding heeft. Ook wanneer het verblijfsobject, ligplaats of standplaats geen onderdeel vormt van het WOZ-deelobject, kan wel de aanduiding van het WOZ-deelobject ontleend zijn aan één van de genoemde objecttypen. Het is niet verplicht om een WOZ-deelobject een adres of aanduiding te geven. Indien het WOZ-deelobject is aangemerkt als het deelobject dat de aanduiding van het WOZ-object bepaalt (gegeven bepaaltAanduiding) is deze relatie wel verplicht. Omdat het WOZ-deelobject niet altijd de gehele TGO omvat kan het van belang zijn om een nadere locatieomschrijving te gebruiken in de aanduiding van het WOZ-deelobject.</p></body>
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        bestaatUitAdresseerbaarObjecten:
+          allOf:
+            - title: bestaatuit
+              type: object
+              description: <body><p>Een WOZ-deelobject zal niet altijd bestaan uit één van de genoemde objecttypen.</p></body>
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        nummeraanduidingen:
+          allOf:
+            - title: heeftalsaanduiding
+              type: object
+              description: <body><p>Wanneer een WOZ-deelobject bestaat uit een (deel van een) verblijfsobject, een ligplaats of een standplaats wordt met deze relatie vastgelegd dat het desbetreffende WOZ-deelobject ook het bijbehorende hoofdadres uit de Basisregistratie Adressen en Gebouwen (BAG) als aanduiding heeft. Ook wanneer het verblijfsobject, ligplaats of standplaats geen onderdeel vormt van het WOZ-deelobject, kan wel de aanduiding van het WOZ-deelobject ontleend zijn aan één van de genoemde objecttypen. Het is niet verplicht om een WOZ-deelobject een adres of aanduiding te geven. Indien het WOZ-deelobject is aangemerkt als het deelobject dat de aanduiding van het WOZ-object bepaalt (gegeven bepaaltAanduiding) is deze relatie wel verplicht.</p></body>
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZObjecten:
+          allOf:
+            - title: isonderdeelvan
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    ArchetypeAanduiding:
+      type: object
+      description: ''
+      required:
+        - archeytpecodering
+        - ingangsdatum
+      properties:
+        archeytpecodering:
+          type: string
+          title: archeytpecodering
+          description: ''
+          minLength: 1
+        einddatum:
+          type: string
+          title: einddatum
+          description: ''
+          format: date
+        ingangsdatum:
+          type: string
+          title: ingangsdatum
+          description: ''
+          format: date
+    BouwjaarOfBouwjaarKlasse:
+      type: object
+      description: ''
+      properties:
+        bouwjaar:
+          type: integer
+          title: bouwjaar
+          description: ''
+          format: date_fullyear
+          pattern: ^[1-2]{1}[0-9]{3}$
+        bouwjaarKlasse:
+          type: string
+          title: bouwjaarKlasse
+          description: ''
+          maxLength: 9
+    Materiaalcode:
+      type: object
+      description: ''
+      required:
+        - aanduidingMateriaal
+        - ingangsdatum
+      properties:
+        aanduidingMateriaal:
+          type: string
+          title: aanduidingMateriaal
+          description: ''
+          maxLength: 30
+          minLength: 1
+        einddatum:
+          type: string
+          title: einddatum
+          description: ''
+          format: date
+        ingangsdatum:
+          type: string
+          title: ingangsdatum
+          description: ''
+          format: date
+    TijdvakRelatie:
+      type: object
+      description: ''
+      required:
+        - beginRelatie
+        - eindRelatie
+      properties:
+        beginRelatie:
+          type: string
+          title: beginRelatie
+          description: ''
+          format: date
+        eindRelatie:
+          type: string
+          title: eindRelatie
+          description: ''
+          format: date
+    TypeWOZDeelobject:
+      type: object
+      description: ''
+      required:
+        - ingangsdatum
+        - omschrijvingTypeWozDeelobject
+        - omschrijvingTypeWozDeelobjectVerkort
+        - typeWozDeelobject
+      properties:
+        einddatum:
+          type: string
+          title: einddatum
+          description: ''
+          format: date
+        ingangsdatum:
+          type: string
+          title: ingangsdatum
+          description: ''
+          format: date
+        omschrijvingTypeWozDeelobject:
+          type: string
+          title: omschrijvingTypeWozDeelobject
+          description: ''
+          maxLength: 50
+          minLength: 1
+        omschrijvingTypeWozDeelobjectVerkort:
+          type: string
+          title: omschrijvingTypeWozDeelobjectVerkort
+          description: ''
+          maxLength: 12
+          minLength: 1
+        typeWozDeelobject:
+          type: string
+          title: TypeWozDeelobject
+          description: ''
+          maxLength: 4
+          minLength: 1
+    TypeWOZDeelobjectOptioneel:
+      type: object
+      description: ''
+      required:
+        - ingangsdatum
+        - omschrijvingTypeWozDeelobjectOptioneel
+        - omschrijvingTypeWozDeelobjectVerkortOptioneel
+        - typeWozDeelobjectOptioneel
+      properties:
+        einddatum:
+          type: string
+          title: einddatum
+          description: ''
+          format: date
+        ingangsdatum:
+          type: string
+          title: ingangsdatum
+          description: ''
+          format: date
+        omschrijvingTypeWozDeelobjectOptioneel:
+          type: string
+          title: omschrijvingTypeWozDeelobjectOptioneel
+          description: ''
+          maxLength: 50
+          minLength: 1
+        omschrijvingTypeWozDeelobjectVerkortOptioneel:
+          type: string
+          title: omschrijvingTypeWozDeelobjectVerkortOptioneel
+          description: ''
+          maxLength: 12
+          minLength: 1
+        typeWozDeelobjectOptioneel:
+          type: string
+          title: TypeWozDeelobjectOptioneel
+          description: ''
+          maxLength: 4
+          minLength: 1
+    Wdoaotand:
+      type: object
+      description: ''
+      required:
+        - identificatieAdresseerbaarObject
+        - tijdvakRelatie
+      properties:
+        identificatieAdresseerbaarObject:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Wdoaotond:
+      type: object
+      description: ''
+      required:
+        - identificatieAdresseerbaarObject
+        - tijdvakRelatie
+      properties:
+        identificatieAdresseerbaarObject:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Wdonum:
+      type: object
+      description: ''
+      required:
+        - identificatieNummeraanduiding
+        - tijdvakRelatie
+      properties:
+        identificatieNummeraanduiding:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        locatieomschrijving:
+          type: string
+          title: locatieomschrijving
+          description: <body><p>Indien aan een WOZ-object geen aanduiding kan worden gegeven door gebruik te maken van het hoofdadres van een in het WOZ-object betrokken verblijfsobject, standplaats of ligplaats, wordt een unieke aanduiding verkregen door een `authentiek` adres dan wel woonplaatsnaam en straatnaam te combineren met de locatieomschrijving. De aanvullende omschrijving van de ligging van een WOZ-object ten opzichte van de dichtstbijzijnde verblijfsobject, standplaats, ligplaats of openbare ruimte.</p></body>
+          maxLength: 40
+          minLength: 1
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Wdopnd:
+      type: object
+      description: ''
+      required:
+        - identificatiePand
+        - tijdvakRelatie
+      properties:
+        identificatiePand:
+          $ref: '#/components/schemas/IdentificatieBAG'
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+    Wdowoz:
+      type: object
+      description: ''
+      required:
+        - tijdvakRelatie
+        - wozObjectnummer
+      properties:
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+        wozObjectnummer:
+          type: string
+          title: wozObjectnummer
+          description: <body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>
+          pattern: ^[0-9]{12}$
+          maxLength: 12
+    BeoordelingKenmerk:
+      type: string
+      description: ''
+      enum:
+        - '1'
+        - '2'
+        - '3'
+        - '4'
+        - '5'
+    BrutoNetto:
+      type: string
+      description: ''
+      enum:
+        - B
+        - G
+        - 'N'
+        - V
+    CodeOmzetBelasting:
+      type: string
+      description: ''
+      enum:
+        - E
+        - I
+        - O
+    CodeVrijstelling:
+      type: string
+      description: ''
+      enum:
+        - A
+        - B
+        - C
+        - D
+        - F
+        - G
+        - K
+        - L
+        - 'N'
+        - O
+        - W
+        - Z
+    Energielabel:
+      type: string
+      description: <body><ul><li>`A____` - A++++ </li><li>`A___` - A+++ </li><li>`A__` - A++ </li><li>`A_` - A+ </li><li>`A` - A </li><li>`B` - B </li><li>`C` - C </li><li>`D` - D </li><li>`E` - E </li><li>`F` - F </li><li>`G` - G </li></ul></body>
+      enum:
+        - A____
+        - A___
+        - A__
+        - A_
+        - A
+        - B
+        - C
+        - D
+        - E
+        - F
+        - G
+    OntsluitingVerdieping:
+      type: string
+      description: ''
+      enum:
+        - L
+        - R
+        - T
+    StatusEnergielabel:
+      type: string
+      description: <body><ul><li>`Formeel_bepaald` - Formeel bepaald </li><li>`Indicatief` - Indicatief </li></ul></body>
+      enum:
+        - Formeel_bepaald
+        - Indicatief
+    StatusObject:
+      type: string
+      description: ''
+      enum:
+        - '0'
+        - '1'
+        - '8'
+        - '9'
+    IdentificatieBAG:
+      type: string
+      description: '<body><p>Combinatie van (viercijferig) subdomein `gemeentecodering` (volgens GBA tabel 33), het (tweecijferig) subdomein `objecttypecode` en een voor het betreffende objecttype binnen een gemeente uniek (tiencijferig) subdomein `objectvolgnummer`. Objecttypecode: een code waarmee het objecttype van een object wordt aangegeven. Deze codering maakt onderdeel uit van de unieke objectaanduiding. Het is met name bedoeld om objecten van verschillende adresseerbare objecttypen uniek van elkaar te kunnen onderscheiden. Waardeverzameling domein: 01: verblijfsobject; 02: ligplaats; 03: standplaats; 10: pand en 20: nummeraanduiding. Objectvolgnummer: een uniek volgnummer waarmee een object van een bepaald type binnen een gemeente kan worden aangeduid. Indien een `objectvolgnummer` uit minder dan tien posities bestaat, dan dient deze ten behoeve van de uitwisseling te worden aangevuld met voorloopnullen. De van de objectnummering onderdeel uitmakende gemeentecode kan niet worden gebruikt om te bepalen binnen welke gemeente een object is gelegen. Waardeverzameling domein: Alle natuurlijke getallen tussen 0 en 9.999.999.999.</p></body>'
+      pattern: ^[0-9]{16}$
