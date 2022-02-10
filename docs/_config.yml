@@ -80,6 +80,10 @@ nav:
         path: /WDO-redoc
       - title: WOZDeelobjecten (swagger-ui)
         path: /WDO-swagger-ui
+      - title: WOZobjecten (redoc)
+        path: /WOZ-redoc
+      - title: WOZobjecten (swagger-ui)
+        path: /WOZ-swagger-ui
 plugins:
   - jekyll-redirect-from
   - jekyll-remote-theme
