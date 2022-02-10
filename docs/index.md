@@ -24,6 +24,9 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
  - ResultatenMarktanalyse in [Swagger-UI](./RMA-swagger-ui) of [Redoc](./RMA-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/RMA/openapi.yaml)
  - Taxaties in [Swagger-UI](./TAX-swagger-ui) of [Redoc](./TAX-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/TAX/openapi.yaml)
  - Transacties in [Swagger-UI](./TRN-swagger-ui) of [Redoc](./TRN-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/TRN/openapi.yaml)
+ - Transactieverslagen in [Swagger-UI](./TVS-swagger-ui) of [Redoc](./TVS-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/TVS/openapi.yaml)
+ - Waardebepalingen in [Swagger-UI](./WBP-swagger-ui) of [Redoc](./WBP-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/WBP/openapi.yaml)
+
 
 Bekijk de [release notes](./releasenotes).
 
