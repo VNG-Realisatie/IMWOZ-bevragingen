@@ -18,7 +18,7 @@ info:
 paths:
   /sluimerendwozobjecten:
     get:
-      operationId: Getsluimerendwozobjecten
+      operationId: getsluimerendwozobjecten
       description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie sluimerendwozobjecten retourneert.</p></body>"
       parameters:
         - $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/parameters.yaml#/acceptCrs"

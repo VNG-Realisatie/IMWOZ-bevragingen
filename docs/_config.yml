@@ -84,6 +84,10 @@ nav:
         path: /WOZ-redoc
       - title: WOZobjecten (swagger-ui)
         path: /WOZ-swagger-ui
+      - title: Waarden (redoc)
+        path: /WRD-redoc
+      - title: Waarden (swagger-ui)
+        path: /WRD-swagger-ui
 plugins:
   - jekyll-redirect-from
   - jekyll-remote-theme
