@@ -26,6 +26,7 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
  - Transacties in [Swagger-UI](./TRN-swagger-ui) of [Redoc](./TRN-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/TRN/openapi.yaml)
  - Transactieverslagen in [Swagger-UI](./TVS-swagger-ui) of [Redoc](./TVS-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/TVS/openapi.yaml)
  - Waardebepalingen in [Swagger-UI](./WBP-swagger-ui) of [Redoc](./WBP-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/WBP/openapi.yaml)
+ - WOZDeelobjecten in [Swagger-UI](./WDO-swagger-ui) of [Redoc](./WDO-redoc) --- [technische specificaties](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/specificatie/WDO/openapi.yaml)
 
 
 Bekijk de [release notes](./releasenotes).

@@ -19,7 +19,8 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
  - Taxaties in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/TAX-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/TAX-redoc) --- [technische specificaties](specificatie/TAX/openapi.yaml)
  - Transacties in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/TRN-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/TRN-redoc) --- [technische specificaties](specificatie/TRN/openapi.yaml)
  - Taxatieverslagen in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/TVS-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/TVS-redoc) --- [technische specificaties](specificatie/TVS/openapi.yaml)
- - Waardebepalingen in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/WBP-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/WBP-redoc) --- [technische specificaties](specificatie/TRN/openapi.yaml)
+ - Waardebepalingen in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/WBP-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/WBP-redoc) --- [technische specificaties](specificatie/WBP /openapi.yaml)
+ - WOZDeelobjecten in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/WDO-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/WDO-redoc) --- [technische specificaties](specificatie/WDO/openapi.yaml)
 
 Bekijk de [release notes](./releasenotes).
 

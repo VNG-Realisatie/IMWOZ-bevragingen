@@ -76,6 +76,10 @@ nav:
         path: /WBP-redoc
       - title: Waardebepalingen (swagger-ui)
         path: /WBP-swagger-ui
+      - title: WOZDeelobjecten (redoc)
+        path: /WDO-redoc
+      - title: WOZDeelobjecten (swagger-ui)
+        path: /WDO-swagger-ui
 plugins:
   - jekyll-redirect-from
   - jekyll-remote-theme
