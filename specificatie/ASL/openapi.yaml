@@ -1,13 +1,13 @@
 openapi: 3.0.0
 servers:
   - description: "SwaggerHub API Auto Mocking"
-    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_aanslagregels/v1
+    url: https://virtserver.swaggerhub.com/VNGRealisatie/api/bg_imwoz_trn/v1
   - description: "Referentie-implementatie"
-    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_aanslagregels/v1
+    url: https://www.voorbeeldgemeente.nl/api/bg_imwoz_trn/v1
 info:
-  title: BG IMWOZ Aanslagregels
+  title: BG IMWOZ TRN
   description: ""
-  version: "1.0.0"
+  version: "0.9.0"
   x-imvertor-generator-version: "1.65.4"
   x-yamlCompiler-stylesheets-version: "20220110"
   contact:
@@ -16,52 +16,50 @@ info:
     name: European Union Public License, version 1.2 (EUPL-1.2)
     url: https://eupl.eu/1.2/nl/
 paths:
-  /aanslagregels:
+  /transacties:
     get:
-      operationId: getaanslagregels
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een aanslagregel retourneert.</p></body>"
+      operationId: gettransacties
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen van een collectie transacties retourneert.</p></body>"
       parameters:
         - in: query
-          name: begindatumHeffingstijdvak
+          name: aanduidingBruikbaarheid
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/AanduidingBruikbaarheid"
+        - in: query
+          name: aardMarktinformatie
+          description: ""
+          required: false
+          schema:
+            $ref: "#/components/schemas/AardMarktinformatie"
+        - in: query
+          name: datumTransactie
           description: ""
           required: false
           schema:
             type: string
             format: date
         - in: query
-          name: belastingsoort
-          description: "<body><p>Met deze code wordt aangegeven op welke soort belasting deze aanslag betrekking heeft. Voorbeelden van soorten belasting zijn: Onroerende-zaakbelasting (eigenaar), afvalstoffenheffing, rioolheffing, precariobelasting etc.</p></body>"
+          name: documentIdentificatie
+          description: "<body><p>Er zijn diverse typen niet formele documenten die kunnen worden vastgelegd. Hierbij kan ook gedacht worden aan foto's etc. De verwijzing naar deze documenten geschiedt op overeenkomstige wijze als de verwijzing naar formele brondocumenten. De unieke aanduiding van de vindplaats van een document binnen een organisatie zal ook vaak besaan uit een uri voor een digitaal archief. Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens om documenten binnen een organisatie vindbaar te maken.</p></body>"
           required: false
           schema:
             type: string
-            maxLength: 30
+            maxLength: 512
         - in: query
-          name: einddatumHeffingstijdvak
+          name: kadastraleIdentificatie
           description: ""
           required: false
           schema:
             type: string
-            format: date
+            pattern: NL\.IMKAD\.KadastraalObject\.[1-9][0-9]{0,14}(\.[0-9]+)?
         - in: query
-          name: identificatieBeschikking
-          description: ""
+          name: omstandighedenTransactie
+          description: "<body><p>Dit attribuut geeft aan op welk aspect de onderhave transactie afwijkt van de waarderingsvoorschriften van de wet WOZ.</p></body>"
           required: false
           schema:
-            type: string
-            maxLength: 40
-            minLength: 1
-        - in: query
-          name: identificatiePersoon
-          description: "<body><p>Als de identificatiePersoon parameter gevuld wordt dan MOET de identificatiePersoonType parameter ook geveuld worden.</p></body>"
-          required: false
-          schema:
-            type: string
-        - in: query
-          name: identificatiePersoonType
-          description: ""
-          required: false
-          schema:
-            $ref: "#/components/schemas/IdentificatiePersoonType"
+            $ref: "#/components/schemas/OmstandighedenTransactie"
         - in: query
           name: peiltijdstipMaterieel
           description: ""
@@ -70,23 +68,24 @@ paths:
             type: string
             format: date
         - in: query
-          name: identificatie
+          name: soortTransactie
+          description: "<body><p>In deze entiteit worden allerlei soorten transacties geregistreerd. Door dit gegeven kunnen verschillende soorten transacties van elkaar worden onderscheiden.</p></body>"
+          required: false
+          schema:
+            $ref: "#/components/schemas/SoortTransactie"
+        - in: query
+          name: volgnummerMarktgegeven
           description: ""
           required: false
           schema:
+            type: integer
+        - in: query
+          name: wozObjectnummer
+          description: "<body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>"
+          required: false
+          schema:
             type: string
-        - in: query
-          name: statusAanslag
-          description: "<body><p>Met deze code kan bijvoorbeeld worden aangegeven of de aanslag is opgelegd, onder bezwaar is, of is vernietigd. Voor uniformering kan nog worden overwogen voor dit attribuut een enumeratie te definiëren.</p></body>"
-          required: false
-          schema:
-            type: integer
-        - in: query
-          name: statusBetaling
-          description: "<body><p>Met deze code kan worden aangegeven of de aanslag nog betaald moet worden, volledig betaald is of deels betaald is (automatische incasso). Voor uniformering kan nog worden overwogen voor dit attribuut een enumeratie te definiëren.</p></body>"
-          required: false
-          schema:
-            type: integer
+            maxLength: 12
       responses:
         '200':
           description: "Zoekactie geslaagd"
@@ -108,7 +107,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/AanslagregelHalCollectie'
+                $ref: '#/components/schemas/TransactieHalCollectie'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
         '401':
@@ -132,15 +131,15 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
-      - Aanslagregels (ASL)
-  /aanslagregels/{identificatie}:
+      - Transacties (TRN)
+  /transacties/{identificatie}:
     get:
-      operationId: getaanslagregel
-      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een aanslagregel retourneert.</p></body>"
+      operationId: gettransactie
+      description: "<body><p>Het bericht dat de JSON/REST API voor het ophalen gegevens van een transactie retourneert.</p></body>"
       parameters:
         - in: path
           name: identificatie
-          description: "<body><p>Dit domein maakt het mogelijk om gebruik te maken van systemen voor toekennen van unieke identificaties zoals UUID's.</p></body>"
+          description: ""
           required: true
           schema:
             $ref: "#/components/schemas/Sleutel"
@@ -161,7 +160,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/AanslagregelHal'
+                $ref: '#/components/schemas/TransactieHal'
         '400':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/400"
         '401':
@@ -187,10 +186,10 @@ paths:
         'default':
           $ref: "https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/responses/default"
       tags:
-      - Aanslagregels (ASL)
+      - Transacties (TRN)
 components:
   schemas:
-    AanslagregelHalCollectie:
+    TransactieHalCollectie:
       type: object
       properties:
         _links:
@@ -198,390 +197,160 @@ components:
         _embedded:
           type: object
           properties:
-            Aanslagregels:
+            transacties:
               type: array
               items:
-                $ref: '#/components/schemas/AanslagregelHal'
-    AanslagregelHal:
+                $ref: '#/components/schemas/TransactieHal'
+    TransactieHal:
       allOf:
-      - $ref: '#/components/schemas/Aanslagregel'
-      - type: object
-        properties:
-          _links:
-            $ref: '#/components/schemas/Aanslagregel_links'
-    Aanslagregel:
+        - $ref: '#/components/schemas/Transactie'
+        - type: object
+          properties:
+            _links:
+              $ref: '#/components/schemas/Transactie_links'
+    Transactie:
       type: object
-      description: <body><p>Deze entiteit wordt gebruikt om de gegevens voor het aanslagbiljet
-        te communiceren met de applicatie voor het massaal printen van aanslagbiljetten
-        of voor het weergeven van het aanslagbiljet op de persoonlijke internetpagina
-        van de belanghebbende. De gegevens over de aanslagregel zijn van belang voor
-        dit IMWOZ, omdat deze aanslagregels gelijktijdig worden gecommuniceerd met
-        de beschikkingsregels. Op basis van dit IMWOZ moet ook helder zijn hoe de
-        gegevens over de bekendmaking van de WOZ-beschikking op het aanslagbiljet
-        gemeentelijke belastingen gecommuniceerd kunnen worden ten behoeve van de
-        print/mailvoorzieningen en ten behoeve van de presentatie op internet (persoonlijke
-        internetpagina). Gemodelleerd zijn alleen de algemene gegevens voor de aanslagregel
-        en de relaties die nodig zijn voor de OZB aanslagen welke gebaseerd zijn op
-        een WOZ beschikking. Voor andere belastingsoorten, bijvoorbeeld afvalstoffenheffing,
-        kan het nodig zijn in de modellering nog relaties aan te brengen naar bijvoorbeeld
-        een verblijfsobject. Er is een switch die bepaald of enerzijds de attributen
-        'Heffingsmaatstaf' en 'Tariefpercentage' gebruikt worden of anderzijds de
-        attributen 'Aantal eenheden' en 'Tarief per eenheid'.</p></body>
+      description: <body><p>Deze entiteit wordt meestal gebruikt om marktgegevens over één transactie weer te geven. In incidentele gevallen zal een transactie worden uitgesplitst in verschillende voorkomens van deze entiteit (met eigen volgnummer). Dit kan bijvoorbeeld van belang zijn, wanneer in één huurcontract zowel kantoorruimte als een showroom wordt verhuurd en van de afzonderlijke WOZ-deelobjecten de huurprijs bekend is. Een vergelijkbare situatie doet zich voor bij het uitsplitsen van de stichtingskosten naar verschillende delen van een onroerende zaak.</p></body>
       required:
-      - aslprs
-      - bedragAanslag
-      - belastingsoort
-      - berekeningMetPercentageOfberekeningPerEenheid
-      - identificatie
-      - statusAanslag
-      - statusBetaling
-      - tariefsoort
+        - aanduidingBruikbaarheid
+        - aardMarktinformatie
+        - datumTransactie
+        - identificatie
+        - kadastraleIdentificatie
+        - keuzeKoopOfHuurtOfGronduitgifteOfStichtingskosten
+        - omstandighedenTransactie
+        - soortTransactie
+        - tijdstipRegistratie
+        - transactieprijs
       properties:
-        aslbsk:
-          $ref: '#/components/schemas/Aslbsk'
-        aslprs:
-          $ref: '#/components/schemas/Aslprs'
-        bedragAanslag:
-          type: number
-          title: bedragAanslag
-          description: <body><p>De gegevens over de aanslagregel zijn van belang voor
-            dit IMWOZ, omdat deze aanslagregels gelijktijdig worden gecommuniceerd
-            met de beschikkingsregels. Op basis van deze catalogus moet ook helder
-            zijn hoe de gegevens over de bekendmaking van de WOZ-beschikking op het
-            aanslagbiljet gemeentelijke belastingen gecommuniceerd kunnen worden ten
-            behoeve van de print/mailvoorzieningen en ten behoeve van de presentatie
-            op internet (persoonlijke internetpagina).</p></body>
-        belastingsoort:
+        aanduidingBruikbaarheid:
+          $ref: '#/components/schemas/AanduidingBruikbaarheid'
+        aardMarktinformatie:
+          $ref: '#/components/schemas/AardMarktinformatie'
+        datumTransactie:
           type: string
-          title: belastingsoort
-          description: '<body><p>Met deze code wordt aangegeven op welke soort belasting
-            deze aanslag betrekking heeft. Voorbeelden van soorten belasting zijn:
-            Onroerende-zaakbelasting (eigenaar), afvalstoffenheffing, rioolheffing,
-            precariobelasting etc.</p></body>'
-          maxLength: 30
-          minLength: 1
-        berekeningMetPercentageOfberekeningPerEenheid:
-          $ref: '#/components/schemas/BerekeningMetPercentageOfberekeningPerEenheid'
-        heffingsTijdvak:
-          $ref: '#/components/schemas/HeffingsTijdvak'
+          title: datumTransactie
+          description: ''
+          format: date
+        documentIdentificatie:
+          type: array
+          title: documentIdentificatie
+          description: <body><p>Er zijn diverse typen niet formele documenten die kunnen worden vastgelegd. Hierbij kan ook gedacht worden aan foto's etc. De verwijzing naar deze documenten geschiedt op overeenkomstige wijze als de verwijzing naar formele brondocumenten. De unieke aanduiding van de vindplaats van een document binnen een organisatie zal ook vaak besaan uit een uri voor een digitaal archief. Naast numerieke tekens kan dus ook gebruik worden gemaakt van letters uit het alfabet en bijzondere leestekens als verbindingsstreepjes en scheidingstekens om documenten binnen een organisatie vindbaar te maken.</p></body>
+          minItems: 0
+          items:
+            type: string
+            maxLength: 512
+            minLength: 1
         identificatie:
           $ref: '#/components/schemas/Sleutel'
-        statusAanslag:
+        kadastraleIdentificatie:
+          type: array
+          title: kadastraleIdentificatie
+          description: ''
+          minItems: 1
+          items:
+            type: string
+            minLength: 1
+            pattern: NL\.IMKAD\.KadastraalObject\.[1-9][0-9]{0,14}(\.[0-9]+)?
+        keuzeKoopOfHuurtOfGronduitgifteOfStichtingskosten:
+          $ref: '#/components/schemas/KoopOfHuurOfGronduitgifteOfStichtingskosten'
+        kwantificeringVerschilTransactieprijs:
           type: integer
-          title: statusAanslag
-          description: <body><p>Met deze code kan bijvoorbeeld worden aangegeven of
-            de aanslag is opgelegd, onder bezwaar is, of is vernietigd. Voor uniformering
-            kan nog worden overwogen voor dit attribuut een enumeratie te definiëren.</p></body>
-        statusBetaling:
-          type: integer
-          title: statusBetaling
-          description: <body><p>Met deze code kan worden aangegeven of de aanslag
-            nog betaald moet worden, volledig betaald is of deels betaald is (automatische
-            incasso). Voor uniformering kan nog worden overwogen voor dit attribuut
-            een enumeratie te definiëren.</p></body>
-        tariefsoort:
+          title: kwantificeringVerschilTransactieprijs
+          description: <body><p>Een positieve waarde betekent dat de gerealiseerde transactieprijs opgehoogd moet worden met het genoemde bedrag om een reële inschatting van de marktwaarde te krijgen. Bijvoorbeeld wanneer er een verkoopprijs inclusief een omvangrijke reserve bij de VVE is (bijvoorbeeld 25.000 euro) dan wordt dit geregistreerd als minus 25.000. Op overeenkomstige wijze kan een correctie ivm incentives op een huurprijs worden weergegeven. Een eventuele huurvrije periode kan dan vertaald worden in een bedrag als correct op de huurprijs en geregistreerd worden als minus 10.000.</p></body>
+        omschrijvingTransactie:
           type: string
-          title: tariefsoort
-          description: '<body><p>Met deze code wordt aangegeven welke tarief van toepassing
-            is binnen de betreffende belastingsoort. Voorbeelden van diverse tariefsoort
-            binnen één belasting zijn: verschillend tarief voor woningen en nietwoningen
-            bij OZB-eigenaren, verschillend tarief voor eerste en volgende hond bij
-            hondenbelasting etc. Voor uniformering kan nog worden overwogen voor dit
-            attribuut een enumeratie te definierëren.</p></body>'
-          maxLength: 4
+          title: omschrijvingTransactie
+          description: <body><p>In dit gegeven kan vrij commentaar over de transactie worden opgenomen.</p></body>
+          maxLength: 50
           minLength: 1
+        omstandighedenTransactie:
+          $ref: '#/components/schemas/OmstandighedenTransactie'
+        soortTransactie:
+          $ref: '#/components/schemas/SoortTransactie'
         tijdstipRegistratie:
           type: string
           title: tijdstipRegistratie
-          description: ""
+          description: ''
           format: date-time
-    Aanslagregel_links:
+        transactieprijs:
+          type: integer
+          title: transactieprijs
+          description: ''
+        trnwoz:
+          type: array
+          items:
+            $ref: '#/components/schemas/Trnwoz'
+        volgnummerMarktgegeven:
+          type: array
+          title: volgnummerMarktgegeven
+          description: ''
+          minItems: 0
+          items:
+            type: integer
+    Transactie_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        beschikkingen:
-          allOf:
-          - title: isGebaseerdOp
-            type: object
-            description: <body><p>Relatie tussen aanslagregel en bijbehorende beschikking.</p></body>
-          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        personen:
-          allOf:
-          - title: isVoor
-            type: object
-            description: ""
-          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-        vestigingen:
-          allOf:
-          - title: communiceertvia
-            type: object
-            description: ""
-          - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
-    AdresBagPlusLocatieOmschrijving:
-      allOf:
-        - $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
-        - type: object
-          description: ""
-          required:
-          - huisletter
-          - huisnummer
-          - huisnummertoevoeging
-          - locatieomschrijving
-          - openbareRuimteNaam
-          - postcode
-          - woonplaatsnaam
-          properties:
-            huisletter:
-              type: string
-              title: huisletter
-              description: ""
-              pattern: ^[a-zA-Z]$
-              maxLength: 1
-            huisnummer:
-              type: integer
-              title: huisnummer
-              description: ""
-            huisnummertoevoeging:
-              type: string
-              title: huisnummertoevoeging
-              description: ""
-              pattern: ^[a-zA-Z0-9]{1,4}$
-              maxLength: 4
-            identificatieNummeraanduiding:
-              $ref: '#/components/schemas/IdentificatieBAG'
-            locatieomschrijving:
-              type: string
-              title: locatieomschrijving
-              description: <body><p>Indien aan een WOZ-object geen unieke aanduiding kan
-                worden gegeven door gebruik te maken van het hoofdadres van een in het
-                WOZ-object betrokken verblijfsobject, standplaats of ligplaats, wordt
-                een unieke aanduiding verkregen door een `authentiek` adres dan wel woonplaatsnaam
-                en straatnaam te combineren met een locatieomschrijving. De verschillende
-                vormen die de unieke aanduiding van een WOZ-object, zoals vermeld wordt
-                op de WOZ-beschikking, kan aannemen en de eventuele rol van de locatieomschrijving
-                daarbij, staat in de toelichting op de Gegevensgroep aanduidingWOZobject.
-                In het adres van een persoon kan hier de locatieomschrijving uit de BRP
-                worden opgenomen of overeenkomstig de werkwijze van de BRP dit veld worden
-                gevuld voor personen die niet uit de BRP kunnen worden overgenomen. Voor
-                adressen van niet-natuurlijke personen kan hier, eventueel in afgekorte
-                vorm, het gegeven toevoegingAdres uit het Handelsregister worden overgenomen.</p></body>
-              maxLength: 40
-              minLength: 1
-            openbareRuimteNaam:
-              type: string
-              title: openbareRuimteNaam
-              description: ""
-              maxLength: 80
-              minLength: 1
-            postcode:
-              $ref: '#/components/schemas/Postcode'
-            straatnaam:
-              type: string
-              title: straatnaam
-              description: <body><p>Als de lengte van de openbareRuimteNaam kleiner of
-                gelijk is aan 24, dan zijn de openbareRuimteNaam en de straatnaam gelijk.
-                Binnen de BAG wordt deze straatnaam aangeduid als verkorteNaam binnen
-                het objecttype openbareRuimte. Dit attribuut heeft altijd een waarde ook
-                als de openbareRuimteNaam kleiner of gelijk is aan 24 posities.</p></body>
-              maxLength: 24
-              minLength: 1
-            woonplaatsnaam:
-              type: string
-              title: woonplaatsnaam
-              description: ""
-              maxLength: 80
-              minLength: 1
-    AdresBuitenland:
-      allOf:
-        - $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
-        - type: object
-          description: ""
-          required:
-          - adresBuitenland1
-          - adresBuitenland2
-          - land
-          properties:
-            adresBuitenland1:
-              type: string
-              title: adresBuitenland1
-              description: ""
-              maxLength: 35
-              minLength: 1
-            adresBuitenland2:
-              type: string
-              title: adresBuitenland2
-              description: ""
-              maxLength: 35
-              minLength: 1
-            adresBuitenland3:
-              type: string
-              title: adresBuitenland3
-              description: ""
-              maxLength: 35
-              minLength: 1
-            land:
-              allOf:
-              - $ref: '#/components/schemas/Land'
-              - title: land
-                description: ""
-    AdresPostbusAntwoordnummer:
-      allOf:
-        - $ref: "#/components/schemas/KeuzeAdresBinnenBuitenland"
-        - type: object
-          description: ""
-          required:
-          - postbusOfAntwoordnummer
-          - postcode
-          - type
-          - woonplaatsnaam
-          properties:
-            postbusOfAntwoordnummer:
-              type: integer
-              title: postbusOfAntwoordnummer
-              description: ""
-            postcode:
-              $ref: '#/components/schemas/Postcode'
-            type:
-              $ref: '#/components/schemas/PostadresType'
-            woonplaatsnaam:
-              type: string
-              title: woonplaatsnaam
-              description: ""
-              maxLength: 80
-              minLength: 1
-    Aslbsk:
+        kadastraleOnroerendeZaken:
+          title: isbetrokkenin
+          type: array
+          description: ''
+          minItems: 1
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        resultaatMarktanalyses:
+          title: wordtgeanalyseerdin
+          type: array
+          description: ''
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+    GronduitgifteGrp:
       type: object
-      description: ""
-      required:
-      - identificatieBeschikking
-      - tijdvakRelatie
+      description: ''
       properties:
-        identificatieBeschikking:
-          $ref: '#/components/schemas/Sleutel'
-        tijdvakRelatie:
-          $ref: '#/components/schemas/TijdvakRelatie'
-    Aslprs:
-      type: object
-      description: ""
-      required:
-      - correspondentieAdresWOZ
-      - identificatiePersoon
-      - identificatieVestiging
-      properties:
-        aanduidingAfdelingOfComplex:
-          type: string
-          title: aanduidingAfdelingOfComplex
-          description: <body><p>Het attribuut 'aanduiding afdelingOfComplex' maakt
-            het mogelijk om voor belanghebbende met een groot aantal WOZ-objecten
-            een onderverdeling te maken. Hierdoor kunnen bijvoorbeeld WOZ-objecten
-            gekoppeld worden aan de `afdeling Sport` van een gemeente, of kunnen een
-            groep woningen van een woningcooperatie als één complex worden aangeduid.</p></body>
-          maxLength: 50
-          minLength: 1
-        correspondentieAdresWOZ:
-          $ref: '#/components/schemas/KeuzeAdresBinnenBuitenland'
-        identificatiePersoon:
-          $ref: '#/components/schemas/IdentificatiePersoon'
-        identificatieVestiging:
-          $ref: '#/components/schemas/Sleutel'
-        terAttentieVan:
-          type: string
-          title: terAttentieVan
-          description: ""
-          maxLength: 50
-          minLength: 1
-    BerekeningMetPercentage:
-      type: object
-      description: ""
-      required:
-      - heffingsmaatstaf
-      - tariefPercentage
-      properties:
-        heffingsmaatstaf:
-          type: number
-          title: heffingsmaatstaf
-          description: <body><p>Voor diverse belastingen wordt de te betalen belasting
-            afgeleid van een bedrag. De te betalen OZB wordt afgeleid van de (WOZ-)
-            waarde, de te betalen bouwleges, vaak van de stichtingskosten etc. Dit
-            gegeven is niet voor alle gemeentelijke belastingen van betekenis.</p></body>
-        tariefPercentage:
-          type: number
-          title: tariefPercentage
-          description: <body><p>Met dit percentage wordt het bedrag van de aanslag
-            berekend. Vanaf 2009 wordt het tarief voor de OZB berekend als een percentage
-            van de heffingsmaatstaf. Dat geldt ook voor andere gemeentelijke belastingen
-            en heffingen.</p></body>
-    BerekeningMetPercentageOfberekeningPerEenheid:
-      oneOf:
-        - $ref: '#/components/schemas/BerekeningMetPercentage'
-        - $ref: '#/components/schemas/BerekeningPerEenheid'
-    BerekeningPerEenheid:
-      type: object
-      description: ""
-      required:
-      - aantalEenheden
-      - tariefPerEenheid
-      properties:
-        aantalEenheden:
+        grondUitgiftePrijsPerM2:
           type: integer
-          title: aantalEenheden
-          description: <body><p>Door het aantal eenheden te vermenigvuldigen met het
-            tarief per eenheid (vast bedrag) wordt het bedrag van de aanslag berekend.</p></body>
-        tariefPerEenheid:
-          type: number
-          title: tariefPerEenheid
-          description: ""
-    HeffingsTijdvak:
+          title: grondUitgiftePrijsPerM2
+          description: ''
+        indicatieOmzetbelastingGrondprijs:
+          $ref: '#/components/schemas/CodeOmzetBelasting'
+        oppervlakteGrond:
+          type: integer
+          title: oppervlakteGrond
+          description: ''
+    HuurtransactieGrp:
       type: object
-      description: ""
-      required:
-      - begindatum
-      - einddatum
+      description: ''
       properties:
-        begindatum:
-          type: string
-          title: begindatum
-          description: ""
-          format: date
-        einddatum:
-          type: string
-          title: einddatum
-          description: ""
-          format: date
-    IdentificatiePersoon:
-      type: object
-      required:
-        - type
-      properties:
-        type:
-          type: string
-      discriminator:
-        propertyName: type
-        mapping:
-          burgerservicenummer: '#/components/schemas/IdentificatiePRS'
-          anpId: '#/components/schemas/IdentificatiePRSAlternatief'
-          rsin: '#/components/schemas/IdentificatiePRS'
-          annId: '#/components/schemas/IdentificatiePRSAlternatief'
-    IdentificatiePRS:
-      allOf:
-        - $ref: "#/components/schemas/IdentificatiePersoon"
-        - type: object
-          properties:
-            identificatiePRS:
-              type: string
-              description: <body><p>Unieke aanduiding van een persoon die is overgenomen uit de BRP of het Handelsregister. Zowel burgerservicenummer als RSIN hebben verplichte vaste lengte van 9 posities eventueel met voorloopnullen en voldoen aan de 11-proef.</p></body>
-              pattern: ^[0-9]{9}$
-    IdentificatiePRSAlternatief:
-      allOf:
-        - $ref: "#/components/schemas/IdentificatiePersoon"
-        - type: object
-          properties:
-            identificatiePRSAlternatief:
-              type: string
-              description: <body><p>Unieke aanduiding van een persoon die niet is ingeschreven in de BRP of het Handelsregister. Zowel anp.Identificatie en ann.Identificatie hebben een verplichte vaste lengte van 17 posities eventueel met voorloopnullen. De eerste vier posities zijn de gemeentecode van de gemeente die verantwoordelijk is van de registratie van deze persoon als WOZ-belanghebbende.</p></body>
-              pattern: ^[0-9]{17}$
-    KeuzeAdresBinnenBuitenland:
+        gebruiksoppervlakte:
+          type: integer
+          title: gebruiksoppervlakte
+          description: <body><p>Dit gegeven is met name van belang wanneer het verhuurde object niet gelijk is aan het WOZ-object. Dit kan bijvoorbeeld het geval zijn als meerdere verhuurde objecten in het kader van de Wet WOZ worden samengevoegd tot een samenstel of wanneer een verhuurd gedeelte niet als afzonderlijk WOZ-object kan worden afgebakend.</p></body>
+        huurprijsPerM2:
+          type: integer
+          title: huurprijsPerM2
+          description: ''
+        indexatieHuurprijs:
+          type: boolean
+          title: indexatieHuurprijs
+          description: ''
+        indicatieOmzetbelastingHuurprijs:
+          $ref: '#/components/schemas/CodeOmzetBelasting'
+        looptijdHuurcontract:
+          type: integer
+          title: looptijdHuurcontract
+          description: ''
+        servicekosten:
+          type: integer
+          title: servicekosten
+          description: ''
+        verhuurbareVloeroppervlakte:
+          type: integer
+          title: verhuurbareVloeroppervlakte
+          description: <body><p>In huurcontracten wordt vaak het verhuurbaar vloeroppervlakte vastgelegd, omdat ook de huurprijs vaak is afgeleid van een huurprijs per verhuurbare vierkante meter per jaar.</p></body>
+    KoopOfHuurOfGronduitgifteOfStichtingskosten:
       type: object
       required:
         - type
@@ -591,91 +360,165 @@ components:
       discriminator:
         propertyName: type
         mapping:
-          adresAanduiding: '#/components/schemas/AdresBagPlusLocatieOmschrijving'
-          adresBuitenland: '#/components/schemas/AdresBuitenland'
-          adresPostbusAntwoordnummer: '#/components/schemas/AdresPostbusAntwoordnummer'
-    Land:
+          gronduitgifte: '#/components/schemas/GronduitgifteGrp'
+          huurtransactie: '#/components/schemas/HuurtransactieGrp'
+          kooptransactie: '#/components/schemas/KooptransactieGrp'
+          stichtingskosten: '#/components/schemas/StichtingskostenGrp'
+    KooptransactieGrp:
       type: object
-      description: ""
-      required:
-      - code
-      - ingangsdatum
-      - naam
+      description: ''
       properties:
-        code:
+        koopdatum:
           type: string
-          title: code
-          description: ""
-          minLength: 1
-        einddatum:
-          type: string
-          title: einddatum
-          description: ""
+          title: koopdatum
+          description: <body><p>Alleen noodzakelijk wanneer door een lange periode tussen koopdatum en transportdatum de transactieprijs geen goede weergave is van de marktwaarde op het moment van transport. Dit gegeven zal voor de meeste transacties gelet op gebruik niet gevuld behoeven te worden.</p></body>
           format: date
-        ingangsdatum:
-          type: string
-          title: ingangsdatum
-          description: ""
-          format: date
-        naam:
-          type: string
-          title: naam
-          description: ""
-          minLength: 1
+        servicekosten:
+          type: integer
+          title: servicekosten
+          description: ''
+    StichtingskostenGrp:
+      type: object
+      description: ''
+      properties:
+        brutoInhoud:
+          type: integer
+          title: brutoInhoud
+          description: ''
+        gebruiksoppervlakte:
+          type: integer
+          title: gebruiksoppervlakte
+          description: <body><p>Dit gegeven is met name van belang wanneer het nieuw gebouwde object niet gelijk is aan het WOZ-object. Dit kan bijvoorbeeld het geval zijn als een gebouw een deel is van een WOZ-object, bijvoorbeeld een uitbreiding van een bestaand gebouw of wanneer een nieuw gebouwd object gesplitst wordt in afzonderlijke WOZ-objecten bij ingebruikname.</p></body>
+        grondkosten:
+          type: integer
+          title: grondkosten
+          description: ''
+        indicatieOmzetbelastingGrondprijs:
+          $ref: '#/components/schemas/CodeOmzetBelasting'
+        kostenAfbouwInrichting:
+          type: integer
+          title: kostenAfbouwInrichting
+          description: <body><p>Afbouw en inrichting heeft betrekking op scheidingswanden, etc.</p></body>
+        kostenInfrastructuur:
+          type: integer
+          title: kostenInfrastructuur
+          description: ''
+        kostenInstallaties:
+          type: integer
+          title: kostenInstallaties
+          description: <body><p>De installaties hebben betrekking op verwarming, airconditioning, etc.</p></body>
+        kostenOverig:
+          type: integer
+          title: kostenOverig
+          description: ''
+        kostenRuwbouw:
+          type: integer
+          title: kostenRuwbouw
+          description: ''
+        kostenWerktuigen:
+          type: integer
+          title: kostenWerktuigen
+          description: ''
     TijdvakRelatie:
       type: object
-      description: ""
+      description: ''
       required:
-      - beginRelatie
-      - eindRelatie
+        - beginRelatie
+        - eindRelatie
       properties:
         beginRelatie:
           type: string
           title: beginRelatie
-          description: ""
+          description: ''
           format: date
         eindRelatie:
           type: string
           title: eindRelatie
-          description: ""
+          description: ''
           format: date
-    IdentificatiePersoonType:
+    Trnwoz:
+      type: object
+      description: ''
+      required:
+        - tijdvakRelatie
+        - wozObjectnummer
+      properties:
+        tijdvakRelatie:
+          $ref: '#/components/schemas/TijdvakRelatie'
+        wozObjectnummer:
+          type: string
+          title: wozObjectnummer
+          description: <body><p>Elk WOZ-object wordt uniek aangeduid door middel van een identificatiecode. Deze identificatiecode bestaat uit de gemeentecode volgens de landelijke GBA-tabel 33 ' Gemeente' in combinatie met een voor de registrerende gemeente uniek volgnummer. Het WOZ-objectnummer verandert niet bij gemeentelijke herindeling, naamswijziging of bij grenscorrectie. Dit betekent dat in de gemeentelijke WOZ-administratie ook (actieve) WOZ-objecten en sluimerende WOZ-objecten kunnen voorkomen, waarvan de eerste vier cijfers niet overeenkomen met de actuele gemeentecode van de desbetreffende gemeente. Wanneer een nieuw WOZ-object wordt geregistreerd moeten de eerste vier posities wel verplicht overeenkomen met de gemeentecode van de gemeente die het object opvoert. Een WOZ-objectnummer mag niet voor zowel een WOZ-object als voor een Sluimerend WOZ-object gebruikt worden als identificerend nummer.</p></body>
+          pattern: ^[0-9]{12}$
+          maxLength: 12
+    AanduidingBruikbaarheid:
       type: string
-      description: ""
+      description: ''
       enum:
-      - anpId
-      - burgerservicenummer
-      - rsin
-      - annId
-    PostadresType:
+        - '00'
+        - '62'
+        - '64'
+        - '99'
+    AardMarktinformatie:
       type: string
-      description: ""
+      description: ''
       enum:
-      - A
-      - P
-    IdentificatieBAG:
+        - O
+        - T
+        - V
+    CodeOmzetBelasting:
       type: string
-      description: '<body><p>Combinatie van (viercijferig) subdomein `gemeentecodering`
-        (volgens GBA tabel 33), het (tweecijferig) subdomein `objecttypecode` en een
-        voor het betreffende objecttype binnen een gemeente uniek (tiencijferig) subdomein
-        `objectvolgnummer`. Objecttypecode: een code waarmee het objecttype van een
-        object wordt aangegeven. Deze codering maakt onderdeel uit van de unieke objectaanduiding.
-        Het is met name bedoeld om objecten van verschillende adresseerbare objecttypen
-        uniek van elkaar te kunnen onderscheiden. Waardeverzameling domein: 01: verblijfsobject;
-        02: ligplaats; 03: standplaats; 10: pand en 20: nummeraanduiding. Objectvolgnummer:
-        een uniek volgnummer waarmee een object van een bepaald type binnen een gemeente
-        kan worden aangeduid. Indien een `objectvolgnummer` uit minder dan tien posities
-        bestaat, dan dient deze ten behoeve van de uitwisseling te worden aangevuld
-        met voorloopnullen. De van de objectnummering onderdeel uitmakende gemeentecode
-        kan niet worden gebruikt om te bepalen binnen welke gemeente een object is
-        gelegen. Waardeverzameling domein: Alle natuurlijke getallen tussen 0 en 9.999.999.999.</p></body>'
-      pattern: ^[0-9]{16}$
-    Postcode:
+      description: ''
+      enum:
+        - E
+        - I
+        - O
+    OmstandighedenTransactie:
       type: string
-      description: ""
-      pattern: ^[1-9][0-9]{3}[A-Z]{2}$
+      description: ''
+      enum:
+        - '11'
+        - '12'
+        - '13'
+        - '14'
+        - '15'
+        - '16'
+        - '21'
+        - '22'
+        - '23'
+        - '24'
+        - '31'
+        - '32'
+        - '33'
+        - '34'
+        - '35'
+        - '41'
+        - '42'
+        - '51'
+        - '52'
+        - '53'
+        - '54'
+        - '60'
+        - '61'
+        - '62'
+        - '63'
+        - '64'
+        - '65'
+        - '66'
+        - '67'
+        - '71'
+        - '72'
+    SoortTransactie:
+      type: string
+      description: ''
+      enum:
+        - H
+        - K
+        - O
+        - S
+        - U
     Sleutel:
       type: string
-      description: ""
+      description: ''
       maxLength: 40
       minLength: 1
