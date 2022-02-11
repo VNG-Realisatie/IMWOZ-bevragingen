@@ -24,7 +24,10 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
  - WOZobjecten in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/WOZ-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/WOZ-redoc) --- [technische specificaties](specificatie/WOZ/openapi.yaml)
  - Waarden in [Swagger-UI](https://vng-realisatie.github.io/IMWOZ-bevragingen/WRD-swagger-ui) of [Redoc](https://vng-realisatie.github.io/IMWOZ-bevragingen/WRD-redoc) --- [technische specificaties](specificatie/WRD/openapi.yaml)
 
-Bekijk de [release notes](./releasenotes).
+## Documentatie
+
+Voor de volgende onderwerpen is documentatie over de bedoelde werking van de API opgesteld:
+ - [Toepassen van de parameter PeilTijdstipMaterieel](/documentatie/gebruikPeilTijdstipMaterieel.md)
 
 ## Meedenken met de ontwikkelingen?
 
