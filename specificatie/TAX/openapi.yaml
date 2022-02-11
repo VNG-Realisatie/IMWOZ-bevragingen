@@ -7,7 +7,7 @@ servers:
 info:
   title: BG IMWOZ TAX
   description: ""
-  version: "1.0.0"
+  version: "0.9.0"
   x-imvertor-generator-version: "1.65.4"
   x-yamlCompiler-stylesheets-version: "20220110"
   contact:
@@ -2556,16 +2556,70 @@ components:
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxatieDeelObjecten:
+          title: wordtopgebouwduit
+          type: array
+          description: ''
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        transacties:
+          title: onderbouwendetransacties
+          type: array
+          description: <body><p>Deze relatie maakt een snelle verwijzing naar bijvoorbeeld gebruikte verkoopprijzen, huurprijzen en stichtingskosten mogelijk. Deze relatie bepaalt niet welke marktgegevens op een taxatieverslag worden vermeld. De inhoud van het taxatieverslag wordt vastgelegd met behulp van de entiteit TVS. Bij een taxatie kan ook vergeleken worden met meerdere taxaties. Omdat sommige vergelijkingen wellicht eerder gemaakte vergelijkingen vervangen, is het bijhouden van de tijdvakRelatie van belang.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        vergelekenWOZobjecten:
+          title: vergelekenWoz-object
+          type: array
+          description: <body><p>Deze relatie bepaalt niet welke vergelijkbare WOZ-objecten op een taxatieverslag worden vermeld. De inhoud van het taxatieverslag wordt vastgelegd met behulp van de entiteit TVS (Taxatieverslag). Bij een taxatie kan ook vergeleken worden met meerdere andere WOZ-objecten. Omdat sommige vergelijkingen wellicht eerder gemaakte vergelijkingen vervangen, is het bijhouden van de tijdvakRelatie van belang.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxatietaxatiekenmerken:
+          title: wordtopgebouwduit
+          type: array
+          description: ''
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        betrokkenWOZobjecten:
+          allOf:
+            - title: betrokkenWoz-object
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     NSWLandgoedTDO_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZdeelobjecten:
+          allOf:
+            - title: geeftwaardevan
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxaties:
+          title: hoortbij
+          type: array
+          description: <body><p>Relatie naar de Taxatie waarvan dit Taxatie Deelobject (TDO) onderdeel uitmaakt.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     TDOAgrarischeAsbest_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZdeelobjecten:
+          allOf:
+            - title: geeftwaardevan
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxaties:
+          title: hoortbij
+          type: array
+          description: <body><p>Relatie naar de Taxatie waarvan dit Taxatie Deelobject (TDO) onderdeel uitmaakt.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     TDOAgrarischeGebouw_links:
       type: object
       properties:
@@ -2576,31 +2630,103 @@ components:
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZdeelobjecten:
+          allOf:
+            - title: geeftwaardevan
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxaties:
+          title: hoortbij
+          type: array
+          description: <body><p>Relatie naar de Taxatie waarvan dit Taxatie Deelobject (TDO) onderdeel uitmaakt.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     TDOBijzondereOmstandigheid_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZdeelobjecten:
+          allOf:
+            - title: geeftwaardevan
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxaties:
+          title: hoortbij
+          type: array
+          description: <body><p>Relatie naar de Taxatie waarvan dit Taxatie Deelobject (TDO) onderdeel uitmaakt.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     TDOGecorrigeerdeVervangingsWaarde_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZdeelobjecten:
+          allOf:
+            - title: geeftwaardevan
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxaties:
+          title: hoortbij
+          type: array
+          description: <body><p>Relatie naar de Taxatie waarvan dit Taxatie Deelobject (TDO) onderdeel uitmaakt.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     TDOGrond_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZdeelobjecten:
+          allOf:
+            - title: geeftwaardevan
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxaties:
+          title: hoortbij
+          type: array
+          description: <body><p>Relatie naar de Taxatie waarvan dit Taxatie Deelobject (TDO) onderdeel uitmaakt.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     TDOHuurwaardeKapitalisatie_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZdeelobjecten:
+          allOf:
+            - title: geeftwaardevan
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxaties:
+          title: hoortbij
+          type: array
+          description: <body><p>Relatie naar de Taxatie waarvan dit Taxatie Deelobject (TDO) onderdeel uitmaakt.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     TDOMotorbrandstofverkooppunt_links:
       type: object
       properties:
         self:
           $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        WOZdeelobjecten:
+          allOf:
+            - title: geeftwaardevan
+              type: object
+              description: ''
+            - $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
+        taxaties:
+          title: hoortbij
+          type: array
+          description: <body><p>Relatie naar de Taxatie waarvan dit Taxatie Deelobject (TDO) onderdeel uitmaakt.</p></body>
+          items:
+            $ref: https://raw.githubusercontent.com/VNG-Realisatie/API-Kennisbank/master/common/common.yaml#/components/schemas/HalLink
     Taxatie_links:
       type: object
       properties:
@@ -2824,15 +2950,16 @@ components:
           $ref: '#/components/schemas/GecorrigeerdeVervangingsWaardeBasis'
     DriedelingOfOngesplitst:
       type: object
-      description: ''
       required:
-        - driedeling
-        - ongesplitst
+        - type
       properties:
-        driedeling:
-          $ref: '#/components/schemas/Driedeling'
-        ongesplitst:
-          $ref: '#/components/schemas/GecorrigeerdeVervangingsWaardeBasis'
+        type:
+          type: string
+      discriminator:
+        propertyName: type
+        mapping:
+          driedeling: '#/components/schemas/Driedeling'
+          ongesplitst: '#/components/schemas/GecorrigeerdeVervangingsWaardeBasis'
     FactorFunctioneleVeroudering:
       type: object
       description: ''
@@ -3155,19 +3282,22 @@ components:
           $ref: '#/components/schemas/StatusTaxatieParameter'
     KeuzeTeGebruikenEenheid:
       type: object
-      description: ''
       required:
-        - keuzeTeGebruikenEenheid
-        - statusTaxatieParameter
+        - type
       properties:
-        keuzeTeGebruikenEenheid:
+        type:
           type: string
-          title: keuzeTeGebruikenEenheid
-          description: ''
-          maxLength: 50
-          minLength: 1
-        statusTaxatieParameter:
-          $ref: '#/components/schemas/StatusTaxatieParameter'
+      discriminator:
+        propertyName: type
+        mapping:
+          keuzeTeGebruikenEenheid: '#/components/schemas/keuzeTeGebruikenEenheidElement'
+          statusTaxatieParameter: '#/components/schemas/StatusTaxatieParameter'
+    KeuzeTeGebruikenEenheidElement:
+      type: string
+      title: keuzeTeGebruikenEenheid
+      description: ''
+      maxLength: 50
+      minLength: 1
     Leegstandsrisico:
       type: object
       description: ''

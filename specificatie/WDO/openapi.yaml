@@ -7,7 +7,7 @@ servers:
 info:
   title: BG IMWOZ WDO
   description: ""
-  version: "1.0.0"
+  version: "0.9.0"
   x-imvertor-generator-version: "1.65.4"
   x-yamlCompiler-stylesheets-version: "20220110"
   contact:
@@ -465,19 +465,27 @@ components:
           format: date
     BouwjaarOfBouwjaarKlasse:
       type: object
-      description: ''
+      required:
+        - type
       properties:
-        bouwjaar:
-          type: integer
-          title: bouwjaar
-          description: ''
-          format: date_fullyear
-          pattern: ^[1-2]{1}[0-9]{3}$
-        bouwjaarKlasse:
+        type:
           type: string
-          title: bouwjaarKlasse
-          description: ''
-          maxLength: 9
+      discriminator:
+        propertyName: type
+        mapping:
+          bouwjaar: '#/components/schemas/Bouwjaar'
+          bouwjaarklasse: '#/components/schemas/BouwjaarKlasse'
+    Bouwjaar:
+      type: integer
+      title: bouwjaar
+      description: ''
+      format: date_fullyear
+      pattern: ^[1-2]{1}[0-9]{3}$
+    BouwjaarKlasse:
+      type: string
+      title: bouwjaarKlasse
+      description: ''
+      maxLength: 9
     Materiaalcode:
       type: object
       description: ''
