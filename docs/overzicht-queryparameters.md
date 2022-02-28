@@ -1,3 +1,8 @@
+---
+layout: page-with-side-nav
+title: Ontwikkelversie IMWOZ-bevragingen
+---
+
 # Overzicht queryparameters en relaties in antwoorden
 
 ## ASL

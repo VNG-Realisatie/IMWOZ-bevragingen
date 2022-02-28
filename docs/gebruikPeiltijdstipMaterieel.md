@@ -1,3 +1,8 @@
+---
+layout: page-with-side-nav
+title: Ontwikkelversie IMWOZ-bevragingen
+---
+
 # Toepassen van parameter PeilTijdstipMaterieel
 
 In deze API-specifcatie zijn voor de meeste resource 2 manieren van opvragen gedefinieerd.
