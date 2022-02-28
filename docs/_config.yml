@@ -17,7 +17,7 @@ nav:
       - title: Gebruik PeiltijdstipMaterieel
         path: /gebruikPeiltijdstipMaterieel.md
       - title: Overzicht Query-queryparameters
-        path: /overzicht-queryparameters
+        path: /overzicht-queryparameters.md
   - title: Specificaties in concept
     subnav:
 #      - title: Getting started
