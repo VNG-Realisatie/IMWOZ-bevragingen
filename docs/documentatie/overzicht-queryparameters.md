@@ -1,6 +1,6 @@
-Overzicht queryparameters en relaties in antwoorden
+# Overzicht queryparameters en relaties in antwoorden
 
-ASL
+## ASL
 Queryparameters:
 belastingsoort
 statusAanslag
@@ -15,7 +15,7 @@ isGebaseerdOp
 isVoor (inclusief de ASLPRSVES)
 
 
-BLJ
+## BLJ
 Queryparameters:
 statusBiljet
 groep brondocument (identificatie, datum)
@@ -29,7 +29,7 @@ heeftAanslagregel
 isVoor (inclusief de BLJPRSVES)
 heeftBeschikkingsregel
 
-BSK
+## BSK
 queryparameters:
 volgnummer
 status­Beschikking
@@ -43,7 +43,7 @@ steltVast
 isVoor (inclusief de BSKWRDVES)
 
 
-BZW
+## BZW
 Queryparameters:
 statusBezwaar
 groep brondocument (identificatie, datum)
@@ -62,7 +62,7 @@ isIngediendDoor (inclusief de BZWPRSANVVES)
 isTegenBeschikking
 
 
-CTL
+## CTL
 Queryparameters:
 identificatieUitvoerder
 taxateur
@@ -76,7 +76,7 @@ isVoor
 In antwoord opnemen relaties:
 isVoor
 
-Erfpacht
+## Erfpacht
 queryparameters:
 overeenkomstnummer
 adres
@@ -88,7 +88,7 @@ In antwoord opnemen relaties:
 betreft
 
 
-KOZ
+## KOZ
 queryparameters:
 kadastraleAanduiding
 
@@ -96,7 +96,7 @@ In antwoord opnemen relaties:
 geen
 
 
-LIG
+## LIG
 queryparameters:
 statusLigplaats
 en uit AOT:
@@ -108,7 +108,7 @@ In antwoord opnemen relaties:
 geen
 
 
-NNP
+## NNP
 queryparameters:
 statutaire­Naam
 kvk­Nummer
@@ -126,7 +126,7 @@ In antwoord opnemen relaties:
 geen
 
 
-NPS
+## NPS
 queryparameters:
 geslachtsnaam
 voorvoegsel­Geslachtsnaam
@@ -152,7 +152,7 @@ In antwoord opnemen relaties:
 verblijftIn
 
 
-NSWLandgoedTAX
+## NSWLandgoedTAX
 queryparameters:
 uit TAX:
 waardepeildatum
@@ -168,7 +168,7 @@ onderbouwendeTransacties
 wordtOpgebouwdUit (TDO)
 
 
-NSWLandgoedTDO
+## NSWLandgoedTDO
 queryparameters:
 uit TDO:
 geeftWaardeVan
@@ -180,7 +180,7 @@ geeftWaardeVan
 hoortBijTaxatie
 
 
-NUM
+## NUM
 queryparameters:
 woonplaatsnaam
 postcode
@@ -194,7 +194,7 @@ In antwoord opnemen relaties:
 geen
 
 
-OPR
+## OPR
 queryparameters:
 geen (dus alleen selecteren op basis van identificatie)
 
@@ -202,8 +202,7 @@ In antwoord opnemen relaties:
 geen
 
 
-
-PND
+## PND
 queryparameters:
 geen (dus alleen selecteren op basis van identificatie)
 
@@ -211,7 +210,7 @@ In antwoord opnemen relaties:
 geen
 
 
-RMA
+## RMA
 queryparameters:
 waardepeildatum
 toestandspeildatum
@@ -225,7 +224,7 @@ analyseert
 heeftBetrekkingOp
 
 
-SOC
+## SOC
 queryparameters:
 geen (dus alleen selecteren op basis van identificatie)
 
@@ -233,7 +232,7 @@ In antwoord opnemen relaties:
 geen
 
 
-STA
+## STA
 queryparameters:
 statusStandplaats
 en uit AOT:
@@ -245,7 +244,7 @@ In antwoord opnemen relaties:
 geen
 
 
-SWO
+## SWO
 queryparameters:
 statusWozObject
 codeGebouwdOngebouwd
@@ -259,7 +258,7 @@ bevatKadastraleObjecten
 ligtIn (WSP)
 
 
-TAX
+## TAX
 queryparameters:
 waardepeildatum
 toestandspeildatum
@@ -273,7 +272,7 @@ onderbouwendeTransacties
 wordtOpgebouwdUit (TDO)
 
 
-TDOAgrarischeAsbest
+## TDOAgrarischeAsbest
 queryparameters:
 uit TDO:
 geeftWaardeVan
@@ -285,7 +284,7 @@ geeftWaardeVan
 hoortBijTaxatie
 
 
-TDOAgrarischeGebouw
+## TDOAgrarischeGebouw
 queryparameters:
 uit TDO:
 geeftWaardeVan
@@ -296,19 +295,7 @@ uit TDO:
 geeftWaardeVan
 hoortBijTaxatie
 
-TDOAgrarischeGrond
-queryparameters:
-uit TDO:
-geeftWaardeVan
-hoortBijTaxatie
-
-In antwoord opnemen relaties:
-uit TDO:
-geeftWaardeVan
-hoortBijTaxatie
-
-
-TDOBijzonderOmstandigheid
+## TDOAgrarischeGrond
 queryparameters:
 uit TDO:
 geeftWaardeVan
@@ -320,7 +307,7 @@ geeftWaardeVan
 hoortBijTaxatie
 
 
-TDOGecorrigeerdeVervangingswaarde
+## TDOBijzonderOmstandigheid
 queryparameters:
 uit TDO:
 geeftWaardeVan
@@ -332,7 +319,7 @@ geeftWaardeVan
 hoortBijTaxatie
 
 
-TDOGrond
+## TDOGecorrigeerdeVervangingswaarde
 queryparameters:
 uit TDO:
 geeftWaardeVan
@@ -344,7 +331,7 @@ geeftWaardeVan
 hoortBijTaxatie
 
 
-TDOHuurwaardeKapitalisatie
+## TDOGrond
 queryparameters:
 uit TDO:
 geeftWaardeVan
@@ -356,7 +343,7 @@ geeftWaardeVan
 hoortBijTaxatie
 
 
-TDOMotorbrandstofverkooppunt
+## TDOHuurwaardeKapitalisatie
 queryparameters:
 uit TDO:
 geeftWaardeVan
@@ -368,7 +355,7 @@ geeftWaardeVan
 hoortBijTaxatie
 
 
-TDOStuksprijs
+## TDOMotorbrandstofverkooppunt
 queryparameters:
 uit TDO:
 geeftWaardeVan
@@ -380,7 +367,19 @@ geeftWaardeVan
 hoortBijTaxatie
 
 
-TRN
+## TDOStuksprijs
+queryparameters:
+uit TDO:
+geeftWaardeVan
+hoortBijTaxatie
+
+In antwoord opnemen relaties:
+uit TDO:
+geeftWaardeVan
+hoortBijTaxatie
+
+
+## TRN
 queryparameters:
 aardMarktinformatie
 soortTransactie
@@ -398,7 +397,7 @@ wordtGeanalyseerdIn
 isBetrokkenIn
 
 
-TTK
+## TTK
 queryparameters:
 geeftWaardeVan
 hoortBijTaxatie
@@ -408,7 +407,7 @@ geeftWaardeVan
 hoortBijTaxatie
 
 
-TVN
+## TVN
 queryparameters:
 uit TVS:
 waardepeildatum
@@ -428,7 +427,7 @@ vermeldtVoorBetrokkenObject
 isGebaseerdOp
 
 
-TVW
+## TVW
 queryparameters:
 uit TVS:
 waardepeildatum
@@ -450,7 +449,7 @@ vermeldtVoorBetrokkenObject
 isGebaseerdOp
 
 
-TXK
+## TXK
 queryparameters:
 nummer­WOZDeelobject
 isKenmerkVan
@@ -459,7 +458,7 @@ In antwoord opnemen relaties:
 isKenmerkVan
 
 
-VBO
+## VBO
 queryparameters:
 statusVerblijfsobject
 gebruiksdoel
@@ -473,7 +472,7 @@ In antwoord opnemen relaties:
 maaktDeelUitVan
 
 
-VES
+## VES
 queryparameters:
 eersteHandelsnaam
 kvkNummer
@@ -489,7 +488,7 @@ In antwoord opnemen relaties:
 geen
 
 
-WBP
+## WBP
 queryparameters:
 waardepeildatum
 toestandspeildatum
@@ -507,7 +506,7 @@ isVoor
 heeft
 
 
-WDO
+## WDO
 queryparameters:
 nummerWOZDeelobject
 statusWOZDeelobject
@@ -530,7 +529,7 @@ heeftAlsAanduiding
 bestaat­Uit
 
 
-WOZ
+## WOZ
 queryparameters:
 statusWozObject
 gebruikscode
@@ -582,7 +581,7 @@ heeftAlsAanduiding
 heeftWaardebepaling
 
 
-WPL
+## WPL
 queryparameters:
 geen (dus alleen selecteren op basis van identificatie)
 
@@ -590,7 +589,7 @@ In antwoord opnemen relaties:
 geen
 
 
-WRD
+## WRD
 queryparameters:
 waardepeildatum
 toestandspeildatum
@@ -607,7 +606,7 @@ wordtOnderbouwdMet
 isBeschiktVoor (inclusief WRDPRSVES)
 
 
-WSP
+## WSP
 queryparameters:
 geen (dus alleen selecteren op basis van identificatie)
 
