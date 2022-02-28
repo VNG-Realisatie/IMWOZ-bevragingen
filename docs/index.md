@@ -33,7 +33,8 @@ De Specificatie van de betreffende API's zijn op de volgende locaties te bekijke
 ## Documentatie
 
 Voor de volgende onderwerpen is documentatie over de bedoelde werking van de API opgesteld:
- - [Toepassen van de parameter PeilTijdstipMaterieel](https://github.com/VNG-Realisatie/IMWOZ-bevragingen/tree/main/documentatie/gebruikPeilTijdstipMaterieel.md)
+ - [Toepassen van de parameter PeilTijdstipMaterieel](./documentatie/gebruikPeilTijdstipMaterieel.md)
+ - [Overzicht-queryparameters](./documentatie/overzicht-queryparameters.md)
 
 ## Meedenken met de ontwikkelingen?
 
