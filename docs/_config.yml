@@ -12,7 +12,13 @@ nav:
     subnav:
       - title: Main
         path: /
-  - title: Specificaties v. in concept
+  - title: Documentatie
+    subnav:
+      - title: Gebruik PeiltijdstipMaterieel
+        path: /gebruikPeiltijdstipMaterieel.md
+      - title: Overzicht Query-queryparameters
+        path: /overzicht-queryparameters
+  - title: Specificaties in concept
     subnav:
 #      - title: Getting started
 #        path: /getting-started
