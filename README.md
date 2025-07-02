@@ -1,3 +1,8 @@
+| Eigenaar | Ingevuld door |
+| --- | --- |
+| Kennis centrum Architectuur | Johan Boer |
+<hr/>
+
 # IMWOZ-bevragingen
 
 Deze repository ondersteunt de ontwikkeling van de binnengemeentelijk IMWOZ-bevragingen.
